@@ -1,0 +1,13 @@
+<div class="event-wrapper row">
+  <div class="images small-12 medium-6 large-8 small-centered columns">
+    <ul class="example-orbit" data-orbit data-options="timer_speed:3000;animation_speed:1000;pause_on_hover:false">
+      <% count = 1 %>
+      <% event.pictures.each do |pic| %>
+        <li>
+          <img src="<%= pic.image_url %>" alt="slide <%= count %>" />
+        </li>
+        <% count += 1 %>
+      <% end %>
+    </ul>
+  </div>
+</div>

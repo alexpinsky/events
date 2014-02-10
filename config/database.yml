@@ -1,0 +1,16 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: events_dev
+  pool: 100
+  username: 
+  password:
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: events_test
+  pool: 10
+  timeout: 5000
+  username: 
+  password:

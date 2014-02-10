@@ -1,0 +1,9 @@
+<%= semantic_form_for [user, event] do |f| %>
+  <%= f.inputs :name, :title, :description %>
+  <%= f.semantic_fields_for :pictures do |picture| %>
+    <%= picture.inputs :image %>
+  <% end %>
+  <%= f.actions do %>
+    <%= f.action :submit %>
+  <% end %>
+<% end %>

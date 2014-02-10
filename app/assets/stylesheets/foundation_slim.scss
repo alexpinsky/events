@@ -1,0 +1,19 @@
+//
+// FOUNDATION SETTINGS
+//
+
+// This is the default html and body font-size for the base rem value.
+// $rem-base: 16px;
+
+// Allows the use of rem-calc() or lower-bound() in your settings
+@import "foundation/functions";
+
+// Make sure the charset is set appropriately
+@charset "UTF-8";
+
+// Behold, here are all the Foundation components.
+@import 
+ "foundation/components/grid",
+ "foundation/components/orbit";
+
+body { padding-top: 70px; }

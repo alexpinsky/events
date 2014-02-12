@@ -10,6 +10,11 @@
  *
  *= require_self
  *= require foundation_and_overrides
- *= require formtastic
- *= require_tree .
+ *= require events
+ *= require pages
  */
+
+ @font-face {
+  font-family: handwrite;
+  src: url('/assets/hand_write.ttf') format('truetype');
+}

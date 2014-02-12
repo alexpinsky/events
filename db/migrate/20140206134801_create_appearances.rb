@@ -4,6 +4,8 @@ class CreateAppearances < ActiveRecord::Migration
       t.string :background_image
       t.string :font_family
       t.string :font_color
+      t.integer :presentable_id
+      t.string :presentable_type
 
       t.timestamps
     end

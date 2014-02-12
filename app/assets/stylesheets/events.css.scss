@@ -1,3 +1,21 @@
-// Place all the styles related to the Events controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#preview {
+  min-height: 585px;
+}
+
+#editor {
+  .button {
+    margin: 1.25rem 0 1.25rem;
+  }
+}
+
+.event-wrapper {
+  .images {
+    padding-top: 3rem
+  }
+  .title {
+    text-align: center;
+  }
+  .description {
+    text-align: center;
+  }
+}

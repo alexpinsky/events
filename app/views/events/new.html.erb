@@ -1,7 +1,9 @@
 <div class="row">
   <div class="small-5 columns">
     <div class="row" id="editor">
-      <%= render partial: "form", locals: { user: @user, event: @event } %>
+      <div class="small-10 columns">
+        <%= render partial: "form", locals: { user: @user, event: @event } %>
+      </div>
     </div>
   </div>
   <div class="small-7 columns" id="preview" style="background-image: url(<%= @background_image %>)">

@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 20140206134801) do
     t.string   "background_image"
     t.string   "font_family"
     t.string   "font_color"
+    t.integer  "presentable_id"
+    t.string   "presentable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,9 +1,32 @@
-<%= semantic_form_for [user, event] do |f| %>
-  <%= f.inputs :name, :title, :description %>
-  <%= f.semantic_fields_for :pictures do |picture| %>
-    <%= picture.inputs :image %>
-  <% end %>
-  <%= f.actions do %>
-    <%= f.action :submit %>
-  <% end %>
+<%= form_for [user, event] do |event_form| %>
+  <dl class="accordion" data-accordion>
+    <dd>
+      <a href="#panel1">Design</a>
+      <div id="panel1" class="content active">
+        <%= event_form.text_field :name, placeholder: "Name" %>
+        <%= event_form.text_field :title, placeholder: "Title" %>
+        <%= event_form.text_area :description, placeholder: "Description" %>
+        <fieldset>
+          <legend>Appearance</legend>
+          <%= event_form.fields_for :appearance do |app_form| %>
+            <%= app_form.text_field :background_image %>
+            <%= app_form.select :font_family, options_for_select([['Arial', 'Arial'], ['Hand Write', 'handwrite']]) %>
+            <%= app_form.text_field :font_color %>
+          <% end %>
+        </fieldset>
+        <fieldset>
+          <legend>Images</legend>
+          <%= event_form.fields_for :pictures do |pic_form| %>
+            <%= pic_form.file_field :image %>
+          <% end %>
+        </fieldset>
+      </div>
+    </dd>
+    <dd>
+      <a href="#panel2">Information</a>
+      <div id="panel2" class="content">
+      </div>
+    </dd>
+  </dl>
+  <%= event_form.submit class: "button small" %>
 <% end %>

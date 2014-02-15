@@ -18,7 +18,7 @@ class Event < ActiveRecord::Base
     event.appearance = Appearance.new_example
     event.information = Information.new_example
     4.times { event.pictures.build }
-    event.song = Song.new
+    event.build_song
     event
   end
 

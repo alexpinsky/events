@@ -31,7 +31,9 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @event = @user.events.includes(:pictures, :appearance, :information).find params[:id]
+    @event = @user.events.includes(:pictures, :appearance, :information, :song).find params[:id]
+    (4 - @event.pictures.size).times { @event.pictures.build }
+    @event.build_song if @event.song.nil?
   end
 
   def update

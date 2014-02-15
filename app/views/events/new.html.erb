@@ -1,12 +1,1 @@
-<div class="row">
-  <div class="small-5 columns">
-    <div class="row" id="editor">
-      <div class="small-10 columns">
-        <%= render partial: "form", locals: { user: @user, event: @event } %>
-      </div>
-    </div>
-  </div>
-  <div class="small-7 columns" id="preview" style="background-image: url(<%= @background_image %>)">
-    <%= render partial: "templates/#{@template}", locals: { event: @event } %>
-  </div>
-</div>
+<%= render partial: "form_and_preview", locals: { user: @user, event: @event, background_image: @background_image, theme: @theme } %>

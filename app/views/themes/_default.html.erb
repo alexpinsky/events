@@ -1,0 +1,50 @@
+<div class="event-wrapper row">
+  <div class="small-12 medium-8 large-6 small-centered columns">
+    <div class="images">
+      <ul class="example-orbit" data-orbit data-options="timer_speed:3000;animation_speed:1000;pause_on_hover:false">
+        <% count = 1 %>
+        <% event.pictures.each do |pic| %>
+          <% link = pic.image_url.present? ? pic.image_url : example_image_url(count) %>
+          <li>
+            <img src="<%= link %>" alt="slide <%= count %>" />
+          </li>
+          <% count += 1 %>
+        <% end %>
+      </ul>
+    </div>
+    <div class="primary row">
+      <% font_family = event.font_family %>
+      <% font_color = event.font_color %>
+      <div class="small-8 small-offset-2 large-12 large-offset-0 columns">
+        <label style="font-family: <%= font_family %>;color: <%= font_color %>;font-size: 5rem"><%= event.primary_text %></label>
+      </div>
+    </div>
+    <div class="secondary row">
+      <div class="small-12 columns">
+        <label style="font-family: <%= font_family %>;color: <%= font_color %>;font-size: 1.5rem"><%= event.secondary_text %></label>
+      </div>
+    </div>
+    <div class="extra row">
+      <div class="small-12 columns">
+        <label style="font-family: <%= font_family %>;color: <%= font_color %>;font-size: 1.5rem"><%= event.extra_text %></label>
+      </div>
+    </div>
+    <div class="calendar row">
+      <div class="small-12 columns">
+        <a href="http://example.com/link-to-your-event" title="Add to Calendar" id="btn_calendar" class="addthisevent">
+          Add to Calendar
+          <span class="_start hide"><%= event.start_time %></span>
+          <span class="_end hide"><%= event.end_time %></span>
+          <span class="_zonecode hide"><%= event.zone_code %></span>
+          <span class="_summary hide"><%= event.summary %></span>
+          <span class="_location hide"><%= event.location %></span>
+          <span class="_organizer hide"><%= event.organizer %></span>
+          <span class="_organizer_email hide"><%= event.organizer_email %></span>
+          <span class="_date_format hide"><%= event.date_format %></span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <% audio_url = event.audio_url.present? ? event.audio_url : example_song_url %>
+  <div id="jquery_jplayer_1" data-song="<%= audio_url %>"></div>
+</div>

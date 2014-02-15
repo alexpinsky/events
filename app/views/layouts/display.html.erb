@@ -7,7 +7,7 @@
     <%= stylesheet_link_tag  "display" %>
     <%= csrf_meta_tags %>
   </head>
-  <body style="background-image: url(<%= @background_image %>)">
+  <body style="background-image: url(<%= background_collection_url(@event.background_image) %>)">
     <div class="row">
       <div class="small-12 small-centered columns">
         <%= yield %>
@@ -18,5 +18,6 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <%= javascript_include_tag "display" %>
     <%= yield(:javascript) %>
+    <script type="text/javascript" src="http://js.addthisevent.com/atemay.js"></script>
   </body>
 </html>

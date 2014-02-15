@@ -6,6 +6,9 @@ Events::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'pages#welcome'
 
+  get '/:id', to: redirect('/events/%{id}')
+  get '/events/:id', to: 'events#show'
+
   resources :users do
     resources :events
   end

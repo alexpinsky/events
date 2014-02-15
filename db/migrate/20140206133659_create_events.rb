@@ -3,11 +3,12 @@ class CreateEvents < ActiveRecord::Migration
     create_table :events do |t|
       t.integer :user_id
       t.string :name
-      t.integer :duration
-      t.string :title
-      t.text :description
+      t.string :primary_text
+      t.string :secondary_text
+      t.text :extra_text
       t.string :url
-      t.datetime :closing_date
+      t.string :url_hash
+      t.string :string
 
       t.timestamps
     end

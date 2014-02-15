@@ -10,12 +10,21 @@
 
 .event-wrapper {
   .images {
-    padding-top: 3rem
+    padding-top: 1.5rem
   }
-  .title {
+  .primary {
     text-align: center;
   }
-  .description {
+  .secondary {
     text-align: center;
+  }
+  .extra {
+    padding-top: 1.85rem;
+    text-align: center;
+  }
+  .calendar {
+    text-align: center;
+    margin-top: 2.5rem;
+    padding-bottom: 1.5rem
   }
 }

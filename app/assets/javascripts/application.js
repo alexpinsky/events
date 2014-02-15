@@ -16,5 +16,6 @@
 //= require turbolinks
 //= require events
 //= require pages
+//= require jquery.jplayer.min
 
 $(function(){ $(document).foundation(); });

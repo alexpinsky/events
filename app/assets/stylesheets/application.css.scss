@@ -12,9 +12,5 @@
  *= require foundation_and_overrides
  *= require events
  *= require pages
+ *= require fonts
  */
-
- @font-face {
-  font-family: handwrite;
-  src: url('/assets/hand_write.ttf') format('truetype');
-}

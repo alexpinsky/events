@@ -1,14 +1,13 @@
 class EventsController < ApplicationController
-  before_filter :set_user
+  skip_before_filter :authenticate_user!, only: [:show]
+  before_filter :set_user, except: [:show]
   before_filter :set_display # for now..
 
   def index
   end
 
   def new
-    @event = @user.events.new
-    @event.appearance.new(font_family: 'hand_write')
-    4.times { @event.pictures.build }
+    @event = @user.events.new_example
   end
 
   def create
@@ -22,13 +21,17 @@ class EventsController < ApplicationController
   end
 
   def show
-    @user = User.last
-    @event = @user.events.last
+    id = params[:id].to_i
+    if id == 0
+      @event = Event.find_by_url params[:id]
+    else
+      @event = Event.find id
+    end
     render layout: "display"
   end
 
   def edit
-    @event = @user.events.includes(:pictures, :appearance).find params[:id]
+    @event = @user.events.includes(:pictures, :appearance, :information).find params[:id]
   end
 
   def update
@@ -47,15 +50,14 @@ class EventsController < ApplicationController
 private
 
   def set_user
-    @user = User.last
+    @user = current_user
   end
 
   def set_display
-    @template = "default"
-    @background_image = "https://s3-us-west-2.amazonaws.com/events-assets-static/backgrounds/dark_wall.png"
+    @theme = "default"
   end
 
   def event_params
-    params.require(:event).permit(:name, :title, :description, pictures_attributes: [:id, :image], appearance_attributes: [:background_image, :font_family, :font_color])
+    params.require(:event).permit(:name, :primary_text, :secondary_text, :extra_text, pictures_attributes: [:id, :image], appearance_attributes: [:id, :background_image, :font_family, :font_color], information_attributes: [:id, :summary, :location, :organizer, :organizer_email, :zone_code, :start_time, :end_time], song_attributes: [:id, :audio])
   end
 end

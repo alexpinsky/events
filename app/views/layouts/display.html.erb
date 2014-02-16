@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= content_for?(:title) ? yield(:title) : "Event" %></title>
     <%= stylesheet_link_tag  "display" %>
-    <%= javascript_include_tag "display" %>
     <%= csrf_meta_tags %>
   </head>
   <body style="background-image: url(<%= background_collection_url(@event.background_image) %>)">
@@ -17,6 +16,7 @@
     <!-- Javascripts
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+    <%= javascript_include_tag "display" %>
     <%= yield(:javascript) %>
     <script type="text/javascript" src="http://js.addthisevent.com/atemay.js"></script>
   </body>

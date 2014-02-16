@@ -41,6 +41,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    dalli (2.7.0)
     devise (3.2.2)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -83,6 +84,7 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    memcachier (0.0.2)
     metaclass (0.0.2)
     method_source (0.8.2)
     mime-types (1.25.1)
@@ -107,6 +109,8 @@ GEM
       method_source (~> 0.8)
       slop (~> 3.4)
     rack (1.5.2)
+    rack-cache (1.2)
+      rack (>= 0.4)
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (4.0.0.rc1)
@@ -200,6 +204,7 @@ PLATFORMS
 DEPENDENCIES
   carrierwave
   coffee-rails (~> 4.0.0)
+  dalli
   devise
   faker
   figaro
@@ -208,12 +213,15 @@ DEPENDENCIES
   hirb
   jbuilder (~> 1.0.1)
   jquery-rails
+  kgio
   machinist (>= 2.0.0.beta2)
+  memcachier
   mini_magick
   mocha
   newrelic_rpm
   pg
   pry
+  rack-cache
   rails (= 4.0.0.rc1)
   rails_12factor
   rspec-rails (~> 3.0.0.beta)

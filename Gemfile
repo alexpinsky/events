@@ -15,6 +15,11 @@ gem "mini_magick"
 gem 'fog'
 gem "figaro"
 
+gem 'rack-cache'
+gem 'dalli'
+gem 'kgio'
+gem "memcachier"
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0.rc1'
 

@@ -22,5 +22,7 @@ module Events
     config.generators do |g|
       g.test_framework :rspec
     end
+
+    config.cache_store = :dalli_store
   end
 end

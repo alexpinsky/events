@@ -34,8 +34,8 @@
       <div class="small-12 columns">
         <a href="http://example.com/link-to-your-event" title="Add to Calendar" id="btn_calendar" class="addthisevent">
           Add to Calendar
-          <span class="_start hide"><%= event.start_time %></span>
-          <span class="_end hide"><%= event.end_time %></span>
+          <span class="_start hide"><%= event.start_time.strftime("%d-%m-%Y %H:%M:%S") %></span>
+          <span class="_end hide"><%= event.end_time.strftime("%d-%m-%Y %H:%M:%S") %></span>
           <span class="_zonecode hide"><%= event.zone_code %></span>
           <span class="_summary hide"><%= event.summary %></span>
           <span class="_location hide"><%= event.location %></span>

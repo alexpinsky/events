@@ -1,6 +1,6 @@
 <% font_family = event.font_family %>
 <% font_color = event.font_color %>
-<div><a href="mailto:alex.myevents@gmail.com" style="font-family: <%= font_family %>;color: <%= font_color %>;">Want your own event?</a></div>
+<div><a href="mailto:alex.myevents@gmail.com" style="font-family: <%= font_family %>;color: <%= font_color %>;">? רוצים אירוע משלכם</a></div>
 <div class="event-wrapper row">
   <div class="small-12 medium-8 large-6 small-centered columns">
     <div class="images">
@@ -34,8 +34,8 @@
       <div class="small-12 columns">
         <a href="http://example.com/link-to-your-event" title="Add to Calendar" id="btn_calendar" class="addthisevent">
           Add to Calendar
-          <span class="_start"><%= event.start_time.strftime("%d-%m-%Y %H:%M:%S") %></span>
-          <span class="_end"><%= event.end_time.strftime("%d-%m-%Y %H:%M:%S") %></span>
+          <span class="_start"><%= event.start_time.try(:strftime, "%d-%m-%Y %H:%M:%S") %></span>
+          <span class="_end"><%= event.end_time.try(:strftime, "%d-%m-%Y %H:%M:%S") %></span>
           <span class="_zonecode"><%= event.zone_code %></span>
           <span class="_summary"><%= event.summary %></span>
           <span class="_location"><%= event.location %></span>

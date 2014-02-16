@@ -4,8 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= content_for?(:title) ? yield(:title) : "Event" %></title>
+    <%= javascript_include_tag "display" %>
     <%= stylesheet_link_tag  "display" %>
     <%= csrf_meta_tags %>
+    <script type="text/javascript" src="http://js.addthisevent.com/atemay.js"></script>
   </head>
   <body style="background-image: url(<%= background_collection_url(@event.background_image) %>)">
     <div class="row">
@@ -16,8 +18,6 @@
     <!-- Javascripts
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <%= javascript_include_tag "display" %>
     <%= yield(:javascript) %>
-    <script type="text/javascript" src="http://js.addthisevent.com/atemay.js"></script>
   </body>
 </html>

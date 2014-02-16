@@ -13,6 +13,7 @@ gem 'faker'
 gem 'carrierwave'
 gem "mini_magick"
 gem 'fog'
+gem "figaro"
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0.rc1'

@@ -53,6 +53,9 @@ GEM
     execjs (2.0.2)
     faker (1.2.0)
       i18n (~> 0.5)
+    figaro (0.7.0)
+      bundler (~> 1.0)
+      rails (>= 3, < 5)
     fog (1.20.0)
       builder
       excon (~> 0.31.0)
@@ -199,6 +202,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   devise
   faker
+  figaro
   fog
   foundation-rails
   hirb

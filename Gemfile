@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.0.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0.rc1'
 
@@ -12,7 +12,6 @@ gem 'foundation-rails'
 gem 'faker'
 gem 'carrierwave'
 gem "jquery-fileupload-rails"
-# gem 'carrierwave_direct'
 gem "mini_magick"
 gem 'fog'
 gem "figaro"

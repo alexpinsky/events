@@ -1,4 +1,4 @@
-<%= form_for [user, event] do |event_form| %>
+<%= form_for [user, event], html: { id: "event_form" } do |event_form| %>
   <dl class="accordion" data-accordion>
     <dd>
       <a href="#panel1">Design</a>
@@ -23,7 +23,7 @@
         <fieldset>
           <legend>Images</legend>
           <%= event_form.fields_for :pictures do |pic_form| %>
-            <%= pic_form.file_field :image %>
+            <%= pic_form.file_field :image, multiple: true, name: "event[pictures_attributes][image]" %>
           <% end %>
         </fieldset>
         <fieldset>
@@ -77,4 +77,12 @@
     </dd>
   </dl>
   <%= event_form.submit class: "button small" %>
+<% end %>
+<% content_for(:javascript) do %>
+  <script id="template-upload" type="text/x-tmpl">
+    <div class="upload">
+      {%=o.name%}
+      <div class="progress"><div class="bar" style="width: 0%"></div></div>
+    </div>
+  </script>
 <% end %>

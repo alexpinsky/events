@@ -1,2 +1,3 @@
-<h1>Events#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
+<%= form_for [@user, @event] do |event_form| %>
+  <%= event_form.submit class: "button small" %>
+<% end %>

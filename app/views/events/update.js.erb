@@ -1,0 +1,6 @@
+<% if @updated %>
+  $("#preview").html('<%= j render partial: "themes/#{@theme}", locals: { event: @event } %>');
+  $(document).foundation()
+<% else %>
+  alert("Failed to upload painting: <%= j @event.errors.full_messages.join(', ').html_safe %>");
+<% end %>

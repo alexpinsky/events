@@ -4,20 +4,12 @@ class EventsController < ApplicationController
   before_filter :set_display # for now..
 
   def index
-  end
-
-  def new
-    @event = @user.events.new_example
+    @event = @user.events.new
   end
 
   def create
-    @event = @user.events.new event_params
-    if @event.save
-      redirect_to edit_user_event_path(@user, @event)
-    else
-      puts "***** Error: #{@event.errors.full_messages} *****"
-      render :new
-    end
+    @event = @user.events.create
+    redirect_to edit_user_event_path(@user, @event)
   end
 
   def show
@@ -31,18 +23,18 @@ class EventsController < ApplicationController
   end
 
   def edit
+    # @event.build_song if @event.song.nil?
     @event = @user.events.includes(:pictures, :appearance, :information, :song).find params[:id]
-    (4 - @event.pictures.size).times { @event.pictures.build }
-    @event.build_song if @event.song.nil?
+    @event.pictures.build if @event.pictures.blank?
   end
 
   def update
     @event = @user.events.find params[:id]
-    if @event.update_attributes(event_params)
-      redirect_to edit_user_event_path(@user, @event)
+    # if @event.update_attributes(event_params)
+    if @event.pictures.create(event_params[:pictures_attributes])
+      @updated = true      
     else
-      puts "***** Error: #{@event.errors.full_messages} *****"
-      render :edit
+      @updated = false      
     end
   end
 

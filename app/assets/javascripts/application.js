@@ -12,10 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.jplayer.min
+//= require jquery-fileupload/basic
+//= require jquery-fileupload/vendor/tmpl
 //= require foundation
 //= require turbolinks
 //= require events
 //= require pages
-//= require jquery.jplayer.min
+//= require editor
 
 $(function(){ $(document).foundation(); });

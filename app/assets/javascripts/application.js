@@ -15,6 +15,7 @@
 //= require jquery.jplayer.min
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/vendor/tmpl
+//= require jquery.minicolors.min
 //= require foundation
 //= require turbolinks
 //= require events

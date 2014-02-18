@@ -7,4 +7,8 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path(resource)
     user_events_path(resource)
   end
+
+  def set_user
+    @user = current_user
+  end
 end

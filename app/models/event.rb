@@ -13,15 +13,6 @@ class Event < ActiveRecord::Base
   delegate :start_time, :end_time, :organizer, :organizer_email, :location, :zone_code, :summary, :date_format, to: :information, allow_nil: true
   delegate :audio_url, to: :song, allow_nil: true
 
-  def self.new_example
-    event = Event.new name: 'MyEvent', primary_text: 'SAVE THE DATE', secondary_text: "July 10, #{Time.now.year}"
-    event.appearance = Appearance.new_example
-    event.information = Information.new_example
-    4.times { event.pictures.build }
-    event.build_song
-    event
-  end
-
   def self.find_by_url(url)
     events = where("events.url = ?", url)
     return events.first if events.size == 1

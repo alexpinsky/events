@@ -3,16 +3,20 @@
     <dd>
       <a href="#panel1">Design</a>
       <div id="panel1" class="content active">
-        <%= event_form.text_field :name, placeholder: "Name" %>
+        <%= event_form.text_field :name, placeholder: "Event name" %>
         <%= event_form.text_field :primary_text, placeholder: "Primary text" %>
         <%= event_form.text_field :secondary_text, placeholder: "Secondary text" %>
         <%= event_form.text_area :extra_text, placeholder: "Extra text" %>
         <fieldset>
-          <legend>Appearance</legend>
-          <%= event_form.fields_for :appearance do |app_form| %>
-            <%= app_form.select :background_image, options_for_select([['Dark Wall', 'dark_wall'], ['Tileable Wood', 'tileable_wood']]) %>
-            <%= app_form.select :font_family, options_for_select([['Arial', 'Arial'], ['Hand Write', 'handwrite'], ['Jack Stroy', 'jackstory']]) %>
-            <%= app_form.text_field :font_color %>
+        <legend>Appearance</legend>
+          <%= event_form.fields_for :appearance, event.appearance || Appearance.new do |app_form| %>
+            <% background_names.each do |background| %>
+              <% background_url = background_collection_url(background) %>
+              <div class="background_btn" data-name="<%= background %>" data-url="<%= background_url %>" style="background-image: url(<%= background_url %>)"></div>
+            <% end %>
+            <%= app_form.hidden_field :background_image, id: "background_image" %>
+            <%= app_form.select :font_family, options_for_select(fonts_for_select), {}, { id: "font_family" } %>
+            <%= app_form.text_field :font_color, class: "minicolors" %>
           <% end %>
         </fieldset>
       </div>
@@ -22,7 +26,7 @@
       <div id="panel2" class="content">
         <fieldset>
           <legend>Images</legend>
-          <%= event_form.fields_for :pictures do |pic_form| %>
+          <%= event_form.fields_for :pictures, event.pictures.first || event.pictures.build do |pic_form| %>
             <%= pic_form.file_field :image, multiple: true, name: "event[pictures_attributes][image]" %>
           <% end %>
         </fieldset>

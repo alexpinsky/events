@@ -1,35 +1,25 @@
-<% font_family = event.font_family %>
-<% font_color = event.font_color %>
-<div class="row">
-  <a href="mailto:alex.myevents@gmail.com?Subject=בקשה%20לאירוע" class="right" style="font-family: <%= font_family %>;color: <%= font_color %>;">? רוצים אירוע משלכם</a>
-</div>
+<% font_family = event.font_family || "Arial" %>
+<% font_color = event.font_color || "#fff" %>
 <div class="event-wrapper row">
   <div class="small-12 medium-8 large-6 small-centered columns">
     <div class="images">
-      <ul class="example-orbit" data-orbit data-options="timer_speed:4000;animation_speed:1000;pause_on_hover:false">
-        <% count = 1 %>
-        <% event.pictures.each do |pic| %>
-          <% link = pic.image_url.present? ? pic.image_url : example_image_url(count) %>
-          <li>
-            <img src="<%= link %>" alt="slide <%= count %>" />
-          </li>
-          <% count += 1 %>
-        <% end %>
-      </ul>
+      <% pictures = event.pictures %>
+      <%= render partial: 'themes/images', locals: { pictures: pictures } %>
     </div>
     <div class="primary row">
       <div class="small-8 small-offset-2 large-12 large-offset-0 columns">
-        <label style="font-family: <%= font_family %>;color: <%= font_color %>;font-size: 5rem"><%= event.primary_text %></label>
+        <label id="event_primary_text" class="font_family font_color" style="font-family: <%= font_family %>;color: <%= font_color %>;font-size: 5rem"><%= event.primary_text || "Primary text" %></label>
       </div>
     </div>
     <div class="secondary row">
       <div class="small-12 columns">
-        <label style="font-family: <%= font_family %>;color: <%= font_color %>;font-size: 1.5rem"><%= event.secondary_text %></label>
+        <label id="event_secondary_text" class="font_family font_color" style="font-family: <%= font_family %>;color: <%= font_color %>;font-size: 1.5rem"><%= event.secondary_text || "Secondary text" %></label>
       </div>
     </div>
     <div class="extra row">
       <div class="small-12 columns">
-        <label style="font-family: <%= font_family %>;color: <%= font_color %>;font-size: 1.5rem"><%= event.extra_text %></label>
+        <label id="event_extra_text" class="font_family font_color" style="font-family: <%= font_family %>;color: <%= font_color %>;font-size: 1.5rem"><%= event.extra_text || 
+        "Extra text" %></label>
       </div>
     </div>
     <div class="calendar row">

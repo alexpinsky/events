@@ -13,6 +13,10 @@ Events::Application.routes.draw do
   get '/events/:id', to: 'events#show'
 
   resources :users do
-    resources :events
+    resources :events, only: [:index, :show, :create, :edit, :update, :destroy] do
+      member do 
+        get 'reload_preview'
+      end
+    end
   end
 end

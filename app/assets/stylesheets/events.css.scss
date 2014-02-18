@@ -6,6 +6,21 @@
   .button {
     margin: 1.25rem 0 1.25rem;
   }
+  .background_btn {
+    width: 2rem;
+    height: 2rem;
+    display: inline-block;
+  }
+  .minicolors {
+    width: 100%;
+    .minicolors-swatch {
+      top: 9px;
+    }
+    .minicolors-input {
+      height: 100% ;
+      width: 100%;
+    }
+  }
 }
 
 .event-wrapper {

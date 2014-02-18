@@ -25,27 +25,24 @@ class EventsController < ApplicationController
   def edit
     # @event.build_song if @event.song.nil?
     @event = @user.events.includes(:pictures, :appearance, :information, :song).find params[:id]
-    @event.pictures.build if @event.pictures.blank?
+    # @event.pictures.build if @event.pictures.blank?
   end
 
   def update
     @event = @user.events.find params[:id]
     # if @event.update_attributes(event_params)
-    if @event.pictures.create(event_params[:pictures_attributes])
-      @updated = true      
-    else
-      @updated = false      
-    end
+    @event.pictures.destroy_all
+    @created = @event.pictures.create(event_params[:pictures_attributes])
   end
 
   def destroy
   end
 
-private
-
-  def set_user
-    @user = current_user
+  def reload_preview
+    @event = @user.events.includes(:pictures, :appearance, :information, :song).find params[:id]
   end
+
+private
 
   def set_display
     @theme = "default"

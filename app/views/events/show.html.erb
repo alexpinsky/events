@@ -1,4 +1,7 @@
 <% content_for(:title) do %>
   <%= @event.name %>
 <% end %>
+<div class="row">
+  <a href="mailto:alex.myevents@gmail.com?Subject=בקשה%20לאירוע" class="right">? רוצים אירוע משלכם</a>
+</div>
 <%= render partial: "themes/#{@theme}", locals: { event: @event } %>

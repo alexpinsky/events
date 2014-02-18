@@ -1,11 +1,19 @@
 module ApplicationHelper
 
-  def background_collection_url(background_image)
+  def background_names
+    ['dark_wall', 'tileable_wood']
+  end
+
+  def fonts_for_select
+    [['Arial', 'Arial'], ['Hand Write', 'handwrite'], ['Jack Stroy', 'jackstory']]
+  end
+
+  def background_collection_url(background_image = "dark_wall")
     "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/#{background_image}.png"
   end
 
-  def example_image_url(number)
-    "https://s3-eu-west-1.amazonaws.com/events-assets-static/images/image#{number}.jpeg"
+  def example_image_url
+    "https://s3-eu-west-1.amazonaws.com/events-assets-static/images/placeholder.png"
   end
 
   def example_song_url

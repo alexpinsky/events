@@ -23,16 +23,31 @@ class EventsController < ApplicationController
   end
 
   def edit
-    # @event.build_song if @event.song.nil?
     @event = @user.events.includes(:pictures, :appearance, :information, :song).find params[:id]
-    # @event.pictures.build if @event.pictures.blank?
   end
 
   def update
     @event = @user.events.find params[:id]
-    # if @event.update_attributes(event_params)
-    @event.pictures.destroy_all
-    @created = @event.pictures.create(event_params[:pictures_attributes])
+    respond_to do |format|
+      format.html do
+        if @event.update_attributes(event_params.except(:pictures_attributes, :song_attributes))
+          redirect_to user_events_path(@user)
+        else
+          # todo: show errors
+          render :edit
+        end
+      end
+      format.js do
+        # assets creation
+        result = {}
+        if params[:file_type] == "image"
+          result = @event.add_picture(event_params[:pictures_attributes])
+        else
+          result = @event.add_song(event_params[:song_attributes])
+        end
+        render json: { error: result[:error] }, :status => :ok
+      end
+    end
   end
 
   def destroy

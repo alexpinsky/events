@@ -8,32 +8,30 @@
         <%= event_form.text_field :secondary_text, placeholder: "Secondary text" %>
         <%= event_form.text_area :extra_text, placeholder: "Extra text" %>
         <fieldset>
-        <legend>Appearance</legend>
-          <%= event_form.fields_for :appearance, event.appearance || Appearance.new do |app_form| %>
-            <% background_names.each do |background| %>
-              <% background_url = background_collection_url(background) %>
-              <div class="background_btn" data-name="<%= background %>" data-url="<%= background_url %>" style="background-image: url(<%= background_url %>)"></div>
-            <% end %>
-            <%= app_form.hidden_field :background_image, id: "background_image" %>
-            <%= app_form.select :font_family, options_for_select(fonts_for_select), {}, { id: "font_family" } %>
-            <%= app_form.text_field :font_color, class: "minicolors" %>
-          <% end %>
+          <legend>Appearance</legend>
+          <%= render partial: 'appearance_fields', locals: { event: event, event_form: event_form } %>
         </fieldset>
       </div>
     </dd>
     <dd>
       <a href="#panel2">Assets</a>
       <div id="panel2" class="content">
+        <%= hidden_field_tag :file_type %>
         <fieldset>
           <legend>Images</legend>
+          <p class="text_explain">Some text that explains about the slide show</p>
           <%= event_form.fields_for :pictures, event.pictures.first || event.pictures.build do |pic_form| %>
-            <%= pic_form.file_field :image, multiple: true, name: "event[pictures_attributes][image]" %>
+            <%= pic_form.file_field :image, multiple: true, id: "image_file", class: "fileupload", name: "event[pictures_attributes][image]" %>
           <% end %>
+          <!-- <div class="progress [secondary alert success] [radius round]">
+            <span class="meter" style="width: [1 - 100]%"></span>
+          </div> -->
         </fieldset>
         <fieldset>
           <legend>Song</legend>
-          <%= event_form.fields_for :song do |song_form| %>
-            <%= song_form.file_field :audio %>
+          <p class="text_explain">Some text that explains about the background song</p>
+          <%= event_form.fields_for :song, event.song || Song.new do |song_form| %>
+            <%= song_form.file_field :audio, multiple: true, id: "audio_file", class: "fileupload", name: "event[song_attributes][audio]" %>
           <% end %>
         </fieldset>
       </div>
@@ -41,42 +39,7 @@
     <dd>
       <a href="#panel3">Information</a>
       <div id="panel3" class="content">
-        <%= event_form.fields_for :information do |info_form| %>
-          <%= info_form.text_field :summary, placeholder: "Headline" %>
-          <%= info_form.text_field :location, placeholder: "Location" %>
-          <fieldset>
-            <legend>Organizer</legend>
-            <%= info_form.text_field :organizer, placeholder: "Organizer" %>
-            <%= info_form.text_field :organizer_email, placeholder: "Organizer email" %>
-          </fieldset>
-          <fieldset>
-            <legend>Time</legend>
-            <%= label_tag "Zone Code" %>
-            <%= info_form.number_field :zone_code %>
-            <%= label_tag "Start Time" %>
-            <div class="row">
-              <div class="small-8 columns">
-                <%= info_form.date_field :start_time %>
-              </div>
-              <div class="small-4 columns">
-                <div class="row collapse">
-                <!-- need to add time -->
-                </div>
-              </div>
-            </div>
-            <%= label_tag "End Time" %>
-            <div class="row">
-              <div class="small-8 columns">
-                <%= info_form.date_field :end_time %>
-              </div>
-              <div class="small-4 columns">
-                <div class="row collapse">
-                <!-- need to add time -->
-                </div>
-              </div>
-            </div>
-          </fieldset>
-        <% end %>
+        <%= render partial: 'information_fields', locals: { event: event, event_form: event_form } %>
       </div>
     </dd>
   </dl>
@@ -86,7 +49,7 @@
   <script id="template-upload" type="text/x-tmpl">
     <div class="upload">
       {%=o.name%}
-      <div class="progress"><div class="bar" style="width: 0%"></div></div>
+      <div class="progress success round"><span class="meter" style="width: 0%"></span>
     </div>
   </script>
 <% end %>

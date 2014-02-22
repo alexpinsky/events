@@ -1,3 +1,0 @@
-<% unless @created %>
-  alert("Failed to upload painting: <%= j @event.errors.full_messages.join(', ').html_safe %>");
-<% end %>

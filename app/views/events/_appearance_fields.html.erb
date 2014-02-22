@@ -1,0 +1,12 @@
+<%= event_form.fields_for :appearance, event.appearance || Appearance.new do |app_form| %>
+  <label>Background:</label>
+  <% background_names.each do |background| %>
+    <% background_url = background_collection_url(background) %>
+    <div class="background_btn" data-name="<%= background %>" data-url="<%= background_url %>" style="background-image: url(<%= background_url %>)"></div>
+  <% end %>
+  <%= app_form.hidden_field :background_image, id: "background_image" %>
+  <label>Font:</label>
+  <%= app_form.select :font_family, options_for_select(fonts_for_select), {}, { id: "font_family" } %>
+  <label>Font color:</label>
+  <%= app_form.text_field :font_color, class: "minicolors" %>
+<% end %>

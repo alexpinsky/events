@@ -13,6 +13,8 @@ class Event < ActiveRecord::Base
   delegate :start_time, :end_time, :organizer, :organizer_email, :location, :zone_code, :summary, :date_format, to: :information, allow_nil: true
   delegate :audio_url, to: :song, allow_nil: true
 
+  MAX_PICTURES_SIZE = 5
+
   def self.find_by_url(url)
     events = where("events.url = ?", url)
     return events.first if events.size == 1
@@ -27,5 +29,26 @@ class Event < ActiveRecord::Base
     return if self.url.blank? || self.created_at.blank?
     self.url_hash = Digest::MD5.hexdigest "#{self.url}#{self.created_at.to_f}"
     self.save
+  end
+
+  def add_picture(picture_params)
+    result = {}
+    if self.pictures.size == MAX_PICTURES_SIZE
+      result[:error] = "event can contain only #{MAX_PICTURES_SIZE} pictures"
+    else
+      picture = self.pictures.create(picture_params)
+      result[:error] = picture.errors.full_messages
+      result[:picture] = picture
+    end
+    result
+  end
+
+  def add_song(song_params)
+    result = {}
+    self.song = nil
+    self.song = Song.create(song_params)
+    result[:error] = self.song.errors.full_messages
+    result[:picture] = self.song
+    result
   end
 end

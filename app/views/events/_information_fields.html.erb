@@ -1,0 +1,36 @@
+<%= event_form.fields_for :information do |info_form| %>
+  <%= info_form.text_field :summary, placeholder: "Headline" %>
+  <%= info_form.text_field :location, placeholder: "Location" %>
+  <fieldset>
+    <legend>Organizer</legend>
+    <%= info_form.text_field :organizer, placeholder: "Organizer" %>
+    <%= info_form.text_field :organizer_email, placeholder: "Organizer email" %>
+  </fieldset>
+  <fieldset>
+    <legend>Time</legend>
+    <%= label_tag "Zone Code" %>
+    <%= info_form.number_field :zone_code %>
+    <%= label_tag "Start Time" %>
+    <div class="row">
+      <div class="small-8 columns">
+        <%= info_form.date_field :start_time %>
+      </div>
+      <div class="small-4 columns">
+        <div class="row collapse">
+        <!-- need to add time -->
+        </div>
+      </div>
+    </div>
+    <%= label_tag "End Time" %>
+    <div class="row">
+      <div class="small-8 columns">
+        <%= info_form.date_field :end_time %>
+      </div>
+      <div class="small-4 columns">
+        <div class="row collapse">
+        <!-- need to add time -->
+        </div>
+      </div>
+    </div>
+  </fieldset>
+<% end %>

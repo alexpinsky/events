@@ -19,4 +19,14 @@ module ApplicationHelper
   def example_song_url
     "https://s3-eu-west-1.amazonaws.com/events-assets-static/audio/wedding_song.mp3"
   end
+
+  def text_defaults(name)
+    @texts ||= {
+      name: "My Event",
+      primary: "Save the Date",
+      secondary: "July, 10 | My Event",
+      extra: "Come to celebrate"
+    }
+    @texts[name]
+  end
 end

@@ -32,8 +32,9 @@ class EventsController < ApplicationController
       format.html do
         if @event.update_attributes(event_params.except(:pictures_attributes, :song_attributes))
           redirect_to user_events_path(@user)
+          flash[:error] = "Event was successfully updated"
         else
-          # todo: show errors
+          flash[:warning] = "bla bla bla"
           render :edit
         end
       end

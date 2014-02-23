@@ -59,9 +59,8 @@ class Editor
         types = /(\.|\/)(gif|jpe?g|png)$/i
         file = data.files[0]
         if types.test(file.type) || types.test(file.name)
-          data.context = $(tmpl("template-upload", file))
           form_object = $('#event_form')
-          form_object.append(data.context)
+          data.context = $("<label>" + file.name + "</label><div class='progress success radius'><span class='meter' style='width: 0%'></span></div>").appendTo(form_object.find("#images_bars"))
           form_object.find("#file_type").val("image")
           data.submit()
         else
@@ -69,7 +68,7 @@ class Editor
       progress: (e, data) ->
         if data.context
           progress = parseInt(data.loaded / data.total * 100, 10)
-          data.context.find('.meter').css('width', progress + '%')
+          data.context.find(".meter").css('width', progress + '%')
       done: (e, data) ->
         # todo: data.result if there is errors
       always: (e, data) ->
@@ -82,6 +81,10 @@ class Editor
           $.ajax
             url: reload_url
             dataType: "script"
+            complete: (obj, text) ->
+              bars_object = $('#event_form').find("#images_bars")
+              bars_object.slideUp()
+              bars_object.html("")
 
   initAudioUpload: (obj) ->
     obj.fileupload
@@ -91,19 +94,22 @@ class Editor
         types = /(\.|\/)(mp3)$/i
         file = data.files[0]
         if types.test(file.type) || types.test(file.name)
-          data.context = $(tmpl("template-upload", file))
-          $('#event_form').find("#file_type").val("audio")
+          form_object = $('#event_form')
+          data.context = $("<label>" + file.name + "</label><div class='progress success radius'><span class='meter' style='width: 0%'></span></div>").appendTo(form_object.find("#song_bar"))
+          form_object.find("#file_type").val("audio")
           data.submit()
         else
           alert("#{file.name} is not a mp3 file")
       progress: (e, data) ->
         if data.context
           progress = parseInt(data.loaded / data.total * 100, 10)
-          data.context.find('.meter').css('width', progress + '%')
+          data.context.find(".meter").css('width', progress + '%')
       done: (e, data) ->
         # todo data.result if there is errors
       always: (e, data) ->
-        # todo: 
+        bars_object = $('#event_form').find("#song_bar")
+        bars_object.slideUp()
+        bars_object.html("")
 
 $ ->
   editor = new Editor({editor: $("#editor"), preview: $("#preview")})

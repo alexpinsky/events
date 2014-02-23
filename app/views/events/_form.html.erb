@@ -3,10 +3,38 @@
     <dd>
       <a href="#panel1">Design</a>
       <div id="panel1" class="content active">
-        <%= event_form.text_field :name, placeholder: "Event name" %>
-        <%= event_form.text_field :primary_text, placeholder: "Primary text" %>
-        <%= event_form.text_field :secondary_text, placeholder: "Secondary text" %>
-        <%= event_form.text_area :extra_text, placeholder: "Extra text" %>
+        <div class="row collapse">
+          <div class="small-4 columns">
+            <span class="prefix">Event name</span>
+          </div>
+          <div class="small-8 columns">
+            <%= event_form.text_field :name, placeholder: text_defaults(:name) %>
+          </div>
+        </div>
+        <div class="row collapse">
+          <div class="small-4 columns">
+            <span class="prefix">Primary text</span>
+          </div>
+          <div class="small-8 columns">
+            <%= event_form.text_field :primary_text, placeholder: text_defaults(:primary) %>
+          </div>
+        </div>
+        <div class="row collapse">
+          <div class="small-4 columns">
+            <span class="prefix">Secondary text</span>
+          </div>
+          <div class="small-8 columns">
+            <%= event_form.text_field :secondary_text, placeholder: text_defaults(:secondary) %>
+          </div>
+        </div>
+        <div class="row collapse">
+          <div class="small-4 columns">
+            <span class="prefix">Extra text</span>
+          </div>
+          <div class="small-8 columns">
+            <%= event_form.text_field :extra_text, placeholder: text_defaults(:extra) %>
+          </div>
+        </div>
         <fieldset>
           <legend>Appearance</legend>
           <%= render partial: 'appearance_fields', locals: { event: event, event_form: event_form } %>
@@ -23,9 +51,7 @@
           <%= event_form.fields_for :pictures, event.pictures.first || event.pictures.build do |pic_form| %>
             <%= pic_form.file_field :image, multiple: true, id: "image_file", class: "fileupload", name: "event[pictures_attributes][image]" %>
           <% end %>
-          <!-- <div class="progress [secondary alert success] [radius round]">
-            <span class="meter" style="width: [1 - 100]%"></span>
-          </div> -->
+          <div id="images_bars"></div>
         </fieldset>
         <fieldset>
           <legend>Song</legend>
@@ -33,6 +59,7 @@
           <%= event_form.fields_for :song, event.song || Song.new do |song_form| %>
             <%= song_form.file_field :audio, multiple: true, id: "audio_file", class: "fileupload", name: "event[song_attributes][audio]" %>
           <% end %>
+          <div id="song_bar"></div>
         </fieldset>
       </div>
     </dd>
@@ -44,12 +71,4 @@
     </dd>
   </dl>
   <%= event_form.submit class: "button small" %>
-<% end %>
-<% content_for(:javascript) do %>
-  <script id="template-upload" type="text/x-tmpl">
-    <div class="upload">
-      {%=o.name%}
-      <div class="progress success round"><span class="meter" style="width: 0%"></span>
-    </div>
-  </script>
 <% end %>

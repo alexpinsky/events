@@ -10,6 +10,7 @@
   <body>
     <div class="row">
       <div class="small-12 small-centered columns">
+        <%= render partial: "shared/flashes" if flash.present? %>
         <%= yield %>
       </div>
     </div>

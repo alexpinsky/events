@@ -1,0 +1,16 @@
+<!-- [success, warning, info] -->
+<% flash.keys.each do |k| %> 
+	<% if flash[k].is_a? String %>
+    <div data-alert class="alert-box <%= k %> radius">
+      <a href="#" class="close">&times;</a>
+      <%= flash[k] %>
+    </div>
+	<% else %>
+    <% flash[k].each do |msg| %>
+      <div data-alert class="alert-box <%= k %> radius">
+        <a href="#" class="close">&times;</a>
+        <%= msg %>
+      </div>
+    <% end %>   
+	<% end %>
+<% end %>   

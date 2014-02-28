@@ -58,6 +58,7 @@ end
 
 group :development do
 	gem 'pry'
+  gem 'quiet_assets'
 end
 
 group :production do

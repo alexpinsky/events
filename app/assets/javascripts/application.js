@@ -18,7 +18,6 @@
 //= require jquery.minicolors.min
 //= require foundation
 //= require turbolinks
-//= require events
 //= require pages
 //= require editor
 

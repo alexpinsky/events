@@ -55,22 +55,25 @@ class Editor
       dataType: "json"
       maxNumberOfFiles: 5
       add: (e, data) ->
-        @num_of_files = data.originalFiles.length
+        form_object = $('#event_form')
+        if typeof @num_of_files == 'undefined'
+          @num_of_files = data.originalFiles.length
+          form_object.find("#first_image").val("true")
+          form_object.find("#images_spinner").show()
+        else
+          form_object.find("#first_image").val("false")
         types = /(\.|\/)(gif|jpe?g|png)$/i
         file = data.files[0]
         if types.test(file.type) || types.test(file.name)
-          form_object = $('#event_form')
-          data.context = $("<label>" + file.name + "</label><div class='progress success radius'><span class='meter' style='width: 0%'></span></div>").appendTo(form_object.find("#images_bars"))
           form_object.find("#file_type").val("image")
           data.submit()
         else
-          alert("#{file.name} is not a gif, jpeg, or png image file")
-      progress: (e, data) ->
-        if data.context
-          progress = parseInt(data.loaded / data.total * 100, 10)
-          data.context.find(".meter").css('width', progress + '%')
+          Helpers.displayAlert("#{file.name} is not a gif, jpeg, or png image file", "alert")
       done: (e, data) ->
-        # todo: data.result if there is errors
+        if data.result.success
+          Helpers.displayAlert(data.result.success, "success")
+        else if data.result.error
+          Helpers.displayAlert(data.result.error, "alert")
       always: (e, data) ->
         @num_of_files--
         if (@num_of_files == 0)
@@ -82,9 +85,7 @@ class Editor
             url: reload_url
             dataType: "script"
             complete: (obj, text) ->
-              bars_object = $('#event_form').find("#images_bars")
-              bars_object.slideUp()
-              bars_object.html("")
+              $('#event_form').find("#images_spinner").hide()
 
   initAudioUpload: (obj) ->
     obj.fileupload
@@ -95,21 +96,18 @@ class Editor
         file = data.files[0]
         if types.test(file.type) || types.test(file.name)
           form_object = $('#event_form')
-          data.context = $("<label>" + file.name + "</label><div class='progress success radius'><span class='meter' style='width: 0%'></span></div>").appendTo(form_object.find("#song_bar"))
           form_object.find("#file_type").val("audio")
+          form_object.find("#song_spinner").show()
           data.submit()
         else
-          alert("#{file.name} is not a mp3 file")
-      progress: (e, data) ->
-        if data.context
-          progress = parseInt(data.loaded / data.total * 100, 10)
-          data.context.find(".meter").css('width', progress + '%')
+          Helpers.displayAlert("#{file.name} is not a mp3 file", "alert")
       done: (e, data) ->
-        # todo data.result if there is errors
+        if data.result.success
+          Helpers.displayAlert(data.result.success, "success")
+        else if data.result.error
+          Helpers.displayAlert(data.result.error, "alert")
       always: (e, data) ->
-        bars_object = $('#event_form').find("#song_bar")
-        bars_object.slideUp()
-        bars_object.html("")
+        $('#event_form').find("#song_spinner").hide()
 
 $ ->
   editor = new Editor({editor: $("#editor"), preview: $("#preview")})

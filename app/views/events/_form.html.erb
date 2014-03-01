@@ -45,13 +45,16 @@
       <a href="#panel2">Assets</a>
       <div id="panel2" class="content">
         <%= hidden_field_tag :file_type %>
+        <%= hidden_field_tag :first_image %>
         <fieldset>
           <legend>Images</legend>
           <p class="text_explain">Some text that explains about the slide show</p>
           <%= event_form.fields_for :pictures, event.pictures.first || event.pictures.build do |pic_form| %>
             <%= pic_form.file_field :image, multiple: true, id: "image_file", class: "fileupload", name: "event[pictures_attributes][image]" %>
           <% end %>
-          <div id="images_bars"></div>
+          <div id="images_spinner" class="hide">
+            <img src="<%= spinner_path %>">
+          </div>
         </fieldset>
         <fieldset>
           <legend>Song</legend>
@@ -59,7 +62,9 @@
           <%= event_form.fields_for :song, event.song || Song.new do |song_form| %>
             <%= song_form.file_field :audio, multiple: true, id: "audio_file", class: "fileupload", name: "event[song_attributes][audio]" %>
           <% end %>
-          <div id="song_bar"></div>
+          <div id="song_spinner" class="hide">
+            <img src="<%= spinner_path %>">
+          </div>
         </fieldset>
       </div>
     </dd>

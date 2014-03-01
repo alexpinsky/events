@@ -1,16 +1,16 @@
-<!-- [success, warning, info] -->
-<% flash.keys.each do |k| %> 
-	<% if flash[k].is_a? String %>
-    <div data-alert class="alert-box <%= k %> radius">
-      <a href="#" class="close">&times;</a>
-      <%= flash[k] %>
-    </div>
-	<% else %>
-    <% flash[k].each do |msg| %>
-      <div data-alert class="alert-box <%= k %> radius">
-        <a href="#" class="close">&times;</a>
-        <%= msg %>
-      </div>
-    <% end %>   
-	<% end %>
-<% end %>   
+<% content_for :javascript do %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      <% flash.keys.each do |k| %> 
+        <% if flash[k].is_a? String %>
+          Helpers.displayAlert("<%= flash[k] %>", "<%= k %>")
+        <% else %>
+          <% flash[k].each do |msg| %>
+            Helpers.displayAlert("<%= flash[k] %>", "<%= k %>")
+          <% end %>   
+        <% end %>
+      <% end %>   
+      $(document).foundation();
+    })
+  </script>
+<% end %>

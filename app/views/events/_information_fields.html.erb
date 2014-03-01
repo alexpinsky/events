@@ -1,10 +1,38 @@
-<%= event_form.fields_for :information do |info_form| %>
-  <%= info_form.text_field :summary, placeholder: "Headline" %>
-  <%= info_form.text_field :location, placeholder: "Location" %>
+<%= event_form.fields_for :information, event.information || Information.new do |info_form| %>
+  <div class="row collapse">
+    <div class="small-3 columns">
+      <span class="prefix">Headline</span>
+    </div>
+    <div class="small-9 columns">
+      <%= info_form.text_field :summary, placeholder: text_defaults(:headline) %>
+    </div>
+  </div>
+  <div class="row collapse">
+    <div class="small-3 columns">
+      <span class="prefix">Location</span>
+    </div>
+    <div class="small-9 columns">
+      <%= info_form.text_field :location, placeholder: text_defaults(:location) %>
+    </div>
+  </div>
   <fieldset>
     <legend>Organizer</legend>
-    <%= info_form.text_field :organizer, placeholder: "Organizer" %>
-    <%= info_form.text_field :organizer_email, placeholder: "Organizer email" %>
+    <div class="row collapse">
+      <div class="small-3 columns">
+        <span class="prefix">Name</span>
+      </div>
+      <div class="small-9 columns">
+        <%= info_form.text_field :organizer, placeholder: text_defaults(:organizer) %>
+      </div>
+    </div>
+    <div class="row collapse">
+      <div class="small-3 columns">
+        <span class="prefix">Email</span>
+      </div>
+      <div class="small-9 columns">
+        <%= info_form.text_field :organizer_email, placeholder: text_defaults(:organizer_email) %>
+      </div>
+    </div>
   </fieldset>
   <fieldset>
     <legend>Time</legend>

@@ -31,14 +31,18 @@ class Event < ActiveRecord::Base
     self.save
   end
 
-  def add_picture(picture_params)
+  def add_picture(picture_params, first_image)
     result = {}
+    self.pictures.destroy_all if first_image == "true"
     if self.pictures.size == MAX_PICTURES_SIZE
       result[:error] = "event can contain only #{MAX_PICTURES_SIZE} pictures"
     else
-      picture = self.pictures.create(picture_params)
-      result[:error] = picture.errors.full_messages
-      result[:picture] = picture
+      picture = self.pictures.new(picture_params)
+      if picture.save
+        result[:success] = "#{picture.image.file.filename} saved successfully"
+      else
+        result[:error] = picture.errors.full_messages
+      end
     end
     result
   end
@@ -46,9 +50,12 @@ class Event < ActiveRecord::Base
   def add_song(song_params)
     result = {}
     self.song = nil
-    self.song = Song.create(song_params)
-    result[:error] = self.song.errors.full_messages
-    result[:picture] = self.song
+    self.song = Song.new(song_params)
+    if self.song.save
+      result[:success] = "#{self.song.audio.file.filename} saved successfully"
+    else
+      result[:error] = self.song.errors.full_messages
+    end
     result
   end
 end

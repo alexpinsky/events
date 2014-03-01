@@ -32,9 +32,9 @@ class EventsController < ApplicationController
       format.html do
         if @event.update_attributes(event_params.except(:pictures_attributes, :song_attributes))
           redirect_to user_events_path(@user)
-          flash[:error] = "Event was successfully updated"
+          flash[:success] = "Event was successfully updated"
         else
-          flash[:warning] = "bla bla bla"
+          flash[:alert] = "bla bla bla"
           render :edit
         end
       end
@@ -42,11 +42,11 @@ class EventsController < ApplicationController
         # assets creation
         result = {}
         if params[:file_type] == "image"
-          result = @event.add_picture(event_params[:pictures_attributes])
+          result = @event.add_picture(event_params[:pictures_attributes], params[:first_image])
         else
           result = @event.add_song(event_params[:song_attributes])
         end
-        render json: { error: result[:error] }, :status => :ok
+        render json: { error: result[:error], success: result[:success] }, :status => :ok
       end
     end
   end

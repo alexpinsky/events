@@ -6,7 +6,7 @@
       </div>
     </div>
   </div>
-  <div class="small-7 columns" id="preview" style="background-image: url(<%= background_collection_url %>)" data-user="<%= user.id %>" data-event="<%= event.id %>">
+  <div class="small-7 columns" id="preview" style="background-image: url(<%= background_collection_url(event.background_image) %>)" data-user="<%= user.id %>" data-event="<%= event.id %>">
     <%= render partial: "themes/#{theme}", locals: { event: event } %>
   </div>
 </div>

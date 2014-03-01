@@ -1,6 +1,6 @@
 <%= event_form.fields_for :appearance, event.appearance || Appearance.new do |app_form| %>
   <div id="background_buttons">
-    <label>Background:</label>
+    <label>Background</label>
     <% background_names.each do |background| %>
       <% background_url = background_collection_url(background) %>
       <div class="background_btn" data-name="<%= background %>" data-url="<%= background_url %>" style="background-image: url(<%= background_url %>)"></div>
@@ -12,7 +12,7 @@
       <span class="prefix">Font</span>
     </div>
     <div class="small-8 columns">
-      <%= app_form.select :font_family, options_for_select(fonts_for_select), {}, { id: "font_family" } %>
+      <%= app_form.select :font_family, options_for_select(fonts_for_select, event.font_family), {}, { id: "font_family" } %>
     </div>
   </div>
   <div class="row collapse">

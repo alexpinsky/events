@@ -20,5 +20,6 @@
 //= require turbolinks
 //= require pages
 //= require editor
+//= require helpers
 
 $(function(){ $(document).foundation(); });

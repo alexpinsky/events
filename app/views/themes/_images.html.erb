@@ -10,6 +10,6 @@
   </ul>
 <% else %>
   <% picture = pictures.first %>
-  <% link = picture.image_url.present? ? picture.image_url : example_image_url %>
+  <% link = picture.try(:image_url) || example_image_url %>
   <img src="<%= link %>" />
 <% end %>

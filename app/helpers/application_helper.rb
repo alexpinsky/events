@@ -8,7 +8,8 @@ module ApplicationHelper
     [['Arial', 'Arial'], ['Hand Write', 'hand_write'], ['Jack Stroy', 'jack_story'], ['Adine Kirnberg', 'adine_kirnberg']]
   end
 
-  def background_collection_url(background_image = "dark_wall")
+  def background_collection_url(background_image)
+    background_image ||= "dark_wall"
     "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/#{background_image}.png"
   end
 

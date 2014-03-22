@@ -1,15 +1,15 @@
 <% if pictures.size > 1 %>
-        <ul class="example-orbit" data-orbit data-options="timer_speed:4000;animation_speed:1000;pause_on_hover:false">
-          <% count = 1 %>
-          <% pictures.each do |pic| %>
-            <li>
-              <img src="<%= pic.image_url %>" alt="slide <%= count %>" />
-            </li>
-            <% count += 1 %>
-          <% end %>
-        </ul>
-      <% else %>
-        <% picture = pictures.first %>
-        <% link = picture.image_url.present? ? picture.image_url : example_image_url %>
-        <img src="<%= link %>" />
-      <% end %>
+  <ul class="example-orbit" data-orbit data-options="timer_speed:4000;animation_speed:1000;pause_on_hover:false">
+    <% count = 1 %>
+    <% pictures.each do |pic| %>
+      <li>
+        <img src="<%= pic.image_url %>" alt="slide <%= count %>" />
+      </li>
+      <% count += 1 %>
+    <% end %>
+  </ul>
+<% else %>
+  <% picture = pictures.first %>
+  <% link = picture.image_url.present? ? picture.image_url : example_image_url %>
+  <img src="<%= link %>" />
+<% end %>

@@ -1,11 +1,11 @@
 module ApplicationHelper
 
   def background_names
-    ['dark_wall', 'tileable_wood']
+    ['dark_wall', 'tileable_wood', 'white_feathers']
   end
 
   def fonts_for_select
-    [['Arial', 'Arial'], ['Hand Write', 'handwrite'], ['Jack Stroy', 'jackstory']]
+    [['Arial', 'Arial'], ['Hand Write', 'hand_write'], ['Jack Stroy', 'jack_story'], ['Adine Kirnberg', 'adine_kirnberg']]
   end
 
   def background_collection_url(background_image = "dark_wall")

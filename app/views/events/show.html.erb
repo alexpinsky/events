@@ -4,6 +4,6 @@
 <% font_family = @event.font_family || "Arial" %>
 <% font_color = @event.font_color || "#fff" %>
 <div class="row">
-  <a href="mailto:alex.myevents@gmail.com?Subject=Request for event" class="left" style="font-family: <%= font_family %>;color: <%= font_color %>;font-size: 2.5rem;text-decoration: none;">want your own event?</a>
+  <a href="mailto:alex.myevents@gmail.com?Subject=Request for event" class="left" style="color: <%= font_color %>;font-size: 1rem;text-decoration: none;">want your own event?</a>
 </div>
 <%= render partial: "themes/#{@theme}", locals: { event: @event, font_family: font_family, font_color: font_color } %>

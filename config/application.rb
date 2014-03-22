@@ -26,6 +26,7 @@ module Events
     config.assets.precompile += %w( jquery.jplayer.min.js )
     config.assets.precompile += %w( jquery.minicolors.min.js )
     config.assets.precompile += %w( jquery.minicolors.css )
+    config.assets.precompile += %w( jquery.minicolors.png )
 
     config.cache_store = :dalli_store
   end

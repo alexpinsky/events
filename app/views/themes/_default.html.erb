@@ -1,5 +1,3 @@
-<% font_family = event.font_family || "Arial" %>
-<% font_color = event.font_color || "#fff" %>
 <div class="event-wrapper row">
   <div class="small-12 medium-8 large-8 small-centered columns">
     <div class="images">
@@ -7,7 +5,7 @@
       <%= render partial: 'themes/images', locals: { pictures: pictures } %>
     </div>
     <div class="primary row">
-      <div class="small-8 small-offset-2 large-12 large-offset-0 columns">
+      <div class="small-12 large-12 large-offset-0 columns">
         <label id="event_primary_text" class="font_family font_color" style="font-family: <%= font_family %>;color: <%= font_color %>;font-size: 5rem"><%= event.primary_text || text_defaults(:primary) %></label>
       </div>
     </div>

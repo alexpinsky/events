@@ -7,6 +7,8 @@
     </div>
   </div>
   <div class="small-7 columns" id="preview" style="background-image: url(<%= background_collection_url(event.background_image) %>)" data-user="<%= user.id %>" data-event="<%= event.id %>">
-    <%= render partial: "themes/#{theme}", locals: { event: event } %>
+    <% font_family = event.font_family || "Arial" %>
+    <% font_color = event.font_color || "#fff" %>
+    <%= render partial: "themes/#{theme}", locals: { event: event, font_family: font_family, font_color: font_color } %>
   </div>
 </div>

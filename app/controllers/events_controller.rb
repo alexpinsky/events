@@ -4,6 +4,7 @@ class EventsController < ApplicationController
   before_filter :set_display # for now..
 
   def index
+    @events = @user.events
     @event = @user.events.new
   end
 
@@ -52,6 +53,13 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    @event = @user.events.find params[:id]
+    if @event.destroy
+      flash[:success] = "Event was successfully deleted"
+    else
+      flash[:alert] = @event.errors.full_messages
+    end
+    redirect_to user_events_path(@user)
   end
 
   def reload_preview

@@ -8,12 +8,36 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <div class="row">
-      <div class="small-12 small-centered columns">
-        <div class="flashes">
-          <%= render partial: "shared/flashes" if flash.present? %>
+    <nav class="top-bar" data-topbar data-options="is_hover: false">
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="#">MyEvent</a></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+      </ul>
+
+      <section class="top-bar-section">
+        <% if current_user %>
+        <!-- Right Nav Section -->
+        <ul class="right">
+          <li class="has-dropdown">
+            <a href="#"><%= current_user.email %></a>
+            <ul class="dropdown">
+              <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
+            </ul>
+          </li>
+        </ul>
+        <% end %>
+      </section>
+    </nav>
+    <div class="main-container">
+      <div class="row">
+        <div class="small-12 small-centered columns">
+          <div class="flashes">
+            <%= render partial: "shared/flashes" if flash.present? %>
+          </div>
+          <%= yield %>
         </div>
-        <%= yield %>
       </div>
     </div>
     <!-- Javascripts

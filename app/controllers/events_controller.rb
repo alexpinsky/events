@@ -43,7 +43,7 @@ class EventsController < ApplicationController
         # assets creation
         result = {}
         if params[:file_type] == "image"
-          result = @event.add_picture(event_params[:pictures_attributes], params[:first_image])
+          result = @event.add_pictures(event_params[:pictures_attributes], params[:first_image] == 'true')
         else
           result = @event.add_song(event_params[:song_attributes])
         end

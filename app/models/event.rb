@@ -31,13 +31,13 @@ class Event < ActiveRecord::Base
     self.save
   end
 
-  def add_picture(picture_params, first_image)
+  def add_pictures(pictures_attributes, is_first_image)
     result = {}
-    self.pictures.destroy_all if first_image == "true"
+    self.pictures.destroy_all if is_first_image
     if self.pictures.size == MAX_PICTURES_SIZE
       result[:error] = "event can contain only #{MAX_PICTURES_SIZE} pictures"
     else
-      picture = self.pictures.new(picture_params)
+      picture = self.pictures.new(pictures_attributes)
       if picture.save
         result[:success] = "#{picture.image.file.filename} saved successfully"
       else

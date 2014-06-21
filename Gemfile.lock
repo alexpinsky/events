@@ -33,6 +33,8 @@ GEM
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
       json (>= 1.7)
+    carrierwave_backgrounder (0.3.0)
+      carrierwave (~> 0.5)
     celluloid (0.15.2)
       timers (~> 1.1.0)
     coderay (1.1.0)
@@ -231,6 +233,7 @@ PLATFORMS
 
 DEPENDENCIES
   carrierwave
+  carrierwave_backgrounder
   coffee-rails (~> 4.0.0)
   dalli
   devise

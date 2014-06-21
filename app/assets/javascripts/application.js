@@ -21,5 +21,6 @@
 //= require pages
 //= require editor
 //= require helpers
+//= require social-share-button
 
 $(function(){ $(document).foundation(); });

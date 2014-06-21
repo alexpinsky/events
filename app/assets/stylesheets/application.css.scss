@@ -14,10 +14,16 @@
  *= require pages
  *= require fonts
  *= require jquery.minicolors
+ *= require social-share-button
  */
 
  body {
   font-family: 'Helvetica45';
+  .top-bar {
+    li.name a {
+      color: #363636;
+    }
+  }
   .main-container {
     min-height: 800px;
     padding-top: 2rem; 

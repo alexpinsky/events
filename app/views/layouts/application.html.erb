@@ -27,7 +27,9 @@
             </ul>
           </li>
         <% else %>
-          <li class="active"><a href="#">Sign in</a></li>
+        <li class="has-form">
+          <a href="#" class="button" data-reveal-id="myModal">Sign In</a>
+        </li>
         <% end %>
         </ul>
       </section>
@@ -54,6 +56,11 @@
           </div>
         </div>
       </div>
+    </div>
+    <!-- Sign In modal -->
+    <div id="myModal" class="reveal-modal small" data-reveal>
+      <%= render partial: 'devise/shared/sign_in' %>
+      <a class="close-reveal-modal">&#215;</a>
     </div>
     <!-- Javascripts
     ================================================== -->

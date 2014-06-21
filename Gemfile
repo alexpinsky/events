@@ -16,6 +16,7 @@ gem "jquery-fileupload-rails"
 gem "mini_magick"
 gem 'fog'
 gem "figaro"
+gem 'social-share-button'
 
 gem 'rack-cache'
 gem 'dalli'

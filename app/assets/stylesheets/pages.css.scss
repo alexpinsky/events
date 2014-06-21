@@ -2,17 +2,33 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .welcome-wrapper {
-  background: #fff;
-  border-radius: 6px;
-  box-shadow: 0px 2px 2px 0px #dcdcdc;
-  h1 {
-    color: #363636 !important;
+  .first-row {
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0px 2px 2px 0px #dcdcdc;
+    padding: 0.5rem;
+    h1 {
+      color: #363636;
+    }
+    h4 {
+      color: #363636;
+    }
+    h6 {
+      color: #363636;
+      margin-top: 2rem;
+    }
+    .share-btns {
+      margin-top: 2rem;
+    }
   }
-  h4 {
-    color: #363636 !important;
-  }
-  h6 {
-    color: #363636 !important;
-    margin-top: 40px;
+  .second-row {
+    padding: 0.2rem;
+    border-radius: 6px;
+    box-shadow: 0px 2px 2px 0px #dcdcdc;
+    background: #085a78;
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+    font-family: 'Helvetica45';
   }
 }

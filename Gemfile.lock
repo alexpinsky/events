@@ -191,6 +191,9 @@ GEM
       temple (~> 0.6.6)
       tilt (>= 1.3.3, < 2.1)
     slop (3.4.7)
+    social-share-button (0.1.6)
+      coffee-rails
+      sass-rails
     spork (1.0.0rc4)
     spork-rails (4.0.0)
       rails (>= 3.0.0, < 5)
@@ -263,6 +266,7 @@ DEPENDENCIES
   sidekiq
   sinatra
   slim
+  social-share-button
   spork-rails
   test_after_commit
   turbolinks

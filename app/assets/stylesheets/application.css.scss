@@ -17,10 +17,37 @@
  */
 
  body {
+  font-family: 'Helvetica45';
   .main-container {
     min-height: 800px;
-    padding-top: 5rem; 
+    padding-top: 2rem; 
     background-image: url(asset-path("https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/retina_wood.png"));
+  }
+  .footer {
+    background: #333;
+    padding: 24px 0 10px;
+    color: #858585;
+    .logo {
+      font-size: 1.5rem;
+      display: inline-block;
+    }
+    .links {
+      margin-left: 1rem;
+      display: inline-block;
+      vertical-align: middle;
+      ul {
+        margin: 0;
+        display: inline-block;
+      }
+      li {
+        display: block;
+        float: left;
+        margin-left: 6px;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 0.77778rem;
+      }
+    }
   }
  }
 

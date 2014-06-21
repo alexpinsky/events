@@ -17,17 +17,19 @@
       </ul>
 
       <section class="top-bar-section">
+        <ul class="right">
         <% if current_user %>
         <!-- Right Nav Section -->
-        <ul class="right">
           <li class="has-dropdown">
             <a href="#"><%= current_user.email %></a>
             <ul class="dropdown">
               <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
             </ul>
           </li>
-        </ul>
+        <% else %>
+          <li class="active"><a href="#">Sign in</a></li>
         <% end %>
+        </ul>
       </section>
     </nav>
     <div class="main-container">
@@ -37,6 +39,19 @@
             <%= render partial: "shared/flashes" if flash.present? %>
           </div>
           <%= yield %>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="row">
+        <div class="large-8 large-offset-1 columns">
+          <div class="logo">MyEvent</div>
+          <div class="links">
+            <ul>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

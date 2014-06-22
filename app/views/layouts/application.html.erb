@@ -8,6 +8,7 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
+    <!-- top bar -->
     <nav class="top-bar" data-topbar data-options="is_hover: false">
       <ul class="title-area">
         <li class="name">
@@ -15,7 +16,6 @@
         </li>
         <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
       </ul>
-
       <section class="top-bar-section">
         <ul class="right">
         <% if current_user %>
@@ -28,16 +28,17 @@
           </li>
         <% else %>
         <li class="has-form">
-          <a href="#" class="button" data-reveal-id="myModal">Sign In</a>
+          <a href="#" class="button" data-reveal-id="singInModal">Sign In</a>
         </li>
         <% end %>
         </ul>
       </section>
     </nav>
+    <!-- main container -->
     <div class="main-container">
       <div class="row">
         <div class="small-12 small-centered columns">
-          <div class="flashes">
+          <div class="flashes small-4 small-offset-10 columns">
             <%= render partial: "shared/flashes" if flash.present? %>
           </div>
           <%= yield %>
@@ -58,7 +59,7 @@
       </div>
     </div>
     <!-- Sign In modal -->
-    <div id="myModal" class="reveal-modal small" data-reveal>
+    <div id="singInModal" class="reveal-modal small" data-reveal>
       <%= render partial: 'devise/shared/sign_in' %>
       <a class="close-reveal-modal">&#215;</a>
     </div>

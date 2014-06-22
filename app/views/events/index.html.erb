@@ -1,27 +1,14 @@
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Created at</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @events.each do |e| %>
-    <% next unless e.persisted? %>
-    <tr>
-      <td><%= e.name || "no name" %></td>
-      <td><%= e.created_at.strftime("%F") %></td>
-      <td><%= link_to "preview", user_event_path(@user, e) %></td>
-      <td><%= link_to "edit", edit_user_event_path(@user, e) %></td>
-      <td><%= link_to "delete", user_event_path(@user, e), method: :delete %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="single-event">
+  <div class="event-thumbnail">
+    <!-- render slim view of event -->
+  </div>
+  <div class="event-info">
+    <!-- add some test -->
+    <%= link_to "preview", user_event_path(user, event) %>
+    <%= link_to "edit", edit_user_event_path(user, event) %>
+    <%= link_to "delete", user_event_path(user, event), method: :delete %>
+  </div>
+</div>
 <%= form_for [@user, @event] do |event_form| %>
   <%= event_form.submit class: "button small" %>
 <% end %>

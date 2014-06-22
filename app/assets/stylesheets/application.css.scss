@@ -23,6 +23,14 @@
     li.name a {
       color: #363636;
     }
+    li.has-dropdown {
+      a {
+        color: #363636;
+      }
+      li {
+        color: #363636;
+      }
+    }
   }
   .main-container {
     min-height: 800px;
@@ -63,4 +71,10 @@
   border-radius: 15px;
   padding: 30px;
   height: auto;
+}
+
+.flashes {
+  z-index: 10;
+  position: absolute !important;
+  opacity: 0.8;
 }

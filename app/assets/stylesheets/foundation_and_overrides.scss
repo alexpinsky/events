@@ -1140,18 +1140,18 @@ $topbar-dropdown-link-color: #363636;
 // $topbar-dropdown-link-bg: #333;
 // $topbar-dropdown-link-weight: normal;
 // $topbar-dropdown-toggle-size: 5px;
-// $topbar-dropdown-toggle-color: #777;
+$topbar-dropdown-toggle-color: #363636;
 // $topbar-dropdown-toggle-alpha: 0.4;
 
 // Set the link colors and styles for top-level nav
-$topbar-link-color: #363636;
+// $topbar-link-color: #363636;
 // $topbar-link-color-hover: #fff;
 // $topbar-link-color-active: #777;
 // $topbar-link-color-active-hover: #777;
 // $topbar-link-weight: normal;
 // $topbar-link-font-size: rem-calc(13);
 // $topbar-link-hover-lightness: -10%; // Darken by 10%
-// $topbar-link-bg-hover: #9c545f;
+$topbar-link-bg-hover: #008cba;
 // $topbar-link-bg-active: $primary-color;
 // $topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%);
 $topbar-link-font-family: 'Helvetica45';

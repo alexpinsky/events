@@ -1,14 +1,28 @@
-<div class="single-event">
-  <div class="event-thumbnail">
-    <!-- render slim view of event -->
+<div class="events-index">
+  <div class="header row">
+    <div class="my-events-header large-4 columns">My Events</div>
+    <div class="create-event large-offset-6 large-2 columns">
+      <%= form_for [current_user, @event] do |event_form| %>
+        <%= event_form.submit class: "button small" %>
+      <% end %>
+    </div>    
   </div>
-  <div class="event-info">
-    <!-- add some test -->
-    <%= link_to "preview", user_event_path(user, event) %>
-    <%= link_to "edit", edit_user_event_path(user, event) %>
-    <%= link_to "delete", user_event_path(user, event), method: :delete %>
-  </div>
+  <% @events.each do |event| %>
+    <div class="single-event row">
+      <div class="event-thumbnail large-4 columns" style="background-image: url(<%= background_collection_url(event.background_image) %>)">
+        <!-- render slim view of event -->
+        <% font_family = event.font_family || "Arial" %>
+        <% font_color = event.font_color || "#fff" %>
+        <%= render partial: "themes/#{@theme}", locals: { event: event, font_family: font_family, font_color: font_color } %>
+      </div>
+      <div class="event-info large-8 columns">
+        <div class="event-name"><%= event.name.present? ? event.name : "MyEvent" %></div>
+      </div>
+      <div class="event-actions large-offset-4 large-8 columns">
+        <%= link_to "edit", edit_user_event_path(current_user, event) %> | 
+        <%= link_to "preview", user_event_path(current_user, event) %> | 
+        <%= link_to "delete", user_event_path(current_user, event), method: :delete %>
+      </div>
+    </div>
+  <% end %>
 </div>
-<%= form_for [@user, @event] do |event_form| %>
-  <%= event_form.submit class: "button small" %>
-<% end %>

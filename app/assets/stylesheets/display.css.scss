@@ -1,0 +1,17 @@
+/*
+ *= require_self
+ *= require foundation_slim
+ *= require events
+ *= require fonts
+ */
+.event-wrapper {
+  .primary {
+    font-size: 5rem
+  }
+  .secondary {
+    font-size: 2.5rem
+  }
+  .extra {
+    font-size: 2.5rem
+  }
+}

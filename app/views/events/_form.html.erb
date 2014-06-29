@@ -2,7 +2,7 @@
   <%= event_form.submit 'Save & Publish', class: "save-publish-btn button expand" %>
   <dl class="accordion" data-accordion>
     <dd>
-      <a href="#panel1">Design</a>
+      <a href="#panel1">Text</a>
       <div id="panel1" class="content">
         <div class="row collapse">
           <div class="small-4 columns">
@@ -36,15 +36,17 @@
             <%= event_form.text_field :extra_text, placeholder: text_defaults(:extra) %>
           </div>
         </div>
-        <fieldset>
-          <legend>Appearance</legend>
-          <%= render partial: 'appearance_fields', locals: { event: event, event_form: event_form } %>
-        </fieldset>
       </div>
     </dd>
     <dd>
-      <a href="#panel2">Assets</a>
+      <a href="#panel2">Colors</a>
       <div id="panel2" class="content">
+        <%= render partial: 'appearance_fields', locals: { event: event, event_form: event_form } %>
+      </div>
+    </dd>
+    <dd>
+      <a href="#panel3">Assets</a>
+      <div id="panel3" class="content">
         <%= hidden_field_tag :file_type %>
         <%= hidden_field_tag :first_image %>
         <fieldset>
@@ -70,8 +72,8 @@
       </div>
     </dd>
     <dd>
-      <a href="#panel3">Information</a>
-      <div id="panel3" class="content">
+      <a href="#panel4">Information</a>
+      <div id="panel4" class="content">
         <%= render partial: 'information_fields', locals: { event: event, event_form: event_form } %>
       </div>
     </dd>

@@ -3,8 +3,12 @@
 <% end %>
 <% font_family = @event.font_family || "Arial" %>
 <% font_color = @event.font_color || "#fff" %>
-<div class="row">
-  <a href="mailto:alex.myevents@gmail.com?Subject=save my date" class="left" style="color: <%= font_color %>;font-size: 0.70rem;">Design your event!</a>
+<div class="info-link">
+  <% if @preview %> 
+    <%= link_to 'Back', user_events_path(current_user), style: "color: #{font_color}"  %>
+  <% else %>
+    <a href="mailto:alex.myevents@gmail.com?Subject=save my date" class="left" style="color: <%= font_color %>;font-size: 0.70rem;">Design your event!</a>
+  <% end %>
 </div>
 <div class="display">
   <%= render partial: "themes/#{@theme}", locals: { event: @event, font_family: font_family, font_color: font_color } %>

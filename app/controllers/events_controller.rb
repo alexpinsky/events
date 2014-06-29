@@ -5,7 +5,7 @@ class EventsController < ApplicationController
 
   def index
     @events = @user.events
-    @event = @user.events.new
+    @event = Event.new
   end
 
   def create
@@ -15,6 +15,7 @@ class EventsController < ApplicationController
 
   def show
     id = params[:id].to_i
+    @preview = params[:preview].present? ? true : false
     if id == 0
       @event = Event.find_by_url params[:id]
     else

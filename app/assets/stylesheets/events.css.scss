@@ -1,31 +1,89 @@
-#preview {
-  min-height: 585px;
-  .event-wrapper {
-    .images {
-      padding-top: 1.5rem
+@import "foundation/components/buttons";
+.info-link {
+  margin-top: 0.25rem;
+}
+.event-wrapper {
+  .images {
+    padding-top: 1rem
+  }
+  .primary {
+    text-align: center;
+    p { 
+      margin: 0;
+      font-size: 3.5rem;
     }
-    .primary {
-      padding-top: 1.5rem;
-      text-align: center;
+  }
+  .secondary {
+    p {
+      margin: 0.1rem 0 0 0;
+      font-size: 2.5rem;
     }
-    .secondary {
-      text-align: center;
+    text-align: center;
+  }
+  .extra {
+    p {
+      font-size: 2.5rem;
+      margin: 0;
     }
-    .extra {
-      padding-top: 1.85rem;
-      text-align: center;
-    }
-    .calendar {
-      text-align: center;
-      margin-top: 2.5rem;
-      padding-bottom: 1.5rem
-    }
+    padding-top: 1.85rem;
+    text-align: center;
+  }
+  .calendar {
+    text-align: center;
+    margin-top: 1rem;
+    padding-bottom: 1.5rem
   }
 }
 
+#preview {
+  min-height: 585px;
+  border-radius: 6px;
+  box-shadow: 0px 2px 2px 0px #dcdcdc;
+  .event-wrapper {
+  .images {
+    padding-top: 1rem
+  }
+  .primary {
+    text-align: center;
+    p { 
+      margin: 0;
+      font-size: 2.5rem;
+    }
+  }
+  .secondary {
+    p {
+      margin: 0;
+      font-size: 2rem;
+    }
+    text-align: center;
+  }
+  .extra {
+    p {
+      font-size: 2rem;
+      margin: 0;
+    }
+    padding-top: 1rem;
+    text-align: center;
+  }
+  .calendar {
+    text-align: center;
+    margin-top: 1rem;
+    padding-bottom: 1.5rem
+  }
+}
+}
+
 #editor {
-  .button {
-    margin: 1.25rem 0 1.25rem;
+  .save-publish-btn {
+    @include button();
+    background-color: #62CC88;
+    border-radius: 8px;
+  }
+  .form-actions {
+    margin-top: 1.25rem;
+    .back-btn {
+      margin-left: 0.5rem;
+    }
   }
   #background_buttons {
     margin-bottom: 0.5rem;
@@ -48,30 +106,6 @@
   .text_explain {
     font-size: 0.8rem;
     color: #6f6f6f;
-  }
-}
-
-.display {
-  .event-wrapper {
-    .images {
-      padding-top: 1.5rem
-    }
-    .primary {
-      padding-top: 1.5rem;
-      text-align: center;
-    }
-    .secondary {
-      text-align: center;
-    }
-    .extra {
-      padding-top: 1.85rem;
-      text-align: center;
-    }
-    .calendar {
-      text-align: center;
-      margin-top: 2.5rem;
-      padding-bottom: 1.5rem
-    }
   }
 }
 
@@ -98,14 +132,25 @@
         padding-top: 0.5rem
       }
       .primary {
-        padding-top: 0.75rem;
+        p {
+          font-size: 1rem;
+          margin: 0;
+        }
         text-align: center;
       }
       .secondary {
+        p {
+          font-size: 1rem;
+          margin: 0;
+        }
         text-align: center;
       }
       .extra {
-        padding-top: 0.5rem;
+        p {
+          font-size: 1rem;
+          margin: 1rem 0 0 0;
+        }
+        padding-top: 0;
         text-align: center;
       }
       .calendar {
@@ -122,6 +167,11 @@
     .event-actions {
       position: absolute;
       bottom: 26px;
+      .publish-btn {
+        border-radius: 10px;
+        padding: 8px;
+        margin: 0;
+      }
     }
   }
 }

@@ -1,8 +1,9 @@
 <%= form_for [user, event], html: { id: "event_form" } do |event_form| %>
+  <%= event_form.submit 'Save & Publish', class: "save-publish-btn button expand" %>
   <dl class="accordion" data-accordion>
     <dd>
       <a href="#panel1">Design</a>
-      <div id="panel1" class="content active">
+      <div id="panel1" class="content">
         <div class="row collapse">
           <div class="small-4 columns">
             <span class="prefix">Event name</span>
@@ -20,10 +21,10 @@
           </div>
         </div>
         <div class="row collapse">
-          <div class="small-4 columns">
+          <div class="small-5 columns">
             <span class="prefix">Secondary text</span>
           </div>
-          <div class="small-8 columns">
+          <div class="small-7 columns">
             <%= event_form.text_field :secondary_text, placeholder: text_defaults(:secondary) %>
           </div>
         </div>
@@ -75,5 +76,8 @@
       </div>
     </dd>
   </dl>
-  <%= event_form.submit class: "button small" %>
+  <div class="form-actions">
+    <%= event_form.submit 'Save', class: "button small" %>
+    <%= link_to 'Back', user_events_path(current_user), class: "back-btn button small" %>
+  </div>
 <% end %>

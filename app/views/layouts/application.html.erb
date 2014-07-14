@@ -3,7 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= content_for?(:title) ? yield(:title) : "Events" %></title>
+    <meta property="og:title" content="MyEvent" />
+    <meta property="og:image" content="<%= example_events_image_url %>" />
+    <title><%= content_for?(:title) ? yield(:title) : "MyEvent" %></title>
     <%= stylesheet_link_tag  "application" %>
     <%= csrf_meta_tags %>
   </head>
@@ -29,6 +31,11 @@
         <% else %>
         <li class="has-form">
           <a href="#" class="button" data-reveal-id="singInModal">Sign In</a>
+          <!-- Sign In modal -->
+          <div id="singInModal" class="reveal-modal small" data-reveal>
+            <%= render partial: 'devise/shared/sign_in' %>
+            <a class="close-reveal-modal">&#215;</a>
+          </div>
         </li>
         <% end %>
         </ul>
@@ -57,11 +64,6 @@
           </div>
         </div>
       </div>
-    </div>
-    <!-- Sign In modal -->
-    <div id="singInModal" class="reveal-modal small" data-reveal>
-      <%= render partial: 'devise/shared/sign_in' %>
-      <a class="close-reveal-modal">&#215;</a>
     </div>
     <!-- Javascripts
     ================================================== -->

@@ -17,27 +17,23 @@
     <div class="extra row">
       <div class="small-12 columns">
         <p id="event_extra_text" class="font_family font_color" style="font-family: <%= font_family %> !important;color: <%= font_color %> !important;"><%= event.extra_text || 
-          text_defaults(:extra) %></p>
-        </div>
-      </div>
-      <div class="calendar row">
-        <div class="small-12 columns">
-          <a href="http://example.com/link-to-your-event" title="Add to Calendar" id="btn_calendar" class="addthisevent">
-            Add to Calendar
-            <span class="_start"><%= event.start_time.try(:strftime, "%d-%m-%Y %H:%M:%S") %></span>
-            <span class="_end"><%= event.end_time.try(:strftime, "%d-%m-%Y %H:%M:%S") %></span>
-            <span class="_zonecode"><%= event.zone_code %></span>
-            <span class="_summary"><%= event.summary %></span>
-            <span class="_location"><%= event.location %></span>
-            <span class="_organizer"><%= event.organizer %></span>
-            <span class="_organizer_email"><%= event.organizer_email %></span>
-            <span class="_date_format"><%= event.date_format %></span>
-          </a>
-        </div>
+        text_defaults(:extra) %></p>
       </div>
     </div>
-    <% audio_url = event.audio_url.present? ? event.audio_url : example_song_url %>
-    <audio autoplay>
-      <source src="<%= audio_url %>" type="audio/mpeg">
-      </audio>
+    <div class="calendar row">
+      <div class="small-12 columns">
+        <a href="http://example.com/link-to-your-event" title="Add to Calendar" id="btn_calendar" class="addthisevent">
+          Add to Calendar
+          <span class="_start"><%= event.start_time.try(:strftime, "%d-%m-%Y %H:%M:%S") %></span>
+          <span class="_end"><%= event.end_time.try(:strftime, "%d-%m-%Y %H:%M:%S") %></span>
+          <span class="_zonecode"><%= event.time_zone %></span>
+          <span class="_summary"><%= event.summary %></span>
+          <span class="_location"><%= event.location %></span>
+          <span class="_organizer"><%= event.organizer %></span>
+          <span class="_organizer_email"><%= event.organizer_email %></span>
+          <span class="_date_format"><%= event.date_format %></span>
+        </a>
+      </div>
     </div>
+  </div>
+</div>

@@ -16,10 +16,10 @@
 //= require jquery-fileupload/vendor/tmpl
 //= require jquery.minicolors.min
 //= require foundation
-//= require turbolinks
 //= require pages
 //= require editor
 //= require helpers
 //= require social-share-button
+//= require foundation-datetimepicker
 
 $(function(){ $(document).foundation(); });

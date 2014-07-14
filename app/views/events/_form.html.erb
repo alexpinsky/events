@@ -45,27 +45,20 @@
       </div>
     </dd>
     <dd>
-      <a href="#panel3">Assets</a>
+      <a href="#panel3">Photos</a>
       <div id="panel3" class="content">
         <%= hidden_field_tag :file_type %>
         <%= hidden_field_tag :first_image %>
-        <fieldset>
-          <legend>Images</legend>
-          <p class="text_explain">Some text that explains about the slide show</p>
+          <p class="text_explain">
+            Upload the photos you want to display.
+            <br>
+            <br>
+            If more than 1 photo is uploaded, it will displayed as a slideshow.
+          </p>
           <%= event_form.fields_for :pictures, event.pictures.first || event.pictures.build do |pic_form| %>
             <%= pic_form.file_field :image, multiple: true, id: "image_file", class: "fileupload", name: "event[pictures_attributes][image]" %>
           <% end %>
           <div id="images_spinner" class="hide">
-            <img src="<%= spinner_path %>">
-          </div>
-        </fieldset>
-        <fieldset>
-          <legend>Song</legend>
-          <p class="text_explain">Some text that explains about the background song</p>
-          <%= event_form.fields_for :song, event.song || Song.new do |song_form| %>
-            <%= song_form.file_field :audio, multiple: true, id: "audio_file", class: "fileupload", name: "event[song_attributes][audio]" %>
-          <% end %>
-          <div id="song_spinner" class="hide">
             <img src="<%= spinner_path %>">
           </div>
         </fieldset>
@@ -74,6 +67,9 @@
     <dd>
       <a href="#panel4">Information</a>
       <div id="panel4" class="content">
+        <p class="text_explain">
+          Add your event information to synchronize your guests calendars.
+        </p>
         <%= render partial: 'information_fields', locals: { event: event, event_form: event_form } %>
       </div>
     </dd>

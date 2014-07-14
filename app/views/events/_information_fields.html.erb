@@ -36,28 +36,18 @@
   </fieldset>
   <fieldset>
     <legend>Time</legend>
-    <%= label_tag "Zone Code" %>
-    <%= info_form.number_field :zone_code %>
+    <%= label_tag "Time Zone" %>
+    <%= info_form.select :time_zone, time_zones_options_string.html_safe %>
     <%= label_tag "Start Time" %>
     <div class="row">
       <div class="small-8 columns">
-        <%= info_form.date_field :start_time %>
-      </div>
-      <div class="small-4 columns">
-        <div class="row collapse">
-        <!-- need to add time -->
-        </div>
+        <%= info_form.text_field :start_time, class: 'datepicker' %>
       </div>
     </div>
     <%= label_tag "End Time" %>
     <div class="row">
       <div class="small-8 columns">
-        <%= info_form.date_field :end_time %>
-      </div>
-      <div class="small-4 columns">
-        <div class="row collapse">
-        <!-- need to add time -->
-        </div>
+        <%= info_form.text_field :end_time, class: 'datepicker' %>
       </div>
     </div>
   </fieldset>

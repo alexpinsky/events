@@ -7,6 +7,7 @@
     <meta property="og:image" content="<%= example_events_image_url %>" />
     <title><%= content_for?(:title) ? yield(:title) : "MyEvent" %></title>
     <%= stylesheet_link_tag  "application" %>
+    <%= stylesheet_link_tag  "http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" %>
     <%= csrf_meta_tags %>
   </head>
   <body>
@@ -31,11 +32,6 @@
         <% else %>
         <li class="has-form">
           <a href="#" class="button" data-reveal-id="singInModal">Sign In</a>
-          <!-- Sign In modal -->
-          <div id="singInModal" class="reveal-modal small" data-reveal>
-            <%= render partial: 'devise/shared/sign_in' %>
-            <a class="close-reveal-modal">&#215;</a>
-          </div>
         </li>
         <% end %>
         </ul>
@@ -43,6 +39,11 @@
     </nav>
     <!-- main container -->
     <div class="main-container">
+      <!-- Sign In modal -->
+      <div id="singInModal" class="reveal-modal small" data-reveal>
+        <%= render partial: 'devise/shared/sign_in' %>
+        <a class="close-reveal-modal">&#215;</a>
+      </div>
       <div class="row">
         <div class="small-12 small-centered columns">
           <div class="flashes small-4 small-offset-10 columns">

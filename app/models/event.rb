@@ -10,7 +10,7 @@ class Event < ActiveRecord::Base
   accepts_nested_attributes_for :pictures, :appearance, :information, :song
 
   delegate :background_image, :font_family, :font_color, to: :appearance, allow_nil: true
-  delegate :start_time, :end_time, :organizer, :organizer_email, :location, :zone_code, :summary, :date_format, to: :information, allow_nil: true
+  delegate :start_time, :end_time, :organizer, :organizer_email, :location, :time_zone, :summary, :date_format, to: :information, allow_nil: true
   delegate :audio_url, to: :song, allow_nil: true
 
   MAX_PICTURES_SIZE = 5

@@ -40,6 +40,9 @@ class Editor
     extra_text_input = @editor.find("#event_extra_text")
     extra_text_input.on "keyup", (e) =>
       @preview.find("#event_extra_text").text(extra_text_input.val())
+    # datepickers
+    @editor.find('.datepicker').each (i, obj) ->
+      $(obj).fdatetimepicker()
 
   initUploaders: ->
     form_object = @editor.find('#event_form')

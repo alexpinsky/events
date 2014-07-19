@@ -53,11 +53,20 @@ class Editor
       else
         @initAudioUpload(obj)
 
+  initImageValidators: (obj) ->
+    obj.fileValidator
+      maxSize: '1m',
+      type: 'image',
+      onInvalid: (validationType, file) ->
+        file['invalid'] = true
+
   initImageUpload: (obj) ->
+    @initImageValidators(obj)
     obj.fileupload
       dataType: "json"
       maxNumberOfFiles: 5
       add: (e, data) ->
+        file = data.files[0]
         form_object = $('#event_form')
         if typeof @num_of_files == 'undefined'
           @num_of_files = data.originalFiles.length
@@ -66,11 +75,18 @@ class Editor
         else
           form_object.find("#first_image").val("false")
         types = /(\.|\/)(gif|jpe?g|png)$/i
-        file = data.files[0]
-        if types.test(file.type) || types.test(file.name)
+        if file['invalid']
+          @num_of_files--
+          if (@num_of_files == 0)
+            $('#event_form').find("#images_spinner").hide()
+          Helpers.displayAlert("#{file.name} is too big (should be at most 1 MB)", 'alert')
+        else if types.test(file.type) || types.test(file.name)
           form_object.find("#file_type").val("image")
           data.submit()
         else
+          @num_of_files--
+          if (@num_of_files == 0)
+            $('#event_form').find("#images_spinner").hide()
           Helpers.displayAlert("#{file.name} is not a gif, jpeg, or png image file", "alert")
       done: (e, data) ->
         if data.result.success

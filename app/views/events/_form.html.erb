@@ -49,12 +49,15 @@
       <div id="panel3" class="content">
         <%= hidden_field_tag :file_type %>
         <%= hidden_field_tag :first_image %>
-          <p class="text_explain">
+          <div class="text_explain">
             Upload the photos you want to display.
             <br>
             <br>
             If more than 1 photo is uploaded, it will displayed as a slideshow.
-          </p>
+            <br>
+            <br>
+            Image size should be at most <strong>1MB</strong>. You can optimize the image size at <a href="http://www.imageoptimizer.net/Pages/Home.aspx" target="_blank">imageoptimizer</a>.
+          </div>
           <%= event_form.fields_for :pictures, event.pictures.first || event.pictures.build do |pic_form| %>
             <%= pic_form.file_field :image, multiple: true, id: "image_file", class: "fileupload", name: "event[pictures_attributes][image]" %>
           <% end %>

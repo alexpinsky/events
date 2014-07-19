@@ -21,5 +21,6 @@
 //= require helpers
 //= require social-share-button
 //= require foundation-datetimepicker
+//= require file-validator
 
 $(function(){ $(document).foundation(); });

@@ -2,7 +2,6 @@
 require 'carrierwave/processing/mini_magick'
 
 class ImageUploader < CarrierWave::Uploader::Base
-  include ::CarrierWave::Backgrounder::Delay
   include CarrierWave::MiniMagick
 
   process :quality => 80

@@ -5,10 +5,6 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate_user!
 
   def stored_location_for(resource)
-    user_events_path(resource)
-  end
-
-  def set_user
-    @user = current_user
+    events_path
   end
 end

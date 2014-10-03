@@ -2,11 +2,11 @@
   <div class="small-5 columns">
     <div class="row" id="editor">
       <div class="small-11 columns">
-        <%= render partial: "form", locals: { user: user, event: event } %>
+        <%= render partial: "form", locals: { event: event } %>
       </div>
     </div>
   </div>
-  <div class="small-7 columns" id="preview" style="background-image: url(<%= background_collection_url(event.background_image) %>)" data-user="<%= user.id %>" data-event="<%= event.id %>">
+  <div class="small-7 columns" id="preview" style="background-image: url(<%= background_collection_url(event.background_image) %>)" data-user="<%= current_user.id %>" data-event="<%= event.id %>">
     <% font_family = event.font_family || "Arial" %>
     <% font_color = event.font_color || "#fff" %>
     <%= render partial: "themes/#{theme}", locals: { event: event, font_family: font_family, font_color: font_color } %>

@@ -11,6 +11,7 @@
  *= require_self
  *= require foundation_and_overrides
  *= require events
+ *= require posts
  *= require pages
  *= require fonts
  *= require jquery.minicolors
@@ -82,4 +83,11 @@
   position: absolute !important;
   opacity: 0.8;
   top: -20px;
+}
+
+.container {
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0px 2px 2px 0px #dcdcdc;
+  padding: 2rem;
 }

@@ -1,16 +1,15 @@
 class EventsController < ApplicationController
   skip_before_filter :authenticate_user!, only: [:show]
-  before_filter :set_user, except: [:show]
   before_filter :set_display # for now..
 
   def index
-    @events = @user.events
+    @events = current_user.events
     @event = Event.new
   end
 
   def create
-    @event = @user.events.create
-    redirect_to edit_user_event_path(@user, @event)
+    @event = current_user.events.create
+    redirect_to edit_event_path(@event)
   end
 
   def show
@@ -25,15 +24,15 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @event = @user.events.includes(:pictures, :appearance, :information, :song).find params[:id]
+    @event = current_user.events.includes(:pictures, :appearance, :information, :song).find params[:id]
   end
 
   def update
-    @event = @user.events.find params[:id]
+    @event = current_user.events.find params[:id]
     respond_to do |format|
       format.html do
         if @event.update_attributes(event_params.except(:pictures_attributes, :song_attributes))
-          redirect_to user_events_path(@user)
+          redirect_to events_path
           flash[:success] = "Event was successfully updated"
         else
           flash[:alert] = "bla bla bla"
@@ -54,17 +53,23 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    @event = @user.events.find params[:id]
+    @event = current_user.events.find params[:id]
     if @event.destroy
       flash[:success] = "Event was successfully deleted"
     else
       flash[:alert] = @event.errors.full_messages
     end
-    redirect_to user_events_path(@user)
+    redirect_to events_path
   end
 
   def reload_preview
-    @event = @user.events.includes(:pictures, :appearance, :information, :song).find params[:id]
+    @event = current_user.events.includes(:pictures, :appearance, :information, :song).find params[:id]
+  end
+
+  def publish
+    # event make public and other stuff
+    @event = current_user.events.find(params[:id])
+    redirect_to new_event_post_path(@event)
   end
 
 private

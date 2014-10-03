@@ -1,8 +1,8 @@
-<div class="events-index">
+<div class="events-index container">
   <div class="header row">
     <div class="my-events-header large-4 columns">My Events</div>
     <div class="create-event large-offset-6 large-2 columns">
-      <%= form_for [current_user, @event] do |event_form| %>
+      <%= form_for @event do |event_form| %>
         <%= event_form.submit class: "button small" %>
       <% end %>
     </div>    
@@ -34,10 +34,10 @@
         </div>
       </div>
       <div class="event-actions large-offset-4 large-8 columns">
-        <%= link_to "edit", edit_user_event_path(current_user, event) %> | 
-        <%= link_to "preview", user_event_path(user_id: 2, id: event.id, preview: true) %> | 
-        <%= link_to "delete", user_event_path(current_user, event), method: :delete %>
-        <%= link_to "Publish", "#", class: "publish-btn small button" %>
+        <%= link_to "edit", edit_event_path(event) %> | 
+        <%= link_to "preview", event_path(id: event.id, preview: true) %> | 
+        <%= link_to "delete", event_path(event), method: :delete %>
+        <%= link_to "Publish", publish_event_path(event), class: "publish-btn small button" %>
       </div>
     </div>
   <% end %>

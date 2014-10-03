@@ -1,4 +1,4 @@
-<%= form_for [user, event], html: { id: "event_form" } do |event_form| %>
+<%= form_for event, html: { id: "event_form" } do |event_form| %>
   <%= event_form.submit 'Save & Publish', class: "save-publish-btn button expand" %>
   <dl class="accordion" data-accordion>
     <dd>
@@ -79,6 +79,6 @@
   </dl>
   <div class="form-actions">
     <%= event_form.submit 'Save', class: "button small" %>
-    <%= link_to 'Back', user_events_path(current_user), class: "back-btn button small" %>
+    <%= link_to 'Back', events_path, class: "back-btn button small" %>
   </div>
 <% end %>

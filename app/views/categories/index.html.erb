@@ -1,0 +1,15 @@
+<div class='categories-index container'>
+  <% @categories.each do |category| %>
+    <div class='category-row row'>
+      <div class='category-tile'>
+        <%= category.name %>
+      </div>
+      <div class='events-tiles'>
+        <% category.events.each do |event| %>
+          <div class="event-tile">
+          </div>
+        <% end %>
+      </div>      
+    </div>
+  <% end %>
+</div>    

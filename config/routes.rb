@@ -12,11 +12,12 @@ Events::Application.routes.draw do
   # get '/:id', to: redirect('/events/%{id}')
   # get '/events/:id', to: 'events#show'
 
-  resources :events, only: [:index, :show, :create, :edit, :update, :destroy] do
+  resources :events do
     member do 
       get 'reload_preview'
       get 'publish'
     end
-    resources :posts
   end
+
+  resources :categories
 end

@@ -31,7 +31,7 @@
           </li>
         <% else %>
         <li class="has-form">
-          <a href="#" class="button" data-reveal-id="singInModal">Sign In</a>
+          <a href="#" class="button" data-reveal-id="signInModal">Sign In</a>
         </li>
         <% end %>
         </ul>
@@ -40,10 +40,17 @@
     <!-- main container -->
     <div class="main-container">
       <!-- Sign In modal -->
-      <div id="singInModal" class="reveal-modal small" data-reveal>
+      <div id="signInModal" class="reveal-modal small" data-reveal>
         <%= render partial: 'devise/shared/sign_in' %>
         <a class="close-reveal-modal">&#215;</a>
       </div>
+      <!--  -->
+      <!-- Sign Up modal -->
+      <div id="signUpModal" class="reveal-modal small" data-reveal>
+        <%= render partial: 'devise/shared/sign_up' %>
+        <a class="close-reveal-modal">&#215;</a>
+      </div>
+      <!--  -->
       <div class="row">
         <div class="small-12 small-centered columns">
           <div class="flashes small-4 small-offset-10 columns">

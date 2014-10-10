@@ -1,11 +1,11 @@
-<div class="row sign-in">
+<div class="row sign-up">
   <div class="small-offset-2 small-9 columns">
     <div class="">
-    <div class="header">
-      <h2>Sign In</h2>
-      <a href="#" data-reveal-id="signUpModal">New user? sign up now!</a>
-    </div>
-      <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+      <div class="header">
+        <h2>Sign Up</h2>
+        <a href="#" data-reveal-id="signInModal">Already a user?</a>
+      </div>
+      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
         <div class="row collapse">
           <div class="small-3 columns">
             <span class="prefix">email</span>
@@ -22,8 +22,15 @@
             <%= f.password_field :password %>
           </div>
         </div>
-
-        <div><%= f.submit "Sign In", class: "button small" %></div>
+        <div class="row collapse">
+          <div class="small-4 columns">
+            <span class="prefix">confirmation</span>
+          </div>
+          <div class="small-8 columns">
+            <%= f.password_field :password_confirmation %>
+          </div>
+        </div>
+        <div><%= f.submit "Sign up", class: "button small" %></div>
       <% end %>
 
       <% if false %>

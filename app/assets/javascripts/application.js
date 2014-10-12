@@ -19,6 +19,7 @@
 //= require pages
 //= require editor
 //= require helpers
+//= require categories
 //= require social-share-button
 //= require foundation-datetimepicker
 //= require file-validator

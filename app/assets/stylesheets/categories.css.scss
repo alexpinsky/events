@@ -1,18 +1,49 @@
 .categories-index {
-  .category-tile {
-    display: inline-block;
-    vertical-align: top;
-    background-color: purple;
-    height: 10rem;
-    width: 10rem;
-  }
-  .events-tiles {
-    display: inline-block;
-    vertical-align: top;
-    .event-tile {
-      background-color: black;
+  .category-row {
+    padding: 0.5rem;
+    .category-tile {
+      display: inline-block;
+      vertical-align: top;
+      background-color: purple;
       height: 10rem;
       width: 10rem;
+    }
+    .events-tiles {
+      display: inline-block;
+      vertical-align: top;
+      .event-tile {
+        text-align: center;
+        display: inline-block;
+        position : relative;
+        height: 10rem;
+        width: 10rem;
+        .img-container {
+          background-color: green;
+          height: 100%;
+          width: 100%;
+        }
+        .menu-container {
+          visibility: hidden;
+          height: 100%;
+          width: 100%;
+          z-index : 10;
+          position : absolute;
+          top : 0;
+          left : 0;
+          background-color: rgba(70, 62, 62, 0.6);
+          .buttons {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+          }
+          .button {
+            margin: 0;
+            display: inline-block;
+            padding: 0.5rem;
+            width: 4rem;
+          }
+        }
+      }
     }
   }
 }

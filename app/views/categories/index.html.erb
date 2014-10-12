@@ -1,12 +1,24 @@
 <div class='categories-index container'>
-  <% @categories.each do |category| %>
+  <!-- @categories.each do |category| -->
+  <% 4.times do |i| %>
     <div class='category-row row'>
       <div class='category-tile'>
-        <%= category.name %>
+        <!-- category.name -->
+        <%= "Category #{i}" %>
       </div>
       <div class='events-tiles'>
-        <% category.events.each do |event| %>
+        <!-- category.events.each do |event| -->
+        <% 4.times do |j| %>
           <div class="event-tile">
+            <div class='img-container'>
+              <%= "Theme #{j}" %>
+            </div>
+            <div class='menu-container'>
+              <div class='buttons'>
+                <%= link_to 'Preview', '#', class: "back-btn button small" %>
+                <%= link_to 'Edit', '#', class: "back-btn button small" %>
+              </div>
+            </div>
           </div>
         <% end %>
       </div>      

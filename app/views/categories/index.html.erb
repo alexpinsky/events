@@ -1,10 +1,10 @@
 <div class='categories-index container'>
   <!-- @categories.each do |category| -->
-  <% 4.times do |i| %>
+  <% ['wedding', 'birthday', 'party', 'other'].each do |category_name| %>
     <div class='category-row row'>
-      <div class='category-tile'>
-        <!-- category.name -->
-        <%= "Category #{i}" %>
+      <div class='category-tile' style="background-color: <%= category_color(category_name) %>">
+        <img src="<%= category_image_url(category_name) %>">
+        <%= category_name %>
       </div>
       <div class='events-tiles'>
         <!-- category.events.each do |event| -->

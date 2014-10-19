@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def background_url_for(page_name)
+    "https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/#{page_name}/backgrounds/background.jpg"
+  end
+
   def background_names
     ['dark_wall', 'tileable_wood', 'white_feathers', 'food', 'mocha_grunge', 'skulls', 'tree_bark']
   end

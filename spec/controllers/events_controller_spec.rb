@@ -2,46 +2,32 @@ require 'spec_helper'
 
 describe EventsController do
 
-  describe "GET 'index'" do
-    it "returns http success" do
-      get 'index'
-      expect(response).to be_success
+  describe "POST 'create'" do
+    
+    subject(:create) { post :create }
+    
+    context "when a category id is passed" do
+
+      shared_examples "a edit of a new event" do
+
+        it "should create a new event for the current user" do
+
+        end
+
+        it "should redirect to the edit_path for the new event" do
+
+        end
+      end
+
+      context "when a template id is passed" do
+
+        it_should_behave_like "a edit of a new event"
+      end
+
+      context "when a themplate id is NOT passed" do
+
+        it_should_behave_like "a edit of a new event"
+      end
     end
   end
-
-  describe "GET 'new'" do
-    it "returns http success" do
-      get 'new'
-      expect(response).to be_success
-    end
-  end
-
-  describe "GET 'create'" do
-    it "returns http success" do
-      get 'create'
-      expect(response).to be_success
-    end
-  end
-
-  describe "GET 'edit'" do
-    it "returns http success" do
-      get 'edit'
-      expect(response).to be_success
-    end
-  end
-
-  describe "GET 'update'" do
-    it "returns http success" do
-      get 'update'
-      expect(response).to be_success
-    end
-  end
-
-  describe "GET 'destroy'" do
-    it "returns http success" do
-      get 'destroy'
-      expect(response).to be_success
-    end
-  end
-
 end

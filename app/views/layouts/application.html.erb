@@ -38,7 +38,7 @@
       </section>
     </nav>
     <!-- main container -->
-    <div class="main-container" style="background-image: url(<%= @background_image %>)">
+    <div class="main-container" style="background-image: url(<%= background_url_for(@page_name) %>)">
       <!-- Sign In modal -->
       <div id="signInModal" class="reveal-modal small" data-reveal>
         <%= render partial: 'devise/shared/sign_in' %>

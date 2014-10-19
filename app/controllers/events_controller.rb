@@ -8,7 +8,8 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = current_user.events.create
+    # params[:category_id], params[:theme_id]
+    @event = Event.create_from_theme(category, theme, current_user)
     redirect_to edit_event_path(@event)
   end
 

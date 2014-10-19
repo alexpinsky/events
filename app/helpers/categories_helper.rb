@@ -1,4 +1,4 @@
-module TemplatesHelper
+module CategoriesHelper
   
   def category_image_url(category_name)
     "https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/templates/icons/#{category_name}.png"

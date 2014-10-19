@@ -1,11 +1,29 @@
 .categories-index {
+  .tile {
+    margin: 0 0.4rem 0;
+  }
+  .header {
+    margin: 2rem 0 3rem;
+    h3 {
+      text-align: center;
+      color: white;
+    }
+  }
   .category-row {
     padding: 0.5rem;
     .category-tile {
+      text-align: center;
       display: inline-block;
       vertical-align: top;
       height: 10rem;
       width: 10rem;
+      .text {
+        padding-top: 1rem;
+        h4 {
+          color: white;
+          font-weight: bold;
+        }
+      }
     }
     .events-tiles {
       display: inline-block;

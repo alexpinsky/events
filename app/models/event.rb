@@ -27,6 +27,16 @@ class Event < ActiveRecord::Base
     nil
   end
 
+  def self.create_from_theme(category, theme, user)
+    theme = if theme.nil?
+      is_user_choose = false
+      category.events.first
+    else
+      is_user_choose = true
+      theme
+    end
+  end
+
   def set_url_hash
     return if self.url.blank? || self.created_at.blank?
     self.url_hash = Digest::MD5.hexdigest "#{self.url}#{self.created_at.to_f}"

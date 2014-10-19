@@ -11,19 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141010150420) do
+ActiveRecord::Schema.define(version: 20141019192221) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "appearances", force: true do |t|
     t.string   "background_image"
-    t.string   "font_family"
-    t.string   "font_color"
+    t.string   "font_family_1"
+    t.string   "font_color_1"
     t.integer  "presentable_id"
     t.string   "presentable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "font_size_1"
+    t.string   "font_family_2"
+    t.string   "font_color_2"
+    t.integer  "font_size_2"
+    t.string   "font_family_3"
+    t.string   "font_color_3"
+    t.integer  "font_size_3"
+    t.string   "font_family_4"
+    t.string   "font_color_4"
+    t.integer  "font_size_4"
   end
 
   create_table "categories", force: true do |t|
@@ -32,12 +42,20 @@ ActiveRecord::Schema.define(version: 20141010150420) do
     t.datetime "updated_at"
   end
 
+  create_table "event_theme_relations", force: true do |t|
+    t.integer  "event_id"
+    t.integer  "theme_id"
+    t.boolean  "is_user_choose"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "events", force: true do |t|
     t.integer  "user_id"
     t.string   "name"
-    t.string   "primary_text"
-    t.string   "secondary_text"
-    t.text     "extra_text"
+    t.string   "text_1"
+    t.string   "text_2"
+    t.text     "text_3"
     t.string   "url"
     t.string   "url_hash"
     t.datetime "created_at"
@@ -46,6 +64,7 @@ ActiveRecord::Schema.define(version: 20141010150420) do
     t.integer  "theme_id"
     t.boolean  "is_theme"
     t.string   "preview_url"
+    t.string   "text_4"
   end
 
   create_table "information", force: true do |t|

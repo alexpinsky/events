@@ -1,15 +1,11 @@
 <% content_for(:title) do %>
   <%= @event.name %>
 <% end %>
-<% font_family = @event.font_family || "Arial" %>
-<% font_color = @event.font_color || "#fff" %>
 <div class="info-link">
   <% if @preview %> 
-    <%= link_to 'Back', events_path, style: "color: #{font_color}"  %>
-  <% else %>
-    <a href="mailto:alex.myevents@gmail.com?Subject=save my date" class="left" style="color: <%= font_color %>;font-size: 0.70rem;">Design your event!</a>
+    <%= link_to 'Back', categories_path, style: "color: #fff"  %>
   <% end %>
 </div>
 <div class="display">
-  <%= render partial: "themes/#{@theme}", locals: { event: @event, font_family: font_family, font_color: font_color } %>
+  <%= render partial: "themes/#{@event.theme_name}", locals: { event: @event } %>
 </div>

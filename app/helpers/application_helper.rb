@@ -25,26 +25,8 @@ module ApplicationHelper
     "https://s3-eu-west-1.amazonaws.com/events-assets-static/images/example_events.jpg"
   end
 
-  def example_song_url
-    "https://s3-eu-west-1.amazonaws.com/events-assets-static/audio/wedding_song.mp3"
-  end
-
   def spinner_path
     "https://s3-eu-west-1.amazonaws.com/events-assets-static/images/spinner.gif"
-  end
-
-  def text_defaults(name)
-    @texts ||= {
-      name: "My Event",
-      primary: "Save the Date",
-      secondary: "July, 10 | My Event",
-      extra: "Come to celebrate",
-      headline: "My Event",
-      location: "Oxford Street, London, United Kingdom",
-      organizer: "my name",
-      organizer_email: "my email"
-    }
-    @texts[name]
   end
 
   def resource_name

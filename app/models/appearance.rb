@@ -1,3 +1,3 @@
 class Appearance < ActiveRecord::Base
-  belongs_to :presentable, polymorphic: true
+  belongs_to :event
 end

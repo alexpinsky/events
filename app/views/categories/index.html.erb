@@ -2,27 +2,26 @@
   <div class='header'>
     <h3>Pick the template you like and start event it!</h3> 
   </div>
-  <% ['wedding', 'birthday', 'party', 'other'].each do |category_name| %>
+  <% @categories.each do |category| %>
     <div class='category-row'>
-      <div class='category-tile tile' style="background-color: <%= category_color(category_name) %>">
+      <div class='category-tile tile' style="background-color: <%= category_color(category.name) %>">
         <div class='text'>
-          <h4><%= category_name.upcase %></h4>
+          <h4><%= category.name.upcase %></h4>
         </div>
         <div class='icon'>
-          <img src="<%= category_image_url(category_name) %>">
+          <img src="<%= category_image_url(category.name) %>">
         </div>
       </div>
       <div class='events-tiles'>
-        <!-- category.events.each do |event| -->
-        <% 4.times do |j| %>
+        <% category.events.themes.each do |theme| %>
           <div class="event-tile tile">
             <div class='img-container'>
-              <%= "Theme #{j}" %>
+              <%= theme.name %>
             </div>
             <div class='menu-container'>
               <div class='buttons'>
-                <%= link_to 'Preview', '#', class: "back-btn button small" %>
-                <%= link_to 'Edit', '#', class: "back-btn button small" %>
+                <%= link_to 'Preview', event_path(id: theme.id, preview: true), class: "back-btn button small" %>
+                <%= link_to 'Edit', events_path(theme_id: theme.id, category_id: category.id), method: :post, class: "button small" %>
               </div>
             </div>
           </div>

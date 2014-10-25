@@ -20,8 +20,7 @@ ActiveRecord::Schema.define(version: 20141019192221) do
     t.string   "background_image"
     t.string   "font_family_1"
     t.string   "font_color_1"
-    t.integer  "presentable_id"
-    t.string   "presentable_type"
+    t.integer  "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "font_size_1"
@@ -38,14 +37,6 @@ ActiveRecord::Schema.define(version: 20141019192221) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "event_theme_relations", force: true do |t|
-    t.integer  "event_id"
-    t.integer  "theme_id"
-    t.boolean  "is_user_choose"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

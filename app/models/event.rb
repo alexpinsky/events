@@ -4,16 +4,30 @@ class Event < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
   belongs_to :theme, class_name: 'Event', foreign_key: 'theme_id'
-  has_one :appearance, as: :presentable, dependent: :destroy
+  has_one :appearance, dependent: :destroy
   has_many :pictures, as: :displayable, dependent: :destroy
   has_one :song, as: :listenable, dependent: :destroy
   has_one :information, dependent: :destroy
 
   accepts_nested_attributes_for :pictures, :appearance, :information, :song
 
-  delegate :background_image, :font_family, :font_color, to: :appearance, allow_nil: true
+  delegate :background_image, 
+    :font_family_1, 
+    :font_color_1, 
+    :font_size_1,
+    :font_family_2, 
+    :font_color_2, 
+    :font_size_2,
+    :font_family_3, 
+    :font_color_3, 
+    :font_size_3,
+  to: :appearance, allow_nil: true
+  
   delegate :start_time, :end_time, :organizer, :organizer_email, :location, :time_zone, :summary, :date_format, to: :information, allow_nil: true
+  
   delegate :audio_url, to: :song, allow_nil: true
+
+  scope :themes, -> () { where('events.is_theme = ?', true) }
 
   MAX_PICTURES_SIZE = 5
 
@@ -27,14 +41,14 @@ class Event < ActiveRecord::Base
     nil
   end
 
-  def self.create_from_theme(category, theme, user)
-    theme = if theme.nil?
-      is_user_choose = false
-      category.events.first
-    else
-      is_user_choose = true
-      theme
-    end
+  # args: {:user, :categroy, :theme}
+  def self.create_from_theme(args = {})
+    event = args[:theme].deep_clone include: :appearance, except: [:is_theme, :name]
+    event.user = args[:user]
+    event.theme = args[:theme]
+    event.is_theme = false
+    event.save
+    event
   end
 
   def set_url_hash
@@ -69,5 +83,9 @@ class Event < ActiveRecord::Base
       result[:error] = self.song.errors.full_messages
     end
     result
+  end
+
+  def theme_name
+    self.is_theme ? self.name : self.theme.name
   end
 end

@@ -1,5 +1,3 @@
-@import "foundation/components/buttons";
-
 .info-link {
   margin-top: 0.25rem;
 }
@@ -72,42 +70,6 @@
     padding-bottom: 1.5rem
   }
 }
-}
-
-#editor {
-  .save-publish-btn {
-    @include button();
-    background-color: #62CC88;
-    border-radius: 8px;
-  }
-  .form-actions {
-    margin-top: 1.25rem;
-    .back-btn {
-      margin-left: 0.5rem;
-    }
-  }
-  #background_buttons {
-    margin-bottom: 0.5rem;
-    .background_btn {
-      width: 2rem;
-      height: 2rem;
-      display: inline-block;
-    }
-  }
-  .minicolors {
-    width: 100%;
-    .minicolors-swatch {
-      top: 9px;
-    }
-    .minicolors-input {
-      height: 2.30rem ;
-      width: 100%;
-    }
-  }
-  .text_explain {
-    font-size: 0.8rem;
-    color: #6f6f6f;
-  }
 }
 
 .events-index {

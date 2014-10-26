@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.1.3'
+ruby '2.0.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0.rc1'
 
@@ -29,6 +29,8 @@ gem 'slim'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0.rc1'
+gem 'sass', '3.4.5'
+gem 'sprockets', '2.11.0'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -48,13 +50,13 @@ group :doc do
 end
 
 group :test do
-	gem 'rspec-rails', '~> 3.0.0.beta'
-	gem "factory_girl_rails"
-	gem 'test_after_commit'
+  gem 'rspec-rails', '~> 3.0.0.beta'
+  gem "factory_girl_rails"
+  gem 'test_after_commit'
 end
 
 group :development do
-	gem 'pry'
+  gem 'pry'
   gem 'quiet_assets'
 end
 

@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta property="og:title" content="MyEvent" />
+    <meta property="og:title" content="webivite" />
     <meta property="og:image" content="<%= example_events_image_url %>" />
-    <title><%= content_for?(:title) ? yield(:title) : "MyEvent" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "webivite" %></title>
     <%= stylesheet_link_tag  "application" %>
     <%= stylesheet_link_tag  "http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" %>
     <%= csrf_meta_tags %>
@@ -52,7 +52,7 @@
       </div>
       <!--  -->
       <div class="row">
-        <div class="small-12 small-centered columns">
+        <div class="small-12 columns">
           <div class="flashes small-4 small-offset-10 columns">
             <%= render partial: "shared/flashes" if flash.present? %>
           </div>

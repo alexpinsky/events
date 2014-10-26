@@ -7,9 +7,14 @@ class EventsController < ApplicationController
   end
 
   def create
-    # params[:category_id], params[:theme_id]
-    # @event = Event.create_from_theme(category, theme, current_user)
-    # redirect_to edit_event_path(@event)
+    category = Category.find params[:category_id]
+    theme = category.events.themes.find params[:theme_id]
+    @event = Event.create_from_theme(
+      category: category, 
+      theme: theme, 
+      user: current_user
+    )
+    redirect_to edit_event_path(@event)
   end
 
   def show
@@ -24,7 +29,7 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @event = current_user.events.includes(:pictures, :appearance, :information, :song).find params[:id]
+    @event = current_user.events.includes(:pictures, :appearance, :information).find params[:id]
   end
 
   def update
@@ -76,5 +81,10 @@ private
 
   def event_params
     params.require(:event).permit(:name, :primary_text, :secondary_text, :extra_text, pictures_attributes: [:id, :image], appearance_attributes: [:id, :background_image, :font_family, :font_color], information_attributes: [:id, :summary, :location, :organizer, :organizer_email, :time_zone, :start_time, :end_time], song_attributes: [:id, :audio])
+  end
+
+  def set_page_name
+    puts "***** h *****"
+    @page_name = 'editor'    
   end
 end

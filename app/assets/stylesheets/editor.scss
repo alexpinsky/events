@@ -1,0 +1,61 @@
+@import "foundation/components/buttons";
+
+#editor {
+  .box span {
+    font-size: 0.8rem;
+  }
+  .font-box {
+    padding-right: 0;
+    margin-right: 0.25rem;
+    select {
+      width: 5rem;
+      padding: 0;
+      padding-left: 0.25rem;
+      font-size: 0.7rem;
+    }
+  }
+  .color-box {
+    padding-right: 0;
+    padding-left: 0.25rem;
+  }
+  .size-box {
+    padding-left: 0.25rem;
+    input {
+      width: 3rem;
+      font-size: 0.7rem;
+    }
+  }
+  .save-publish-btn {
+    @include button();
+    background-color: #62CC88;
+    border-radius: 8px;
+  }
+  .form-actions {
+    margin-top: 1.25rem;
+    .back-btn {
+      margin-left: 0.5rem;
+    }
+  }
+  #background_buttons {
+    margin-bottom: 0.5rem;
+    .background_btn {
+      width: 2rem;
+      height: 2rem;
+      display: inline-block;
+    }
+  }
+  .minicolors {
+    width: 100%;
+    .minicolors-swatch {
+      top: 9px;
+    }
+    .minicolors-input {
+      height: 2.30rem ;
+      width: 100%;
+    }
+  }
+  .text_explain {
+    font-size: 0.8rem;
+    color: #6f6f6f;
+  }
+}

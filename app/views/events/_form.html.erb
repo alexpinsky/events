@@ -1,39 +1,80 @@
 <%= form_for event, html: { id: "event_form" } do |event_form| %>
   <%= event_form.submit 'Save & Publish', class: "save-publish-btn button expand" %>
+    <%= event_form.fields_for :appearance, event.appearance do |app_form| %>
+    
   <dl class="accordion" data-accordion>
     <dd>
       <a href="#panel1">Text</a>
       <div id="panel1" class="content">
-        <div class="row collapse">
-          <div class="small-4 columns">
-            <span class="prefix">Event name</span>
+        <div class="row">
+          <div class="small-12 columns">
+            <div class="row collapse">
+              <div class="row collapse">
+                <div class="small-2 columns">
+                  <span class="prefix">1st</span>
+                </div>
+                <div class="small-10 columns">
+                  <%= event_form.text_field :text_1 %>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="small-8 columns">
-            <%= event_form.text_field :name, placeholder: text_defaults(:name) %>
+        </div>
+        <div class="row">
+          <div class="small-5 columns font-box box">
+            <div class="row collapse prefix-radius">
+              <div class="small-3 columns">
+                <span class="prefix">font</span>
+              </div>
+              <div class="small-9 columns">
+                <%= app_form.select :font_family_1, options_for_select(fonts_for_select, event.font_family_1), {}, { class: "font_family_1" } %>
+              </div>
+            </div>
+          </div>
+          <div class="small-4 columns color-box box">
+            <div class="row collapse prefix-radius">
+              <div class="small-4 columns">
+                <span class="prefix">color</span>
+              </div>
+              <div class="small-8 columns">
+                <%= app_form.text_field :font_color_1, class: "minicolors font_color_1" %>
+              </div>
+            </div>
+          </div>
+          <div class="small-3 columns size-box box">
+            <div class="row collapse prefix-radius">
+              <div class="small-5 columns">
+                <span class="prefix">size</span>
+              </div>
+              <div class="small-7 columns">
+                <%= app_form.number_field :font_size_1, { class: "font_size_1" } %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row collapse">
+          <div class="small-2 columns">
+            <span class="prefix">2nd</span>
+          </div>
+          <div class="small-10 columns">
+            <%= event_form.text_field :text_2 %>
           </div>
         </div>
         <div class="row collapse">
-          <div class="small-4 columns">
-            <span class="prefix">Primary text</span>
+          <div class="small-2 columns">
+            <span class="prefix">3rd</span>
           </div>
-          <div class="small-8 columns">
-            <%= event_form.text_field :primary_text, placeholder: text_defaults(:primary) %>
-          </div>
-        </div>
-        <div class="row collapse">
-          <div class="small-5 columns">
-            <span class="prefix">Secondary text</span>
-          </div>
-          <div class="small-7 columns">
-            <%= event_form.text_field :secondary_text, placeholder: text_defaults(:secondary) %>
+          <div class="small-10 columns">
+            <%= event_form.text_field :text_3 %>
           </div>
         </div>
         <div class="row collapse">
-          <div class="small-4 columns">
-            <span class="prefix">Extra text</span>
+          <div class="small-2 columns">
+            <span class="prefix">4th</span>
           </div>
-          <div class="small-8 columns">
-            <%= event_form.text_field :extra_text, placeholder: text_defaults(:extra) %>
+          <div class="small-10 columns">
+            <%= event_form.text_field :text_4 %>
           </div>
         </div>
       </div>
@@ -41,7 +82,7 @@
     <dd>
       <a href="#panel2">Colors</a>
       <div id="panel2" class="content">
-        <%= render partial: 'appearance_fields', locals: { event: event, event_form: event_form } %>
+        <!-- render partial: 'appearance_fields', locals: { event: event, event_form: event_form } -->
       </div>
     </dd>
     <dd>
@@ -73,7 +114,7 @@
         <p class="text_explain">
           Add your event information to synchronize your guests calendars.
         </p>
-        <%= render partial: 'information_fields', locals: { event: event, event_form: event_form } %>
+        <!-- render partial: 'information_fields', locals: { event: event, event_form: event_form }  -->
       </div>
     </dd>
   </dl>
@@ -81,4 +122,5 @@
     <%= event_form.submit 'Save', class: "button small" %>
     <%= link_to 'Back', events_path, class: "back-btn button small" %>
   </div>
+  <% end %>
 <% end %>

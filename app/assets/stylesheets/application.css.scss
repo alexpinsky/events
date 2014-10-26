@@ -11,6 +11,7 @@
  *= require_self
  *= require foundation_and_overrides
  *= require events
+ *= require editor
  *= require posts
  *= require pages
  *= require fonts
@@ -42,8 +43,6 @@
     min-height: 800px;
     padding-top: 2rem; 
     padding-bottom: 2rem; 
-    background-repeat: no-repeat;
-    background-size: cover;
   }
   .footer {
     background: #333;

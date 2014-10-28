@@ -1,28 +1,21 @@
 @import "foundation/components/buttons";
 
 #editor {
-  .box span {
-    font-size: 0.8rem;
-  }
-  .font-box {
-    padding-right: 0;
-    margin-right: 0.25rem;
-    select {
-      width: 5rem;
-      padding: 0;
-      padding-left: 0.25rem;
-      font-size: 0.7rem;
+  .accordion {
+    .pannel-text {
+      text-align: center;
     }
   }
-  .color-box {
-    padding-right: 0;
-    padding-left: 0.25rem;
-  }
-  .size-box {
-    padding-left: 0.25rem;
-    input {
-      width: 3rem;
-      font-size: 0.7rem;
+  .text-element {
+    span {
+      color: white;
+    }
+    .box {
+      padding: 0 0.2rem 0;
+      margin: 0;
+      span, input, select{
+        font-size: 0.7rem;
+      }
     }
   }
   .save-publish-btn {

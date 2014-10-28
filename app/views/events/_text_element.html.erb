@@ -1,0 +1,48 @@
+<div class="row text-area">
+  <div class="small-12 columns">
+    <div class="row collapse">
+      <div class="row collapse">
+        <div class="small-2 columns">
+          <span class="prefix" style="background: <%= text_title_color %>;"><%= title %></span>
+        </div>
+        <div class="small-10 columns">
+          <%= event_form.text_field "text_#{count}" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row appearance-area">
+  <div class='small-12 columns'>
+    <div class="small-5 columns font-box box">
+      <div class="row collapse prefix-radius">
+        <div class="small-3 columns">
+          <span class="prefix" style="background: <%= font_title_color %>;">font</span>
+        </div>
+        <div class="small-9 columns">
+          <%= app_form.select "font_family_#{count}", options_for_select(fonts_for_select, event.send("font_family_#{count}")), {}, { class: "font_family_#{count}" } %>
+        </div>
+      </div>
+    </div>
+    <div class="small-4 columns color-box box">
+      <div class="row collapse prefix-radius">
+        <div class="small-4 columns">
+          <span class="prefix" style="background: <%= color_title_color %>;">color</span>
+        </div>
+        <div class="small-8 columns">
+          <%= app_form.text_field "font_color_#{count}", class: "minicolors font_color_#{count}" %>
+        </div>
+      </div>
+    </div>
+    <div class="small-3 columns size-box box">
+      <div class="row collapse prefix-radius">
+        <div class="small-5 columns">
+          <span class="prefix" style="background: <%= size_title_color %>;">size</span>
+        </div>
+        <div class="small-7 columns">
+          <%= app_form.number_field "font_size_#{count}", { class: "font_size_#{count}" } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

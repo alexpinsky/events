@@ -6,7 +6,7 @@
           <span class="prefix"><%= title %></span>
         </div>
         <div class="small-10 columns">
-          <%= event_form.text_field "text_#{count}", id: "text_#{count}"%>
+          <%= event_form.text_field "text_#{count}", data: {target: "text_#{count}", context: "#{count}"} %>
         </div>
       </div>
     </div>
@@ -20,7 +20,7 @@
           <span class="prefix">font</span>
         </div>
         <div class="small-9 columns">
-          <%= app_form.select "font_family_#{count}", options_for_select(fonts_for_select, event.send("font_family_#{count}")), {}, { class: "font-family", data: {target: "text_#{count}"} } %>
+          <%= app_form.select "font_family_#{count}", options_for_select(fonts_for_select, event.send("font_family_#{count}")), {}, { class: "font-family", data: {target: "text_#{count}", context: "#{count}"} } %>
         </div>
       </div>
     </div>
@@ -30,7 +30,7 @@
           <span class="prefix">color</span>
         </div>
         <div class="small-8 columns">
-          <%= app_form.text_field "font_color_#{count}", class: "minicolors font-color" %>
+          <%= app_form.text_field "font_color_#{count}", class: "minicolors font-color", data: {target: "text_#{count}", context: "#{count}"} %>
         </div>
       </div>
     </div>
@@ -40,7 +40,7 @@
           <span class="prefix">size</span>
         </div>
         <div class="small-7 columns">
-          <%= app_form.number_field "font_size_#{count}", { class: "font-size" } %>
+          <%= app_form.number_field "font_size_#{count}", { class: "font-size", data: {target: "text_#{count}", context: "#{count}"} } %>
         </div>
       </div>
     </div>

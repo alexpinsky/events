@@ -18,6 +18,7 @@
 //= require foundation
 //= require pages
 //= require editor
+//= require text_element
 //= require helpers
 //= require categories
 //= require social-share-button

@@ -3,10 +3,10 @@
     <div class="row collapse">
       <div class="row collapse">
         <div class="small-2 columns">
-          <span class="prefix" style="background: <%= text_title_color %>;"><%= title %></span>
+          <span class="prefix"><%= title %></span>
         </div>
         <div class="small-10 columns">
-          <%= event_form.text_field "text_#{count}" %>
+          <%= event_form.text_field "text_#{count}", id: "text_#{count}"%>
         </div>
       </div>
     </div>
@@ -17,30 +17,30 @@
     <div class="small-5 columns font-box box">
       <div class="row collapse prefix-radius">
         <div class="small-3 columns">
-          <span class="prefix" style="background: <%= font_title_color %>;">font</span>
+          <span class="prefix">font</span>
         </div>
         <div class="small-9 columns">
-          <%= app_form.select "font_family_#{count}", options_for_select(fonts_for_select, event.send("font_family_#{count}")), {}, { class: "font_family_#{count}" } %>
+          <%= app_form.select "font_family_#{count}", options_for_select(fonts_for_select, event.send("font_family_#{count}")), {}, { class: "font-family", data: {target: "text_#{count}"} } %>
         </div>
       </div>
     </div>
     <div class="small-4 columns color-box box">
       <div class="row collapse prefix-radius">
         <div class="small-4 columns">
-          <span class="prefix" style="background: <%= color_title_color %>;">color</span>
+          <span class="prefix">color</span>
         </div>
         <div class="small-8 columns">
-          <%= app_form.text_field "font_color_#{count}", class: "minicolors font_color_#{count}" %>
+          <%= app_form.text_field "font_color_#{count}", class: "minicolors font-color" %>
         </div>
       </div>
     </div>
     <div class="small-3 columns size-box box">
       <div class="row collapse prefix-radius">
         <div class="small-5 columns">
-          <span class="prefix" style="background: <%= size_title_color %>;">size</span>
+          <span class="prefix">size</span>
         </div>
         <div class="small-7 columns">
-          <%= app_form.number_field "font_size_#{count}", { class: "font_size_#{count}" } %>
+          <%= app_form.number_field "font_size_#{count}", { class: "font-size" } %>
         </div>
       </div>
     </div>

@@ -7,14 +7,29 @@
     }
   }
   .text-element {
-    span {
-      color: white;
+    .text-area {
+      
     }
-    .box {
-      padding: 0 0.2rem 0;
-      margin: 0;
-      span, input, select{
-        font-size: 0.7rem;
+    .appearance-area {
+      span {
+        color: white;
+      }
+      display: none;
+      .font-box {
+        span { background: rgb(23, 103, 182); }
+      }
+      .color-box {
+        span { background: rgb(43, 128, 209); }
+      }
+      .size-box {
+        span { background: rgb(84, 169, 248); }
+      }
+      .box {
+        padding: 0 0.2rem 0;
+        margin: 0;
+        span, input, select{
+          font-size: 0.7rem;
+        }
       }
     }
   }

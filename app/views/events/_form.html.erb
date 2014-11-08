@@ -4,8 +4,44 @@
     
   <dl class="accordion" data-accordion>
     <dd>
-      <a href="#panel1" class="pannel-text">Text</a>
+      <a href="#panel1" class="pannel-text">Template</a>
       <div id="panel1" class="content">
+        <div class="slider-element">
+          <div class='row'>
+            <div class='small-12 columns'>
+              <a href="#" class="next">></a>
+              <a href="#" class="prev"><</a>
+              <ul>
+              <% @categories.each do |category| %>
+                <li data-category='<%= category.name %>'>
+                  <%= category.name %>
+                  <div class="themes">
+                  <% category.events.themes.each do |theme| %>
+                    <a class="th" href="#">
+                      <img src="<%= theme.preview_url %>">
+                    </a>
+                    <a class="th" href="#">
+                      <img src="<%= theme.preview_url %>">
+                    </a>
+                    <a class="th" href="#">
+                      <img src="<%= theme.preview_url %>">
+                    </a>
+                    <a class="th" href="#">
+                      <img src="<%= theme.preview_url %>">
+                    </a>
+                  <% end %>
+                  </div>
+                </li>
+              <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </dd>
+    <dd>
+      <a href="#panel2" class="pannel-text">Text</a>
+      <div id="panel2" class="content">
         <div class='text-element element-1'>
           <%= 
             render partial: 'text_element',

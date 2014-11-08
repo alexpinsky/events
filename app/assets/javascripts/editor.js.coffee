@@ -4,11 +4,19 @@ class Editor
     @preview = options.preview
 
   init: ->
+    @initTemplatesPart()
     @initTextPart()
     # @initAppearanceListeners()
     # @initUploaders()
     # @initAppearanceListeners()
 
+  initTemplatesPart: ->
+    element = new SliderElement({
+      editor: @editor,
+      preview: @preview
+    })
+    element.init()
+    
   initTextPart: ->
     element = new TextElement({
       editor: @editor,

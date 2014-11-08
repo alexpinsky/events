@@ -28,6 +28,7 @@ class Event < ActiveRecord::Base
   delegate :audio_url, to: :song, allow_nil: true
 
   scope :themes, -> () { where('events.is_theme = ?', true) }
+  scope :by_category, -> (category_name) { joins(:category).where('categories.name = ?', category_name) }
 
   MAX_PICTURES_SIZE = 5
 
@@ -42,12 +43,11 @@ class Event < ActiveRecord::Base
   end
 
   # args: {:user, :categroy, :theme}
-  def self.create_from_theme(args = {})
+  def self.copy_from_theme(args = {})
     event = args[:theme].deep_clone include: :appearance, except: [:is_theme, :name]
     event.user = args[:user]
     event.theme = args[:theme]
     event.is_theme = false
-    event.save
     event
   end
 

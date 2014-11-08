@@ -6,6 +6,35 @@
       text-align: center;
     }
   }
+  .slider-element {
+    overflow: hidden;
+    ul {
+      height: 200px;
+      list-style: none;
+    }
+    li {
+      float: left;
+      width: 20rem;
+      height: 20rem;
+      text-align: center;
+      .themes {
+        .th {
+          width: 40%;
+          margin: 0.5rem;
+        }
+      }
+    }
+    a.next, a.prev {
+      position: absolute;
+      z-index: 999;
+    }
+    a.next {
+      right: 7rem;
+    }
+    a.prev {
+      left: 7rem;
+    }
+  }
   .text-element {
     .text-area {
       

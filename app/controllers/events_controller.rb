@@ -6,15 +6,18 @@ class EventsController < ApplicationController
     @event = Event.new
   end
 
-  def create
+  def new
     category = Category.find params[:category_id]
     theme = category.events.themes.find params[:theme_id]
-    @event = Event.create_from_theme(
+    @event = Event.copy_from_theme(
       category: category, 
       theme: theme, 
       user: current_user
     )
-    redirect_to edit_event_path(@event)
+    @categories = Category.includes(:events).where('events.is_theme = ?', true).references(:events)
+  end
+
+  def create
   end
 
   def show
@@ -84,7 +87,6 @@ private
   end
 
   def set_page_name
-    puts "***** h *****"
     @page_name = 'editor'    
   end
 end

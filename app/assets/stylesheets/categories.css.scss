@@ -39,11 +39,12 @@
         position : relative;
         height: 10rem;
         width: 10rem;
-        .img-container {
-          background-color: green;
+        a.th {
           height: 100%;
-          width: 100%;
-        }
+          img {
+            height: 100%;
+          }
+        } 
         .menu-container {
           visibility: hidden;
           height: 100%;

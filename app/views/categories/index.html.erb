@@ -15,13 +15,13 @@
       <div class='events-tiles'>
         <% category.events.themes.each do |theme| %>
           <div class="event-tile tile">
-            <div class='img-container'>
-              <%= theme.name %>
-            </div>
+            <a class="th" href="#">
+              <img src="<%= theme.preview_url %>">
+            </a>
             <div class='menu-container'>
               <div class='buttons'>
                 <%= link_to 'Preview', event_path(id: theme.id, preview: true), class: "back-btn button small" %>
-                <%= link_to 'Edit', events_path(theme_id: theme.id, category_id: category.id), method: :post, class: "button small" %>
+                <%= link_to 'Edit', new_event_path(theme_id: theme.id, category_id: category.id), class: "button small" %>
               </div>
             </div>
           </div>

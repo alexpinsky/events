@@ -18,10 +18,9 @@
 //= require foundation
 //= require pages
 //= require editor
-//= require text_element
-//= require slider_element
 //= require helpers
 //= require categories
+//= require_tree ./elements
 //= require social-share-button
 //= require foundation-datetimepicker
 //= require file-validator

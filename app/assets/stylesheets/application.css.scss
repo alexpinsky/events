@@ -17,6 +17,7 @@
  *= require fonts
  *= require devise
  *= require categories
+ *= require_tree ./elements
  *= require jquery.minicolors
  *= require social-share-button
  *= require foundation-datepicker

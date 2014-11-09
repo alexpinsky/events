@@ -4,25 +4,29 @@ class Editor
     @preview = options.preview
 
   init: ->
-    @initTemplatesPart()
-    @initTextPart()
+    @initTemplates()
+    @initText()
     # @initAppearanceListeners()
     # @initUploaders()
     # @initAppearanceListeners()
 
-  initTemplatesPart: ->
-    element = new SliderElement({
-      editor: @editor,
-      preview: @preview
-    })
+  initTemplates: ->
+    element = new SliderElement
+      slider_obj: @editor.find('.slider-element')
+    element.themeClick @onThemeClick
     element.init()
     
-  initTextPart: ->
-    element = new TextElement({
+  initText: ->
+    element = new TextElement
       editor: @editor,
       preview: @preview
-    })
     element.init()
+
+  onThemeClick: (args = {}) =>
+    $.ajax
+      url: "/events/new"
+      data: { category_id: args.category, theme_id: args.theme }
+      dataType: "script"
 
   initOldAppearanceListeners: ->
     # background image
@@ -145,5 +149,7 @@ class Editor
         $('#event_form').find("#song_spinner").hide()
 
 $ ->
-  editor = new Editor({editor: $("#editor"), preview: $("#preview")})
+  editor = new Editor
+    editor: $("#editor"), 
+    preview: $("#preview")
   editor.init()

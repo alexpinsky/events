@@ -1,0 +1,31 @@
+<div class="slider-element">
+  <div class='row'>
+    <div class='small-12 columns'>
+      <a href="#" class="next">></a>
+      <a href="#" class="prev"><</a>
+      <ul>
+      <% categories.each do |category| %>
+        <li>
+          <%= category.name %>
+          <div class="themes">
+          <% category.events.themes.each do |theme| %>
+            <a class="th" href="#">
+              <img src="<%= theme.preview_url %>" data-theme="<%= theme.id %>" data-category="<%= category.id %>">
+            </a>
+            <a class="th" href="#">
+              <img src="<%= theme.preview_url %>" data-theme="<%= theme.id %>" data-category="<%= category.id %>">
+            </a>
+            <a class="th" href="#">
+              <img src="<%= theme.preview_url %>" data-theme="<%= theme.id %>" data-category="<%= category.id %>">
+            </a>
+            <a class="th" href="#">
+              <img src="<%= theme.preview_url %>" data-theme="<%= theme.id %>" data-category="<%= category.id %>">
+            </a>
+          <% end %>
+          </div>
+        </li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

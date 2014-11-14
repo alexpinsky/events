@@ -85,3 +85,14 @@ class @TextElement
       target_obj = $(e.target)
       target_id = target_obj.data('target')
       @preview.find('p#' + target_id).css("font-size", (target_obj.val() / 16) + 'rem')
+
+  @rebindValues: (args) =>
+    args.editor.find('.text-area').each (i, text_element) =>
+      text_obj = $(text_element)
+      text_obj.find('input').keyup()
+      appearance_obj = text_obj.siblings('.appearance-area')
+      appearance_obj.find('select.font-family').change()
+      appearance_obj.find('input.font-size').change()
+      color_input = appearance_obj.find('input.minicolors')
+      target_id = color_input.data('target')
+      $("#preview").find("p#" + target_id).css("color", color_input.val())

@@ -1,5 +1,5 @@
-object = $(".new-event");
-// images_object.slideUp();
-object.html('<%= j render partial: "form_and_preview", locals: { event: @event } %>');
-// images_object.slideDown(1000);
+object = $("#preview");
+object.html('<%= j render partial: "themes/#{@event.theme_name}", locals: { event: @event } %>');
 $(document).foundation();
+TextElement.rebindValues({editor: $("#editor")});
+addthisevent.refresh();

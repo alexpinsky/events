@@ -23,5 +23,15 @@
         font-size: 0.7rem;
       }
     }
+    .minicolors {
+      width: 100%;
+      .minicolors-swatch {
+        top: 9px;
+      }
+      .minicolors-input {
+        height: 2.30rem ;
+        width: 100%;
+      }
+    }
   }
 }

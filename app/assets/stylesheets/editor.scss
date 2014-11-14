@@ -17,26 +17,41 @@
       margin-left: 0.5rem;
     }
   }
-  #background_buttons {
-    margin-bottom: 0.5rem;
-    .background_btn {
-      width: 2rem;
-      height: 2rem;
-      display: inline-block;
+  
+  #panel3 {
+    padding: 1rem 0;
+    .pic-element {
+      font-size: 0.8rem;
+      color: #6f6f6f;
+      .background-text, .pictures-text {
+        padding: 0.8rem;
+      }
+      .title {
+        padding: 0.2rem;
+        text-align: center;
+        color: white;
+
+      }
+      .background-title {
+        background: rgb(35, 105, 173);
+      }
+      .pictures-title {
+        background: rgb(40, 132, 194);
+        margin-top: 1rem;
+      }
+      .background-tiles {
+        text-align: center;
+        background: rgb(77, 77, 77);
+        .th {
+          margin: 0.3rem;
+          display: inline-block;
+          border: solid 0.1rem #FFFFFF;
+          img {
+            width: 2rem;
+            height: 2rem;
+          }
+        }
+      }
     }
-  }
-  .minicolors {
-    width: 100%;
-    .minicolors-swatch {
-      top: 9px;
-    }
-    .minicolors-input {
-      height: 2.30rem ;
-      width: 100%;
-    }
-  }
-  .text_explain {
-    font-size: 0.8rem;
-    color: #6f6f6f;
   }
 }

@@ -57,24 +57,30 @@
     <dd>
       <a href="#panel3" class="pannel-text">Photos</a>
       <div id="panel3" class="content">
-        <%= hidden_field_tag :file_type %>
-        <%= hidden_field_tag :first_image %>
-          <div class="text_explain">
-            Upload the photos you want to display.
-            <br>
-            <br>
-            If more than 1 photo is uploaded, it will displayed as a slideshow.
-            <br>
-            <br>
-            Image size should be at most <strong>1MB</strong>. You can optimize the image size at <a href="http://www.imageoptimizer.net/Pages/Home.aspx" target="_blank">imageoptimizer</a>.
+        <div class='pic-element'>
+          <%= hidden_field_tag :file_type %>
+          <%= hidden_field_tag :first_image %>
+          <div class="background-title title">Background</div>
+          <div class="background-text">Choose your favorite background</div>
+          <div class='background-tiles'>
+            <% background_names.each do |background| %>
+              <% background_url = background_collection_url(background) %>
+              <a class="th" href="#">
+                <img src="<%= background_url %>" data-name="<%= background %>" data-url="<%= background_url %>">
+              </a>
+            <% end %>
+            <%= app_form.hidden_field :background_image, id: "background_image" %>
           </div>
+          <div class="pictures-title title">Pictures</div>
+          <div class='pictures-text'>Upload the photos you want to display</div>
+          Image size should be at most <strong>1MB</strong>. You can optimize the image size at <a href="http://www.imageoptimizer.net/Pages/Home.aspx" target="_blank">imageoptimizer</a>.
           <%= event_form.fields_for :pictures, event.pictures.first || event.pictures.build do |pic_form| %>
             <%= pic_form.file_field :image, multiple: true, id: "image_file", class: "fileupload", name: "event[pictures_attributes][image]" %>
           <% end %>
           <div id="images_spinner" class="hide">
             <img src="<%= spinner_path %>">
           </div>
-        </fieldset>
+        </div>
       </div>
     </dd>
     <dd>

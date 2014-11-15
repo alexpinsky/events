@@ -7,6 +7,7 @@
     <meta property="og:image" content="<%= example_events_image_url %>" />
     <title><%= content_for?(:title) ? yield(:title) : "webivite" %></title>
     <%= stylesheet_link_tag  "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
     <%= stylesheet_link_tag  "http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" %>
     <%= csrf_meta_tags %>
   </head>
@@ -77,7 +78,6 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-    <%= javascript_include_tag "vendor/modernizr" %>
     <%= yield(:javascript) %>
     <script type="text/javascript" src="http://js.addthisevent.com/atemay.js"></script>
   </body>

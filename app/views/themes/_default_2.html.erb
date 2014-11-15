@@ -1,17 +1,17 @@
 <div class="event-wrapper row" style="background-image: url(<%= background_collection_url(event.background_image) %>)">
   <div class="small-12 medium-8 large-8 small-centered columns">
-    <div class="images">
-      <% pictures = if event.persisted? %>
-        <% event.pictures %>
-      <% else %>
-        <% event.theme.pictures.slideshow %>
-      <% end %>
-      <%= render partial: 'themes/shared/slideshow', locals: { pictures: pictures } %>
-    </div>
     <div class="primary row">
       <div class="small-12 large-12 large-offset-0 columns">
         <p id="text_1" style="font-family: <%= event.font_family_1 %>;color: <%= event.font_color_1 %>;font-size: <%= px_to_rem(event.font_size_1) %>rem;"><%= event.text_1 %></p>
       </div>
+    </div>
+    <div class="images">
+      <% picture = if event.persisted? %>
+        <% event.pictures.first %>
+      <% else %>
+        <% event.theme.pictures.first %>
+      <% end %>
+      <img src="<%= picture.image_url %>" />
     </div>
     <div class="secondary row">
       <div class="small-12 columns">

@@ -44,7 +44,7 @@ class Event < ActiveRecord::Base
 
   # args: {:user, :categroy, :theme}
   def self.copy_from_theme(args = {})
-    event = args[:theme].deep_clone include: :appearance, except: [:is_theme, :name]
+    event = args[:theme].deep_clone include: [:appearance], except: [:is_theme, :name]
     event.user = args[:user]
     event.theme = args[:theme]
     event.is_theme = false

@@ -11,7 +11,6 @@ gem 'devise'
 gem 'foundation-rails'
 gem 'faker'
 gem 'carrierwave'
-gem "jquery-fileupload-rails"
 gem "mini_magick"
 gem 'fog'
 gem "figaro"

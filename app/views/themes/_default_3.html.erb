@@ -11,7 +11,7 @@
       <% else %>
         <% event.theme.pictures %>
       <% end %>
-      <img src="<%= pictures.by_order(1).image_url %>" />
+      <img id='pic-1' src="<%= pictures.by_order(1).image_url %>" />
     </div>
     <div class="secondary row">
       <div class="small-12 columns">
@@ -24,7 +24,7 @@
       </div>
     </div>
     <div class="images">
-      <img src="<%= pictures.by_order(2).image_url %>" />
+      <%= render partial: 'themes/shared/slideshow', locals: { pictures: pictures.slideshow.ordered } %>
     </div>
     <div class="calendar row">
       <div class="small-12 columns">

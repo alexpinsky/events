@@ -1,0 +1,18 @@
+.background-element {
+  .background-text {
+    padding: 0.8rem;
+  }
+  .background-tiles {
+    text-align: center;
+    background: rgb(77, 77, 77);
+    .th {
+      margin: 0.3rem;
+      display: inline-block;
+      border: solid 0.1rem #FFFFFF;
+      img {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+  }
+}

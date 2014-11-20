@@ -11,9 +11,7 @@
     <div class="single-event row">
       <div class="event-thumbnail large-4 columns" style="background-image: url(<%= background_collection_url(event.background_image) %>)">
         <!-- render slim view of event -->
-        <% font_family = event.font_family || "Arial" %>
-        <% font_color = event.font_color || "#fff" %>
-        <%= render partial: "themes/#{@theme}", locals: { event: event, font_family: font_family, font_color: font_color } %>
+        <%= render partial: "themes/#{event.theme_name}", locals: { event: event } %>
       </div>
       <div class="event-details large-8 columns">
         <div class="row">

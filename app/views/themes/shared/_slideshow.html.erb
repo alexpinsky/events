@@ -1,14 +1,12 @@
 <% if pictures.size > 1 %>
   <ul class="example-orbit" data-orbit data-options="timer_speed:4000;animation_speed:1000;pause_on_hover:false;navigation_arrows:false;bullets:false;slide_number:false;timer_progress_class:false;">
-    <% count = 1 %>
-    <% pictures.each do |pic| %>
+    <% pictures.each_with_index do |pic, i| %>
       <li>
-        <img src="<%= pic.image_url %>" alt="slide <%= count %>" />
+        <img id='pic-<%= pic.order %>' src="<%= pic.image_url %>" alt="slide <%= i + 1 %>" />
       </li>
-      <% count += 1 %>
     <% end %>
   </ul>
 <% else %>
   <% picture = pictures.first %>
-  <img src="<%= picture.image_url %>" />
+  <img id='pic-<%= picture.try(:order) %>' src="<%= picture.try(:image_url) %>" />
 <% end %>

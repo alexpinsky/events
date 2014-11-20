@@ -1,0 +1,34 @@
+<div class='pics-element'>
+  <div class='pictures-text'>Upload the photos you want to display</div>
+  <div class="pictures-tiles">
+    <% num_of_pics = event.theme.pictures.count %>
+    <% slideshow_pics_count = 0 %>
+    <% non_slideshow_pics_count = 0 %>
+    <% num_of_pics.times do |i| %>
+      <% index = i + 1 %>
+      <% pic_url = event.pictures.by_order(index).try(:image_url) %>
+      <% if event.theme.pictures.by_order(index).try(:slideshow) %>
+        <% slideshow_pics_count += 1  %>
+      <% else %>
+        <% non_slideshow_pics_count += 1  %>
+      <% end %>
+      <div class='pic-wrapper'>
+        <div class='pic-num'><%= index %></div>
+        <div id='tile-<%= index %>' class="tile">
+          <% if pic_url %>
+            <a class="th remove-pic" href="#" data-order='<%= index %>'><i class="icon-remove"></i></a>
+          <% else %>
+            <a class="th add-pic" href="#" data-order='<%= index %>'><i class="icon-plus"></i></a>
+          <% end %>
+          <img src="<%= pic_url %>"></img>
+        </div>
+      </div>
+    <% end %>
+    <% if slideshow_pics_count > 0 %>
+    <div class='slideshow-wrapper' style="width: <%= 3.9 * slideshow_pics_count %>rem; margin-left: <%= 3.9 * non_slideshow_pics_count %>rem;">slideshow</div>
+    <% end %>
+  </div>
+  <div class='size-text'>
+    Image size should be at most <strong>1MB</strong>. You can optimize the image size at <a href="http://www.imageoptimizer.net/Pages/Home.aspx" target="_blank">imageoptimizer</a>.
+  </div>
+</div>

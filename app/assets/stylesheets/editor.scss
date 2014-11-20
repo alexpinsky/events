@@ -5,27 +5,10 @@
     .pannel-text {
       text-align: center;
     }
-  }
-  .save-publish-btn {
-    @include button();
-    background-color: #62CC88;
-    border-radius: 8px;
-  }
-  .form-actions {
-    margin-top: 1.25rem;
-    .back-btn {
-      margin-left: 0.5rem;
-    }
-  }
-  
-  #panel3 {
-    padding: 1rem 0;
-    .pic-element {
+    #panel3 {
+      padding: 1rem 0;
       font-size: 0.8rem;
       color: #6f6f6f;
-      .background-text, .pictures-text {
-        padding: 0.8rem;
-      }
       .title {
         padding: 0.2rem;
         text-align: center;
@@ -39,19 +22,17 @@
         background: rgb(40, 132, 194);
         margin-top: 1rem;
       }
-      .background-tiles {
-        text-align: center;
-        background: rgb(77, 77, 77);
-        .th {
-          margin: 0.3rem;
-          display: inline-block;
-          border: solid 0.1rem #FFFFFF;
-          img {
-            width: 2rem;
-            height: 2rem;
-          }
-        }
-      }
+    }
+  }
+  .save-publish-btn {
+    @include button();
+    background-color: #62CC88;
+    border-radius: 8px;
+  }
+  .form-actions {
+    margin-top: 1.25rem;
+    .back-btn {
+      margin-left: 0.5rem;
     }
   }
 }

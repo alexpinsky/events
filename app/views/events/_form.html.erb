@@ -1,101 +1,97 @@
 <%= form_for event, html: { id: "event_form" } do |event_form| %>
   <%= event_form.submit 'Save & Publish', class: "save-publish-btn button expand" %>
+  <%= event_form.hidden_field :theme_id %>
+  <%= event_form.hidden_field :category_id %>
     <%= event_form.fields_for :appearance, event.appearance do |app_form| %>
-    
-  <dl class="accordion" data-accordion>
-    <dd>
-      <a href="#panel1" class="pannel-text">Template</a>
-      <div id="panel1" class="content">
-        <%= 
-          render partial: 'elements/slider_element',
-          locals: {
-            categories: @categories
-          }
-        %>
-      </div>
-    </dd>
-    <dd>
-      <a href="#panel2" class="pannel-text">Text</a>
-      <div id="panel2" class="content">
-        <div class='text-element element-1'>
+    <dl class="accordion" data-accordion>
+      <dd>
+        <a href="#panel1" class="pannel-text">Template</a>
+        <div id="panel1" class="content">
           <%= 
-            render partial: 'elements/text_element',
-              locals: {
-                event_form: event_form, 
-                app_form: app_form, 
-                event: event, 
-                title: '1st', 
-                count: '1'
-              } 
+            render partial: 'elements/slider_element',
+            locals: {
+              categories: @categories
+            }
           %>
         </div>
-        <div class='text-element element-2'>
-          <%= 
-            render partial: 'elements/text_element',
-              locals: {
-                event_form: event_form, 
-                app_form: app_form, 
-                event: event, 
-                title: '2nd', 
-                count: '2'
-              } 
-          %>
-        </div>
-        <div class='text-element element-3'>
-          <%= 
-            render partial: 'elements/text_element',
-              locals: {
-                event_form: event_form, 
-                app_form: app_form, 
-                event: event, 
-                title: '3rd', 
-                count: '3'
-              } 
-          %>
-        </div>
-    </dd>
-    <dd>
-      <a href="#panel3" class="pannel-text">Photos</a>
-      <div id="panel3" class="content">
-        <div class='pic-element'>
-          <%= hidden_field_tag :file_type %>
-          <%= hidden_field_tag :first_image %>
+      </dd>
+      <dd>
+        <a href="#panel2" class="pannel-text">Text</a>
+        <div id="panel2" class="content">
+          <div class='text-element element-1'>
+            <%= 
+              render partial: 'elements/text_element',
+                locals: {
+                  event_form: event_form, 
+                  app_form: app_form, 
+                  event: event, 
+                  title: '1st', 
+                  count: '1'
+                } 
+            %>
+          </div>
+          <div class='text-element element-2'>
+            <%= 
+              render partial: 'elements/text_element',
+                locals: {
+                  event_form: event_form, 
+                  app_form: app_form, 
+                  event: event, 
+                  title: '2nd', 
+                  count: '2'
+                } 
+            %>
+          </div>
+          <div class='text-element element-3'>
+            <%= 
+              render partial: 'elements/text_element',
+                locals: {
+                  event_form: event_form, 
+                  app_form: app_form, 
+                  event: event, 
+                  title: '3rd', 
+                  count: '3'
+                } 
+            %>
+          </div>
+      </dd>
+      <dd>
+        <a href="#panel3" class="pannel-text">Background & Pics</a>
+        <div id="panel3" class="content">
           <div class="background-title title">Background</div>
-          <div class="background-text">Choose your favorite background</div>
-          <div class='background-tiles'>
-            <% background_names.each do |background| %>
-              <% background_url = background_collection_url(background) %>
-              <a class="th" href="#">
-                <img src="<%= background_url %>" data-name="<%= background %>" data-url="<%= background_url %>">
-              </a>
-            <% end %>
-            <%= app_form.hidden_field :background_image, id: "background_image" %>
-          </div>
+          <%= 
+            render partial: 'elements/background_element', 
+              locals: {
+                app_form: app_form
+              }
+          %>
           <div class="pictures-title title">Pictures</div>
-          <div class='pictures-text'>Upload the photos you want to display</div>
-          Image size should be at most <strong>1MB</strong>. You can optimize the image size at <a href="http://www.imageoptimizer.net/Pages/Home.aspx" target="_blank">imageoptimizer</a>.
-          <%= event_form.fields_for :pictures, event.pictures.first || event.pictures.build do |pic_form| %>
-            <%= pic_form.file_field :image, multiple: true, id: "image_file", class: "fileupload", name: "event[pictures_attributes][image]" %>
+          <%= 
+            render partial: 'elements/pics_element', 
+              locals: {
+                event: event
+              }
+          %>
+          <%= event_form.fields_for :pictures, event.pictures do |pic_form| %>
+            <%= pic_form.file_field :image, id: "image-file-#{pic_form.object.order}", class: "image-file",hidden: true, data: { order: pic_form.object.order } %>
+            <%= pic_form.hidden_field :slideshow %>
+            <%= pic_form.hidden_field :order %>
           <% end %>
-          <div id="images_spinner" class="hide">
-            <img src="<%= spinner_path %>">
-          </div>
         </div>
-      </div>
-    </dd>
-    <dd>
-      <a href="#panel4" class="pannel-text">Information</a>
-      <div id="panel4" class="content">
-        <p class="text_explain">
-          Add your event information to synchronize your guests calendars.
-        </p>
-        <!-- render partial: 'information_fields', locals: { event: event, event_form: event_form }  -->
-      </div>
-    </dd>
-  </dl>
-  <div class="form-actions">
-    <%= event_form.submit 'Save', class: "button small" %>
-    <%= link_to 'Back', events_path, class: "back-btn button small" %>
-  </div>
+      </dd>
+      <dd>
+        <a href="#panel4" class="pannel-text">Information</a>
+        <div id="panel4" class="content">
+          <p class="text_explain">
+            Add your event information to synchronize your guests calendars.
+          </p>
+          <!-- render partial: 'information_fields', locals: { event: event, event_form: event_form }  -->
+        </div>
+      </dd>
+    </dl>
+    <div class="form-actions">
+      <%= event_form.submit 'Save', class: "button small" %>
+      <%= link_to 'Back', events_path, class: "back-btn button small" %>
+    </div>
   <% end %>
 <% end %>

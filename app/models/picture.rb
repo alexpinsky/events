@@ -12,4 +12,5 @@ class Picture < ActiveRecord::Base
 
   scope :slideshow, -> () { where('pictures.slideshow = ?', true) }
   scope :by_order, -> (order) { where('pictures.order = ?', order).first }
+  scope :ordered, -> () { order('pictures.order ASC') }
 end

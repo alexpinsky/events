@@ -2,9 +2,9 @@
   <div class="small-12 medium-8 large-8 small-centered columns">
     <div class="images">
       <% pictures = if event.persisted? %>
-        <% event.pictures %>
+        <% event.pictures.ordered %>
       <% else %>
-        <% event.theme.pictures.slideshow %>
+        <% event.theme.pictures.slideshow.ordered %>
       <% end %>
       <%= render partial: 'themes/shared/slideshow', locals: { pictures: pictures } %>
     </div>

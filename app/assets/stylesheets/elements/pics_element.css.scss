@@ -1,0 +1,34 @@
+.pics-element {
+  .pictures-text, .size-text {
+    padding: 0.8rem;
+  }
+  .pictures-tiles {
+    padding: 0 0.8rem;
+    .pic-wrapper {
+      display: inline-block;
+    }
+    .pic-num {
+      margin-left: 1.6rem;
+    }
+    .tile {
+      margin: 0.3rem;
+      border: solid 0.1rem rgb(176, 168, 168);
+      .th {
+        position: absolute;
+        background: white;
+        border: none;
+        .icon-remove {
+          color: red
+        }
+      }
+      img {
+        width: 3rem;
+        height: 3rem;
+      }
+    }
+    .slideshow-wrapper {
+      border-top: solid 0.1rem black;
+      text-align: center;
+    }
+  }
+}

@@ -43,12 +43,22 @@ class Event < ActiveRecord::Base
   end
 
   # args: {:user, :categroy, :theme}
-  def self.copy_from_theme(args = {})
-    event = args[:theme].deep_clone include: [:appearance], except: [:is_theme, :name]
+  def self.copy_from_theme(args)
+    event = args[:theme].deep_clone include: :appearance, except: [:is_theme, :name]
     event.user = args[:user]
     event.theme = args[:theme]
     event.is_theme = false
+    args[:theme].pictures.each do |pic|
+      event.pictures.new(order: pic.order, slideshow: pic.slideshow)
+    end
     event
+  end
+
+  # args: {:event, :theme}
+  def self.update_from_theme(args)
+    existing_pic_orders = args[:event].pictures.map(&:order)
+    missing_pics = args[:theme].pictures.where('pictures.order NOT IN (?)', existing_pic_orders)
+    missing_pics.each { |pic| args[:event].pictures.new(order: pic.order, slideshow: pic.slideshow) }
   end
 
   def set_url_hash

@@ -1,4 +1,7 @@
+require 'action_view/helpers/javascript_helper'
+
 class EventsController < ApplicationController
+  include ActionView::Helpers::JavaScriptHelper
   skip_before_filter :authenticate_user!, only: [:show]
 
   def index
@@ -18,6 +21,16 @@ class EventsController < ApplicationController
   end
 
   def create
+    @event = current_user.events.new(event_params.merge({is_theme: false}))
+    if @event.save
+      redirect_to events_path
+      flash[:success] = "Event was successfully created"
+    else
+      error_msg = escape_javascript("Failed to create the Event.\n#{@event.errors.full_messages.join('\n,')}")
+      @categories = Category.includes(:events).where('events.is_theme = ?', true).references(:events)
+      flash[:alert] = error_msg
+      render :new
+    end
   end
 
   def show
@@ -33,30 +46,20 @@ class EventsController < ApplicationController
 
   def edit
     @event = current_user.events.includes(:pictures, :appearance, :information).find params[:id]
+    Event.update_from_theme(event: @event, theme: @event.theme)
+    @categories = Category.includes(:events).where('events.is_theme = ?', true).references(:events)
   end
 
   def update
     @event = current_user.events.find params[:id]
-    respond_to do |format|
-      format.html do
-        if @event.update_attributes(event_params.except(:pictures_attributes, :song_attributes))
-          redirect_to events_path
-          flash[:success] = "Event was successfully updated"
-        else
-          flash[:alert] = "bla bla bla"
-          render :edit
-        end
-      end
-      format.js do
-        # assets creation
-        result = {}
-        if params[:file_type] == "image"
-          result = @event.add_pictures(event_params[:pictures_attributes], params[:first_image] == 'true')
-        else
-          result = @event.add_song(event_params[:song_attributes])
-        end
-        render json: { error: result[:error], success: result[:success] }, :status => :ok
-      end
+    if @event.update_attributes(event_params)
+      redirect_to events_path
+      flash[:success] = "Event was successfully updated"
+    else
+      error_msg = escape_javascript("Failed to update the Event.\n#{@event.errors.full_messages.join('\n,')}")
+      @categories = Category.includes(:events).where('events.is_theme = ?', true).references(:events)
+      flash[:alert] = error_msg
+      render :edit
     end
   end
 
@@ -83,7 +86,12 @@ class EventsController < ApplicationController
 private
 
   def event_params
-    params.require(:event).permit(:name, :primary_text, :secondary_text, :extra_text, pictures_attributes: [:id, :image], appearance_attributes: [:id, :background_image, :font_family, :font_color], information_attributes: [:id, :summary, :location, :organizer, :organizer_email, :time_zone, :start_time, :end_time], song_attributes: [:id, :audio])
+    sanitaized_params.require(:event).permit(:id, :theme_id, :category_id, :text_1, :text_2, :text_3, pictures_attributes: [:id, :image, :order, :slideshow], appearance_attributes: [:id, :font_family_1, :font_color_1, :font_size_1, :font_family_2, :font_color_2, :font_size_2, :font_family_3, :font_color_3, :font_size_3, :background_image], information_attributes: [:id, :summary, :location, :organizer, :organizer_email, :time_zone, :start_time, :end_time])
+  end
+
+  def sanitaized_params
+    params[:event][:pictures_attributes].delete_if { |key, value| value[:image].blank? }
+    params
   end
 
   def set_page_name

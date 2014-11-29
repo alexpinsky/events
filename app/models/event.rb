@@ -42,7 +42,7 @@ class Event < ActiveRecord::Base
     nil
   end
 
-  # args: {:user, :categroy, :theme}
+  # args: {:user, :theme}
   def self.copy_from_theme(args)
     event = args[:theme].deep_clone include: :appearance, except: [:is_theme, :name]
     event.user = args[:user]
@@ -56,9 +56,26 @@ class Event < ActiveRecord::Base
 
   # args: {:event, :theme}
   def self.update_from_theme(args)
-    existing_pic_orders = args[:event].pictures.map(&:order)
-    missing_pics = args[:theme].pictures.where('pictures.order NOT IN (?)', existing_pic_orders)
-    missing_pics.each { |pic| args[:event].pictures.new(order: pic.order, slideshow: pic.slideshow) }
+    event = args[:event]
+    theme = args[:theme]
+    if theme
+      # for change in theme
+      event_appearance = event.appearance
+      old_appearance = event_appearance.deep_clone
+      old_appearance.id = event_appearance.id
+      event.theme_id = theme.id
+      event_appearance.assign_attributes(theme.appearance.attributes)
+      event_appearance.id = old_appearance.id
+    end
+    theme ||= event.theme
+    existing_pic_orders = event.pictures.map(&:order)
+    missing_pics = theme.pictures.where('pictures.order NOT IN (?)', existing_pic_orders)
+    missing_pics.each do |pic| 
+      event.pictures.new(
+        order: pic.order, 
+        slideshow: pic.slideshow
+      )
+    end
   end
 
   def set_url_hash

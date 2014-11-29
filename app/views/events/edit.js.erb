@@ -1,4 +1,4 @@
-$(".new-event").html('<%= j render partial: "form_and_preview", locals: { event: @event } %>');
+$(".edit-event").html('<%= j render partial: "form_and_preview", locals: { event: @event } %>');
 addthisevent.refresh();
 $(document).foundation();
 editor = new Editor({editor: $("#editor"), preview: $("#preview")})

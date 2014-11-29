@@ -9,6 +9,17 @@ class EventsController < ApplicationController
     @event = Event.new
   end
 
+  def show
+    id = params[:id].to_i
+    @preview = params[:preview].present? ? true : false
+    if id == 0
+      @event = Event.find_by_url params[:id]
+    else
+      @event = Event.find id
+    end
+    render layout: "display"
+  end
+
   def new
     category = Category.find params[:category_id]
     theme = category.events.themes.find params[:theme_id]
@@ -32,21 +43,13 @@ class EventsController < ApplicationController
       render :new
     end
   end
-
-  def show
-    id = params[:id].to_i
-    @preview = params[:preview].present? ? true : false
-    if id == 0
-      @event = Event.find_by_url params[:id]
-    else
-      @event = Event.find id
-    end
-    render layout: "display"
-  end
-
+  
   def edit
-    @event = current_user.events.includes(:pictures, :appearance, :information).find params[:id]
-    Event.update_from_theme(event: @event, theme: @event.theme)
+    @event = current_user.events.includes(:pictures, :appearance, :information).find(params[:id])
+    Event.update_from_theme(
+      event: @event,
+      theme: Event.themes.find_by_id(params[:theme_id])
+    )
     @categories = Category.includes(:events).where('events.is_theme = ?', true).references(:events)
   end
 

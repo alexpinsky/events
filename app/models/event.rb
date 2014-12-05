@@ -51,6 +51,7 @@ class Event < ActiveRecord::Base
     args[:theme].pictures.each do |pic|
       event.pictures.new(order: pic.order, slideshow: pic.slideshow)
     end
+    event.information = Information.new(in_use: true)
     event
   end
 
@@ -68,6 +69,7 @@ class Event < ActiveRecord::Base
       event_appearance.id = old_appearance.id
     end
     theme ||= event.theme
+    event.information ||= Information.new(in_use: true)
     existing_pic_orders = event.pictures.map(&:order)
     missing_pics = theme.pictures.where('pictures.order NOT IN (?)', existing_pic_orders)
     missing_pics.each do |pic| 

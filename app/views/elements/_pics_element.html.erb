@@ -7,14 +7,15 @@
     <% num_of_pics.times do |i| %>
       <% index = i + 1 %>
       <% pic_url = event.pictures.by_order(index).try(:image_url) %>
-      <% if event.theme.pictures.by_order(index).try(:slideshow) %>
+      <% default_pic = event.theme.pictures.by_order(index) %>
+      <% if default_pic.try(:slideshow) %>
         <% slideshow_pics_count += 1  %>
       <% else %>
         <% non_slideshow_pics_count += 1  %>
       <% end %>
       <div class='pic-wrapper'>
         <div class='pic-num'><%= index %></div>
-        <div id='tile-<%= index %>' class="tile">
+        <div id='tile-<%= index %>' class="tile" data-default="<%= default_pic.try(:image_url) %>">
           <% if pic_url %>
             <a class="th remove-pic" href="#" data-order='<%= index %>'><i class="icon-remove"></i></a>
           <% else %>

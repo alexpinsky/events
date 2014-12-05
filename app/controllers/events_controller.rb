@@ -89,11 +89,13 @@ class EventsController < ApplicationController
 private
 
   def event_params
-    sanitaized_params.require(:event).permit(:id, :theme_id, :category_id, :text_1, :text_2, :text_3, pictures_attributes: [:id, :image, :order, :slideshow], appearance_attributes: [:id, :font_family_1, :font_color_1, :font_size_1, :font_family_2, :font_color_2, :font_size_2, :font_family_3, :font_color_3, :font_size_3, :background_image], information_attributes: [:id, :summary, :location, :organizer, :organizer_email, :time_zone, :start_time, :end_time])
+    sanitaized_params.require(:event).permit(:id, :theme_id, :category_id, :text_1, :text_2, :text_3, pictures_attributes: [:id, :image, :order, :slideshow], appearance_attributes: [:id, :font_family_1, :font_color_1, :font_size_1, :font_family_2, :font_color_2, :font_size_2, :font_family_3, :font_color_3, :font_size_3, :background_image], information_attributes: [:id, :in_use, :summary, :location, :organizer, :organizer_email, :time_zone, :start_time, :end_time])
   end
 
   def sanitaized_params
     params[:event][:pictures_attributes].delete_if { |key, value| value[:image].blank? }
+    in_use = params[:event][:information_attributes][:in_use]
+    params[:event][:information_attributes][:in_use] = in_use == 'true'
     params
   end
 

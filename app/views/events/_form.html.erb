@@ -6,7 +6,7 @@
     <dl class="accordion" data-accordion>
       <dd>
         <a href="#panel1" class="pannel-text">Template</a>
-        <div id="panel1" class="content">
+        <div id="panel1" class="content active">
           <%= 
             render partial: 'elements/slider_element',
             locals: {
@@ -82,12 +82,14 @@
         </div>
       </dd>
       <dd>
-        <a href="#panel4" class="pannel-text">Information</a>
+        <a href="#panel4" class="pannel-text">Sync Calendar</a>
         <div id="panel4" class="content">
-          <p class="text_explain">
-            Add your event information to synchronize your guests calendars.
-          </p>
-          <!-- render partial: 'information_fields', locals: { event: event, event_form: event_form }  -->
+          <%= render partial: 'elements/calendar_element',
+            locals: { 
+              event: event,
+              event_form: event_form 
+            } 
+          %>
         </div>
       </dd>
     </dl>

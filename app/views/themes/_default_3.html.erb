@@ -26,7 +26,8 @@
     <div class="images">
       <%= render partial: 'themes/shared/slideshow', locals: { pictures: pictures.slideshow.ordered } %>
     </div>
-    <div class="calendar row">
+    <div class="calendar row" style="visibility
+    : <%= event_visibility(event) %>">
       <div class="small-12 columns">
         <%= render partial: 'themes/shared/calendar', locals: {event: event} %>
       </div>

@@ -8,38 +8,7 @@ class @Editor
     @initText()
     @initBackground()
     @initPics()
-
-  @rebind: ->
-    # editor = $('#editor')
-    # preview = $('#preview')
-    # @rebindText(editor: editor, preview: preview)
-    # @rebindBackground(editor: editor, preview: preview)
-    # @rebindPics(editor: editor, preview: preview)
-
-  @rebindText: (args) ->
-    args.editor.find('.text-area').each (i, text_element) =>
-      text_obj = $(text_element)
-      text_obj.find('input').keyup()
-      appearance_obj = text_obj.siblings('.appearance-area')
-      appearance_obj.find('select.font-family').change()
-      appearance_obj.find('input.font-size').change()
-      color_input = appearance_obj.find('input.minicolors')
-      target_id = color_input.data('target')
-      args.preview.find("p#" + target_id).css("color", color_input.val())
-
-  @rebindBackground: (args) ->
-    backgroundName = args.editor.find("#background_image").val()
-    backgroundUrl = null
-    args.editor.find('.background-element a.th').each (index, element) =>
-      elementObj = $(element)
-      if elementObj.data('name') == backgroundName
-        backgroundUrl = elementObj.data('url')
-        false
-    args.preview.find('.event-wrapper').css("background-image", 'url(' + backgroundUrl + ')')
-
-  @rebindPics: (args) ->
-    args.editor.find('.pictures-tiles .pic-wrapper img').each (i, element) =>
-      console.log element
+    @initCalendar()
 
   initTemplates: ->
     element = new SliderElement
@@ -78,12 +47,19 @@ class @Editor
       preview: @preview
     element.init()
 
-  initImageValidators: (obj) ->
-    obj.fileValidator
-      maxSize: '1m',
-      type: 'image',
-      onInvalid: (validationType, file) ->
-        file['invalid'] = true
+  initCalendar: ->
+    element = new CalendarElement
+      calendarObj: @editor.find('.calendar-element')
+    element.check @onCheckCalendar
+    element.uncheck @onUncheckCalendar
+    element.init()
+
+  # initImageValidators: (obj) ->
+  #   obj.fileValidator
+  #     maxSize: '1m',
+  #     type: 'image',
+  #     onInvalid: (validationType, file) ->
+  #       file['invalid'] = true
 
   onThemeClick: (args = {}) =>
     eventId = $('.edit-event').data('event')
@@ -107,11 +83,19 @@ class @Editor
   onRemoveImage: (args = {}) =>
     fileInput = @editor.find('#image-file-' + args.picOrder)
     fileInput.val('')
-    @changePreviewImage(order: args.picOrder, imgUrl: '')
+    defaultUrl = @editor.find('.pic-wrapper #tile-' + args.picOrder).data('default')
+    console.log defaultUrl
+    @changePreviewImage(order: args.picOrder, imgUrl: defaultUrl)
 
   changePreviewImage: (args = {}) =>
     img = @preview.find('.images #pic-' + args.order)
     img.attr('src', args.imgUrl);
+
+  onCheckCalendar: =>
+    @preview.find('.calendar').css('visibility', 'visible')
+
+  onUncheckCalendar: =>
+    @preview.find('.calendar').css('visibility', 'hidden')
 
 $ ->
   editor = new Editor

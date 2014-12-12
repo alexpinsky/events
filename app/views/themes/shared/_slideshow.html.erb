@@ -1,12 +1,7 @@
-<% if pictures.size > 1 %>
-  <ul class="example-orbit" data-orbit data-options="timer_speed:4000;animation_speed:1000;pause_on_hover:false;navigation_arrows:false;bullets:false;slide_number:false;timer_progress_class:false;">
-    <% pictures.each_with_index do |pic, i| %>
-      <li>
-        <img id='pic-<%= pic.order %>' src="<%= pic.image_url %>" alt="slide <%= i + 1 %>" />
-      </li>
-    <% end %>
-  </ul>
-<% else %>
-  <% picture = pictures.first %>
-  <img id='pic-<%= picture.try(:order) %>' src="<%= picture.try(:image_url) %>" />
-<% end %>
+<ul class="example-orbit" data-orbit data-options="timer_speed:4000;animation_speed:1000;pause_on_hover:false;navigation_arrows:false;bullets:false;slide_number:false;timer_progress_class:false;">
+  <% slideshow_pics_for(event).each_with_index do |pic, i| %>
+    <li>
+      <img id='pic-<%= pic.order %>' src="<%= image_url(event, pic.order) %>" alt="slide <%= i + 1 %>" />
+    </li>
+  <% end %>
+</ul>

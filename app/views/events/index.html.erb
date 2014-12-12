@@ -2,9 +2,7 @@
   <div class="header row">
     <div class="my-events-header large-4 columns">My Events</div>
     <div class="create-event large-offset-6 large-2 columns">
-      <%= form_for @event do |event_form| %>
-        <%= event_form.submit class: "button small" %>
-      <% end %>
+      <%= link_to 'Create New', new_event_path, class: "button small" %>
     </div>    
   </div>
   <% @events.each do |event| %>

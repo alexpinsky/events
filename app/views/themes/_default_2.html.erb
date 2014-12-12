@@ -6,12 +6,7 @@
       </div>
     </div>
     <div class="images">
-      <% picture = if event.persisted? %>
-        <% event.pictures.first %>
-      <% else %>
-        <% event.theme.pictures.first %>
-      <% end %>
-      <img src="<%= picture.image_url %>" id='pic-<%= picture.order %>'/>
+      <img id='pic-1' src="<%= image_url(event, 1) %>" />
     </div>
     <div class="secondary row">
       <div class="small-12 columns">
@@ -20,7 +15,7 @@
     </div>
     <div class="extra row">
       <div class="small-12 columns">
-        <p id="text_3" style="font-family: <%= event.font_family_3 %>;color: <%= event.font_color_3 %>;ffont-size: <%= px_to_rem(event.font_size_3) %>rem;"><%= event.text_3 %></p>
+        <p id="text_3" style="font-family: <%= event.font_family_3 %>;color: <%= event.font_color_3 %>;font-size: <%= px_to_rem(event.font_size_3) %>rem;"><%= event.text_3 %></p>
       </div>
     </div>
     <div class="calendar row" style="visibility

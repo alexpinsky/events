@@ -5,7 +5,10 @@ class @PicsElement
   init: ->
     @picsObj.find('a.add-pic').click @onAddPicClick
     @picsObj.find('a.remove-pic').click @onRemovePicClick
-      
+
+  setPic: (order, url) ->
+    @changePreview(order: order, imgUrl: url)
+
   onAddPicClick: (e) =>
     e.preventDefault()
     @addHandler(picOrder: $(e.currentTarget).data('order'))

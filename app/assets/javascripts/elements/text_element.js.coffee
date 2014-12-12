@@ -1,7 +1,6 @@
 class @TextElement
   constructor: (options = {}) ->
     @editor = options.editor
-    @preview = options.preview
 
   init: ->
     @editor.find('.text-area').each (i, text_element) =>
@@ -25,6 +24,24 @@ class @TextElement
         text_obj: text_obj,
         appearance_obj: appearance_obj
       })
+
+  setText: (targetId, val) =>
+    if val
+      input = @editor.find('.text-area input#' + targetId)
+      input.val(val)
+      input.trigger('keyup')
+
+  textChange: (handler) ->
+    @textHandler = handler
+
+  fontChange: (handler) ->
+    @fontHandler = handler
+
+  sizeChange: (handler) ->
+    @sizeHandler = handler
+
+  colorChange: (handler) ->
+    @colorHandler = handler
 
   initTextChangeListeners: (args = {}) =>
     args.input_obj.focus (e) =>
@@ -64,14 +81,19 @@ class @TextElement
     appearance_obj.slideUp()
 
   onTextKeyup: (e) =>
-    target_obj = $(e.target)
-    @preview.find("#" + target_obj.data('target')).text(target_obj.val())
+    target = $(e.target)
+    @textHandler(
+      targetId: target.data('target') 
+      val: target.val()
+    ) if @textHandler
 
   initFontChangeListeners: (args = {}) =>
     args.appearance_obj.find('select.font-family').change (e) =>
-      target_obj = $(e.target)
-      target_id = target_obj.data('target')
-      @preview.find('p#' + target_id).css("font-family", target_obj.val())
+      target = $(e.target)
+      @fontHandler(
+        targetId: target.data('target')
+        val: target.val()
+      ) if @fontHandler
 
   initColorListeners: (args = {}) =>
     args.appearance_obj.find('input.minicolors').minicolors 
@@ -82,6 +104,8 @@ class @TextElement
 
   initSizeListeners: (args = {}) =>
     args.appearance_obj.find('input.font-size').change (e) =>
-      target_obj = $(e.target)
-      target_id = target_obj.data('target')
-      @preview.find('p#' + target_id).css("font-size", (target_obj.val() / 16) + 'rem')
+      target = $(e.target)
+      @sizeHandler(
+        targetId: target.data('target')
+        val: target.val()
+      ) if @sizeHandler

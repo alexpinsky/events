@@ -9,7 +9,7 @@ class Event < ActiveRecord::Base
   has_one :song, as: :listenable, dependent: :destroy
   has_one :information, dependent: :destroy
 
-  accepts_nested_attributes_for :pictures, :appearance, :information, :song
+  accepts_nested_attributes_for :pictures, :appearance, :information, :song, allow_destroy: true
 
   delegate :background_image, 
     :font_family_1, 
@@ -70,7 +70,7 @@ class Event < ActiveRecord::Base
     end
     theme ||= event.theme
     event.information ||= Information.new(in_use: true)
-    existing_pic_orders = event.pictures.map(&:order)
+    existing_pic_orders = event.pictures.map(&:order) + [0] # => escape null
     missing_pics = theme.pictures.where('pictures.order NOT IN (?)', existing_pic_orders)
     missing_pics.each do |pic| 
       event.pictures.new(

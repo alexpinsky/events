@@ -6,12 +6,7 @@
       </div>
     </div>
     <div class="images">
-      <% pictures = if event.persisted? %>
-        <% event.pictures %>
-      <% else %>
-        <% event.theme.pictures %>
-      <% end %>
-      <img id='pic-1' src="<%= pictures.by_order(1).image_url %>" />
+      <img id='pic-1' src="<%= image_url(event, 1) %>" />
     </div>
     <div class="secondary row">
       <div class="small-12 columns">
@@ -24,7 +19,7 @@
       </div>
     </div>
     <div class="images">
-      <%= render partial: 'themes/shared/slideshow', locals: { pictures: pictures.slideshow.ordered } %>
+      <%= render partial: 'themes/shared/slideshow', locals: { event: event } %>
     </div>
     <div class="calendar row" style="visibility
     : <%= event_visibility(event) %>">

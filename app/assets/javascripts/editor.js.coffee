@@ -9,6 +9,7 @@ class @Editor
     @initBackground()
     @initPics()
     @initCalendar()
+    @loadEvent()
 
   initTemplates: ->
     element = new SliderElement
@@ -24,28 +25,31 @@ class @Editor
 
   initPics: ->
     formObj = @editor.find('#event_form')
-    element = new PicsElement
+    @picsElement = new PicsElement
       picsObj: formObj.find('.pics-element')
-    element.addImage @onAddImage
-    element.removeImage @onRemoveImage
-    element.init()
-    
+    @picsElement.addImage @onAddImage
+    @picsElement.removeImage @onRemoveImage
+    @picsElement.init()
     formObj.find('input.image-file').change (e) =>
       input = e.currentTarget
+      order = $(input).data('order')
+      @editor.find('#pic-destroy-' + order).val(false)
       if input.files && input.files[0]
         reader = new FileReader
         reader.onload = (e) =>
-          order = $(input).data('order')
           imgUrl = e.target.result
-          element.changePreview(order: order, imgUrl: imgUrl)
+          @picsElement.changePreview(order: order, imgUrl: imgUrl)
           @changePreviewImage(order: order, imgUrl: imgUrl)
+          @storePic(order: order, url: imgUrl, input: input)
         reader.readAsDataURL(input.files[0])
     
   initText: ->
-    element = new TextElement
-      editor: @editor,
-      preview: @preview
-    element.init()
+    @textElement = new TextElement
+      editor: @editor
+    @textElement.textChange @onTextChange
+    @textElement.fontChange @onFontChange
+    @textElement.sizeChange @onSizeChange
+    @textElement.init()
 
   initCalendar: ->
     element = new CalendarElement
@@ -72,20 +76,66 @@ class @Editor
       data: { category_id: args.category, theme_id: args.theme }
       dataType: "script"
 
+  onTextChange: (args = {}) =>
+    @preview.find("#" + args.targetId).text(args.val)
+    @storeText(args)
+
+  getEvent: =>
+    body = $('body')
+    event = body.data('event')
+    event = {'text': {}, 'pic': {}} unless event
+    event
+
+  storeEvent: (event) =>
+    $('body').data('event', event)
+
+  loadEvent: =>
+    event = @getEvent()
+    $.each event.text, (key, val) =>
+      @textElement.setText(key, val)
+    $.each event.pic, (key, val) =>
+      @picsElement.setPic(key, val.url)
+      @changePreviewImage(order: key, imgUrl: val.url)
+      @replaceInput(input: val.input)
+
+  storeText: (args = {}) =>
+    event = @getEvent()
+    event['text'][args.targetId] = args.val
+    @storeEvent(event)
+
+  replaceInput: (args = {}) =>
+    input = args.input
+    inputWrapper = @editor.find('#pic-input-' + $(input).data('order'))
+    inputWrapper.html(input)
+
+  storePic: (args = {}) =>
+    event = @getEvent()
+    event['pic'][args.order] = {url: args.url, input: args.input}
+    @storeEvent(event)
+
+  onFontChange: (args = {}) =>
+    @preview.find('p#' + args.targetId).css("font-family", args.val)
+
+  onSizeChange: (args = {}) =>
+    @preview.find('p#' + args.targetId).css("font-size", (args.val / 16) + 'rem')
+
   onBackgroundClick: (args = {}) =>
     @preview.find('.event-wrapper').css("background-image", 'url(' + args.backgroundUrl + ')')
     @editor.find("#background_image").val(args.backgroundName)
 
   onAddImage: (args = {}) =>
+    console.log args
     fileInput = @editor.find('#image-file-' + args.picOrder)
+    console.log fileInput
     fileInput.click()
 
   onRemoveImage: (args = {}) =>
     fileInput = @editor.find('#image-file-' + args.picOrder)
     fileInput.val('')
+    @editor.find('#pic-destroy-' + args.picOrder).val(true)
     defaultUrl = @editor.find('.pic-wrapper #tile-' + args.picOrder).data('default')
-    console.log defaultUrl
     @changePreviewImage(order: args.picOrder, imgUrl: defaultUrl)
+    @storePic(order: args.picOrder, url: undefined, input: undefined)
 
   changePreviewImage: (args = {}) =>
     img = @preview.find('.images #pic-' + args.order)

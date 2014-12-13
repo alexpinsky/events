@@ -1,50 +1,106 @@
 namespace :db do
 
-  task create_categories: :environment do
-    categories_names = ['wedding', 'birthday', 'party', 'other']
-    categories_names.each do |category_name|
-      category = Category.create(name: category_name) if Category.by_name(category_name).blank?
-    end
-  end
-
   task create_fake_themes: :environment do
-    Category.all.each do |category|
-      category.events.create(
-        name: 'default',
-        category: category,
-        is_theme: true,
-        text_1: 'Save the Date',
-        text_2: 'July, 10 | My event',
-        appearance_attributes: {
-          background_image: 'dark_wall',
-          font_family_1: 'jack_story',
-          font_color_1: '#fff',
-          font_size_1: 24,
-          font_family_2: 'jack_story',
-          font_color_2: '#fff',
-          font_size_2: 16
+    ActiveRecord::Base.transaction do
+      categroy = Category.create!(name: 'other')
+      theme = Event.create!({
+        "name"=>"default", 
+        "text_1"=>"Save the Date", 
+        "text_2"=>"July, 10 | My event", 
+        "category_id"=>categroy.id, 
+        "is_theme"=>true, 
+        "preview_url"=>"https://s3-eu-west-1.amazonaws.com/events-assets-static/categories/other/themes/default/preview_thumbnail.jpg",
+        'appearance_attributes' => {
+          "background_image"=>"dark_wall", 
+          "font_family_1"=>"jack_story",
+          "font_color_1"=>"#fff", 
+          "font_size_1"=>24, 
+          "font_family_2"=>"jack_story", 
+          "font_color_2"=>"#fff", 
+          "font_size_2"=>16, 
         }
-      )
-    end
-  end
+      })
+      pic = theme.pictures.new(slideshow: true, order: 1)
+      pic.remote_image_url = 'https://s3-eu-west-1.amazonaws.com/events-assets-static/categories/other/themes/default/images/image_1.jpg'
+      pic.save!
+      pic = theme.pictures.new(slideshow: true, order: 2)
+      pic.remote_image_url = 'https://s3-eu-west-1.amazonaws.com/events-assets-static/categories/other/themes/default/images/image_2.jpg'
+      pic.save!
 
-  task create_other_themes: :environment do
-    category = Category.by_name('other').first
-    theme = category.events.create(
-      name: 'default',
-      category: category,
-      is_theme: true,
-      text_1: 'save the data',
-      text_2: 'july, 10 | my event',
-      appearance_attributes: {
-        background_image: 'dark_wall',
-        font_family_1: 'jack_story',
-        font_color_1: '#fff',
-        font_size_1: 24,
-        font_family_2: 'jack_story',
-        font_color_2: '#fff',
-        font_size_2: 16
-      }
-    )
+      categroy = Category.create!(name: 'birthday')
+      theme = Event.create!({
+        "name"=>"default", 
+        "text_1"=>"Save the Date", 
+        "text_2"=>"July, 10 | My event",
+        "category_id"=>categroy.id, 
+        "is_theme"=>true, 
+        "preview_url"=>"https://s3-eu-west-1.amazonaws.com/events-assets-static/categories/birthday/themes/default/preview_thumbnail.jpg",
+        'appearance_attributes' => {
+          "background_image"=>"dark_wall", 
+          "font_family_1"=>"jack_story", 
+          "font_color_1"=>"#fff",
+          "font_size_1"=>24, 
+          "font_family_2"=>"jack_story", 
+          "font_color_2"=>"#fff", 
+          "font_size_2"=>16
+        } 
+      })
+      pic = theme.pictures.new(slideshow: true, order: 1)
+      pic.remote_image_url = 'https://s3-eu-west-1.amazonaws.com/events-assets-static/categories/birthday/themes/default/images/image_1.jpg'
+      pic.save!
+      pic = theme.pictures.new(slideshow: true, order: 2)
+      pic.remote_image_url = 'https://s3-eu-west-1.amazonaws.com/events-assets-static/categories/birthday/themes/default/images/image_2.jpg'
+      pic.save!
+
+      categroy = Category.create!(name: 'party')
+      theme = Event.create!({
+        "name"=>"default_3", 
+        "text_1"=>"Save the Date", 
+        "text_2"=>"July, 10 | My event",
+        "category_id"=>categroy.id,
+        "is_theme"=>true, 
+        "preview_url"=>"https://s3-eu-west-1.amazonaws.com/events-assets-static/categories/party/themes/default_3/preview_thumbnail.jpg",
+        'appearance_attributes' => {
+          "background_image"=>"dark_wall", 
+          "font_family_1"=>"jack_story", 
+          "font_color_1"=>"#fff", 
+          "font_size_1"=>24, 
+          "font_family_2"=>"jack_story", 
+          "font_color_2"=>"#fff", 
+          "font_size_2"=>16
+        }
+      })
+      pic = theme.pictures.new(slideshow: false, order: 1)
+      pic.remote_image_url = 'https://s3-eu-west-1.amazonaws.com/events-assets-static/categories/party/themes/default_3/images/image_1.jpg'
+      pic.save!
+      pic = theme.pictures.new(slideshow: true, order: 2)
+      pic.remote_image_url = 'https://s3-eu-west-1.amazonaws.com/events-assets-static/categories/party/themes/default_3/images/image_2.jpg'
+      pic.save!
+      pic = theme.pictures.new(slideshow: true, order: 3)
+      pic.remote_image_url = 'https://s3-eu-west-1.amazonaws.com/events-assets-static/categories/party/themes/default_3/images/image_3.jpg'
+      pic.save!
+
+      categroy = Category.create!(name: 'wedding')
+      theme = Event.create!({
+        "name"=>"default_2", 
+        "text_1"=>"Save the Date", 
+        "text_2"=>"July, 10 | My event",
+        "category_id"=>categroy.id,
+        "is_theme"=>true, 
+        "preview_url"=>"https://s3-eu-west-1.amazonaws.com/events-assets-static/categories/wedding/themes/default_2/preview_thumbnail.jpg",
+        'appearance_attributes' => {
+          "background_image"=>"dark_wall", 
+          "font_family_1"=>"jack_story", 
+          "font_color_1"=>"#fff",
+          "font_size_1"=>24, 
+          "font_family_2"=>"jack_story", 
+          "font_color_2"=>"#fff", 
+          "font_size_2"=>16
+        }
+      })
+      pic = theme.pictures.new(slideshow: false, order: 1)
+      pic.remote_image_url = 'https://s3-eu-west-1.amazonaws.com/events-assets-static/categories/wedding/themes/default_2/images/image_1.png'
+      pic.save!
+    end
   end
 end

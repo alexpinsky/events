@@ -138,14 +138,14 @@ class @Editor
     @storePic(order: args.picOrder, url: undefined, input: undefined)
 
   changePreviewImage: (args = {}) =>
-    img = @preview.find('.images #pic-' + args.order)
+    img = @preview.find('#pic-' + args.order)
     img.attr('src', args.imgUrl);
 
   onCheckCalendar: =>
-    @preview.find('.calendar').css('visibility', 'visible')
+    @preview.find('.calendar-wrapper').css('visibility', 'visible')
 
   onUncheckCalendar: =>
-    @preview.find('.calendar').css('visibility', 'hidden')
+    @preview.find('.calendar-wrapper').css('visibility', 'hidden')
 
 $ ->
   editor = new Editor

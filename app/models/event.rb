@@ -24,9 +24,9 @@ class Event < ActiveRecord::Base
   to: :appearance, allow_nil: true
   
   delegate :start_time, :end_time, :organizer, :organizer_email, :location, :time_zone, :summary, :date_format, to: :information, allow_nil: true
-  
-  delegate :audio_url, to: :song, allow_nil: true
 
+  delegate :name, to: :category, prefix: true
+  
   scope :themes, -> () { where('events.is_theme = ?', true) }
   scope :by_category, -> (category_name) { joins(:category).where('categories.name = ?', category_name) }
 
@@ -98,18 +98,6 @@ class Event < ActiveRecord::Base
       else
         result[:error] = picture.errors.full_messages
       end
-    end
-    result
-  end
-
-  def add_song(song_params)
-    result = {}
-    self.song = nil
-    self.song = Song.new(song_params)
-    if self.song.save
-      result[:success] = "#{self.song.audio.file.filename} saved successfully"
-    else
-      result[:error] = self.song.errors.full_messages
     end
     result
   end

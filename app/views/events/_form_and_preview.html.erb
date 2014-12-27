@@ -7,6 +7,6 @@
     </div>
   </div>
   <div class="small-7 columns" id="preview" data-user="<%= current_user.id %>" data-event="<%= event.id %>">
-    <%= render partial: "themes/#{event.theme_name}", locals: { event: event } %>
+    <%= render partial: "themes/#{event.category_name}/#{event.theme_name}", locals: { event: event } %>
   </div>
 </div>

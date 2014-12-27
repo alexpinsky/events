@@ -1,11 +1,13 @@
+<% theme_path = "themes/#{@event.category_name}/#{@event.theme_name}" %>
+
 <% content_for(:title) do %>
   <%= @event.name %>
 <% end %>
-<div class="info-link">
-  <% if @preview %> 
-    <%= link_to 'Back', categories_path, style: "color: #fff"  %>
-  <% end %>
-</div>
+
+<% content_for :header do %>
+  <%= stylesheet_link_tag theme_path %>
+<% end %>
+
 <div class="display">
-  <%= render partial: "themes/#{@event.theme_name}", locals: { event: @event } %>
+  <%= render partial: theme_path, locals: { event: @event } %>
 </div>

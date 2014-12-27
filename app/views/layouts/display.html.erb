@@ -4,21 +4,21 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= content_for?(:title) ? yield(:title) : "Event" %></title>
+    <%= yield(:header) %>
     <%= stylesheet_link_tag  "display" %>
+    <link href='http://fonts.googleapis.com/css?family=Tauri|Playfair+Display|Gidugu|Rozha+One|Yesteryear|Lobster|Anton|Grand+Hotel|Actor|Fanwood+Text|Francois+One|Julius+Sans+One|Karla|Quattrocento+Sans|Oswald|Berkshire+Swash|Alef|Six+Caps|Prata|Leckerli+One|Vibur|Hammersmith+One|Cinzel' rel='stylesheet' type='text/css'>
     <%= javascript_include_tag "vendor/modernizr" %>
-    <%= csrf_meta_tags %>
     <script type="text/javascript" src="http://js.addthisevent.com/atemay.js"></script>
+    <%= csrf_meta_tags %>
   </head>
-  <body style="background-image: url(<%= background_collection_url(@event.background_image) %>)">
-    <div class="row">
-      <div class="small-12 small-centered columns">
-        <%= yield %>
-      </div>
+  <body>
+    <div class="main-wrapper">
+      <%= yield %>
     </div>
     <!-- Javascripts
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <%= javascript_include_tag "display", "data-turbolinks-track" => true %> %>
+    <%= javascript_include_tag "display", "data-turbolinks-track" => true %>
     <%= yield(:javascript) %>
   </body>
 </html>

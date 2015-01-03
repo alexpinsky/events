@@ -100,7 +100,7 @@ class @TextElement
       defaultValue: '#ffffff'
       change: (hex, opacity) ->
         target_id = $(this).data('target')
-        $("#preview").find("p#" + target_id).css("color", hex)
+        $("#preview").find("#" + target_id).css("color", hex)
 
   initSizeListeners: (args = {}) =>
     args.appearance_obj.find('input.font-size').change (e) =>

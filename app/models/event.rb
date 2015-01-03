@@ -86,23 +86,11 @@ class Event < ActiveRecord::Base
     self.save
   end
 
-  def add_pictures(pictures_attributes, is_first_image)
-    result = {}
-    self.pictures.destroy_all if is_first_image
-    if self.pictures.size == MAX_PICTURES_SIZE
-      result[:error] = "event can contain only #{MAX_PICTURES_SIZE} pictures"
-    else
-      picture = self.pictures.new(pictures_attributes)
-      if picture.save
-        result[:success] = "#{picture.image.file.filename} saved successfully"
-      else
-        result[:error] = picture.errors.full_messages
-      end
-    end
-    result
-  end
-
   def theme_name
     self.is_theme ? self.name : self.theme.name
+  end
+
+  def preview_url
+    "https://s3-eu-west-1.amazonaws.com/events-assets-static/categories/#{category_name}/themes/#{theme_name}/preview_thumbnail.png"
   end
 end

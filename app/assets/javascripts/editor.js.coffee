@@ -114,19 +114,17 @@ class @Editor
     @storeEvent(event)
 
   onFontChange: (args = {}) =>
-    @preview.find('p#' + args.targetId).css("font-family", args.val)
+    @preview.find('#' + args.targetId).css("font-family", args.val)
 
   onSizeChange: (args = {}) =>
-    @preview.find('p#' + args.targetId).css("font-size", (args.val / 16) + 'rem')
+    @preview.find('#' + args.targetId).css("font-size", (args.val / 16) + 'em')
 
   onBackgroundClick: (args = {}) =>
     @preview.find('.event-wrapper').css("background-image", 'url(' + args.backgroundUrl + ')')
     @editor.find("#background_image").val(args.backgroundName)
 
   onAddImage: (args = {}) =>
-    console.log args
     fileInput = @editor.find('#image-file-' + args.picOrder)
-    console.log fileInput
     fileInput.click()
 
   onRemoveImage: (args = {}) =>

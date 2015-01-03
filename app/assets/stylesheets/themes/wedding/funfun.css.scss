@@ -1,0 +1,19 @@
+.wedding.funfun.event-wrapper {
+  height: 100%;
+  .graphics-wrapper {
+    position: relative;  
+    .text-wrapper {
+      position: absolute;
+      top: 19em;
+      left: 22em;
+      #text_1 {
+        font-size: 9em !important;
+        line-height: 0.8em;
+      }
+      #text_2 {
+        font-size: 0.4em !important;
+        line-height: 0.8em;
+      }
+    }  
+  }
+}

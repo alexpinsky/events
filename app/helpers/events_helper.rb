@@ -1,19 +1,24 @@
 module EventsHelper
 
-  def px_to_rem(px)
-    px.to_f / 16
-  end
-
   def event_visibility(event)
     event.information.try(:in_use) ? 'visible' : 'hidden'
   end
 
   def image_url(event, order)
-    image_url = event.pictures.by_order(order).try(:image_url)
-    image_url ||= event.theme.pictures.by_order(order).image_url
+    picture = event.pictures.select do |pic|
+      pic.order == order && pic.image_url
+    end 
+    picture = event.theme.pictures.select do |pic|
+      pic.order == order && pic.image_url
+    end if picture.blank?
+    picture.first.image_url
   end
 
   def slideshow_pics_for(event)
-    event.theme.pictures.slideshow.ordered
+    event.theme.pictures.select {|pic| pic.slideshow}.sort {|pic| pic.order}
+  end
+
+  def aws_asset_url(event, asset_name)
+    "https://s3-eu-west-1.amazonaws.com/events-assets-static/categories/#{event.category_name}/themes/#{event.theme_name}/assets/decoration-left.svg"
   end
 end

@@ -26,7 +26,7 @@ class EventsController < ApplicationController
     else
       Category.first
     end
-    theme = category.events.themes.find_by_id(params[:theme_id]) || category.events.themes.first
+    theme = load_theme_for(category)
     @event = Event.copy_from_theme(
       category: category, 
       theme: theme, 
@@ -103,6 +103,10 @@ private
     in_use = params[:event][:information_attributes][:in_use]
     params[:event][:information_attributes][:in_use] = in_use == 'true'
     params
+  end
+
+  def load_theme_for(category)
+    category.events.themes.includes(:pictures).where('events.id = ?', params[:theme_id]).first || category.events.themes.includes(:pictures).first
   end
 
   def set_page_name

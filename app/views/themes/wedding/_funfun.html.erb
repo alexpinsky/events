@@ -1,0 +1,19 @@
+<div class="wedding funfun event-wrapper" style="background-image: url(<%= background_collection_url(event.background_image) %>)">
+  <div class='row'>
+    <div class='small-12 columns'>
+      <div class="graphics-wrapper">
+        <img class="graphics" src="https://s3-eu-west-1.amazonaws.com/events-assets-static/categories/wedding/themes/funfun/assets/graphics.png"/>
+        <div class="text-wrapper row">
+          <div id="text_1" class="small-3 columns" style="font-family: <%= event.font_family_1 %>;color: <%= event.font_color_1 %>;font-size: <%= event.font_size_1 %>em;"><%= event.text_1 %>
+          </div>
+          <div id="text_2" class="small-2 columns end" style="font-family: <%= event.font_family_2 %>;color: <%= event.font_color_2 %>;font-size: <%= event.font_size_2 %>em;"><%= event.text_2 %></div>
+        </div>
+        <div class="calendar-wrapper" style="visibility
+    : <%= event_visibility(event) %>">
+          <%= render partial: 'themes/shared/calendar', locals: { event: event } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

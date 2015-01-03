@@ -1,16 +1,25 @@
-<div class="wedding classic event-wrapper" style="background-image: url(<%= background_collection_url('dark_wall') %>)">
-  <div class='row'>
-    <div class='small-12 columns'>
-      <div class="image-wrapper">
-        <img id='pic-1' class="main" src="<%= image_url(event, 1) %>" />
-        <img class="graphics" src="https://s3-eu-west-1.amazonaws.com/events-assets-static/categories/wedding/themes/classic/assets/graphics.png"/>
-        <div id="text_1" style="font-family: <%= event.font_family_1 %>;color: <%= event.font_color_1 %>;font-size: <%= event.font_size_1 %>rem;"><%= event.text_1 %></div>
-        <div id="text_2" style="font-family: <%= event.font_family_2 %>;color: <%= event.font_color_2 %>;font-size: <%= event.font_size_2 %>rem;"><%= event.text_2 %></div>
-        <div id="text_3" style="font-family: <%= event.font_family_3 %>;color: <%= event.font_color_3 %>;font-size: <%= event.font_size_3 %>rem;"><%= event.text_3 %></div>
-        <div class="calendar-wrapper" style="visibility
-    : <%= event_visibility(event) %>">
-          <%= render partial: 'themes/shared/calendar', locals: { event: event } %>
-          </div>
+<div class="wedding classic event-wrapper" style="background-image: url(<%= background_collection_url(event.background_image) %>)">
+  <div class='theme-wrapper'>
+    <img id='pic-1' class="main" src="<%= image_url(event, 1) %>" />
+    <div class='graphics-wrapper'>
+      <div class='text-wrapper'>
+        <div class="text-1-wrapper">
+          <div id="text_1" style="font-family: <%= event.font_family_1 %>;color: <%= event.font_color_1 %>;font-size: <%= event.font_size_1 %>em;"><%= event.text_1 %></div>
+        </div>
+        <div class="text-2-wrapper">
+          <div id="text_2" style="font-family: <%= event.font_family_2 %>;color: <%= event.font_color_2 %>;font-size: <%= event.font_size_2 %>em;"><%= event.text_2 %></div>
+        </div>
+        <div class="text-3-wrapper">
+          <div id="text_3" style="font-family: <%= event.font_family_3 %>;color: <%= event.font_color_3 %>;font-size: <%= event.font_size_3 %>em;"><%= event.text_3 %></div>
+        </div>
+      </div>
+      <div class='decoration-wrapper'>
+        <img class="l" src="<%= aws_asset_url(event, 'decoration-left') %>">
+        <img class="r" src="<%= aws_asset_url(event, 'decoration-left') %>">
+      </div>
+      <div class="calendar-wrapper" style="visibility
+  : <%= event_visibility(event) %>">
+        <%= render partial: 'themes/shared/calendar', locals: { event: event } %>
         </div>
       </div>
     </div>

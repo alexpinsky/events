@@ -1,0 +1,32 @@
+// Small screens
+  
+/* Define mobile styles */
+@media only screen { 
+  @import 'small';
+}
+/* max-width 640px, mobile-only styles, use when QAing mobile issues */
+@media only screen and (max-width: 40em) { 
+  @import 'small';
+}
+
+// Medium screens
+
+/* min-width 641px, medium screens */
+@media only screen and (min-width: 40.063em) {
+  @import 'medium';
+} 
+/* min-width 641px and max-width 1024px, use when QAing tablet-only issues */
+@media only screen and (min-width: 40.063em) and (max-width: 64em) {
+  @import 'medium';
+} 
+
+// Large screens
+
+/* min-width 1025px, large screens */
+@media only screen and (min-width: 64.063em) {
+  @import 'large';
+} 
+/* min-width 1025px and max-width 1440px, use when QAing large screen-only issues */
+@media only screen and (min-width: 64.063em) and (max-width: 90em) {
+  @import 'large';
+} 

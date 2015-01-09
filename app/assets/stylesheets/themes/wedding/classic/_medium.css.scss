@@ -2,62 +2,76 @@
   height: 100%;
   .display {
     height: 100%;
-    font-size: 100%;
+    @media (orientation : portrait) {
+      font-size: 80%;
+    }
+    @media (orientation : landscape) {
+      font-size: 60%;
+    }
   }
 }
 
 .wedding.classic.event-wrapper {
   height: 100%;
   .theme-wrapper {
-    padding: 2em 2em 2em;
     position: relative;
+    padding: 1em;
     img.main {
       border: 1.5em solid white;
       height: 100%;
       width: 100%;
     }
     .graphics-wrapper {
-      width: 100%;
       text-align: center;
       position: absolute;
       top: 50%;
       left: 50%;
-      -ms-transform: translate(-50%, -60%); /* IE 9 */
-      -webkit-transform: translate(-50%, -60%); /* Chrome, Safari, Opera */
-      transform: translate(-50%, -60%);
+      -ms-transform: translate(-50%, -50%); /* IE 9 */
+      -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */
+      transform: translate(-50%, -50%);
       .text-wrapper {
         text-align: center;
         padding: 1em;
-        border: 0.3em solid white;
+        border: 0.4em solid white;
+        border-bottom: 0;
         display: inline-block;
         .text-1-wrapper {
-          display: inline-block;
           border-top: 0.3em solid white;
           border-bottom: 0.3em solid white;
-          padding-bottom: 0.5em;
+          display: inline-block;
           #text_1 {
-            line-height: 0.9em;
+            font-size: 5em;
+            display: inline;
+            line-height: 0.8em;
           }
         }
         .text-2-wrapper {
-          padding: 1em;
+          @media (orientation : portrait) {
+            padding: 1em 1em 5em;
+          }
+          @media (orientation : landscape) {
+            padding: 1em 1em 5em;
+          }
           #text_2 {
+            font-size: 2em;
           }
         }
         .text-3-wrapper {
           #text_3 { 
-            line-height: 1em;
+            line-height: 0.3em;
+            font-size: 10em;
           }
         }
       }
+      .text-wrapper-border {
+        padding: 0;
+        .left, .right {
+          border-bottom: 0.4em solid white;
+        }
+      }
       .decoration-wrapper {
-        margin-top: -2em;
-        img { 
-          width: 15em;
-        }
-        img.l {
-          margin-right: 6em;
-        }
+        padding: 0;
+        margin-top: -1em;
         img.r {
           -moz-transform: scaleX(-1);
           -o-transform: scaleX(-1);

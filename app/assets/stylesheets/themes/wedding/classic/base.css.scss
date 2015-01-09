@@ -29,4 +29,11 @@
 /* min-width 1025px and max-width 1440px, use when QAing large screen-only issues */
 @media only screen and (min-width: 64.063em) and (max-width: 90em) {
   @import 'large';
-} 
+}
+
+@media (orientation : portrait) {
+  .theme-wrapper {
+    -ms-transform: translate(0, 50%); /* IE 9 */
+    -webkit-transform: translate(0, 50%); /* Chrome, Safari, Opera */
+  }
+}

@@ -11,20 +11,17 @@ namespace :templates do
             "name" => "classic", 
             "text_1" => "save the date", 
             "text_2" => "July, 10 | My event", 
-            "text_3" => "10/7", 
+            "text_3" => "10/07", 
             "category_id" => categroy.id, 
             "is_theme" => true, 
             'appearance_attributes' => {
               "background_image" => "dark_wall", 
               "font_family_1" => "'Six Caps', sans-serif",
               "font_color_1" => "#fff", 
-              "font_size_1" => '4.4', 
               "font_family_2" => "'Lobster', cursive", 
               "font_color_2" => "#fff", 
-              "font_size_2" => '2',
               "font_family_3" => "'Six Caps', sans-serif", 
               "font_color_3" => "#fff", 
-              "font_size_3" => '8.3'
             }
           })
           Information.create!(in_use: true, event: theme)

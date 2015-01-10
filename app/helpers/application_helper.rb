@@ -1,8 +1,16 @@
 module ApplicationHelper
 
   def background_url_for(page_name)
-    file_type = page_name == 'templates' ? 'jpg' : 'png'
+    file_type = 'jpg'
     "https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/#{page_name}/backgrounds/background.#{file_type}"
+  end
+
+  def image_url_for(page_name, image_name)
+    "https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/#{page_name}/images/#{image_name}"
+  end
+
+  def shared_assets_url(asset_name)
+    "https://s3-eu-west-1.amazonaws.com/events-assets-static/shared/#{asset_name}"
   end
 
   def background_names

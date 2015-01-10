@@ -2,15 +2,12 @@ Events::Application.routes.draw do
   require 'sidekiq/web'
   mount Sidekiq::Web, at: '/sidekiq'
 
-  devise_for :users, controllers: {registrations: 'devise_ext/registrations'}
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-  root 'pages#welcome'
-
-  # get '/:id', to: redirect('/events/%{id}')
-  # get '/events/:id', to: 'events#show'
+  devise_for :users, controllers: { 
+    registrations: 'devise_ext/registrations'
+  }
+  
+  root 'pages#comming_soon'
+  get 'comming_soon' => 'pages#comming_soon'
 
   resources :events do
     member do 
@@ -20,4 +17,5 @@ Events::Application.routes.draw do
   end
 
   resources :categories
+  resources :leads
 end

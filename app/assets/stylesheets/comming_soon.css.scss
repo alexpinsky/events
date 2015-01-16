@@ -1,27 +1,40 @@
-/*
- *= require_tree ./comming_soon 
-*/
+@import "foundation/components/grid";
+
 body {
-  font-size: 16px;
   background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/comming_soon/backgrounds/background.jpg") no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: 100%;
-  min-height: 50em;
-  .form {
-    position: absolute;
-    top: 20em;
-    left: 30em;
-    .email-input {
-      vertical-align: top;
-      width: 20em;
-      height: 3em;
-    }
-    // .submit-button {
-    //   background-image: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/comming_soon/images/button_before.svg");
-    //   background-repeat: no-repeat;
+  .main-wrapper {
+    // @media (orientation : portrait) {
+    //   -ms-transform: translate(0, 20%); /* IE 9 */
+    //   -webkit-transform: translate(0, 20%); /* Chrome, Safari, Opera */
     // }
+    margin-top: 2%;
+    .graphics-container {
+      position: relative;
+      .form {
+        position: absolute;
+        top: 27em;
+        left: 4em;
+        width: 80%;
+        input {
+          outline: none;
+        }
+        .email-input {
+          height: 3.8em;
+          width: 75%;
+          border: 0.2em solid #81A3FC;
+          vertical-align: text-bottom;
+          padding-left: 1em;
+        }
+        .submit-btn {
+          vertical-align: bottom;
+          position: relative;
+          margin-bottom: -0.5em;
+        }
+      }
+    }
   }
 }

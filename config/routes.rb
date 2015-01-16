@@ -8,6 +8,7 @@ Events::Application.routes.draw do
   
   root 'pages#comming_soon'
   get 'comming_soon' => 'pages#comming_soon'
+  get 'welcome' => 'pages#welcome'
 
   resources :events do
     member do 

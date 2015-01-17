@@ -2,6 +2,11 @@
   font-size: 57%;
 }
 
+.event-thumbnail {
+  font-size: 10% !important;
+  min-height: 312px;
+}
+
 .events-index {
   .header {
     border-bottom: 1px solid #d0d0d0;
@@ -16,41 +21,6 @@
     position: relative;
     border-bottom: 1px solid #d0d0d0;
     padding: 23px 0;
-    .event-thumbnail {
-      min-height: 312px;
-    .event-wrapper {
-      .images {
-        padding-top: 0.5rem
-      }
-      .primary {
-        p {
-          font-size: 1rem;
-          margin: 0;
-        }
-        text-align: center;
-      }
-      .secondary {
-        p {
-          font-size: 1rem;
-          margin: 0;
-        }
-        text-align: center;
-      }
-      .extra {
-        p {
-          font-size: 1rem;
-          margin: 1rem 0 0 0;
-        }
-        padding-top: 0;
-        text-align: center;
-      }
-      .calendar {
-        text-align: center;
-        margin-top: 0.5rem;
-        padding-bottom: 0.5rem
-      }
-    }
-    }
     .event-details {
       .event-name {
         font-size: 1.5rem;

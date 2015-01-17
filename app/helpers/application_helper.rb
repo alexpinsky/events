@@ -17,10 +17,6 @@ module ApplicationHelper
     ['dark_wall', 'tileable_wood', 'white_feathers', 'food', 'mocha_grunge', 'skulls', 'tree_bark']
   end
 
-  def fonts_for_select
-    [['Arial', 'Arial'], ['Hand Write', 'hand_write'], ['Jack Stroy', 'jack_story'], ['Adine Kirnberg', 'adine_kirnberg'], ['Little Flower', 'little_flower'], ['Munich', 'munich']]
-  end
-
   def background_collection_url(background_image)
     background_image ||= "dark_wall"
     "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/#{background_image}.png"

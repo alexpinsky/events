@@ -9,7 +9,7 @@
     <div class="single-event row">
       <div class="event-thumbnail large-4 columns" style="background-image: url(<%= background_collection_url(event.background_image) %>)">
         <!-- render slim view of event -->
-        <%= render partial: "themes/#{event.theme_name}", locals: { event: event } %>
+        <%= render partial: "themes/#{event.category_name}/#{event.theme_name}", locals: { event: event } %>
       </div>
       <div class="event-details large-8 columns">
         <div class="row">

@@ -21,4 +21,8 @@ module EventsHelper
   def aws_asset_url(event, asset_name)
     "https://s3-eu-west-1.amazonaws.com/events-assets-static/categories/#{event.category_name}/themes/#{event.theme_name}/assets/decoration-left.svg"
   end
+
+  def fonts_for_select
+    [['Arial', 'Arial'], ['Hand Write', 'hand_write'], ['Jack Stroy', 'jack_story'], ['Adine Kirnberg', 'adine_kirnberg'], ['Little Flower', 'little_flower'], ['Munich', 'munich']]
+  end
 end

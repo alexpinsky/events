@@ -20,7 +20,7 @@
           <span class="prefix">font</span>
         </div>
         <div class="small-9 columns">
-          <%= app_form.select "font_family_#{count}", options_for_select(fonts_for_select, event.send("font_family_#{count}")), {}, { class: "font-family", data: {target: "text_#{count}", context: "#{count}"} } %>
+          <%= app_form.text_field "font_family_#{count}", class: "font-family", data: {target: "text_#{count}", context: "#{count}"}%>
         </div>
       </div>
     </div>

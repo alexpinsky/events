@@ -1,11 +1,17 @@
-.main-wrapper {
-  height: 100%;
-  .display {
-    height: 100%;
-    @media (orientation : portrait) {
+@media (orientation : portrait) {
+  .main-wrapper {
+      height: 100%;
+    .display {
+      height: 100%;
       font-size: 80%;
     }
-    @media (orientation : landscape) {
+  }
+}
+@media (orientation : landscape) {
+  .main-wrapper {
+    height: auto;
+    .display {
+      height: auto;
       font-size: 60%;
     }
   }
@@ -14,6 +20,10 @@
 .wedding.classic.event-wrapper {
   height: 100%;
   .theme-wrapper {
+    @media (orientation : portrait) {
+      -ms-transform: translate(0, 0); /* IE 9 */
+      -webkit-transform: translate(0, 0); /* Chrome, Safari, Opera */
+    }
     position: relative;
     padding: 1em;
     img.main {

@@ -1,11 +1,17 @@
-.main-wrapper {
-  height: 100%;
-  .display {
-    height: 100%;
-    @media (orientation : portrait) {
+@media (orientation : portrait) {
+  .main-wrapper {
+      height: 100%;
+    .display {
       font-size: 20%;
+      height: 100%;
     }
-    @media (orientation : landscape) {
+  }
+}
+@media (orientation : landscape) {
+  .main-wrapper {
+    height: auto;
+    .display {
+      height: auto;
       font-size: 35%;
     }
   }
@@ -14,6 +20,10 @@
 .wedding.classic.event-wrapper {
   height: 100%;
   .theme-wrapper {
+    @media (orientation : portrait) {
+      -ms-transform: translate(0, 20%); /* IE 9 */
+      -webkit-transform: translate(0, 20%); /* Chrome, Safari, Opera */
+    }
     position: relative;
     padding: 0;
     img.main {
@@ -40,7 +50,6 @@
           border-bottom: 0.3em solid white;
           display: inline-block;
           #text_1 {
-            font-size: 7em;
             display: inline;
             @media (orientation : portrait) {
               line-height: 1em;
@@ -58,13 +67,11 @@
             padding: 1em 1em 4em;
           }
           #text_2 {
-            font-size: 3em;
           }
         }
         .text-3-wrapper {
           #text_3 { 
             line-height: 0;
-            font-size: 10em;
           }
         }
       }

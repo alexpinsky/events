@@ -7,17 +7,23 @@
     <%= yield(:header) %>
     <%= stylesheet_link_tag  "display" %>
     <link href='http://fonts.googleapis.com/css?family=Tauri|Playfair+Display|Gidugu|Rozha+One|Yesteryear|Lobster|Anton|Grand+Hotel|Actor|Fanwood+Text|Francois+One|Julius+Sans+One|Karla:700|Quattrocento+Sans|Oswald|Berkshire+Swash|Alef|Six+Caps|Prata|Leckerli+One|Vibur|Hammersmith+One|Cinzel' rel='stylesheet' type='text/css'>
-    <%= javascript_include_tag "vendor/modernizr" %>
     <script type="text/javascript" src="http://js.addthisevent.com/atemay.js"></script>
     <%= csrf_meta_tags %>
+    <%= favicon_link_tag shared_assets_url 'favicon.ico' %>
   </head>
   <body>
     <div class="main-wrapper">
       <%= yield %>
     </div>
+    <div class="footer row">
+      <div class='footer-container'>
+        <a href="<%= root_path %>" target="_blank">create your own event<img class="left" src="<%= shared_assets_url('logo_footer.svg') %>"></a>
+      </div>
+    </div>
     <!-- Javascripts
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+    <%= javascript_include_tag "vendor/modernizr" %>
     <%= javascript_include_tag "display", "data-turbolinks-track" => true %>
     <%= yield(:javascript) %>
   </body>

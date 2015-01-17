@@ -18,10 +18,13 @@ namespace :templates do
               "background_image" => "dark_wall", 
               "font_family_1" => "'Six Caps', sans-serif",
               "font_color_1" => "#fff", 
+              "font_size_1" => "7", 
               "font_family_2" => "'Lobster', cursive", 
               "font_color_2" => "#fff", 
+              "font_size_2" => "3", 
               "font_family_3" => "'Six Caps', sans-serif", 
               "font_color_3" => "#fff", 
+              "font_size_3" => "10", 
             }
           })
           Information.create!(in_use: true, event: theme)

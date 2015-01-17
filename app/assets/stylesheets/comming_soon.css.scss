@@ -1,4 +1,3 @@
-
 @media only screen { 
   @import 'comming_soon/small';
 }
@@ -11,11 +10,11 @@
 
 /* min-width 641px, medium screens */
 @media only screen and (min-width: 40.063em) {
-  // @import 'medium';
+  @import 'comming_soon/medium';
 } 
 /* min-width 641px and max-width 1024px, use when QAing tablet-only issues */
 @media only screen and (min-width: 40.063em) and (max-width: 64em) {
-  // @import 'medium';
+  @import 'comming_soon/medium';
 } 
 
 // Large screens

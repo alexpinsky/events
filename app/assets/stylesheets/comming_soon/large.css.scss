@@ -1,0 +1,35 @@
+body {
+  background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/comming_soon/backgrounds/background.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  .main-wrapper {
+    margin-top: 2em;
+    .graphics-container {
+      position: relative;
+      .form {
+        position: absolute;
+        top: 27em;
+        left: 4em;
+        width: 80%;
+        input {
+          outline: none;
+        }
+        .email-input {
+          height: 3.8em;
+          width: 75%;
+          border: 0.2em solid #81A3FC;
+          vertical-align: text-bottom;
+          padding-left: 1em;
+        }
+        .submit-btn {
+          vertical-align: bottom;
+          position: relative;
+          margin-bottom: -0.5em;
+          width: auto;
+        }
+      }
+    }
+  }
+}

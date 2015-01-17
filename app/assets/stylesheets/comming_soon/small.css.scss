@@ -1,0 +1,55 @@
+@import "foundation/components/grid";
+
+body {
+  background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/comming_soon/backgrounds/background.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  .main-wrapper {
+    .graphics-container {
+      @media (orientation : portrait) {
+        -ms-transform: translate(0, 20%); /* IE 9 */
+        -webkit-transform: translate(0, 20%); /* Chrome, Safari, Opera */
+      }
+      @media (orientation : landscape) {
+        @include grid-column($columns:6, $offset:3);
+      }
+    }
+    form {
+      @media (orientation : portrait) {
+        -ms-transform: translate(20%, -10%); /* IE 9 */
+        -webkit-transform: translate(20%, -10%); /* Chrome, Safari, Opera */
+      }
+      @media (orientation : landscape) {
+        -ms-transform: translate(32%, -125%); /* IE 9 */
+        -webkit-transform: translate(32%, -125%); /* Chrome, Safari, Opera */
+      }
+      .fields-container {
+        @media (orientation : landscape) {
+          @include grid-column($columns:11);
+        }
+        @media (orientation : landscape) {
+          @include grid-column($columns:5);
+        }
+      }
+      input { outline: none; }
+      .text-container {
+        padding: 0;
+        margin-top: 0.7em;
+        input { 
+          padding-left: 0.5em;
+          width: 100%;
+          border: 0.2em solid #81A3FC; 
+          height: 2.5em;
+        }
+      }
+      .btn-container {
+        padding: 0;
+        input {
+          width: 4em;
+        }
+      }
+    }
+  }
+}

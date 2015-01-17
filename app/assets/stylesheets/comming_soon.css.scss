@@ -1,40 +1,29 @@
-@import "foundation/components/grid";
 
-body {
-  background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/comming_soon/backgrounds/background.jpg") no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  .main-wrapper {
-    // @media (orientation : portrait) {
-    //   -ms-transform: translate(0, 20%); /* IE 9 */
-    //   -webkit-transform: translate(0, 20%); /* Chrome, Safari, Opera */
-    // }
-    margin-top: 2%;
-    .graphics-container {
-      position: relative;
-      .form {
-        position: absolute;
-        top: 27em;
-        left: 4em;
-        width: 80%;
-        input {
-          outline: none;
-        }
-        .email-input {
-          height: 3.8em;
-          width: 75%;
-          border: 0.2em solid #81A3FC;
-          vertical-align: text-bottom;
-          padding-left: 1em;
-        }
-        .submit-btn {
-          vertical-align: bottom;
-          position: relative;
-          margin-bottom: -0.5em;
-        }
-      }
-    }
-  }
+@media only screen { 
+  @import 'comming_soon/small';
+}
+/* max-width 640px, mobile-only styles, use when QAing mobile issues */
+@media only screen and (max-width: 40em) { 
+  @import 'comming_soon/small';
+}
+
+// Medium screens
+
+/* min-width 641px, medium screens */
+@media only screen and (min-width: 40.063em) {
+  // @import 'medium';
+} 
+/* min-width 641px and max-width 1024px, use when QAing tablet-only issues */
+@media only screen and (min-width: 40.063em) and (max-width: 64em) {
+  // @import 'medium';
+} 
+
+// Large screens
+
+/* min-width 1025px, large screens */
+@media only screen and (min-width: 64.063em) {
+} 
+/* min-width 1025px and max-width 1440px, use when QAing large screen-only issues */
+@media only screen and (min-width: 64.063em) and (max-width: 90em) {
+  // @import 'comming_soon/large';
 }

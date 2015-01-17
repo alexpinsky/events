@@ -5,4 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :events, :dependent => :destroy
+
+  def admin?
+    ['alex_pinsky85@yahoo.com', 'gilmagen15@gmail.com', 'ron.gilat@gmail.com'].include?(self.email) 
+  end
 end

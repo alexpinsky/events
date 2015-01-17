@@ -2,7 +2,7 @@ class LeadsController < ApplicationController
   skip_before_filter :authenticate_user!, only: :create
 
   def index
-    
+    @leads = Lead.all
   end
   
   def show
@@ -15,10 +15,10 @@ class LeadsController < ApplicationController
 
   def create
     lead = Lead.new lead_params
-    if true #lead.save
+    if lead.save
       render json: {}, status: :created
     else
-      render json: {}, status: :bad_request
+      render json: {error: lead.errors.full_messages}, status: :bad_request
     end
   end
 

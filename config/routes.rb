@@ -7,8 +7,14 @@ Events::Application.routes.draw do
   }
   
   root 'pages#comming_soon'
-  get 'comming_soon' => 'pages#comming_soon'
+  
   get 'welcome' => 'pages#welcome'
+
+  scope '/admin' do
+    authenticate :user, lambda { |u| u.admin? } do
+      resources :leads
+    end
+  end
 
   resources :events do
     member do 
@@ -18,5 +24,5 @@ Events::Application.routes.draw do
   end
 
   resources :categories
-  resources :leads
+  resources :leads, only: :create
 end

@@ -28,9 +28,6 @@ html, body {
     height: 316px;
     width: 255px;
     background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -39,6 +36,9 @@ html, body {
   }
   background: url(https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/comming_soon/images/graphics.png);
   background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   position: absolute;
   top: 50%;
   left: 50%;

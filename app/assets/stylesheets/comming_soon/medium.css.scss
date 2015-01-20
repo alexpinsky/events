@@ -1,72 +1,42 @@
-@import "foundation/components/grid";
-
-body {
-  background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/comming_soon/backgrounds/background.jpg") no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
+html, body {
+  height: 100%;
+  padding:0;
+  margin: 0;
+}
+.background {
+  background: url(https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/comming_soon/backgrounds/background.jpg) no-repeat center;
   background-size: cover;
-  .main-wrapper {
-    .graphics-container {
-      @media (orientation : portrait) {
-        -ms-transform: translate(0, 10%); /* IE 9 */
-        -webkit-transform: translate(0, 10%); /* Chrome, Safari, Opera */
-      }
-      @media (orientation : landscape) {
-        @include grid-column($columns:6, $offset:3);
-        -ms-transform: translate(0, 5%); /* IE 9 */
-        -webkit-transform: translate(0, 5%); /* Chrome, Safari, Opera */
-      }
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  z-index: 0;
+}
+
+.form {
+  height: 286px;
+  width: 245px;
+  background: url(https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/comming_soon/images/graphics.png);
+  background-size: cover;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -217px;
+  margin-left: -121px;
+  
+  form {
+    position: absolute;
+    bottom: 10px;
+    left: 48px;
+    .email-input {
+      height: 32px;
+      width: 241px;
+      padding-left: 10px;
     }
-    form {
-      @media (orientation : portrait) {
-        -ms-transform: translate(20%, -70%); /* IE 9 */
-        -webkit-transform: translate(20%, -70%); /* Chrome, Safari, Opera */
-      }
-      @media (orientation : landscape) {
-        -ms-transform: translate(32%, -125%); /* IE 9 */
-        -webkit-transform: translate(32%, -125%); /* Chrome, Safari, Opera */
-      }
-      .fields-container {
-        @media (orientation : landscape) {
-          @include grid-column($columns:5);
-        }
-        @media (orientation : portrait) {
-          @include grid-column($columns:8);
-        }
-      }
-      input { outline: none; }
-      .text-container {
-        padding: 0;
-        @media (orientation : landscape) {
-          margin-top: 1.1em;
-        }
-        @media (orientation : portrait) {
-          margin-top: 1.5em;
-        }
-        input { 
-          padding-left: 0.5em;
-          width: 100%;
-          border: 0.2em solid #81A3FC; 
-          @media (orientation : landscape) {
-            height: 3.8em;
-          }
-          @media (orientation : portrait) {
-            height: 5em;
-          }
-        }
-      }
-      .btn-container {
-        padding: 0;
-        input {
-          @media (orientation : landscape) {
-            width: 6em;
-          }
-          @media (orientation : portrait) {
-            width: 8em;
-          }
-        }
-      }
+    .submit-btn {
+      vertical-align: middle;
+      margin-top: -8px;
     }
   }
 }

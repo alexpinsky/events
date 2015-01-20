@@ -1,55 +1,69 @@
-@import "foundation/components/grid";
-
-body {
-  background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/comming_soon/backgrounds/background.jpg") no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
+html, body {
+  height: 100%;
+  padding:0;
+  margin: 0;
+}
+.background {
+  background: url(https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/comming_soon/backgrounds/background.jpg) no-repeat center;
   background-size: cover;
-  .main-wrapper {
-    .graphics-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  z-index: 0;
+}
+
+.form {
+  @media (orientation : portrait) {
+    height: 340px;
+    width: 280px;
+    margin-top: -220px;
+    margin-left: -143px;
+  }
+  @media (orientation : landscape) {
+    height: 316px;
+    width: 255px;
+    background-size: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -159px;
+    margin-left: -133px;
+  }
+  background: url(https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/comming_soon/images/graphics.png);
+  background-size: cover;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  
+  form {
+    @media (orientation : portrait) {
+      position: absolute;
+      bottom: 18px;
+      left: 34px;
+    }
+    @media (orientation : landscape) {
+      position: absolute;
+      bottom: 18px;
+      left: 27px;
+    }
+    .email-input {
       @media (orientation : portrait) {
-        -ms-transform: translate(0, 20%); /* IE 9 */
-        -webkit-transform: translate(0, 20%); /* Chrome, Safari, Opera */
+        height: 20px;
+        width: 160px;
+        padding-left: 6px;
       }
       @media (orientation : landscape) {
-        @include grid-column($columns:6, $offset:3);
+        height: 20px;
+        width: 152px;
+        padding-left: 6px;
       }
     }
-    form {
-      @media (orientation : portrait) {
-        -ms-transform: translate(20%, -10%); /* IE 9 */
-        -webkit-transform: translate(20%, -10%); /* Chrome, Safari, Opera */
-      }
-      @media (orientation : landscape) {
-        -ms-transform: translate(32%, -125%); /* IE 9 */
-        -webkit-transform: translate(32%, -125%); /* Chrome, Safari, Opera */
-      }
-      .fields-container {
-        @media (orientation : landscape) {
-          @include grid-column($columns:11);
-        }
-        @media (orientation : landscape) {
-          @include grid-column($columns:5);
-        }
-      }
-      input { outline: none; }
-      .text-container {
-        padding: 0;
-        margin-top: 0.7em;
-        input { 
-          padding-left: 0.5em;
-          width: 100%;
-          border: 0.2em solid #81A3FC; 
-          height: 2.5em;
-        }
-      }
-      .btn-container {
-        padding: 0;
-        input {
-          width: 4em;
-        }
-      }
+    .submit-btn {
+      width: 45px;
+      vertical-align: middle;
+      margin-top: -6px;
     }
   }
 }

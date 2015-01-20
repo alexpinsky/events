@@ -1,35 +1,42 @@
-@import "foundation/components/grid";
-
-body {
-  background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/comming_soon/backgrounds/background.jpg") no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
+html, body {
+  height: 100%;
+  padding:0;
+  margin: 0;
+}
+.background {
+  background: url(https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/comming_soon/backgrounds/background.jpg) no-repeat center;
   background-size: cover;
-  .main-wrapper {
-    .graphics-container {
-      margin-top: 1em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  z-index: 0;
+}
+
+.form {
+  height: 460px;
+  width: 420px;
+  background: url(https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/comming_soon/images/graphics.png);
+  background-size: cover;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -285px;
+  margin-left: -180px;
+  form {
+    position: absolute;
+    bottom: 10px;
+    left: 48px;
+    .email-input {
+      height: 32px;
+      width: 241px;
+      padding-left: 10px;
     }
-    form {
-      -ms-transform: translate(32%, -150%); /* IE 9 */
-      -webkit-transform: translate(32%, -150%); /* Chrome, Safari, Opera */
-      input { outline: none; }
-      .text-container {
-        padding: 0;
-        margin-top: 1.1em;
-        input { 
-          padding-left: 0.5em;
-          width: 100%;
-          border: 0.2em solid #81A3FC; 
-          height: 3.8em;
-        }
-      }
-      .btn-container {
-        padding: 0;
-        input {
-          width: 6em;
-        }
-      }
+    .submit-btn {
+      width: auto;
+      vertical-align: middle;
+      margin-top: -8px;
     }
   }
 }

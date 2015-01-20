@@ -9,33 +9,18 @@
   <%= stylesheet_link_tag 'comming_soon' %>
 </head>
 <body>
-  <div class='row'>
-    <div class="main-wrapper small-12 columns">
-      <div class='row'>
-        <div class="graphics-container small-10 small-offset-1 columns">
-          <img src="<%= image_url_for('comming_soon', 'graphics.png') %>">
-        </div> 
-      </div>
+  <div class="background">
+    <div class='form'>
       <%= form_for @lead do |f| %>
-        <div class='row'>
-          <div class='fields-container small-8 columns'>
-            <div class='row'>
-              <div class='text-container small-9 columns'>
-                <%= f.text_field :email, placeholder: 'Email', class: 'email-input' %>
-              </div>
-              <div class='btn-container small-3 columns'>
-                <%= f.submit "Comment", type: :image, src: image_url_for('comming_soon', 'btn_before.svg'), class: 'submit-btn' %>
-              </div>
-            </div>
-          </div>
-        </div>
+        <%= f.text_field :email, placeholder: 'Email', class: 'email-input' %>
+        <%= f.submit "Comment", type: :image, src: image_url_for('comming_soon', 'btn_before.svg'), class: 'submit-btn' %>
       <% end %>
     </div>
   </div>
-    <!-- Javascripts
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <%= javascript_include_tag "vendor/modernizr" %>
-    <%= javascript_include_tag "comming_soon" %>
-  </body>
-  </html>
+  <!-- Javascripts
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <%= javascript_include_tag "vendor/modernizr" %>
+  <%= javascript_include_tag "comming_soon" %>
+</body>
+</html>

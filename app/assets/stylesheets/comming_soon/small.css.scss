@@ -27,7 +27,6 @@ html, body {
   @media (orientation : landscape) {
     height: 316px;
     width: 255px;
-    background-size: cover;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -39,6 +38,7 @@ html, body {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
+  background-attachment: scroll;
   position: absolute;
   top: 50%;
   left: 50%;

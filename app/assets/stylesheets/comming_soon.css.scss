@@ -1,32 +1,15 @@
-// Small screens
-  
-/* Define mobile styles */
-@media only screen { 
-  @import 'comming_soon/small';
-}
-/* max-width 640px, mobile-only styles, use when QAing mobile issues */
-@media only screen and (max-width: 640px) { 
-  @import 'comming_soon/small';
+// Large screens
+@media (max-width: 1440px) {
+  @import 'comming_soon/large';
 }
 
 // Medium screens
-
-/* min-width 641px, medium screens */
-@media only screen and (min-width: 641px) {
-  @import 'comming_soon/large';
-} 
-/* min-width 641px and max-width 1024px, use when QAing tablet-only issues */
-@media only screen and (min-width: 4641px) and (max-width: 1024px) {
+@media screen and (max-width: 1024px) {
   @import 'comming_soon/large';
 } 
 
-// Large screens
-
-/* min-width 1025px, large screens */
-@media only screen and (min-width: 1025px) {
-  @import 'comming_soon/large';
-} 
-/* min-width 1025px and max-width 1440px, use when QAing large screen-only issues */
-@media only screen and (min-width: 1025px) and (max-width: 1440px) {
-  @import 'comming_soon/large';
+// Small screens
+@media screen and (max-width: 640px) { 
+  @import 'comming_soon/small';
 }
+

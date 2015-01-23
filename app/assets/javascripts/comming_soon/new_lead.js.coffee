@@ -2,7 +2,7 @@ class NewLead
 
   init: () ->
     $('.email-input').keyup @onKeyup
-    $('.main-wrapper').find('form').submit @onSubmit
+    $('.form').find('form').submit @onSubmit
 
   onKeyup: (e) ->
     input = $(e.target)
@@ -18,7 +18,7 @@ class NewLead
     form = $(e.target)
     $.ajax
       type: "POST"
-      dataType: "script"
+      dataType: "json"
       url: form.attr("action")
       data: form.serialize()
       complete: (data, status) ->

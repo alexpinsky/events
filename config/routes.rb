@@ -10,6 +10,7 @@ Events::Application.routes.draw do
   
   get 'welcome' => 'pages#welcome'
 
+  resources :leads, only: :create
   scope '/admin' do
     authenticate :user, lambda { |u| u.admin? } do
       resources :leads
@@ -24,5 +25,4 @@ Events::Application.routes.draw do
   end
 
   resources :categories
-  resources :leads, only: :create
 end

@@ -7,11 +7,13 @@
   <%= csrf_meta_tags %>
   <%= favicon_link_tag shared_assets_url 'favicon.ico' %>
   <%= stylesheet_link_tag 'comming_soon' %>
+  <link rel="prefetch" href="<%= image_url_for('comming_soon', 'btn_between.svg') %>">
+  <link rel="prefetch" href="<%= image_url_for('comming_soon', 'btn_after.svg') %>">
 </head>
 <body>
   <div class="background">
     <div class='form'>
-      <%= form_for @lead do |f| %>
+      <%= form_for @lead, url: leads_path do |f| %>
         <%= f.text_field :email, placeholder: 'Email', class: 'email-input' %>
         <%= f.submit "Comment", type: :image, src: image_url_for('comming_soon', 'btn_before.svg'), class: 'submit-btn' %>
       <% end %>

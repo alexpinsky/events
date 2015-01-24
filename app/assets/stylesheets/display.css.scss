@@ -4,16 +4,24 @@
  */
 
 .footer {
+  font-size: 10px;
   width: 100%;
   height: 5%;
-  color: white;
   text-align: center;
+  background-color: rgba(0, 0, 0, 0.4);
   .footer-container {
+    padding: 3px;
+    height: 100%;
     display: inline-block;
     vertical-align: middle;
+    img {
+      vertical-align: bottom;
+    }
     a {
-      color: rgb(102, 153, 255);
-      font-family: Karla; 
+      text-decoration: none;
+      color: white;
+      font-family: 'Julius Sans One', sans-serif;
+      text-shadow: 2px 1px rgba(0, 0, 0, 0.33);
     }
   }
 }

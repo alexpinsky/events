@@ -26,5 +26,5 @@ Events::Application.routes.draw do
 
   resources :categories
   
-  get '/:name', to: 'events#show'
+  get '/:url', to: 'events#show'
 end

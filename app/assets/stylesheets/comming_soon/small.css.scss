@@ -19,19 +19,19 @@ html, body {
 
 .form {
   @media (orientation : portrait) {
-    height: 340px;
-    width: 280px;
+    height: 329px;
+    width: 290px;
     margin-top: -190px;
-    margin-left: -143px;
+    margin-left: -145px;
   }
   @media (orientation : landscape) {
     height: 316px;
-    width: 255px;
+    width: 282px;
     position: absolute;
     top: 50%;
     left: 50%;
     margin-top: -159px;
-    margin-left: -133px;
+    margin-left: -141px;
   }
   background: url(https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/comming_soon/images/graphics.png);
   background-size: cover;
@@ -46,22 +46,22 @@ html, body {
     @media (orientation : portrait) {
       position: absolute;
       bottom: 18px;
-      left: 34px;
+      left: 30px;
     }
     @media (orientation : landscape) {
       position: absolute;
       bottom: 18px;
-      left: 27px;
+      left: 28px;
     }
     .email-input {
       @media (orientation : portrait) {
         height: 20px;
-        width: 160px;
+        width: 179px;
         padding-left: 6px;
       }
       @media (orientation : landscape) {
         height: 20px;
-        width: 152px;
+        width: 170px;
         padding-left: 6px;
       }
     }

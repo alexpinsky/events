@@ -22,8 +22,11 @@ class NewLead
       url: form.attr("action")
       data: form.serialize()
       complete: (data, status) ->
-        form.find('.submit-btn').attr("src", "https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/comming_soon/images/btn_after.svg")
-
+        $('.submit-btn').attr("src", "https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/comming_soon/images/btn_after.svg")
+        $('.email-input').val("")
+        setTimeout (->
+          $('.submit-btn').attr("src", "https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/comming_soon/images/btn_before.svg")
+        ), 1000
 
 $ ->
   newLead = new NewLead

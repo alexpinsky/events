@@ -13,9 +13,6 @@
   font-size: 10px;
   width: 100%;
   height: 5%;
-  @media (orientation : landscape) {
-    height: auto;
-  }
   text-align: center;
   background-color: rgba(0, 0, 0, 0.4);
   .footer-container {
@@ -24,7 +21,6 @@
     display: inline-block;
     vertical-align: middle;
     img {
-      vertical-align: bottom;
       height: 100%;
     }
     a {

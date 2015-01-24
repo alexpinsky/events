@@ -1,22 +1,17 @@
-@media (orientation : portrait) {
-  .display {
-    font-size: 20%;
-    height: 100%;
-  }
+.display {
+  font-size: 45%;
+  height: 100%;
 }
-@media (orientation : landscape) {
-  .display {
-    height: auto;
-    font-size: 35%;
-  }
-}
-
 .wedding.classic.event-wrapper {
   height: 100%;
   .theme-wrapper {
     @media (orientation : portrait) {
-      -ms-transform: translate(0, 20%); /* IE 9 */
-      -webkit-transform: translate(0, 20%); /* Chrome, Safari, Opera */
+      -ms-transform: translate(0, 35%); /* IE 9 */
+      -webkit-transform: translate(0, 35%); /* Chrome, Safari, Opera */
+    }
+    @media (orientation : landscape) {
+      -ms-transform: translate(0, 0); /* IE 9 */
+      -webkit-transform: translate(0, 0); /* Chrome, Safari, Opera */
     }
     position: relative;
     padding: 0;
@@ -45,21 +40,11 @@
           display: inline-block;
           #text_1 {
             display: inline;
-            @media (orientation : portrait) {
-              line-height: 1em;
-            }
-            @media (orientation : landscape) {
-              line-height: 0.8em;
-            }
+            line-height: 0.8em;
           }
         }
         .text-2-wrapper {
-          @media (orientation : portrait) {
-            padding: 1em 1em 3em;
-          }
-          @media (orientation : landscape) {
-            padding: 1em 1em 4em;
-          }
+          padding: 1em 1em 4em;
           #text_2 {
           }
         }
@@ -77,7 +62,13 @@
       }
       .decoration-wrapper {
         padding: 0;
-        margin-top: -1em;
+        margin-top: 0;
+        .left {
+          margin-left: 1em;
+        }
+        .right {
+          margin-right: 1em;
+        }
         img.r {
           -moz-transform: scaleX(-1);
           -o-transform: scaleX(-1);
@@ -86,11 +77,12 @@
         }
       }
       .calendar-wrapper {
+        margin-top: 1em;
         .addthisevent-drop {
           font-family: 'Lobster', cursive;
-          font-size: 6px;
-          padding: 0.5em;
-          background: rgba(200, 187, 187, 0.7);
+          font-size: 1em;
+          padding: 0.3em 1em;
+          background: rgba(255, 255, 255, 0.87);
           color: #595757!important;
           border: 1em;
           border-radius: 1em!important;

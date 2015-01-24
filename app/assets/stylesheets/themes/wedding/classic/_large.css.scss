@@ -1,3 +1,4 @@
+@import 'foundation/components/grid';
 .main-wrapper {
   height: auto;
   .display {
@@ -9,12 +10,8 @@
 .wedding.classic.event-wrapper {
   height: 100%;
   .theme-wrapper {
-    @media (orientation : portrait) {
-      .theme-wrapper {
-        -ms-transform: translate(0, 0); /* IE 9 */
-        -webkit-transform: translate(0, 0); /* Chrome, Safari, Opera */
-      }
-    }
+    -ms-transform: translate(0, 0); /* IE 9 */
+    -webkit-transform: translate(0, 0); /* Chrome, Safari, Opera */
     position: relative;
     padding: 1em;
     img.main {
@@ -31,6 +28,7 @@
       -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */
       transform: translate(-50%, -50%);
       .text-wrapper {
+        @include grid-column(4, true, true, 0);
         text-align: center;
         padding: 1em;
         border: 0.4em solid white;
@@ -40,6 +38,7 @@
           border-top: 0.3em solid white;
           border-bottom: 0.3em solid white;
           display: inline-block;
+          margin-top: 1em;
           #text_1 {
             font-size: 5em;
             display: inline;
@@ -47,7 +46,7 @@
           }
         }
         .text-2-wrapper {
-          padding: 1em 1em 5em;
+          padding: 1em 1em 4em;
           #text_2 {
             font-size: 2em;
           }
@@ -60,12 +59,15 @@
         }
       }
       .text-wrapper-border {
+        @include grid-column(4, true, true, 4);
+        margin-top: -34px;
         padding: 0;
         .left, .right {
           border-bottom: 0.4em solid white;
         }
       }
       .decoration-wrapper {
+        @include grid-column(6, true, true, 3);
         padding: 0;
         margin-top: -1em;
         img.r {
@@ -79,8 +81,8 @@
         .addthisevent-drop {
           font-family: 'Lobster', cursive;
           font-size: 1em;
-          padding: 0.5em;
-          background: rgba(200, 187, 187, 0.7);
+          padding: 0.3em 1em;
+          background: rgba(255, 255, 255, 0.87);
           color: #595757!important;
           border: 1em;
           border-radius: 1em!important;

@@ -22,6 +22,7 @@ class NewLead
       url: form.attr("action")
       data: form.serialize()
       complete: (data, status) ->
+        ga('send', 'event', { eventCategory: 'leads', eventAction: 'comming soon'});
         $('.submit-btn').attr("src", "https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/comming_soon/images/btn_after.svg")
         $('.email-input').val("")
         setTimeout (->

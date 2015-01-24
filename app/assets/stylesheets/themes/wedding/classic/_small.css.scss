@@ -1,19 +1,13 @@
 @media (orientation : portrait) {
-  .main-wrapper {
-      height: 100%;
-    .display {
-      font-size: 20%;
-      height: 100%;
-    }
+  .display {
+    font-size: 20%;
+    height: 100%;
   }
 }
 @media (orientation : landscape) {
-  .main-wrapper {
+  .display {
     height: auto;
-    .display {
-      height: auto;
-      font-size: 35%;
-    }
+    font-size: 35%;
   }
 }
 

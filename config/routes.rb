@@ -25,4 +25,6 @@ Events::Application.routes.draw do
   end
 
   resources :categories
+  
+  get '/:name', to: 'events#show'
 end

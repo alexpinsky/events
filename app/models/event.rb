@@ -29,18 +29,9 @@ class Event < ActiveRecord::Base
   
   scope :themes, -> () { where('events.is_theme = ?', true) }
   scope :by_category, -> (category_name) { joins(:category).where('categories.name = ?', category_name) }
+  scope :by_name, -> (name) { where('events.name = ?', name) }
 
   MAX_PICTURES_SIZE = 5
-
-  def self.find_by_url(url)
-    events = where("events.url = ?", url)
-    return events.first if events.size == 1
-    events.each do |e|
-      url_hash = Digest::MD5.hexdigest "#{url}#{e.created_at.to_f}"
-      return e if e.url_hash = url_hash
-    end
-    nil
-  end
 
   # args: {:user, :theme}
   def self.copy_from_theme(args)

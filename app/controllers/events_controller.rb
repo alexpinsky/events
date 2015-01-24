@@ -10,14 +10,18 @@ class EventsController < ApplicationController
   end
 
   def show
-    id = params[:id].to_i
     @preview = params[:preview].present? ? true : false
-    if id == 0
-      @event = Event.find_by_url params[:id]
+    if params[:name]
+      @event = Event.by_name(params[:name]).first
     else
-      @event = Event.find id
+      @event = Event.find params[:id]
     end
-    render layout: "display"
+
+    if @event
+      render layout: "display"
+    else
+      redirect_to root_path      
+    end
   end
 
   def new

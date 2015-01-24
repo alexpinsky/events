@@ -3,6 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:title" content="<%= @event.name %>" />
+    <meta property="og:image" content="<%= @event.pictures.first.image_url %>" />
+    <meta property="og:site_name" content="webivte.com/<%= @event.url %>" />
+    <meta property="og:url" content="webivte.com/<%= @event.url %>" />
+    <meta property="og:description" content="<%= "#{@event.name} #{@event.information.start_time} #{@event.information.location}" %>" />
     <title><%= content_for?(:title) ? yield(:title) : "Event" %></title>
     <%= yield(:header) %>
     <%= stylesheet_link_tag  "display" %>

@@ -7,8 +7,6 @@
   <%= csrf_meta_tags %>
   <%= favicon_link_tag shared_assets_url 'favicon.ico' %>
   <%= stylesheet_link_tag 'comming_soon' %>
-  <link rel="prefetch" href="<%= image_url_for('comming_soon', 'btn_between.svg') %>">
-  <link rel="prefetch" href="<%= image_url_for('comming_soon', 'btn_after.svg') %>">
 </head>
 <body>
   <div class="background">
@@ -22,6 +20,8 @@
   <!-- Javascripts
   ================================================== -->
   <!-- Placed at the end of the document so the pages load faster -->
+  <link rel="prefetch" href="<%= image_url_for('comming_soon', 'btn_between.svg') %>">
+  <link rel="prefetch" href="<%= image_url_for('comming_soon', 'btn_after.svg') %>">
   <%= javascript_include_tag "vendor/modernizr" %>
   <%= javascript_include_tag "comming_soon" %>
   <script>

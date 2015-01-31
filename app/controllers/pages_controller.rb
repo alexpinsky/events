@@ -4,6 +4,10 @@ class PagesController < ApplicationController
   def welcome
     
   end
+
+  def ping
+    render json: {}, status: :ok
+  end
   
   def comming_soon
     @lead = Lead.new

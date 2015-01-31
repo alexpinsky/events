@@ -7,6 +7,7 @@ Events::Application.routes.draw do
   }
   
   root 'pages#comming_soon'
+  get 'ping' => 'pages#ping'
   
   get 'welcome' => 'pages#welcome'
 

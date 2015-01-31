@@ -51,6 +51,8 @@ Events::Application.configure do
   # Use a different logger for distributed setups.
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
 
+  config.active_record.logger = Logger.new(STDOUT)
+
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
   client = Dalli::Client.new((ENV["MEMCACHIER_SERVERS"] || "").split(","),

@@ -1,7 +1,7 @@
-<% theme_path = "themes/#{@event.category_name}/#{@event.theme_name}" %>
+<% theme_path = "themes/wedding/paris" %>
 
 <% content_for :title do %>
-  <%= @event.name %>
+  <%= 'Paris' %>
 <% end %>
 
 <% content_for :header do %>
@@ -9,5 +9,5 @@
 <% end %>
 
 <div class="display">
-  <%= render partial: theme_path, locals: { event: @event } %>
+  <%= render partial: theme_path, locals: { event: nil } %>
 </div>

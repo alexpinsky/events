@@ -9,39 +9,32 @@
       .images-container {
         height: 20em;
         .images {
-          background: url(https://s3-eu-west-1.amazonaws.com/events-assets-static/categories/wedding/themes/paris/images/paris.jpg);
-          background-size: contain;
-          background-repeat: no-repeat;
-          background-position-x: center;
-          height: 100%;
+          background-size: contain !important;
+          background-repeat: no-repeat !important;
+          background-position-x: center !important;
+          height: 100% !important;
         }
       }
       .text-wrapper-1 {
-        font-family: 'Six Caps', sans-serif;
-        font-size: 6em;
-        margin-top: -0.8em;
-        line-height: 1em;
+        margin-top: -5em;
+        line-height: 6em;
         #text_1 {
-          display: inline-block;
-          background: white;
-          padding: 0 0.2em;
+          display: inline-block !important;
+          background: white !important;
+          padding: 0 0.2em !important;
         }
       }
       .text-wrapper-2 {
-        font-family: 'Six Caps', sans-serif;
-        font-size: 6em;
         line-height: 0.8em;
         #text_2 {
-          display: inline-block;
+          display: inline-block !important;
         }
       }
       .text-wrapper-3 {
-        font-family: 'Fanwood Text', serif;
         font-style: italic;
-        font-size: 1.5em;
         padding: 1em;
         #text_3 {
-          display: inline-block;
+          display: inline-block !important;
         }
       }
       .calendar-wrapper {

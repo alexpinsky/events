@@ -1,25 +1,20 @@
 <div class="wedding paris event-wrapper">
   <div class='images-container'>
-    <div class='images'>
+    <div class='images' style="background: url(<%= image_url(event, 1) %>)">
     </div>
   </div>
   <div class='text-wrapper-1'>
-    <div id='text_1'>
-      21/12/15
-    </div>
+    <div id="text_1" style="font-family: <%= event.font_family_1 %>;color: <%= event.font_color_1 %>; font-size: <%= event.font_size_1 %>em;"><%= event.text_1 %></div>
   </div>
   <div class='text-wrapper-2'>
-    <div id='text_2'>
-      save the date
-    </div>
+    <div id="text_2" style="font-family: <%= event.font_family_2 %>;color: <%= event.font_color_2 %>; font-size: <%= event.font_size_2 %>em;"><%= event.text_2 %></div>
   </div>
   <div class='text-wrapper-3'>
-    <div id='text_3'>
-      Natasha & Jonathan
-    </div>
+    <div id="text_3" style="font-family: <%= event.font_family_3 %>;color: <%= event.font_color_3 %>; font-size: <%= event.font_size_3 %>em;"><%= event.text_3 %></div>
   </div>
-  <div class="calendar-wrapper">
-    <a href="http://example.com/link-to-your-event" title="Add to Calendar" id="btn_calendar" class="addthisevent">Add to Calendar</a>
+  <div class="calendar-wrapper" style="visibility
+    : <%= event_visibility(event) %>">
+    <%= render partial: 'themes/shared/calendar', locals: { event: event } %>
   </div>
 </div>
 

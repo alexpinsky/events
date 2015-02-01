@@ -3,14 +3,14 @@
     <div class='images' style="background: url(<%= image_url(event, 1) %>)">
     </div>
   </div>
-  <div class='text-wrapper-1'>
-    <div id="text_1" style="font-family: <%= event.font_family_1 %>;color: <%= event.font_color_1 %>; font-size: <%= event.font_size_1 %>em;"><%= event.text_1 %></div>
+  <div class='text-wrapper-1' style="font-family: <%= event.font_family_1 %>;color: <%= event.font_color_1 %>; font-size: <%= event.font_size_1 %>em;">
+    <div id="text_1"><%= event.text_1 %></div>
   </div>
-  <div class='text-wrapper-2'>
-    <div id="text_2" style="font-family: <%= event.font_family_2 %>;color: <%= event.font_color_2 %>; font-size: <%= event.font_size_2 %>em;"><%= event.text_2 %></div>
+  <div class='text-wrapper-2' style="font-family: <%= event.font_family_2 %>;color: <%= event.font_color_2 %>; font-size: <%= event.font_size_2 %>em;">
+    <div id="text_2"><%= event.text_2 %></div>
   </div>
-  <div class='text-wrapper-3'>
-    <div id="text_3" style="font-family: <%= event.font_family_3 %>;color: <%= event.font_color_3 %>; font-size: <%= event.font_size_3 %>em;"><%= event.text_3 %></div>
+  <div class='text-wrapper-3' style="font-family: <%= event.font_family_3 %>;color: <%= event.font_color_3 %>; font-size: <%= event.font_size_3 %>em;">
+    <div id="text_3"><%= event.text_3 %></div>
   </div>
   <div class="calendar-wrapper" style="visibility
     : <%= event_visibility(event) %>">

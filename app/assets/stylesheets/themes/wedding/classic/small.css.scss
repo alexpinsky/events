@@ -1,0 +1,108 @@
+.main-wrapper {
+  font-size: 35%;
+  height: 95%;
+  .display {
+    height: 100%;
+    .wedding.classic.event-wrapper {
+      height: 100%;
+      .theme-wrapper {
+        -ms-transform: translate(0, 35%); /* IE 9 */
+        -webkit-transform: translate(0, 35%); /* Chrome, Safari, Opera */
+        position: relative;
+        padding: 0;
+        img.main {
+          border: 1.5em solid white;
+          height: 100%;
+          width: 100%;
+        }
+        .graphics-wrapper {
+          text-align: center;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          -ms-transform: translate(-50%, -50%); /* IE 9 */
+          -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */
+          transform: translate(-50%, -50%);
+          .text-wrapper {
+            text-align: center;
+            padding: 1em;
+            border: 0.3em solid white;
+            display: inline-block;
+            .text-1-wrapper {
+              border-top: 0.3em solid white;
+              border-bottom: 0.3em solid white;
+              display: inline-block;
+              #text_1 {
+                display: inline;
+                line-height: 0.8em;
+              }
+            }
+            .text-2-wrapper {
+              padding: 1em 0em 0em;
+              #text_2 {
+              }
+            }
+            .text-3-wrapper {
+              #text_3 { 
+                line-height: 1em;
+              }
+            }
+          }
+          .decoration-wrapper {
+            padding: 0;
+            margin-top: 0;
+            .left {
+              margin-left: 1em;
+            }
+            .right {
+              margin-right: 1em;
+            }
+            img.r {
+              -moz-transform: scaleX(-1);
+              -o-transform: scaleX(-1);
+              -webkit-transform: scaleX(-1);
+              transform: scaleX(-1);
+            }
+          }
+          .calendar-wrapper {
+            .addthisevent-drop {
+              font-family: 'Lobster', cursive;
+              font-size: 1em;
+              padding: 0.3em 1em;
+              background: rgba(255, 255, 255, 0.87);
+              color: #595757!important;
+              border: 1em;
+              border-radius: 1em!important;
+            }
+            .addthisevent-drop:hover {
+              background: rgba(203, 203, 203, 0.7);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.footer {
+  font-size: 0.5em;
+  width: 100%;
+  height: 5%;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  .footer-container {
+    padding: 3px;
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+    img {
+      vertical-align: bottom;
+      height: 100%;
+    }
+    a {
+      text-decoration: none;
+      color: white;
+      font-family: 'Julius Sans One', sans-serif;
+      text-shadow: 1px 1px rgba(0, 0, 0, 0.33);
+    }
+  }
+}

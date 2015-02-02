@@ -1,14 +1,29 @@
-// Small screens
-@media screen and (max-width: 456px) { 
+// Small landscape
+@media only screen and (min-device-width: 320px) and (max-device-height: 667px) and (orientation : landscape) {
+  @import 'small_landscape';
+}
+
+// Small portrait
+@media only screen and (min-device-width: 320px) and (max-device-height: 667px) and (orientation : portrait) {
   @import 'small';
 }
 
-// Tablet screens
-@media screen and (min-width: 457px) and (max-width: 800px) { 
+// Medium landscape
+@media only screen and (min-device-width: 604px) and (max-device-width: 1024px) and (orientation : landscape) {
+  @import 'medium_landscape';
+}
+
+// Medium portrait
+@media only screen and (min-device-width: 604px) and (max-device-width: 1024px) and (orientation : portrait) {
   @import 'medium';
 }
 
-// Tablet screens
-@media screen and (min-width: 801px) { 
+// Desktops and laptops
+@media only screen and (min-width : 1224px) {
+  @import 'large';
+}
+
+// Large screens
+@media only screen and (min-width : 1824px) {
   @import 'large';
 }

@@ -19,6 +19,11 @@
 }
 
 // Desktops and laptops
+@media only screen and (min-width : 600px) {
+  @import 'large';
+}
+
+// Desktops and laptops
 @media only screen and (min-width : 1224px) {
   @import 'large';
 }

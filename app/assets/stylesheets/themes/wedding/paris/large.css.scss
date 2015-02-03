@@ -1,6 +1,11 @@
 .main-wrapper {
   height: 95%;
-  font-size: 100%;
+  @media (max-height: 700px) {
+    font-size: 70%;
+  }
+  @media (min-height: 701px) {
+    font-size: 100%;
+  }
   text-align: center;
   .display {
     height: 100%;

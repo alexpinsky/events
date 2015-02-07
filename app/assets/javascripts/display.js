@@ -8,7 +8,7 @@ var resizeFun = function() {
   if (bodyHeight <= 677 && bodyHeight >= 450) {
     var imgHeight = $('img.main').height();
     console.log('image: ' + imgHeight);
-    var marginTop = (bodyHeight - imgHeight) / 2;
+    var marginTop = ((bodyHeight - imgHeight) / 2) - bodyHeight * 5 / 100;
     console.log('margin-top: ' + marginTop);
     $('.theme-wrapper').css('margin-top', marginTop + 'px');
   } else {

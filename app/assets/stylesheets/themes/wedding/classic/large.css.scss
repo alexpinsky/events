@@ -10,8 +10,7 @@
 .wedding.classic.event-wrapper {
   height: 100%;
   .theme-wrapper {
-    -ms-transform: translate(0, 0); /* IE 9 */
-    -webkit-transform: translate(0, 0); /* Chrome, Safari, Opera */
+    @include grid-column(10, true, true, 1);
     position: relative;
     height: 100%;
     img.main {
@@ -28,7 +27,7 @@
       -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */
       transform: translate(-50%, -50%);
       .text-wrapper {
-        @include grid-column(5, true, true, 0);
+        @include grid-column(6, true, true, 0);
         text-align: center;
         padding: 1em;
         border: 0.4em solid white;
@@ -55,7 +54,7 @@
         }
       }
       .decoration-wrapper {
-        @include grid-column(8, true, true, 2);
+        @include grid-column(10, true, true, 1);
         margin-top: -1em;
         img.r {
           -moz-transform: scaleX(-1);

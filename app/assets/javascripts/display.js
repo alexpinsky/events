@@ -1,8 +1,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation_slim
-$(document).foundation();
-var resizeFun = function() {
+//= require elements/slideshow
+
+var resizeFn = function() {
   var bodyHeight = $('body').height();
   console.log('body: ' + bodyHeight);
   if (bodyHeight <= 677 && bodyHeight >= 350) {
@@ -16,15 +17,17 @@ var resizeFun = function() {
   }
 };
 
+$(document).foundation();
+
 $(document).ready(function() {
   $('span').click(function() {
     ga('send', 'event', { eventCategory: 'invites', eventAction: 'add to calendar'});
   });
 
-  $(window).resize(resizeFun);
+  $(window).resize(resizeFn);
 });
 
 $(window).load(function() {
-  resizeFun();
+  resizeFn();
 });
 

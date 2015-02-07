@@ -12,9 +12,21 @@ class EventsController < ApplicationController
   def show
     @preview = params[:preview].present? ? true : false
     if params[:url]
-      @event = Event.by_url(params[:url]).first
+      @event = Event.includes(
+        :category,
+        :appearance, 
+        :information, 
+        :pictures
+      )
+      .by_url(params[:url]).first
     else
-      @event = Event.find params[:id]
+      @event = Event.includes(
+        :category,
+        :appearance, 
+        :information, 
+        :pictures
+      )
+      .by_id(params[:id]).first
     end
 
     if @event

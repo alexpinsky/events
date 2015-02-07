@@ -8,10 +8,9 @@
       .theme-wrapper {
         position: relative;
         padding: 0;
-        img.main {
+        .images {
           border: 1.5em solid white;
-          height: 100%;
-          width: 100%;
+          background-size: cover !important;
         }
         .graphics-wrapper {
           text-align: center;

@@ -2,7 +2,7 @@
   <div class='row' style="height: 100%">
     
   <div class='theme-wrapper small-12 columns'>
-    <img id='pic-1' class="main" src="<%= image_url(event, 1) %>" />
+    <%= render partial: 'elements/slideshow', locals: { event: event } %>
     <div class='graphics-wrapper small-12 columns'>
       <div class='row'>
         <div class='text-wrapper small-6 small-offset-3 columns'>

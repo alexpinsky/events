@@ -20,11 +20,15 @@ var resizeFn = function() {
 $(document).foundation();
 
 $(document).ready(function() {
+  $(window).resize(resizeFn);
+
+  $('.images').slick({
+    autoplay: true
+  });
+
   $('span').click(function() {
     ga('send', 'event', { eventCategory: 'invites', eventAction: 'add to calendar'});
   });
-
-  $(window).resize(resizeFn);
 });
 
 $(window).load(function() {

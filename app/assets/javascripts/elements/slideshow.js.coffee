@@ -42,7 +42,7 @@ class Slideshow
     #   )
 
 $ ->
-  slideshow = new Slideshow
-    images: $(".event-wrapper").find('.images')
-  slideshow.init()
-  slideshow.run()
+  # slideshow = new Slideshow
+  #   images: $(".event-wrapper").find('.images')
+  # slideshow.init()
+  # slideshow.run()

@@ -1,5 +1,5 @@
 <div class='images'>
   <% event.pictures.sort { |pic_1, pic_2| pic_1.order <=> pic_2.order }.each do |pic| %>
-  <img src="<%= pic.image_url %>" style="display: none;">
+  <img src="<%= pic.image_url %>">
   <% end %>
 </div>

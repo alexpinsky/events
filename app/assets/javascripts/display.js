@@ -5,7 +5,7 @@ $(document).foundation();
 var resizeFun = function() {
   var bodyHeight = $('body').height();
   console.log('body: ' + bodyHeight);
-  if (bodyHeight <= 677 && bodyHeight >= 450) {
+  if (bodyHeight <= 677 && bodyHeight >= 350) {
     var imgHeight = $('img.main').height();
     console.log('image: ' + imgHeight);
     var marginTop = ((bodyHeight - imgHeight) / 2) - bodyHeight * 5 / 100;

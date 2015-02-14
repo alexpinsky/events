@@ -13,7 +13,7 @@
       height: 100%;
       .images-container {
         text-align: center;
-        .slick-list, .images {
+        .images.slick-list, .images {
           @media (max-height: 449px) {
             height: 27em;
             width: 27em;

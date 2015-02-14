@@ -5,4 +5,5 @@ class @Initializers
     if imagesObj.data('slideshow')
       imagesObj.slick
         autoplay: true,
-        arrows: false
+        arrows: false,
+        mobileFirst: true

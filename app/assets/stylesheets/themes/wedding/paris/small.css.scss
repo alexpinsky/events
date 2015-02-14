@@ -1,13 +1,24 @@
 .main-wrapper {
   height: 95%;
-  font-size: 60%;
+  @media (max-height: 480px) {
+    font-size: 58%;
+  }
+  @media (min-height: 481px) {
+    font-size: 80%;
+  }
   text-align: center;
   .display {
     height: 100%;
     .event-wrapper {
       height: 100%;
       .images-container {
-        height: 60%;
+        text-align: center;
+        .slick-list {
+          height: 100%;
+          width: 100%;
+          display: inline-block;
+          z-index: -999;
+        }
       }
       .text-wrapper-1 {
         margin-top: -0.8em;

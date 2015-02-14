@@ -1,7 +1,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation_slim
-//= require elements/slideshow
+//= require initializers
 
 var resizeFn = function() {
   var bodyHeight = $('body').height();
@@ -20,12 +20,8 @@ var resizeFn = function() {
 $(document).foundation();
 
 $(document).ready(function() {
+  Initializers.init();
   $(window).resize(resizeFn);
-
-  $('.images').slick({
-    autoplay: true
-  });
-
   $('span').click(function() {
     ga('send', 'event', { eventCategory: 'invites', eventAction: 'add to calendar'});
   });

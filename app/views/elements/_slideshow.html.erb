@@ -1,4 +1,9 @@
-<div class='images'>
+<% slideshow = if images.size > 1 %>
+  <% true %>
+<% else %>
+  <% false %>
+<% end %>
+<div class='images' data-slideshow="<%= slideshow %>">
   <% images.each do |pic| %>
   <img src="<%= pic.image_url %>">
   <% end %>

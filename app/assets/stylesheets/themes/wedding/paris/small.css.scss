@@ -1,10 +1,10 @@
 .main-wrapper {
   height: 95%;
-  @media (max-height: 480px) {
-    font-size: 58%;
+  @media (max-height: 449px) {
+    font-size: 45%;
   }
-  @media (min-height: 481px) {
-    font-size: 80%;
+  @media (min-height: 450px) {
+    font-size: 60%;
   }
   text-align: center;
   .display {
@@ -13,9 +13,19 @@
       height: 100%;
       .images-container {
         text-align: center;
-        .slick-list {
-          height: 100%;
-          width: 100%;
+        .slick-list, .images {
+          @media (max-height: 449px) {
+            height: 27em;
+            width: 27em;
+          }
+          @media (min-height: 450px) {
+            height: 30em;
+            width: 30em;
+          }
+          @media (min-height: 451px) {
+            height: 100%;
+            width: 100%;
+          }
           display: inline-block;
           z-index: -999;
         }

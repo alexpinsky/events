@@ -3,7 +3,12 @@
   height: 95%;
   .display {
     height: 100%;
-    font-size: 100%;
+    @media (max-height: 681px) {
+      font-size: 90%;
+    }
+    @media (min-height: 682px) {
+      font-size: 100%;
+    }
   }
 }
 
@@ -18,9 +23,19 @@
       text-align: center;
       .images.slick-list, .images {
         border: 1.5em solid white;
-        height: 45em;
-        width: 45em;
         display: inline-block;
+        @media (max-height: 681px) {
+          height: 40em;
+          width: 40em;
+        }
+        @media (min-height: 682px) and (max-height: 767px) {
+          height: 40em;
+          width: 40em;
+        }
+        @media (min-height: 768px) {
+          height: 45em;
+          width: 45em;
+        }
       }
     }
     .graphics-wrapper {
@@ -32,7 +47,12 @@
       -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */
       transform: translate(-50%, -50%);
       .text-wrapper {
-        @include grid-column(6, true, true, 0);
+        @media (max-height: 767px) {
+          @include grid-column(5, true, true, 0);
+        }
+        @media (min-height: 768px) {
+          @include grid-column(6, true, true, 0);
+        }
         text-align: center;
         padding: 1em;
         border: 0.4em solid white;
@@ -59,7 +79,12 @@
         }
       }
       .decoration-wrapper {
-        @include grid-column(10, true, true, 1);
+        @media (max-height: 767px) {
+          @include grid-column(8, true, true, 2);
+        }
+        @media (min-height: 768px) {
+          @include grid-column(10, true, true, 1);
+        }
         margin-top: -1em;
         img.r {
           -moz-transform: scaleX(-1);

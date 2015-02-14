@@ -11,6 +11,9 @@ var resizeFn = function() {
     console.log('image: ' + imgHeight);
     var marginTop = ((bodyHeight - imgHeight) / 2) - bodyHeight * 5 / 100;
     console.log('margin-top: ' + marginTop);
+    if (marginTop < 0) {
+      marginTop = 0;
+    };
     $('.theme-wrapper').css('margin-top', marginTop + 'px');
   } else {
     $('.theme-wrapper').css('margin-top', 0);
@@ -21,7 +24,11 @@ $(document).foundation();
 
 $(document).ready(function() {
   Initializers.init();
-  $(window).resize(resizeFn);
+  $(window).resize(function () {
+    setTimeout(function() {
+      resizeFn();
+    }, 100);
+  });
   $('span').click(function() {
     ga('send', 'event', { eventCategory: 'invites', eventAction: 'add to calendar'});
   });

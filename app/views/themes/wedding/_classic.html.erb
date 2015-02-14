@@ -2,7 +2,9 @@
   <div class='row' style="height: 100%">
     
   <div class='theme-wrapper small-12 columns'>
-    <%= render partial: 'elements/slideshow', locals: { event: event } %>
+    <div class="images-container">
+      <%= render partial: 'elements/slideshow', locals: { images: event.pictures.sort { |pic_1, pic_2| pic_1.order <=> pic_2.order } } %>  
+    </div>
     <div class='graphics-wrapper small-12 columns'>
       <div class='row'>
         <div class='text-wrapper small-6 small-offset-3 columns'>

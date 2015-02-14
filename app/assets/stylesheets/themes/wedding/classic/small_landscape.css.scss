@@ -8,9 +8,14 @@
       .theme-wrapper {
         position: relative;
         padding: 0;
-        .images {
-          border: 1.5em solid white;
-          background-size: cover !important;
+        .images-container {
+          text-align: center;
+          .slick-list {
+            border: 1.5em solid white;
+            height: 100%;
+            width: 100%;
+            display: inline-block;
+          }
         }
         .graphics-wrapper {
           text-align: center;

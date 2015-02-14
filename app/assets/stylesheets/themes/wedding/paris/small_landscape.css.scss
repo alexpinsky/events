@@ -7,12 +7,12 @@
     .event-wrapper {
       height: 100%;
       .images-container {
-        height: 20em;
-        .images {
-          background-size: contain !important;
-          background-repeat: no-repeat !important;
-          background-position-x: center !important;
-          height: 100% !important;
+        text-align: center;
+        .slick-list {
+          height: 100%;
+          width: 100%;
+          display: inline-block;
+          z-index: -999;
         }
       }
       .text-wrapper-1 {

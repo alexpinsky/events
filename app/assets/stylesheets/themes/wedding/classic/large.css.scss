@@ -10,13 +10,18 @@
 .wedding.classic.event-wrapper {
   height: 100%;
   .theme-wrapper {
+    margin-top: 0.5em !important;
     @include grid-column(10, true, true, 1);
     position: relative;
     height: 100%;
-    img.main {
-      border: 1.5em solid white;
-      height: 100%;
-      width: 100%;
+    .images-container {
+      text-align: center;
+      .slick-list {
+        border: 1.5em solid white;
+        height: 45em;
+        width: 45em;
+        display: inline-block;
+      }
     }
     .graphics-wrapper {
       text-align: center;

@@ -1,9 +1,9 @@
 @import 'foundation/components/grid';
 .main-wrapper {
-    height: 100%;
+    height: 95%;
   .display {
     height: 100%;
-    font-size: 65%;
+    font-size: 68%;
   }
 }
 
@@ -12,10 +12,14 @@
   .theme-wrapper {
     position: relative;
     padding: 0;
-    img.main {
-      border: 1.5em solid white;
-      height: 100%;
-      width: 100%;
+    .images-container {
+      text-align: center;
+      .slick-list {
+        border: 1.5em solid white;
+        height: 100%;
+        width: 100%;
+        display: inline-block;
+      }
     }
     .graphics-wrapper {
       @include grid-column(8, true, true, 0);

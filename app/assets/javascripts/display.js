@@ -1,12 +1,13 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation_slim
-$(document).foundation();
-var resizeFun = function() {
+//= require initializers
+
+var resizeFn = function() {
   var bodyHeight = $('body').height();
   console.log('body: ' + bodyHeight);
-  if (bodyHeight <= 677 && bodyHeight >= 350) {
-    var imgHeight = $('img.main').height();
+  if (bodyHeight <= 966 && bodyHeight >= 350) {
+    var imgHeight = $('.images-container').height();
     console.log('image: ' + imgHeight);
     var marginTop = ((bodyHeight - imgHeight) / 2) - bodyHeight * 5 / 100;
     console.log('margin-top: ' + marginTop);
@@ -16,15 +17,17 @@ var resizeFun = function() {
   }
 };
 
+$(document).foundation();
+
 $(document).ready(function() {
+  Initializers.init();
+  $(window).resize(resizeFn);
   $('span').click(function() {
     ga('send', 'event', { eventCategory: 'invites', eventAction: 'add to calendar'});
   });
-
-  $(window).resize(resizeFun);
 });
 
 $(window).load(function() {
-  resizeFun();
+  resizeFn();
 });
 

@@ -30,6 +30,7 @@ class Event < ActiveRecord::Base
   scope :themes, -> () { where('events.is_theme = ?', true) }
   scope :by_category, -> (category_name) { joins(:category).where('categories.name = ?', category_name) }
   scope :by_url, -> (url) { where('events.url = ?', url) }
+  scope :by_id, -> (id) { where('events.id = ?', id) }
 
   MAX_PICTURES_SIZE = 5
 

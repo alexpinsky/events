@@ -1,7 +1,6 @@
 <div class="wedding paris event-wrapper">
   <div class='images-container'>
-    <div class='images' style="background: url(<%= image_url(event, 1) %>)">
-    </div>
+    <%= render partial: 'elements/slideshow', locals: { images: event.pictures.sort { |pic_1, pic_2| pic_1.order <=> pic_2.order } } %>  
   </div>
   <div class='text-wrapper-1' style="font-family: <%= event.font_family_1 %>;color: <%= event.font_color_1 %>; font-size: <%= event.font_size_1 %>em;">
     <div id="text_1"><%= event.text_1 %></div>

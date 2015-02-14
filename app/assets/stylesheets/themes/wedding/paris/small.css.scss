@@ -4,7 +4,7 @@
     font-size: 45%;
   }
   @media (min-height: 450px) and (max-height: 600px) {
-    font-size: 55%;
+    font-size: 60%;
   }
   @media (min-height: 601px) {
     font-size: 80%
@@ -21,9 +21,9 @@
             height: 27em;
             width: 27em;
           }
-          @media (min-height: 481px) and (max-height: 600) {
-            height: 30em;
-            width: 30em;
+          @media (min-height: 481px) and (max-height: 600px) {
+            height: 35em;
+            width: 35em;
           }
           @media (min-height: 601px) {
             height: 100%;

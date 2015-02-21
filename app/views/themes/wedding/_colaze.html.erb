@@ -1,0 +1,63 @@
+<div class="wedding colaze event-wrapper">
+  <div class='container'>
+    <div class='colaze-row top'>
+      <div class='colaze-square border'>
+        <div class='static-text'>
+          <div>SAVE</div>
+          <div>THE</div>
+          <div>DATE</div>
+        </div>
+      </div>
+      <div class='colaze-square'>
+        <% image_1 = event.pictures.select { |pic| pic.order == 1 }.first %>
+        <img src="<%= image_1.try(:image_url) %>">
+      </div>
+      <div class='colaze-square'>
+        <img src="<%= aws_asset_url(event, 'pattern.svg') %>">
+      </div>
+    </div>
+    <div class='colaze-row'>
+      <div class='colaze-square'>
+        <% image_2 = event.pictures.select { |pic| pic.order == 2 }.first %>
+        <img src="<%= image_2.try(:image_url) %>">
+      </div>
+      <div class='colaze-square border'>
+        <div class='text-wrapper-1' style="font-family: <%= event.font_family_1 %>;color: <%= event.font_color_1 %>; font-size: <%= event.font_size_1 %>em;">
+          <% words = event.text_1.split(' ') %>
+          <% words.each do |word| %>
+            <div class="text_1"><%= word %></div>
+          <% end %>
+        </div>
+      </div>
+      <div class='colaze-square'>
+        <% image_3 = event.pictures.select { |pic| pic.order == 3 }.first %>
+        <img src="<%= image_3.try(:image_url) %>">
+      </div>
+    </div>
+    <div class='colaze-row bottom'>
+      <div class='colaze-square relative'>
+        <img class='waves-img' src="<%= aws_asset_url(event, 'waves.svg') %>">
+        <div class='text-wrapper-2' style="font-family: <%= event.font_family_2 %>;color: <%= event.font_color_2 %>; font-size: <%= event.font_size_2 %>em;">
+          <% words = event.text_2.split(' ') %>
+          <% words.each do |word| %>
+            <div class="text_2"><%= word %></div>
+          <% end %>
+        </div>
+      </div>
+      <div class='colaze-square'>
+        <% image_4 = event.pictures.select { |pic| pic.order == 4 }.first %>
+        <img src="<%= image_4.try(:image_url) %>">
+          
+      </div>
+      <div class='colaze-square'>
+        <div class='text-wrapper-3' style="font-family: <%= event.font_family_3 %>;color: <%= event.font_color_3 %>; font-size: <%= event.font_size_3 %>em;">
+          <div id="text_3"><%= event.text_3 %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="calendar-wrapper" style="visibility
+    : <%= event_visibility(event) %>">
+    <%= render partial: 'themes/shared/calendar', locals: { event: event } %>
+  </div>
+</div>

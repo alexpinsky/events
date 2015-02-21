@@ -7,7 +7,6 @@
       <meta property="og:title" content="<%= @event.name %>" />
       <meta property="og:image" content="<%= @event.pictures.first.image_url %>" />
       <meta property="og:site_name" content="webivte.com/<%= @event.url %>" />
-    <%= yield(:header) %>
       <meta property="og:url" content="webivte.com/<%= @event.url %>" />
       <meta property="og:description" content="<%= "#{@event.name} #{@event.information.start_time} #{@event.information.location}" %>" />
     <% end %>
@@ -21,6 +20,7 @@
     <script type="text/javascript" src="http://js.addthisevent.com/atemay.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.4.1/slick.min.js"></script>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.4.1/slick.css"/>
+    <%= yield(:header) %>
         
     <%= csrf_meta_tags %>
     <%= favicon_link_tag shared_assets_url 'favicon.ico' %>

@@ -19,7 +19,7 @@ module EventsHelper
   end
 
   def aws_asset_url(event, asset_name)
-    "https://s3-eu-west-1.amazonaws.com/events-assets-static/categories/#{event.category_name}/themes/#{event.theme_name}/assets/decoration-left.svg"
+    "https://s3-eu-west-1.amazonaws.com/events-assets-static/categories/#{event.category_name}/themes/#{event.theme_name}/assets/#{asset_name}"
   end
 
   def fonts_for_select

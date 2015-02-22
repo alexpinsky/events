@@ -9,7 +9,11 @@ class Event < ActiveRecord::Base
   has_one :song, as: :listenable, dependent: :destroy
   has_one :information, dependent: :destroy
 
-  accepts_nested_attributes_for :pictures, :appearance, :information, :song, allow_destroy: true
+  accepts_nested_attributes_for :pictures, 
+    :appearance,
+    :information, 
+    :song, 
+  allow_destroy: true
 
   delegate :background_image, 
     :font_family_1, 
@@ -23,11 +27,21 @@ class Event < ActiveRecord::Base
     :font_size_3,
   to: :appearance, allow_nil: true
   
-  delegate :start_time, :end_time, :organizer, :organizer_email, :location, :time_zone, :summary, :date_format, to: :information, allow_nil: true
+  delegate :start_time, 
+    :end_time, 
+    :organizer, 
+    :organizer_email, 
+    :location, 
+    :time_zone, 
+    :summary, 
+    :date_format, 
+  to: :information, allow_nil: true
 
   delegate :name, to: :category, prefix: true
+  delegate :name, to: :theme, prefix: true
   
   scope :themes, -> () { where('events.is_theme = ?', true) }
+  scope :with_url, -> () { where('events.url IS NOT NULL') }
   scope :by_category, -> (category_name) { joins(:category).where('categories.name = ?', category_name) }
   scope :by_url, -> (url) { where('events.url = ?', url) }
   scope :by_id, -> (id) { where('events.id = ?', id) }

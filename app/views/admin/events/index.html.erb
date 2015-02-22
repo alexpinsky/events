@@ -1,0 +1,28 @@
+<div class='row'>
+  <div class='small-12 columns'>
+    <h1>Events</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>URL</th>
+          <th>Theme</th>
+          <th>Name</th>
+          <th>ID</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @events.each_with_index do |event, i| %>
+          <tr>
+            <td><%= i + 1 %></td>
+            <% url = "#{ENV['ROOT_URL']}#{event.url}" %>
+            <td><a href="<%= url %>"><%= url %></a></td>
+            <td><%= event.theme_name %></td>
+            <td><%= event.name %></td>
+            <td><%= event.id %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

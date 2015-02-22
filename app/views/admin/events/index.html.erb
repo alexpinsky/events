@@ -16,7 +16,7 @@
           <tr>
             <td><%= i + 1 %></td>
             <% url = "#{ENV['ROOT_URL']}#{event.url}" %>
-            <td><a href="<%= url %>"><%= url %></a></td>
+            <td><a target="_blank" href="<%= url %>"><%= url %></a></td>
             <td><%= event.theme_name %></td>
             <td><%= event.name %></td>
             <td><%= event.id %></td>

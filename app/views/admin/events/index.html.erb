@@ -8,6 +8,7 @@
           <th>URL</th>
           <th>Theme</th>
           <th>Name</th>
+          <th>Created At</th>
           <th>ID</th>
         </tr>
       </thead>
@@ -35,15 +36,16 @@
               <span class="label" style="background-color: <%= theme_hash[:color] %>"><%= theme_name %></span>
             </td>
             <td><%= event.name %></td>
+            <td><%= event.created_at.strftime("%d/%m/%Y") %></td>
             <td><%= event.id %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
   </div>
-  <div class="small-4 columns">
-    <% themes_sum_hash.each do |k,v| %>
+  <% themes_sum_hash.each do |k,v| %>
+    <div class="small-4 columns">
       <span class="label" style="background-color: <%= v[:color] %>"><%= k %></span> X <%= v[:count] %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>

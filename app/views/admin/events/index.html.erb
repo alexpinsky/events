@@ -1,6 +1,6 @@
+<h1>Events</h1>
 <div class='row'>
-  <div class='small-12 columns'>
-    <h1>Events</h1>
+  <div class='small-8 columns'>
     <table>
       <thead>
         <tr>
@@ -12,17 +12,38 @@
         </tr>
       </thead>
       <tbody>
-        <% @events.each_with_index do |event, i| %>
+        <% 
+          themes_sum_hash = {}
+          @events.each_with_index do |event, i|
+            url = "#{ENV['ROOT_URL']}#{event.url}"
+            theme_name = event.theme_name
+            themes_sum_hash.merge!({
+              theme_name.to_sym => {
+                color: "##{SecureRandom.hex(3)}",
+                count: 0
+              }
+            }) unless themes_sum_hash[theme_name.to_sym]
+          %>
           <tr>
+            <% theme_hash = themes_sum_hash[theme_name.to_sym] %>
+            <% theme_hash[:count] += 1 %>
             <td><%= i + 1 %></td>
-            <% url = "#{ENV['ROOT_URL']}#{event.url}" %>
-            <td><a target="_blank" href="<%= url %>"><%= url %></a></td>
-            <td><%= event.theme_name %></td>
+            <td>
+              <a target="_blank" href="<%= url %>"><%= url %></a>
+            </td>
+            <td>
+              <span class="label" style="background-color: <%= theme_hash[:color] %>"><%= theme_name %></span>
+            </td>
             <td><%= event.name %></td>
             <td><%= event.id %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
+  </div>
+  <div class="small-4 columns">
+    <% themes_sum_hash.each do |k,v| %>
+      <span class="label" style="background-color: <%= v[:color] %>"><%= k %></span> X <%= v[:count] %>
+    <% end %>
   </div>
 </div>

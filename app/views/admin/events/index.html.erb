@@ -43,9 +43,11 @@
       </tbody>
     </table>
   </div>
-  <% themes_sum_hash.each do |k,v| %>
     <div class="small-4 columns">
-      <span class="label" style="background-color: <%= v[:color] %>"><%= k %></span> X <%= v[:count] %>
+      <% themes_sum_hash.each do |k,v| %>
+        <span class="label" style="background-color: <%= v[:color] %>">
+          <%= k %>
+        </span> X <%= v[:count] %>
+      <% end %>
     </div>
-  <% end %>
 </div>

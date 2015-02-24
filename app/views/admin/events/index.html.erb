@@ -1,6 +1,6 @@
 <h1>Events</h1>
 <div class='row'>
-  <div class='small-8 columns'>
+  <div class='small-12 columns'>
     <table>
       <thead>
         <tr>
@@ -42,12 +42,10 @@
         <% end %>
       </tbody>
     </table>
+    <% themes_sum_hash.each do |k,v| %>
+      <span class="label" style="background-color: <%= v[:color] %>">
+        <%= k %>
+      </span> X <%= v[:count] %>
+    <% end %>
   </div>
-    <div class="small-4 columns">
-      <% themes_sum_hash.each do |k,v| %>
-        <span class="label" style="background-color: <%= v[:color] %>">
-          <%= k %>
-        </span> X <%= v[:count] %>
-      <% end %>
-    </div>
 </div>

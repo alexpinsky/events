@@ -2,7 +2,7 @@
   <div class='container'>
     <div class='colaze-row top'>
       <div class='colaze-square border'>
-        <div class='static-text'>
+        <div class='static-text vertical-aligns'>
           <div>SAVE</div>
           <div>THE</div>
           <div>DATE</div>
@@ -22,7 +22,7 @@
         <img src="<%= image_2.try(:image_url) %>">
       </div>
       <div class='colaze-square border'>
-        <div class='text-wrapper-1' style="font-family: <%= event.font_family_1 %>;color: <%= event.font_color_1 %>; font-size: <%= event.font_size_1 %>em;">
+        <div class='text-wrapper-1 vertical-align' style="font-family: <%= event.font_family_1 %>;color: <%= event.font_color_1 %>; font-size: <%= event.font_size_1 %>em;">
           <% words = event.text_1.split(' ') %>
           <% words.each do |word| %>
             <div class="text_1"><%= word %></div>
@@ -50,7 +50,7 @@
           
       </div>
       <div class='colaze-square'>
-        <div class='text-wrapper-3' style="font-family: <%= event.font_family_3 %>;color: <%= event.font_color_3 %>; font-size: <%= event.font_size_3 %>em;">
+        <div class='text-wrapper-3 vertical-align' style="font-family: <%= event.font_family_3 %>;color: <%= event.font_color_3 %>; font-size: <%= event.font_size_3 %>em;">
           <div id="text_3"><%= event.text_3 %></div>
         </div>
       </div>

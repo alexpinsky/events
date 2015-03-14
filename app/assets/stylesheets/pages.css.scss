@@ -33,9 +33,15 @@
 
 .header {
   padding: 0 25.5px;
-  .logo {
-    display: inline-block;
+  .logo-wrapper {
     float: left;
+    a.logo-icon {
+      display: inline-block;
+      background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/logo_box_grey.svg");
+      background-repeat: no-repeat;
+      width: 102px;
+      height: 25px;       
+    }
   }
   .nav-collapse {
     display: inline-block;
@@ -173,7 +179,7 @@
     }
   }
 }
-.eventit-footer {
+.welcome-footer {
   background-color: rgb(77, 77, 77);
   text-align: center;
   ul {

@@ -13,7 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.minicolors.min
-//= require foundation
+//= require foundation/foundation
+//= require responsive-nav.min
 //= require pages
 //= require editor
 //= require helpers

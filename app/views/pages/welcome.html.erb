@@ -1,51 +1,144 @@
-<div class="welcome-wrapper">
-  <div class="first-row row">
-    <div class="example-text large-7 columns">
-      <h1>
-        Create your own event
-      </h1>
-      <h4>
-        Now you can have a website
-        <br>
-        just for your event.
-        <br>
-        <br>
-        Easy to customize. No coding.
-      </h4>
-      <h6>
-        Design your event with an easy to use editor.
-        <br>
-        Allow people to easly sync their calendars with your event.
-        <br>
-        Get one design that supports both mobile and desktop views.
-      </h6>
-      <a href="#" class="button [radius round]" data-reveal-id="signUpModal">Start Now</a>
-      <div class="share-btns">
-        <%= social_share_button_tag('Create your event', :url => "http://my-event.herokuapp.com/") %>
+<div class="page-wrapper">
+  <div class='header'>
+    <div class="logo"><img src="https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/logo_box_grey.svg"></div>
+    <nav class="nav-collapse">
+      <ul>
+        <li><a href="#">home</a></li>
+        <li><a href="#">about</a></li>
+        <li><a href="#">templates</a></li>
+        <li><a href="#">demo invitation</a></li>
+        <li><a href="#" class="login"></a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class='slideshow-wrapper'>
+    <div class='images slideshow'>
+      <img src="https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/beach_slide.jpg">
+      <img src="https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/business_slide.jpg">
+      <img src="https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/record_slide.jpg">
+    </div>
+    <div class='box-wrapper'>
+      <div class="peggy-wrapper">
+        <img src="https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/peggy.svg">
+      </div>
+      <div class="logo-box">
+        <div class='vertical-align'>
+          <div class='logo-wrapper'>
+            <img src="https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/logo_text.svg">
+          </div>
+          <div class="tagline">easy, quick & awesome</div>
+          <div class='start-wrapper'>
+            <a href="#" class="start"></a>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="example-image large-5 columns">
-      <img src="<%= example_events_image_url %>">
+  </div>
+  <div class='categories-wrapper'>
+    <div class='segments'>
+      <div class='segment-wrapper'>
+        <div class='segment-icon'>
+          <a href="#" class="weddings"></a>
+        </div>
+        <div class="segment-text">weddings</div>
+      </div>
+      <div class='segment-wrapper'>
+        <div class='segment-icon'>
+          <a href="#" class="celebration"></a>
+        </div>
+        <div class="segment-text">celebration</div>
+      </div>
+      <div class='segment-wrapper'>
+        <div class='segment-icon'>
+          <a href="#" class="meetups"></a>
+        </div>
+        <div class="segment-text">meetups</div>
+      </div>
+      <div class='segment-wrapper'>
+        <div class='segment-icon'>
+          <a href="#" class="whatever"></a>
+        </div>
+        <div class="segment-text">whatever</div>
+      </div>
+    </div>
+    <div class='demo-link'>
+      <a href="#">view demo invitation >></a>
     </div>
   </div>
-
-  <div class="second-row row">
-    <div class="large-12 columns">
-      <p>
-      Whether you want to invite your firends and colleagues 
-      <br>
-      to your daughter's birthday or to a sunday BBQ,
-      <br>
-      MyEvent let you invite them to save the date in a 
-      <br>
-      modern and fashionable way.
-      </p>
+  <div class='responsive-wrapper'>
+    <div class='image-wrapper'>
+      <img src="https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/responsive_image.png">
     </div>
-    <div class="large-12 columns">
-      <div class="large-3 columns">Weddings</div>
-      <div class="large-3 columns">Birthdays</div>
-      <div class="large-3 columns">Conferences</div>
-      <div class="large-3 columns">Events</div>
+    <div class='responsive-text'>
+      one design - every device
+    </div>
+  </div>
+  <div class='success-wrapper'>
+    <div class='couples slideshow'>
+      <div class='couple-wrapper'>
+        <div class="image-wrapper">
+          <img src="https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/couple_1.png">
+        </div>
+        <div class='couple-name'>
+          neta & ron
+        </div>
+        <div class='text-wrapper'>
+          "absolutely great! it was really easy and<br>
+          fast and the invite was amazing!"
+        </div>
+      </div>
+      <div class='couple-wrapper'>
+        <div class="image-wrapper">
+          <img src="https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/couple_2.png">
+        </div>
+        <div class='couple-name'>
+          mimi & shlomi
+        </div>
+        <div class='text-wrapper'>
+          "absolutely great! it was really easy and<br>
+          fast and the invite was amazing!"
+        </div>
+      </div>
+      <div class='couple-wrapper'>
+        <div class="image-wrapper">
+          <img src="https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/couple_3.png">
+        </div>
+        <div class='couple-name'>
+          shlomit & shay
+        </div>
+        <div class='text-wrapper'>
+          "absolutely great! it was really easy and<br>
+          fast and the invite was amazing!"
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='eventit-footer'>
+    <div class='social-buttons'>
+      <nav>
+        <ul>
+          <li><a href="#" class="facebook"></a></li>
+          <li><a href="#" class="twitter"></a></li>
+          <li><a href="#" class="google"></a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class='footer-nav'>
+      <nav>
+        <ul>
+          <li><a href="#">ABOUT</a></li>
+          <li><a href="#">CONTACT US</a></li>
+          <li><a href="#">PRIVACY POLICY</a></li>
+          <li><a href="#">TERMS OF SERVICE</a></li>
+          <li><a href="#">SITEMAP</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class='footer-logo'>
+      <img src="https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/logo_box_white.svg">
+    </div>
+    <div class='footer-text'>
+      © 2014-2015 eventit. all rights reserved eventit®
     </div>
   </div>
 </div>

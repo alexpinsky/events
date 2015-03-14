@@ -6,7 +6,7 @@ class PagesController < ApplicationController
   end
 
   def ping
-    render json: {}, status: :ok
+    render nothing: true, status: :ok
   end
   
   def comming_soon

@@ -1,33 +1,228 @@
-// Place all the styles related to the Pages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-.welcome-wrapper {
-  .first-row {
-    background: #fff;
-    border-radius: 6px;
-    box-shadow: 0px 2px 2px 0px #dcdcdc;
-    padding: 0.5rem;
-    h1 {
-      color: #363636;
-    }
-    h4 {
-      color: #363636;
-    }
-    h6 {
-      color: #363636;
-      margin-top: 2rem;
-    }
-    .share-btns {
-      margin: 5px 0 0 0;
+.vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.page-wrapper {
+  padding-top:  25.5px;
+  font-family: 'Julius Sans One', sans-serif;
+}
+.login {
+  background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/login_btn.svg');
+  background-repeat: no-repeat;         
+  display: inline-block;
+  width: 58px;
+  height: 28px;
+  vertical-align: bottom;
+}
+.login:hover {
+  background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/login_btn_hover.svg');
+}
+.start {
+  background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/start_btn.svg');
+  background-repeat: no-repeat;         
+  display: inline-block;
+  width: 105px;
+  height: 30px;
+}
+.start:hover {
+  background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/start_btn_hover.svg');
+}
+
+.header {
+  padding: 0 25.5px;
+  .logo {
+    display: inline-block;
+    float: left;
+  }
+  .nav-collapse {
+    display: inline-block;
+    float: right;
+    ul {
+      li {
+        padding-right: 25.5px;
+        display: inline;
+        a {
+          text-decoration: none;
+          color: rgb(149, 149, 149);
+        }
+      }
     }
   }
-  .second-row {
-    padding: 0.2rem;
-    border-radius: 6px;
-    box-shadow: 0px 2px 2px 0px #dcdcdc;
-    background: #085a78;
+}
+.slideshow-wrapper {
+  clear: both;
+  margin-top: 120px;
+  position: relative;
+  height: 100%;
+  .slick-list {
+    height: 100%;
+    .slick-track {
+      @media (max-width:  1439px) {
+        margin: -50px auto 0;
+      }
+      @media (min-width:  1440px) {
+        margin: -200px auto 0;
+      }
+    }
+  }
+  .box-wrapper {
+    position: absolute;
+    top: -83px;
+    left: 50%;
+    margin-left: -221px; // 442/2
     text-align: center;
-    font-size: 18px;
-    color: #fff;
+    .logo-box {
+      width: 442px;
+      height: 213px;
+      color: white;
+      border: 2px solid;
+      .tagline {
+        padding: 25px;
+        font-size: 18px;
+        letter-spacing: 4.3px;
+      }
+    }
+  }
+}
+.categories-wrapper {
+  height: 360px;
+  background-color: rgb(248, 248, 248);
+  color: rgb(127, 159, 255);
+  text-align: center;
+  .segments {
+    padding: 50px 100px;
+    .segment-wrapper {
+      display: inline-block;
+      width: 24%;
+      a {
+        background-repeat: no-repeat;
+        width: 121px;
+        height: 118px;
+        display: inline-block;      
+      }
+      a.weddings {
+        background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/weddings_icon.svg');
+      }
+      a.weddings:hover {
+        background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/weddings_icon_hover.svg');
+      }
+      a.celebration {
+        background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/celebration_icon.svg');
+      }
+      a.celebration:hover {
+        background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/celebration_icon_hover.svg');
+      }
+      a.meetups {
+        background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/meetups_icon.svg');
+      }
+      a.meetups:hover {
+        background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/meetups_icon_hover.svg');
+      }
+      a.whatever {
+        background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/whatever_icon.svg');
+      }
+      a.whatever:hover {
+        background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/whatever_icon_hover.svg');
+      }
+      .segment-text {
+        padding-top: 5px;
+        font-size: 12px;
+      }
+    }
+  }
+  .demo-link {
+    padding-top: 30px;
+    a {
+      text-decoration: none;
+      color: rgb(127, 159, 255);
+    }
+  }
+}
+.responsive-wrapper {
+  background-color: rgb(242, 242, 242);
+  color: rgb(127, 159, 255);
+  text-align: center;
+  .image-wrapper {
+    padding: 100px 0 90px;
+  }
+  .responsive-text {
+    padding-bottom: 80px;
+  }
+}
+.success-wrapper {
+  background-color: rgb(227, 227, 227);
+  color: rgb(127, 127, 127);
+  text-align: center;
+  .couple-wrapper {
+    .image-wrapper {
+      padding-top: 80px;
+      img {
+        display: inline-block;
+        text-align: center;
+      }
+    }
+    .couple-name {
+      padding-top: 10px;
+      color: rgb(127, 159, 255);
+    }
+    .text-wrapper {
+      padding: 50px 0;
+    }
+  }
+}
+.eventit-footer {
+  background-color: rgb(77, 77, 77);
+  text-align: center;
+  ul {
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+    li {
+      display: inline;
+    }
+  }
+  .social-buttons {
+    padding-top: 25px;
+    li {
+      padding: 0 5px;
+    }
+    a {
+      background-repeat: no-repeat;
+      width: 19px;
+      height: 16px;
+      display: inline-block;
+    }
+    a.facebook {
+      background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/facebook_icon.svg');
+    }
+    a.twitter {
+      background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/twitter_icon.svg');
+    }
+    a.google {
+      background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/google_plus_icon.svg');
+    }
+  }
+  .footer-nav {
+    padding-top: 25px;
+    li {
+      padding: 0 20px;
+    }
+    a {
+      font-family: 'Quattrocento Sans', sans-serif;
+      font-size: 12px;
+      color: rgb(242, 242, 242);
+      text-decoration: none;
+    }
+  }
+  .footer-logo {
+    padding-top: 25px;
+  }
+  .footer-text {
+    color: rgb(242, 242, 242);
+    font-size: 10px;
+    padding: 25px 0;
   }
 }

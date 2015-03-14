@@ -9,7 +9,6 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require foundation_slim
  *= require responsive-nav
  *= require events
  *= require editor
@@ -22,5 +21,4 @@
  *= require_tree ./elements
  *= require jquery.minicolors
  *= require social-share-button
- *= require foundation-datepicker
  */

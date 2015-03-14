@@ -1,6 +1,5 @@
 //= require jquery
 //= require jquery_ujs
-//= require foundation_slim
 //= require initializers
 
 var resizeFn = function() {
@@ -19,8 +18,6 @@ var resizeFn = function() {
     $('.theme-wrapper').css('margin-top', 0);
   }
 };
-
-$(document).foundation();
 
 $(document).ready(function() {
   Initializers.init();

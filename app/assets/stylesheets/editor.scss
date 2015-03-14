@@ -1,5 +1,3 @@
-@import "foundation/components/buttons";
-
 #editor {
   .accordion {
     .pannel-text {
@@ -25,7 +23,6 @@
     }
   }
   .save-publish-btn {
-    @include button();
     background-color: #62CC88;
     border-radius: 8px;
   }

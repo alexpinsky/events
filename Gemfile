@@ -8,7 +8,6 @@ gem 'pg'
 gem 'hirb'
 
 gem 'devise'
-gem 'foundation-rails'
 gem 'faker'
 gem 'carrierwave'
 gem "mini_magick"

@@ -9,7 +9,7 @@
         <li><a href="#">about</a></li>
         <li><a href="#">templates</a></li>
         <li><a href="#">demo invitation</a></li>
-        <li><a href="#" class="login"></a></li>
+        <li><a href="#signInModal" rel="modal:open" class="login"></a></li>
       </ul>
     </nav>
   </div>
@@ -30,7 +30,7 @@
           </div>
           <div class="tagline">easy, quick & awesome</div>
           <div class='start-wrapper'>
-            <a href="#" class="start"></a>
+            <a href="#signUpModal" rel="modal:open" class="start"></a>
           </div>
         </div>
       </div>
@@ -143,4 +143,16 @@
       © 2014-2015 eventit. all rights reserved eventit®
     </div>
   </div>
+  <!-- Sign In modal -->
+  <div id="signInModal" class="modal">
+    <%= render partial: 'devise/shared/sign_in' %>
+    <a href="#close" rel="modal:close">&#215;</a>
+  </div>
+  <!--  -->
+  <!-- Sign Up modal -->
+  <div id="signUpModal" class="modal">
+    <%= render partial: 'devise/shared/sign_up' %>
+    <a href="#close" rel="modal:close">&#215;</a>
+  </div>
+  <!--  -->
 </div>

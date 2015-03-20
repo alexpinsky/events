@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta property="og:title" content="eventit" />
     <meta property="og:image" content="<%= example_events_image_url %>" />
+    
     <title>
       <%= content_for?(:title) ? yield(:title) : "eventit" %>
     </title>
@@ -14,16 +15,15 @@
     <%= render partial: 'layouts/shared/external_stylesheets' %>
     <%= csrf_meta_tags %>
 
-    <%= javascript_include_tag "http://js.addthisevent.com/atemay.js" %>
     <%= yield(:header) %>
   </head>
   <body>
+    
     <%= yield %>
 
     <!-- Javascripts
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <%= javascript_include_tag "vendor/modernizr" %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= render partial: 'layouts/shared/external_javascripts' %>
     <%= yield(:javascript) %>

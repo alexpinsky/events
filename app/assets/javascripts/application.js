@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.minicolors.min
+//= require jquery.modal.min
 //= require responsive-nav.min
 //= require pages
 //= require editor

@@ -13,4 +13,10 @@ class PagesController < ApplicationController
     @lead = Lead.new
     render layout: false
   end
+
+private
+
+  def set_page
+    @page = 'welcome'
+  end
 end

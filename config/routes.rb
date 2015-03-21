@@ -2,7 +2,7 @@ Events::Application.routes.draw do
   require 'sidekiq/web'
   mount Sidekiq::Web, at: '/sidekiq'
 
-  root 'pages#comming_soon'
+  root 'pages#welcome'
 
   devise_for :users, controllers: { 
     registrations: 'devise_ext/registrations'

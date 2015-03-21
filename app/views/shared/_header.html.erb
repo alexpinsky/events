@@ -1,0 +1,23 @@
+<div class='header'>
+  <div class="logo-wrapper">
+    <a href="<%= root_path %>" class="logo-icon"></a>
+  </div>
+  <nav class="nav-collapse">
+    <ul>
+      <li><a href="<%= root_path %>">home</a></li>
+      <li><a href="#">about</a></li>
+      <li><%= link_to 'templates', categories_path %></li>
+      <% if welcome_page? %>
+        <li><a href="#">demo invitation</a></li>
+      <% else %>
+        <li><a href="#">dashboard</a></li>
+        <li><a href="#">editor</a></li>
+      <% end %>
+      <% if current_user %>
+      <%= current_user.email %> (<%= link_to 'logout', destroy_user_session_path, method: :delete %>)
+      <% else %>
+      <li><a href="#signInModal" rel="modal:open" class="login"></a></li>
+      <% end %>
+    </ul>
+  </nav>
+</div>

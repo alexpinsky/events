@@ -97,6 +97,6 @@ class Event < ActiveRecord::Base
   end
 
   def preview_url
-    "https://s3-eu-west-1.amazonaws.com/events-assets-static/categories/#{category_name}/themes/#{theme_name}/preview_thumbnail.png"
+    "https://s3-eu-west-1.amazonaws.com/events-assets-static/categories/#{category_name}/themes/#{theme_name}/thumbnail.jpg"
   end
 end

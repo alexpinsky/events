@@ -1,0 +1,28 @@
+.header {
+  font-family: 'Julius Sans One', sans-serif;
+  padding: 25.5px 25.5px 0;
+  .logo-wrapper {
+    float: left;
+    a.logo-icon {
+      display: inline-block;
+      background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/logo_box_grey.svg");
+      background-repeat: no-repeat;
+      width: 102px;
+      height: 25px;       
+    }
+  }
+  .nav-collapse {
+    display: inline-block;
+    float: right;
+    ul {
+      li {
+        padding-right: 25.5px;
+        display: inline;
+        a {
+          text-decoration: none;
+          color: rgb(149, 149, 149);
+        }
+      }
+    }
+  }
+}

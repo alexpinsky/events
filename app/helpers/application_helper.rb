@@ -1,10 +1,5 @@
 module ApplicationHelper
 
-  def background_url_for(page_name)
-    file_type = 'jpg'
-    "https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/#{page_name}/backgrounds/background.#{file_type}"
-  end
-
   def image_url_for(page_name, image_name)
     "https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/#{page_name}/images/#{image_name}"
   end
@@ -22,8 +17,8 @@ module ApplicationHelper
     "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/#{background_image}.png"
   end
 
-  def example_image_url
-    "https://s3-eu-west-1.amazonaws.com/events-assets-static/images/placeholder.png"
+  def welcome_page?
+    @page == 'welcome'
   end
 
   def example_events_image_url
@@ -37,11 +32,11 @@ module ApplicationHelper
   def resource_name
     :user
   end
- 
+  
   def resource
     @resource ||= User.new
   end
- 
+  
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
   end

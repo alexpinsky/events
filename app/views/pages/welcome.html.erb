@@ -9,7 +9,11 @@
         <li><a href="#">about</a></li>
         <li><a href="#">templates</a></li>
         <li><a href="#">demo invitation</a></li>
-        <li><a href="#signInModal" rel="modal:open" class="login"></a></li>
+        <% if current_user %>
+          <%= current_user.email %> (<%= link_to 'logout', destroy_user_session_path, method: :delete %>)
+        <% else %>
+          <li><a href="#signInModal" rel="modal:open" class="login"></a></li>
+        <% end %>
       </ul>
     </nav>
   </div>

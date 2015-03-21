@@ -19,6 +19,7 @@
  *= require devise
  *= require categories
  *= require_tree ./elements
+ *= require_tree ./shared
  *= require jquery.minicolors
  *= require jquery.modal
  *= require social-share-button

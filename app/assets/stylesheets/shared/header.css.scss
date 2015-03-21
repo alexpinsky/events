@@ -23,6 +23,13 @@
           color: rgb(149, 149, 149);
         }
       }
+      li.user {
+        font-size: 12px;
+        a {
+          text-decoration: underline;
+          color: rgb(127, 159, 255);
+        }
+      }
     }
   }
 }

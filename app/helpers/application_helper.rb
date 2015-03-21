@@ -21,10 +21,6 @@ module ApplicationHelper
     @page == 'welcome'
   end
 
-  def example_events_image_url
-    "https://s3-eu-west-1.amazonaws.com/events-assets-static/images/example_events.jpg"
-  end
-
   def spinner_path
     "https://s3-eu-west-1.amazonaws.com/events-assets-static/images/spinner.gif"
   end

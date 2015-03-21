@@ -1,71 +1,17 @@
-// .main-container {
-//   background-repeat: no-repeat;
-//   background-size: cover;
-// }
-
-.categories-index {
-  .tile {
-    margin: 0 0.4rem 0;
-  }
-  .header {
-    margin: 2rem 0 3rem;
-    h3 {
+.page-wrapper.categories {
+  font-family: 'Julius Sans One', sans-serif;
+  padding-top: 50px;
+  .categories-wrapper {
+    background-color: rgb(248, 248, 248);
+    width: 202px;
+    color: rgb(127, 159, 255);
+    .segments {
       text-align: center;
-      color: white;
-    }
-  }
-  .category-row {
-    padding: 0.5rem;
-    .category-tile {
-      text-align: center;
-      display: inline-block;
-      vertical-align: top;
-      height: 10rem;
-      width: 10rem;
-      .text {
-        padding-top: 1rem;
-        h4 {
-          color: white;
-          font-weight: bold;
-        }
-      }
-    }
-    .events-tiles {
-      display: inline-block;
-      vertical-align: top;
-      .event-tile {
-        text-align: center;
+      padding: 10px 0;
+      .segment-wrapper {
+        width: 100%;
         display: inline-block;
-        position : relative;
-        height: 10rem;
-        width: 10rem;
-        a.th {
-          height: 100%;
-          img {
-            height: 100%;
-          }
-        } 
-        .menu-container {
-          visibility: hidden;
-          height: 100%;
-          width: 100%;
-          z-index : 10;
-          position : absolute;
-          top : 0;
-          left : 0;
-          background-color: rgba(70, 62, 62, 0.6);
-          .buttons {
-            position: relative;
-            top: 50%;
-            transform: translateY(-50%);
-          }
-          .button {
-            margin: 0;
-            display: inline-block;
-            padding: 0.5rem;
-            width: 4rem;
-          }
-        }
+        padding: 5px;
       }
     }
   }

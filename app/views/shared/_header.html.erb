@@ -14,9 +14,11 @@
         <li><a href="#">editor</a></li>
       <% end %>
       <% if current_user %>
-      <%= current_user.email %> (<%= link_to 'logout', destroy_user_session_path, method: :delete %>)
+        <li class='user'>
+          <%= current_user.email %> (<%= link_to 'logout', destroy_user_session_path, method: :delete %>)
+        </li>
       <% else %>
-      <li><a href="#signInModal" rel="modal:open" class="login"></a></li>
+        <li><a href="#signInModal" rel="modal:open" class="login"></a></li>
       <% end %>
     </ul>
   </nav>

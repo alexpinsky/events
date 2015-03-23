@@ -41,6 +41,7 @@ class Event < ActiveRecord::Base
   delegate :name, to: :theme, prefix: true
   
   scope :themes, -> () { where('events.is_theme = ?', true) }
+  scope :include_categories, -> () { includes(:category) }
   scope :with_url, -> () { where('events.url IS NOT NULL') }
   scope :by_category, -> (category_name) { joins(:category).where('categories.name = ?', category_name) }
   scope :by_url, -> (url) { where('events.url = ?', url) }
@@ -96,7 +97,7 @@ class Event < ActiveRecord::Base
     self.is_theme ? self.name : self.theme.name
   end
 
-  def preview_url
+  def thumbnail_url
     "https://s3-eu-west-1.amazonaws.com/events-assets-static/categories/#{category_name}/themes/#{theme_name}/thumbnail.jpg"
   end
 end

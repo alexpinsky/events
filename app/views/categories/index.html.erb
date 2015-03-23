@@ -1,8 +1,35 @@
 <div class='page-wrapper categories'>
-   <div class='categories-wrapper'>
+  <div class='categories-wrapper'>
     <%= render partial: "shared/categories" %>
-  </div>
-  <div class='templates-wrapper'>
-    
+    <!-- no newline to remove whitespace between two divs -->
+  </div><div class='templates-wrapper'>
+    <div class='weddings'>
+      <%= 
+        render partial: 'tiles_row', locals: { 
+          templates: @templates['wedding'] 
+        } 
+      %>
+    </div>
+    <div class='celebration'>
+      <%= 
+        render partial: 'tiles_row', locals: { 
+          templates: @templates['celebration'] 
+        } 
+      %>
+    </div>
+    <div class='meetups'>
+      <%= 
+        render partial: 'tiles_row', locals: { 
+          templates: @templates['meetups'] 
+        } 
+      %>
+    </div>
+    <div class='whatever'>
+      <%= 
+        render partial: 'tiles_row', locals: { 
+          templates: @templates['whatever'] 
+        } 
+      %>
+    </div>
   </div>
 </div>

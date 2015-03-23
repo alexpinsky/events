@@ -1,19 +1,21 @@
 module CategoriesHelper
+
+  THUMBNAIL_PLACEHOLDER = 'https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/categories/thumbnail+coming+soon+a.svg'
+  NAME_PLACEHOLDER      = 'unknown'
   
-  def category_image_url(category_name)
-    "https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/templates/icons/#{category_name}.png"
+  def thumbnail_url_for(template)
+    if template.id
+      template.thumbnail_url
+    else
+      THUMBNAIL_PLACEHOLDER
+    end
   end
 
-  def category_color(category_name)
-    case category_name
-    when 'wedding'
-      '#0994e4'
-    when 'birthday'
-      '#e4096b'
-    when 'party'
-      '#ffae00'
-    when 'other'
-      '#06d458'
+  def name_for(template)
+    if template.id
+      template.name
+    else
+      NAME_PLACEHOLDER
     end
   end
 end

@@ -1,0 +1,6 @@
+<% templates.each do |template| %>
+  <div class='tile-wrapper'>
+    <div class='tile' style="background: url('<%= thumbnail_url_for(template) %>') no-repeat; background-size: cover;"></div>
+    <div class='tile-text'><%= name_for(template) %></div>
+  </div>
+<% end %>

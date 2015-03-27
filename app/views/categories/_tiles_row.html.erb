@@ -1,6 +1,23 @@
+<div class='segment-wrapper'>
+  <div class='segment-icon'>
+    <a href="#" class="<%= category %>"></a>
+  </div>
+  <div class="segment-text"><%= category %></div>
+</div>
 <% templates.each do |template| %>
+
   <div class='tile-wrapper'>
-    <div class='tile' style="background: url('<%= thumbnail_url_for(template) %>') no-repeat; background-size: cover;"></div>
+    <div class='tile <%= klass_for template %>' style="background: url('<%= thumbnail_url_for template %>') no-repeat; background-size: cover;">
+      <% if need_menu_for? template %>
+        <!-- prepand menu if not placeholder -->
+        <div class='menu-wrapper'>
+          <div class='buttons'>
+            <%= link_to '', event_path(id: template.id, preview: true), class: "preview" %>
+            <%= link_to '', new_event_path(theme_id: template.id, category_id: template.category_id), class: "edit" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
     <div class='tile-text'><%= name_for(template) %></div>
   </div>
 <% end %>

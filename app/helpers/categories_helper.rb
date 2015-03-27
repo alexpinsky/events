@@ -18,4 +18,16 @@ module CategoriesHelper
       NAME_PLACEHOLDER
     end
   end
+
+  def klass_for(template)
+    if template.id
+      'exist'
+    else
+      'placeholder'
+    end
+  end
+
+  def need_menu_for?(template)
+    template.id.present?
+  end
 end

@@ -1,11 +1,10 @@
 <div class='page-wrapper categories'>
-  <div class='categories-wrapper'>
-    <%= render partial: "shared/categories" %>
-    <!-- no newline to remove whitespace between two divs -->
-  </div><div class='templates-wrapper'>
+  <h2>pick your favorite template and start eventit</h2>
+  <div class='tiles-wrapper'>
     <div class='weddings'>
       <%= 
-        render partial: 'tiles_row', locals: { 
+        render partial: 'tiles_row', locals: {
+          category: 'weddings',
           templates: @templates['wedding'] 
         } 
       %>
@@ -13,6 +12,7 @@
     <div class='celebration'>
       <%= 
         render partial: 'tiles_row', locals: { 
+          category: 'celebration',
           templates: @templates['celebration'] 
         } 
       %>
@@ -20,6 +20,7 @@
     <div class='meetups'>
       <%= 
         render partial: 'tiles_row', locals: { 
+          category: 'meetups',
           templates: @templates['meetups'] 
         } 
       %>
@@ -27,6 +28,7 @@
     <div class='whatever'>
       <%= 
         render partial: 'tiles_row', locals: { 
+          category: 'whatever',
           templates: @templates['whatever'] 
         } 
       %>

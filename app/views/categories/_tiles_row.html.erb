@@ -12,8 +12,8 @@
         <!-- prepand menu if not placeholder -->
         <div class='menu-wrapper'>
           <div class='buttons'>
-            <%= link_to '', event_path(id: template.id, preview: true), class: "preview" %>
-            <%= link_to '', new_event_path(theme_id: template.id, category_id: template.category_id), class: "edit" %>
+            <a class="preview" target="_blank" href="<%= event_path(id: template.id, preview: true) %>"></a>
+            <a class="edit" href="<%= new_event_path(theme_id: template.id, category_id: template.category_id) %>"></a>
           </div>
         </div>
       <% end %>

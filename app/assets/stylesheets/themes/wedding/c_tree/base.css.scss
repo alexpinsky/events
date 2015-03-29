@@ -84,6 +84,9 @@
         background: rgb(230, 186, 175);
         color: white !important;
         width: 12em;
+        .addthisevent_icon {
+          display: none;
+        }
       }
       .addthisevent-drop:hover {
         background: rgb(255, 215, 199);

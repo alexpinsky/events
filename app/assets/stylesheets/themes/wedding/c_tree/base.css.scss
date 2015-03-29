@@ -1,4 +1,4 @@
-.main-wrapper {
+.display {
   font-size: 98%;
   @media only screen and (min-height: 744px) and (max-height: 765px) {
     font-size: 95%;
@@ -51,8 +51,6 @@
   @media only screen and (min-height: 320px) and (max-height: 400px) and (min-width: 480px) {
     font-size: 95%;
   }
-  .display {
-  }
 }
 .event-wrapper {
   padding-top: 1em;
@@ -103,6 +101,10 @@
           width: 18em;
         }
         display: inline-block;
+        img {
+          width: inherit;
+          height: inherit;
+        }
       }
     }
   }

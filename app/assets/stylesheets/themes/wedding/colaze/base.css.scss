@@ -1,4 +1,4 @@
-.main-wrapper {
+.display {
   font-size: 100%;
   @media only screen and (min-width: 490px) and (max-width: 599px) {
     font-size: 80%;
@@ -14,8 +14,6 @@
   }
   @media only screen and (max-width: 340px) and (max-height: 400px) {
     font-size: 45%;
-  }
-  .display {
   }
 }
 .vertical-align {
@@ -50,6 +48,10 @@
       display: inline-block;
       vertical-align: top;
       margin: 0.5em;
+      img {
+        width: inherit;
+        height: inherit;
+      }
     }
     .colaze-square.border { 
       border: 0.1em solid; 

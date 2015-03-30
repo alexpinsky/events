@@ -16,6 +16,7 @@
  *= require pages
  *= require fonts
  *= require_tree ./themes
+ *= require_tree ./themes/shared
  *= require devise
  *= require categories
  *= require_tree ./elements

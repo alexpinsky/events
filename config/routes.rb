@@ -11,17 +11,7 @@ Events::Application.routes.draw do
   get 'ping'        => 'pages#ping'
   get 'welcome'     => 'pages#welcome'
   get 'coming_soon' => 'pages#comming_soon'
-
-  scope '/admin' do
-    authenticate :user, lambda { |u| u.admin? } do
-      resources :leads
-    end
-  end
-  namespace :admin do
-    authenticate :user, lambda { |u| u.admin? } do
-      resources :events, only: :index
-    end
-  end
+  get '/:url', to: 'events#show'
 
   resources :categories
   resources :events do
@@ -31,7 +21,16 @@ Events::Application.routes.draw do
     end
   end
   resources :leads, only: :create
-
   
-  get '/:url', to: 'events#show'
+  scope '/admin' do
+    authenticate :user, lambda { |u| u.admin? } do
+      resources :leads, only: :index
+    end
+  end
+
+  namespace :admin do
+    authenticate :user, lambda { |u| u.admin? } do
+      resources :events, only: :index
+    end
+  end
 end

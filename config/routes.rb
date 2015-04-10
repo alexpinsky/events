@@ -11,7 +11,6 @@ Events::Application.routes.draw do
   get 'ping'        => 'pages#ping'
   get 'welcome'     => 'pages#welcome'
   get 'coming_soon' => 'pages#comming_soon'
-  get '/:url', to: 'events#show'
 
   resources :categories
   resources :events do
@@ -33,4 +32,6 @@ Events::Application.routes.draw do
       resources :events, only: :index
     end
   end
+  
+  get '/:url', to: 'events#show'
 end

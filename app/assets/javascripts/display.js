@@ -21,17 +21,17 @@ var resizeFn = function() {
 
 $(document).ready(function() {
   Initializers.init();
-  $(window).resize(function () {
-    setTimeout(function() {
-      resizeFn();
-    }, 100);
-  });
+  // $(window).resize(function () {
+  //   setTimeout(function() {
+  //     resizeFn();
+  //   }, 100);
+  // });
   $('span').click(function() {
     ga('send', 'event', { eventCategory: 'invites', eventAction: 'add to calendar'});
   });
 });
 
 $(window).load(function() {
-  resizeFn();
+  // resizeFn();
 });
 

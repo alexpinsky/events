@@ -1,42 +1,33 @@
 <div class="wedding classic event-wrapper" style="background-image: url(<%= background_collection_url(event.background_image) %>); background-size: cover;">
-  <div class='row' style="height: 100%">
-    
-  <div class='theme-wrapper small-12 columns'>
+  <div class='theme-wrapper vertical-align'>
     <div class="images-container">
       <%= render partial: 'elements/slideshow', locals: { images: event.pictures.sort { |pic_1, pic_2| pic_1.order <=> pic_2.order } } %>  
     </div>
-    <div class='graphics-wrapper small-12 columns'>
-      <div class='row'>
-        <div class='text-wrapper small-6 small-offset-3 columns'>
-          <div class="text-1-wrapper row">
-            <div id="text_1" style="font-family: <%= event.font_family_1 %>;color: <%= event.font_color_1 %>; font-size: <%= event.font_size_1 %>em;"><%= event.text_1 %></div>
-          </div>
-          <div class="text-2-wrapper row">
-            <div id="text_2" style="font-family: <%= event.font_family_2 %>;color: <%= event.font_color_2 %>; font-size: <%= event.font_size_2 %>em;"><%= event.text_2 %></div>
-          </div>
-          <div class="text-3-wrapper row">
-            <div id="text_3" style="font-family: <%= event.font_family_3 %>;color: <%= event.font_color_3 %>; font-size: <%= event.font_size_3 %>em;"><%= event.text_3 %></div>
-          </div>
+    <div class='graphics-wrapper'>
+      <div class='text-wrapper'>
+        <div class="text-1-wrapper">
+          <div id="text_1" style="font-family: <%= event.font_family_1 %>;color: <%= event.font_color_1 %>; font-size: <%= event.font_size_1 %>em;"><%= event.text_1 %></div>
+        </div>
+        <div class="text-2-wrapper">
+          <div id="text_2" style="font-family: <%= event.font_family_2 %>;color: <%= event.font_color_2 %>; font-size: <%= event.font_size_2 %>em;"><%= event.text_2 %></div>
+        </div>
+        <div class="text-3-wrapper">
+          <div id="text_3" style="font-family: <%= event.font_family_3 %>;color: <%= event.font_color_3 %>; font-size: <%= event.font_size_3 %>em;"><%= event.text_3 %></div>
         </div>
       </div>
-      <div class='row'>
-        <div class='decoration-wrapper small-10 small-offset-1 columns'>
-          <div class='left small-3 columns'>
-            <img class="l" src="<%= aws_asset_url(event, 'decoration-left.svg') %>">
-          </div>
-          <div class='right small-3 columns'>
-            <img class="r" src="<%= aws_asset_url(event, 'decoration-left.svg') %>">
-          </div>
+      <div class='decoration-wrapper'>
+        <div class='left'>
+          <img class="l" src="<%= aws_asset_url(event, 'decoration-left.svg') %>">
+        </div>
+        <div class='right'>
+          <img class="r" src="<%= aws_asset_url(event, 'decoration-left.svg') %>">
         </div>
       </div>
-      <div class='row'>
-        <div class="calendar-wrapper" style="visibility
-    : <%= event_visibility(event) %>">
-          <%= render partial: 'themes/shared/calendar', locals: { event: event } %>
-          </div>
+      <div class="calendar-wrapper" style="visibility
+  : <%= event_visibility(event) %>">
+        <%= render partial: 'themes/shared/calendar', locals: { event: event } %>
         </div>
       </div>
     </div>
-  </div>
   </div>
 </div>

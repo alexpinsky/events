@@ -1,29 +1,72 @@
-// Small landscape
-@media only screen and (min-device-width: 320px) and (max-device-height: 667px) and (orientation : landscape) {
-  @import 'small_landscape';
-}
-
-// Small portrait
-@media only screen and (min-device-width: 320px) and (max-device-height: 667px) and (orientation : portrait) {
-  @import 'small';
-}
-
-// Medium landscape
-@media only screen and (min-device-width: 604px) and (max-device-width: 1024px) and (orientation : landscape) {
-  @import 'medium_landscape';
-}
-
-// Medium portrait
-@media only screen and (min-device-width: 604px) and (max-device-width: 1024px) and (orientation : portrait) {
-  @import 'medium';
-}
-
-// Desktops and laptops
-@media only screen and (min-width : 1025px) {
-  @import 'large';
-}
-
-// Large screens
-@media only screen and (min-width : 1824px) {
-  @import 'large';
+.display {
+  font-size: 100%;
+  @media (min-width: 500px) and (max-width: 539px) {
+    font-size: 90%;
+  }
+  @media (min-width: 420px) and (max-width: 499px) {
+    font-size: 79%;
+  }
+  @media (min-width: 360px) and (max-width: 419px) {
+    font-size: 67%;
+  }
+  @media (min-width: 320px) and (max-width: 359px) {
+    font-size: 60%;
+  }
+  text-align: center;
+  .event-wrapper {
+    height: 100%;
+    .images-container {
+      text-align: center;
+      .images.slick-list, .images {
+        height: 33em;
+        width: 33em;
+        display: inline-block;
+        z-index: -999;
+        img {
+          width: inherit;
+          height: inherit;
+        }
+      }
+    }
+    .text-wrapper-1 {
+      margin-top: -0.8em;
+      line-height: 1em;
+      #text_1 {
+        display: inline-block;
+        background: white;
+        padding: 0 0.2em;
+      }
+    }
+    .text-wrapper-2 {
+      line-height: 0.8em;
+      #text_2 {
+        display: inline-block;
+      }
+    }
+    .text-wrapper-3 {
+      font-style: italic;
+      padding: 1em 0 0.5em 0;
+      #text_3 {
+        display: inline-block;
+      }
+    }
+    .calendar-wrapper {
+      .addthisevent-drop {
+        font-family: 'Fanwood Text', serif;
+        font-style: italic;
+        font-size: 1em;
+        padding: 0.3em 1em;
+        background: rgb(234, 234, 234);
+        color: #595757!important;
+        border: 1em;
+        border-radius: 1em!important;
+        .addthisevent_icon {
+          display: none;
+        }
+      }
+      .addthisevent-drop:hover {
+        background: rgba(203, 203, 203, 0.7);
+      }
+    }
+  }
 }

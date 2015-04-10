@@ -1,0 +1,7 @@
+<% if event %>
+  <meta property="og:title" content="<%= event.name %>" />
+  <meta property="og:image" content="<%= event.pictures.first.image_url %>" />
+  <meta property="og:site_name" content="webivte.com/<%= event.url %>" />
+  <meta property="og:url" content="webivte.com/<%= event.url %>" />
+  <meta property="og:description" content="<%= "#{event.name} #{event.information.start_time} #{event.information.location}" %>" />
+<% end %>

@@ -87,17 +87,19 @@ class Event < ActiveRecord::Base
     end
   end
 
-  def set_url_hash
-    return if self.url.blank? || self.created_at.blank?
-    self.url_hash = Digest::MD5.hexdigest "#{self.url}#{self.created_at.to_f}"
-    self.save
-  end
-
   def theme_name
     self.is_theme ? self.name : self.theme.name
   end
 
   def thumbnail_url
     "https://s3-eu-west-1.amazonaws.com/events-assets-static/categories/#{category_name}/themes/#{theme_name}/thumbnail.jpg"
+  end
+
+  def published?
+    false
+  end
+
+  def views_count
+    0
   end
 end

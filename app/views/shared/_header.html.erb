@@ -10,7 +10,7 @@
       <% if welcome_page? %>
         <li><a href="#">demo invitation</a></li>
       <% else %>
-        <li><a href="#">dashboard</a></li>
+        <li><%= link_to 'dashboard', events_path %></li>
         <li><a href="#">editor</a></li>
       <% end %>
       <% if current_user %>

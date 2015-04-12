@@ -1,40 +1,7 @@
-<div class="events-index container">
-  <div class="header row">
-    <div class="my-events-header large-4 columns">My Events</div>
-    <div class="create-event large-offset-6 large-2 columns">
-      <%= link_to 'Create New', new_event_path, class: "button small" %>
-    </div>    
+<div class='page-wrapper dashboard'>
+  <div class='previews'>
+    <% @events.each do |event| %>
+      <%= render partial: "tile", locals: {event: event }  %>
+    <% end %>
   </div>
-  <% @events.each do |event| %>
-    <div class="single-event row">
-      <div class="event-thumbnail large-4 columns" style="background-image: url(<%= background_collection_url(event.background_image) %>)">
-        <!-- render slim view of event -->
-        <%= render partial: "themes/#{event.category_name}/#{event.theme_name}", locals: { event: event } %>
-      </div>
-      <div class="event-details large-8 columns">
-        <div class="row">
-          <div class="event-name large-4 columns"><%= event.name.present? ? event.name : "MyEvent" %></div>
-        </div>
-        <div class="row">
-          <div class="event-info large-12 columns">
-            <div class="panel radius">
-              <h5>When:</h5>
-              <p><%= event.start_time.try(:strftime, "%d/%m/%Y %H:%M") || '?' %> - <%= event.end_time.try(:strftime, "%d/%m/%Y %H:%M") || '?' %></p>
-            </div>
-            <div class="panel radius">
-            <% location = event.location %>
-              <h5>Where:</h5>
-              <p><%= location.present? ? location : '?' %></p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="event-actions large-offset-4 large-8 columns">
-        <%= link_to "edit", edit_event_path(event) %> | 
-        <%= link_to "preview", event_path(id: event.id, preview: true) %> | 
-        <%= link_to "delete", event_path(event), method: :delete %>
-        <%= link_to "Publish", publish_event_path(event), class: "publish-btn small button" %>
-      </div>
-    </div>
-  <% end %>
 </div>

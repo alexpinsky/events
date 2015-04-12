@@ -1,7 +1,7 @@
 module ApplicationHelper
 
-  def image_url_for(page_name, image_name)
-    "https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/#{page_name}/images/#{image_name}"
+  def asset_url(page_name, image_name)
+    "https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/#{page_name}/#{image_name}"
   end
 
   def shared_assets_url(asset_name)

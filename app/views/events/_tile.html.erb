@@ -2,7 +2,8 @@
   <div class='tile-header'>
     <div class='name-wrapper'>
       <div class='name vertical-align'>
-        <%= event.name %>
+        <div class='edit-icon'></div>
+        <a href="#" class="event-name" data-type="text" data-url="<%= event_path(event) %>"><%= event.name %></a>
       </div>
     </div>
   </div>

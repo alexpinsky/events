@@ -17,6 +17,7 @@
 //= require responsive-nav.min
 //= require pages
 //= require editor
+//= require_tree ./dashboard
 //= require dashboard
 //= require helpers
 //= require categories

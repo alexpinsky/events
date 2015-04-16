@@ -1,4 +1,7 @@
 // index (dashboard)
+.hover_color {
+  background-color: rgb(245, 247, 255);
+}
 .page-wrapper.dashboard {
   margin-top: 20px;
   .previews {
@@ -56,6 +59,9 @@
           font-family: 'Julius Sans One', sans-serif;
           border: 2px solid rgb(231, 231, 231);
           box-shadow: 3px 3px 10px rgba(240, 237, 237, 0.55);
+          .name:hover {
+            background-color: rgb(245, 247, 255);
+          }
           .edit-icon {
             background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/edit_icon.svg');
             width: 20px;

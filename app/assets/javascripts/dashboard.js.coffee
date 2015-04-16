@@ -4,12 +4,17 @@ class Dashboard
     @container = options.container
 
   init: ->
-    @container.find(".event-name").editable
-      mode: 'inline'
-      clear: false
-      ajaxOptions:
-        type: 'put'
-        dataType: 'json'
+    @initNameEditors()
+    @initUrlEditors()
+
+  initNameEditors: ->
+    @container.find(".name-editor").each ->
+      nameEditor = new NameEditor
+        container: $(this)
+      nameEditor.init()
+
+
+  initUrlEditors: ->
 
 
 $ ->

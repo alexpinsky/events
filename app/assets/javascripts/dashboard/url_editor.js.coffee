@@ -1,4 +1,4 @@
-class @NameEditor
+class @UrlEditor
   
   constructor: (options = {}) ->
     @container = options.container

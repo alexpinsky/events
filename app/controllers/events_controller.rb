@@ -6,9 +6,9 @@ class EventsController < ApplicationController
   skip_before_filter :authenticate_user!, only: [:show]
 
   def index
-    # @events = current_user.events.with_url.includes(:category, :theme, :pictures)
-    event = current_user.events.with_url.includes(:category, :theme, :pictures).first
-    @events = [event, event]
+    @events = current_user.events.with_url.includes(:category, :theme, :pictures)
+    # event = current_user.events.with_url.includes(:category, :theme, :pictures).first
+    # @events = [event, event]
   end
 
   def show

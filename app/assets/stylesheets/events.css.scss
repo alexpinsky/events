@@ -1,7 +1,4 @@
 // index (dashboard)
-.hover_color {
-  background-color: rgb(245, 247, 255);
-}
 .page-wrapper.dashboard {
   margin-top: 20px;
   .previews {
@@ -46,22 +43,18 @@
       min-height: 595px;
       text-align: center;
       display: inline-block;
-      border: 2px solid #e7e7e7;
+      border: 1px solid #e7e7e7;
       margin: 0 39px 39px 0;
       .tile-header {
         background-color: white;
         padding: 38px 0 18px;
-        border-bottom: 2px solid #e7e7e7;
         .name-wrapper {
           width: 209px;
           height: 49px;
           margin: 0 auto;
           font-family: 'Julius Sans One', sans-serif;
-          border: 2px solid rgb(231, 231, 231);
+          border: 1px solid rgb(231, 231, 231);
           box-shadow: 3px 3px 10px rgba(240, 237, 237, 0.55);
-          .name:hover {
-            background-color: rgb(245, 247, 255);
-          }
           .edit-icon {
             background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/edit_icon.svg');
             width: 20px;
@@ -76,6 +69,13 @@
             color: rgb(176, 176, 176);
             text-decoration: none;
             border-bottom: none;
+          }
+        }
+        .name-wrapper:hover {
+          background-color: rgb(245, 247, 255);
+          border: 1px solid rgb(127, 159, 255);
+          a {
+            color: rgb(127, 159, 255);
           }
         }
         .editable-container {
@@ -125,10 +125,79 @@
       .url-wrapper {
         background-color: white;
         height: 24px;
-        border-bottom: 2px solid #e7e7e7;
+        border-top: 1px solid #e7e7e7;
+        border-bottom: 1px solid #e7e7e7;
         font-family: 'Quattrocento Sans', sans-serif;
         font-size: 12px;
         color: rgb(176, 176, 176);
+        .edit-icon {
+          background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/edit_icon.svg');
+          width: 20px;
+          height: 20px;
+          display: block;
+          background-repeat: no-repeat;
+          position: absolute;
+          z-index: -9999;
+          left: 5px;
+          bottom: -5px;
+        }
+        a {
+          color: rgb(176, 176, 176);
+          text-decoration: none;
+          border-bottom: none;
+        }
+        .editable-container {
+          input {
+            border: none;
+            height: 20px;
+            width: 269px;
+            position: absolute;
+            left: 0;
+            text-align: center;
+            font-family: 'Quattrocento Sans', sans-serif;
+            font-size: 12px;
+            color: rgb(176, 176, 176);
+          }
+          input:focus {
+            outline: none;
+          }
+          .editable-buttons {
+            position: absolute;
+            bottom: -4px;
+            right: 5px;
+            margin: 0;
+            button {
+              width: 10px;
+              height: 10px;
+              display: block;
+              background-repeat: no-repeat;
+              border: none;
+              color: transparent;
+              overflow: hidden;
+              margin: 0;
+              padding: 0;
+            }
+            button:focus {
+              outline: none;
+            }
+            button.editable-submit {
+              background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/ok_btn.svg');
+              margin-right: 2px;
+              display: inline-block;
+            }
+            button.editable-cancel {
+              background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/cancel_btn.svg');
+              display: inline-block;
+            }
+          }
+        }
+      }
+      .url-wrapper:hover {
+        background-color: rgb(245, 247, 255);
+        border: 1px solid rgb(127, 159, 255);
+        a {
+          color: rgb(127, 159, 255);
+        }
       }
       .image-wrapper {
         width: 222px;

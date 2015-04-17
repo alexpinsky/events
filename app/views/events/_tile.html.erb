@@ -1,15 +1,16 @@
 <div class='tile'>
   <div class='tile-header'>
-    <div class='name-wrapper'>
-      <div class='name name-editor vertical-align'>
+    <div class='name-wrapper name-editor'>
+      <div class='name vertical-align'>
         <div class='edit-icon'></div>
         <a href="#" class="event-name" data-type="text" data-url="<%= event_path(event) %>"><%= event.name %></a>
       </div>
     </div>
   </div>
-  <div class='url-wrapper'>
+  <div class='url-wrapper url-editor'>
     <div class='url vertical-align'>
-      <%= ENV['ROOT_URL'] %><%= event.url %>
+      <div class='edit-icon'></div>
+      <%= ENV['ROOT_URL'] %><a href="#" class="event-url" data-type="text" data-url="<%= event_path(event) %>"><%= event.url %></a>
     </div>
   </div>
   <div class='image-wrapper'>

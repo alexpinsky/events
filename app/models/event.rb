@@ -1,13 +1,13 @@
-require 'digest/md5'
-
 class Event < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
   belongs_to :theme, class_name: 'Event', foreign_key: 'theme_id'
+  
   has_one :appearance, dependent: :destroy
-  has_many :pictures, as: :displayable, dependent: :destroy
   has_one :song, as: :listenable, dependent: :destroy
   has_one :information, dependent: :destroy
+  
+  has_many :pictures, as: :displayable, dependent: :destroy
 
   accepts_nested_attributes_for :pictures, 
     :appearance,

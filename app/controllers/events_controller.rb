@@ -5,6 +5,12 @@ class EventsController < ApplicationController
 
   skip_before_filter :authenticate_user!, only: [:show]
 
+  MESSAGES = {
+    update: {
+      success: "Event was successfully updated"
+    }
+  }
+
   def index
     @events = current_user.events.with_url.includes(:category, :theme, :pictures)
     # event = current_user.events.with_url.includes(:category, :theme, :pictures).first
@@ -78,13 +84,29 @@ class EventsController < ApplicationController
   def update
     @event = current_user.events.find params[:id]
     if @event.update_attributes(event_params)
-      redirect_to events_path
-      flash[:success] = "Event was successfully updated"
+      respond_to do |format|
+        format.html do
+          flash[:success] = MESSAGES[:update][:success]
+          redirect_to events_path
+        end
+        format.json do
+          render json: { message: MESSAGES[:update][:success] }, status: :ok
+        end
+      end
     else
-      error_msg = escape_javascript("Failed to update the Event.\n#{@event.errors.full_messages.join('\n,')}")
-      @categories = Category.includes(:events).where('events.is_theme = ?', true).references(:events)
-      flash[:alert] = error_msg
-      render :edit
+      error_msg = escape_javascript(
+        "Failed to update the Event.\n#{@event.errors.full_messages.join('\n,')}"
+      )
+      respond_to do |format|
+        format.html do
+          @categories = Category.includes(:events).where('events.is_theme = ?', true).references(:events)
+          flash[:alert] = error_msg
+          render :edit
+        end
+        format.json do
+          render json: { message: error_msg }, status: :bad_request
+        end
+      end
     end
   end
 
@@ -111,23 +133,20 @@ class EventsController < ApplicationController
 private
 
   def event_params
-    sanitaized_params.require(:event).permit(:id, :theme_id, :category_id, :text_1, :text_2, :text_3, pictures_attributes: [:id, :image, :order, :slideshow, :_destroy], appearance_attributes: [:id, :font_family_1, :font_color_1, :font_size_1, :font_family_2, :font_color_2, :font_size_2, :font_family_3, :font_color_3, :font_size_3, :background_image], information_attributes: [:id, :in_use, :summary, :location, :organizer, :organizer_email, :time_zone, :start_time, :end_time])
+    sanitaized_params.require(:event).permit(:id, :theme_id, :category_id, :text_1, :text_2, :text_3, :name, :url, pictures_attributes: [:id, :image, :order, :slideshow, :_destroy], appearance_attributes: [:id, :font_family_1, :font_color_1, :font_size_1, :font_family_2, :font_color_2, :font_size_2, :font_family_3, :font_color_3, :font_size_3, :background_image], information_attributes: [:id, :in_use, :summary, :location, :organizer, :organizer_email, :time_zone, :start_time, :end_time])
   end
 
   def sanitaized_params
-    params[:event][:pictures_attributes].keep_if do |key, value| 
-      value[:image].present? || value[:_destroy] == 'true' # => don't save just the order & slideshow
-    end
-    in_use = params[:event][:information_attributes][:in_use]
-    params[:event][:information_attributes][:in_use] = in_use == 'true'
     params
+    # params[:event][:pictures_attributes].keep_if do |key, value| 
+    #   value[:image].present? || value[:_destroy] == 'true' # => don't save just the order & slideshow
+    # end
+    # in_use = params[:event][:information_attributes][:in_use]
+    # params[:event][:information_attributes][:in_use] = in_use == 'true'
+    # params
   end
 
   def load_theme_for(category)
     category.events.themes.includes(:pictures).where('events.id = ?', params[:theme_id]).first || category.events.themes.includes(:pictures).first
-  end
-
-  def set_page_name
-    @page_name = 'editor'    
   end
 end

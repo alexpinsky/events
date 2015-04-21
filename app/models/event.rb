@@ -9,6 +9,8 @@ class Event < ActiveRecord::Base
   
   has_many :pictures, as: :displayable, dependent: :destroy
 
+  validates :url, uniqueness: true
+
   accepts_nested_attributes_for :pictures, 
     :appearance,
     :information, 

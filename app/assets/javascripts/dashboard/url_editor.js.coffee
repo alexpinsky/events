@@ -11,3 +11,7 @@ class @UrlEditor
       ajaxOptions:
         type: 'put'
         dataType: 'json'
+      params: (params) ->
+        event: {
+          url: params.value
+        }

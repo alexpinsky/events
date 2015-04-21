@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :category do
-    name 'Wedding'
+    name Faker::Lorem.word
   end
 end

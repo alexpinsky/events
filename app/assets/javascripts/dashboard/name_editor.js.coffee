@@ -11,3 +11,8 @@ class @NameEditor
       ajaxOptions:
         type: 'put'
         dataType: 'json'
+      params: (params) ->
+        event: {
+          name: params.value
+        }
+        

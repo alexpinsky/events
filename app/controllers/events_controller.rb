@@ -83,8 +83,10 @@ class EventsController < ApplicationController
 
   def update
     @event = current_user.events.find params[:id]
+
     if @event.update_attributes(event_params)
       respond_to do |format|
+        
         format.html do
           flash[:success] = MESSAGES[:update][:success]
           redirect_to events_path
@@ -92,12 +94,14 @@ class EventsController < ApplicationController
         format.json do
           render json: { message: MESSAGES[:update][:success] }, status: :ok
         end
+
       end
     else
       error_msg = escape_javascript(
         "Failed to update the Event.\n#{@event.errors.full_messages.join('\n,')}"
       )
       respond_to do |format|
+        
         format.html do
           @categories = Category.includes(:events).where('events.is_theme = ?', true).references(:events)
           flash[:alert] = error_msg
@@ -106,6 +110,7 @@ class EventsController < ApplicationController
         format.json do
           render json: { message: error_msg }, status: :bad_request
         end
+        
       end
     end
   end

@@ -51,16 +51,15 @@ class Event < ActiveRecord::Base
 
   MAX_PICTURES_SIZE = 5
 
-  # args: {:user, :theme}
-  def self.copy_from_theme(args)
-    event = args[:theme].deep_clone include: :appearance, except: [:is_theme, :name]
-    event.user = args[:user]
-    event.theme = args[:theme]
+  def self.copy_from_theme(theme, options = {})
+    event = theme.deep_clone include: :appearance, except: [:is_theme, :name]
+    event.theme = theme
     event.is_theme = false
-    args[:theme].pictures.each do |pic|
+    theme.pictures.each do |pic|
       event.pictures.new(order: pic.order, slideshow: pic.slideshow)
     end
     event.information = Information.new(in_use: true)
+    event.user = options[:user]
     event
   end
 

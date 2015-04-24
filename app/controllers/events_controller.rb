@@ -3,7 +3,8 @@ require 'action_view/helpers/javascript_helper'
 class EventsController < ApplicationController
   include ActionView::Helpers::JavaScriptHelper
 
-  skip_before_filter :authenticate_user!, only: [:show]
+  skip_before_filter :authenticate_user!, only: :show
+  before_filter :set_theme, only: :new
 
   MESSAGES = {
     update: {
@@ -13,8 +14,6 @@ class EventsController < ApplicationController
 
   def index
     @events = current_user.events.with_url.includes(:category, :theme, :pictures)
-    # event = current_user.events.with_url.includes(:category, :theme, :pictures).first
-    # @events = [event, event]
   end
 
   def show
@@ -45,17 +44,7 @@ class EventsController < ApplicationController
   end
 
   def new
-    category = if params[:category_id].present?
-      Category.find_by_id params[:category_id]
-    else
-      Category.first
-    end
-    theme = load_theme_for(category)
-    @event = Event.copy_from_theme(
-      category: category, 
-      theme: theme, 
-      user: current_user
-    )
+    @event = Event.copy_from_theme(theme_for_copy, user: current_user)
     @categories = Category.includes(:events).where('events.is_theme = ?', true).references(:events)
   end
 
@@ -91,10 +80,10 @@ class EventsController < ApplicationController
           flash[:success] = MESSAGES[:update][:success]
           redirect_to events_path
         end
+
         format.json do
           render json: { message: MESSAGES[:update][:success] }, status: :ok
         end
-
       end
     else
       error_msg = escape_javascript(
@@ -107,10 +96,10 @@ class EventsController < ApplicationController
           flash[:alert] = error_msg
           render :edit
         end
+
         format.json do
           render json: { message: error_msg }, status: :bad_request
         end
-        
       end
     end
   end
@@ -151,7 +140,19 @@ private
     # params
   end
 
-  def load_theme_for(category)
-    category.events.themes.includes(:pictures).where('events.id = ?', params[:theme_id]).first || category.events.themes.includes(:pictures).first
+  def theme_for_copy
+    category = if params[:category_id].present?
+      Category.find_by_id params[:category_id]
+    else
+      Category.first
+    end
+    if params[:theme_id]
+      category.events.themes.includes(:pictures).where(
+        id: params[:theme_id]
+      )
+      .first
+    else
+      category.events.themes.includes(:pictures).first
+    end
   end
 end

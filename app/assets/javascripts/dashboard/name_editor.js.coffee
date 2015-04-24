@@ -15,4 +15,3 @@ class @NameEditor
         event: {
           name: params.value
         }
-        

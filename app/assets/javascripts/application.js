@@ -10,18 +10,32 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
+
+// Libraries
+
 //= require jquery
 //= require jquery_ujs
+
+// Application
+
+//= require app
+//= require dashboard 
+//= require templates
+//= require editor
+//= require pages
+//= require helpers
+//= require_tree ./dashboard
+//= require_tree ./elements
+
+// External Plugins
+
 //= require jquery.minicolors.min
 //= require jquery.modal.min
 //= require responsive-nav.min
-//= require pages
-//= require editor
-//= require_tree ./dashboard
-//= require dashboard
-//= require helpers
-//= require categories
-//= require_tree ./elements
 //= require social-share-button
 //= require foundation-datetimepicker
 //= require file-validator
+
+$(document).ready(function() {
+  App.start();
+});

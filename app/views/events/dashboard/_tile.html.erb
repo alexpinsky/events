@@ -17,8 +17,8 @@
     <div class='image' style="background: url('<%= event.pictures.first.image_url %>') no-repeat; background-size: cover;">
       <div class='menu-wrapper'>
         <div class='buttons'>
-          <a class="preview" target="_blank" href="#"></a>
-          <a class="edit" href="#"></a>
+          <a class="preview" target="_blank" href="<%= event_path(id: event.id, preview: true) %>"></a>
+          <a class="edit" href="<%= new_event_path(theme_id: event.theme_id, category_id: event.category_id) %>"></a>
         </div>
         <div class='info'>
           <div class='theme-name'>

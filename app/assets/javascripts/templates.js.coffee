@@ -1,4 +1,9 @@
-class Categories
+class @Templates
+
+  @start: ->
+    categories = new Templates container: $('.page-wrapper.categories')
+    categories.init()
+
   constructor: (options = {}) ->
     @container = options.container
 
@@ -13,8 +18,3 @@ class Categories
       ), (e) =>
         tile_obj = $(e.currentTarget)
         tile_obj.find('.menu-wrapper').css("visibility", "hidden")
-        
-
-$ ->
-  categories = new Categories container: $('.page-wrapper.categories')
-  categories.init()

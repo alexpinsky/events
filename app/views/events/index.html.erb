@@ -1,8 +1,8 @@
 <div class='page-wrapper dashboard'>
   <div class='previews'>
     <% @events.each do |event| %>
-      <%= render partial: "tile", locals: {event: event }  %>
+      <%= render partial: "events/dashboard/tile", locals: {event: event }  %>
     <% end %>
-    <%= render partial: "tile_placeholder" %>
+    <%= render partial: "events/dashboard/tile_placeholder" %>
   </div>
 </div>

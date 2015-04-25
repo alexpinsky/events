@@ -4,7 +4,6 @@ class EventsController < ApplicationController
   include ActionView::Helpers::JavaScriptHelper
 
   skip_before_filter :authenticate_user!, only: :show
-  before_filter :set_theme, only: :new
 
   MESSAGES = {
     update: {

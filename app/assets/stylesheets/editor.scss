@@ -1,0 +1,128 @@
+$bg-color: rgb(248, 248, 248);
+$border-color: rgb(127, 159, 255);
+
+.page-wrapper.editor {
+  margin-top: 20px;
+  background-color: $bg-color;
+  .page-container {
+    width: 960px;
+    height: 100%;
+    margin: 0 auto;
+    .top {
+      height: 102px;
+      .borderholder-1 {
+        width: 360px;
+        height: inherit;
+        display: inline-block;
+      }
+      .actions {
+        width: 559px;
+        display: inline-block;
+        vertical-align: top;
+        padding: 15px 0;
+        text-align: right;
+        border: 1px solid $border-color;
+        border-top: none;
+        font-family: 'Quattrocento Sans', sans-serif;
+        font-size: 12px;
+        a {
+          width: 52px;
+          height: 51px;
+          background-repeat: no-repeat;
+          display: block;
+        }
+        .text {
+          text-align: center;
+          padding-top: 8px;
+        }
+        .save-wrapper {
+          margin-right: 38px;
+          display: inline-block;
+          color: rgb(181, 23, 231);
+          a.save {
+            background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/save_btn.svg');
+          }
+          a.save:hover {
+            background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/save_btn_hover.svg');
+          }
+        }
+        .publish-wrapper {
+          display: inline-block;
+          margin-right: 18px;
+          color: rgb(8, 212, 204);
+          a.publish {
+            background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/publish_btn.svg');
+          }
+          a.publish:hover {
+            background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/publish_btn_hover.svg');
+          }
+        }
+        .unpublish-wrapper {
+          display: inline-block;
+          color: rgb(255, 140, 0);
+          a.unpublish {
+            background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/unpublish_btn.svg');
+          }
+          a.unpublish:hover {
+            background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/unpublish_btn_hover.svg');
+          }
+        }
+      }
+      .borderholder-2 {
+        width: 30px;
+        height: inherit;
+        display: inline-block;
+      }
+    }
+    .body {
+      .form-wrapper {
+        width: 330px;
+        height: 498px;
+        display: inline-block;
+      }
+      .preview-wrapper {
+        width: 621px;
+        height: 498px;
+        display: inline-block;
+        vertical-align: top;
+        .frame-1 {
+          display: inline-block;
+          width: 30px;
+          height: 468px;
+          border-top: 1px solid $border-color;
+          border-right: 1px solid $border-color;
+          box-shadow: -4px 0px 1px #E4E4E4;
+        }
+        .preview {
+          width: 559px;
+          height: 468px;
+          display: inline-block;
+          background-color: white;
+          position: relative;
+          .display {
+            font-size: 62%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+          }
+        }
+        .frame-2 {
+          display: inline-block;
+          width: 30px;
+          height: 468px;
+          border-top: 1px solid $border-color;
+          border-left: 1px solid $border-color;
+        }
+        .frame-3 {
+          width: inherit;
+          height: 30px;
+          border-top: 1px solid $border-color;
+          margin-top: -4px;
+          box-shadow: -4px 0px 1px #E4E4E4;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+<div class='page-wrapper editor'>
+  <div class='page-container'>
+    <div class='top'>
+      <div class='borderholder-1'></div>
+      <div class='actions'>
+        <div class='save-wrapper'>
+          <a class="save" href="#"></a>
+          <div class='text'>SAVE</div>
+        </div>
+        <% if event.published? %>
+          <div class='unpublish-wrapper'>
+            <a class="unpublish" href="#"></a>
+            <div class='text'>UNPUBLISH</div>
+          </div>
+        <% else %>
+          <div class='publish-wrapper'>
+            <a class="publish" href="#"></a>
+            <div class='text'>PUBLISH</div>
+          </div>
+        <% end %>
+      </div>
+      <div class='borderholder-2'></div>
+    </div>
+    <div class='body'>
+      <div class='form-wrapper'>
+
+      </div>
+      <div class='preview-wrapper'>
+        <div class='frame-1'></div><div class='preview'>
+          <div class="display">
+            <% theme_path = "themes/#{event.category_name}/#{event.theme_name}" %>
+            <% content_for :header do %>
+              <%= stylesheet_link_tag "#{theme_path}/base" %>
+            <% end %>
+            <%= render partial: theme_path, locals: { event: event } %>
+          </div>
+        </div><div class='frame-2'></div><div class='frame-3'></div>
+      </div>
+    </div>
+  </div>
+</div>

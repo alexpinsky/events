@@ -56,7 +56,7 @@ class Event < ActiveRecord::Base
     event.theme = theme
     event.is_theme = false
     theme.pictures.each do |pic|
-      event.pictures.new(order: pic.order, slideshow: pic.slideshow)
+      event.pictures.new(order: pic.order, slideshow: pic.slideshow, image: pic.image)
     end
     event.information = Information.new(in_use: true)
     event.user = options[:user]

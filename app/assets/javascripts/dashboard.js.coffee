@@ -1,5 +1,4 @@
 class @Dashboard
-
   @start: ->
     dashboard = new Dashboard
       container: $(".page-wrapper.dashboard")
@@ -14,14 +13,14 @@ class @Dashboard
 
   initNameEditors: ->
     @container.find(".name-editor").each ->
-      nameEditor = new App.Dashboard.NameEditor
+      nameEditor = new NameEditor
         container: $(this)
         editable: $(this).find(".event-name")
       nameEditor.init()
 
   initUrlEditors: ->
     @container.find(".url-editor").each ->
-      urlEditor = new App.Dashboard.UrlEditor
+      urlEditor = new UrlEditor
         container: $(this)
         editable: $(this).find(".event-url")
       urlEditor.init()

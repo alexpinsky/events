@@ -10,18 +10,19 @@
  *
  *= require_self
  *= require responsive-nav
+ *= require jquery.minicolors
+ *= require jquery.modal
+ *= require social-share-button
+ 
  *= require dashboard
  *= require editor
  *= require pages
  *= require fonts
- *= require_tree ./themes/shared
  *= require devise
  *= require categories
+ *= require_tree ./themes/shared
  *= require_tree ./elements
  *= require_tree ./shared
- *= require jquery.minicolors
- *= require jquery.modal
- *= require social-share-button
 */
 body { margin: 0 }
 .vertical-align {

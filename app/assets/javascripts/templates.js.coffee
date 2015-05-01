@@ -1,5 +1,4 @@
 class @Templates
-
   @start: ->
     categories = new Templates container: $('.page-wrapper.categories')
     categories.init()

@@ -1,15 +1,26 @@
 class @Editor
-  constructor: (options={})->
-    @editor = options.editor
-    @preview = options.preview
+  @start: ->
+    editor = new Editor
+      container: $('.page-wrapper.editor')
+    editor.init()
+
+  constructor: (options = {})->
+    @container = options.container
 
   init: ->
-    @initTemplates()
-    @initText()
-    @initBackground()
-    @initPics()
-    @initCalendar()
-    @loadEvent()
+    form = new Form
+      container: @container.find('.form-wrapper')
+    form.init()
+
+    preview = new Preview
+      container: @container.find('.preview-wrapper')
+    preview.init()
+    # @initTemplates()
+    # @initText()
+    # @initBackground()
+    # @initPics()
+    # @initCalendar()
+    # @loadEvent()
 
   initTemplates: ->
     element = new SliderElement
@@ -42,7 +53,7 @@ class @Editor
           @changePreviewImage(order: order, imgUrl: imgUrl)
           @storePic(order: order, url: imgUrl, input: input)
         reader.readAsDataURL(input.files[0])
-    
+
   initText: ->
     @textElement = new TextElement
       editor: @editor
@@ -144,9 +155,3 @@ class @Editor
 
   onUncheckCalendar: =>
     @preview.find('.calendar-wrapper').css('visibility', 'hidden')
-
-$ ->
-  editor = new Editor
-    editor: $("#editor"), 
-    preview: $("#preview")
-  editor.init()

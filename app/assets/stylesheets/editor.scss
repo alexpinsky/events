@@ -3,6 +3,7 @@ $border-color: rgb(127, 159, 255);
 
 .page-wrapper.editor {
   margin-top: 20px;
+  min-height: 1050px;
   background-color: $bg-color;
   .page-container {
     width: 960px;
@@ -79,6 +80,63 @@ $border-color: rgb(127, 159, 255);
         width: 330px;
         height: 498px;
         display: inline-block;
+        .form {
+          .accordion {
+            .panel {
+              margin-bottom: 11px;
+              .panel-header {
+                height: 32px;
+                background-color: rgb(127, 160, 255);
+                font-family: 'Julius Sans One', sans-serif;
+                color: white;
+                .header-icon {
+                  width: 21px;
+                  height: 21px;
+                  display: inline-block;
+                  margin: 0 11px 0 5px;
+                }
+                .header-text {
+                  display: inline-block;
+                }
+              }
+              .panel-content {
+                padding: 5px;
+                display: none;
+              }
+            }
+            .panel.templates {
+              .panel-header {
+                .header-icon {
+                  background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/templates_icon.svg'); 
+                }
+              }
+              .panel-content {
+                display: block;
+              }
+            }
+            .panel.text {
+              .panel-header {
+                .header-icon {
+                  background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/text_icon.svg'); 
+                }
+              }
+            }
+            .panel.pictures {
+              .panel-header {
+                .header-icon {
+                  background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/pictures_icon.svg'); 
+                }
+              }
+            }
+            .panel.calendar {
+              .panel-header {
+                .header-icon {
+                  background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/calendar_icon.svg'); 
+                }
+              }
+            }
+          }
+        }
       }
       .preview-wrapper {
         width: 621px;

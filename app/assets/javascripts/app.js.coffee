@@ -1,5 +1,4 @@
 class @App
-
   @start: ->
     app = new App
     app.run()
@@ -9,6 +8,7 @@ class @App
 
     Dashboard.start()
     Templates.start()
+    Editor.start()
 
   setNameSpaces: ->
     namespace = (target, name, block) ->
@@ -17,6 +17,6 @@ class @App
       target = target[item] or= {} for item in name.split '.'
       block target, top
    
-    namespace "App.Dashboard", (exports) ->
-      exports.NameEditor = NameEditor
-      exports.UrlEditor = UrlEditor
+    # namespace "App.Dashboard", (exports) ->
+    #   exports.NameEditor = NameEditor
+    #   exports.UrlEditor = UrlEditor

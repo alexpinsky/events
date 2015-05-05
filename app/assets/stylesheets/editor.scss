@@ -85,6 +85,7 @@ $border-color: rgb(127, 159, 255);
             .panel {
               margin-bottom: 11px;
               .panel-header {
+                cursor: pointer;
                 height: 32px;
                 background-color: rgb(127, 160, 255);
                 font-family: 'Julius Sans One', sans-serif;
@@ -112,6 +113,18 @@ $border-color: rgb(127, 159, 255);
               }
               .panel-content {
                 display: block;
+                .gallery {
+                  ul {
+                    list-style-type: none;
+                  }
+                  .themes {
+                    .gallery-theme {
+                      width: 78px;
+                      height: 78px;
+                      display: inline-block;
+                    }
+                  }
+                }
               }
             }
             .panel.text {

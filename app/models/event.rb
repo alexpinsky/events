@@ -2,46 +2,46 @@ class Event < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
   belongs_to :theme, class_name: 'Event', foreign_key: 'theme_id'
-  
+
   has_one :appearance, dependent: :destroy
   has_one :song, as: :listenable, dependent: :destroy
   has_one :information, dependent: :destroy
-  
+
   has_many :pictures, as: :displayable, dependent: :destroy
 
   validates :url, uniqueness: true, allow_blank: true
 
-  accepts_nested_attributes_for :pictures, 
+  accepts_nested_attributes_for :pictures,
     :appearance,
-    :information, 
-    :song, 
+    :information,
+    :song,
   allow_destroy: true
 
-  delegate :background_image, 
-    :font_family_1, 
-    :font_color_1, 
+  delegate :background_image,
+    :font_family_1,
+    :font_color_1,
     :font_size_1,
-    :font_family_2, 
-    :font_color_2, 
+    :font_family_2,
+    :font_color_2,
     :font_size_2,
-    :font_family_3, 
-    :font_color_3, 
+    :font_family_3,
+    :font_color_3,
     :font_size_3,
   to: :appearance, allow_nil: true
-  
-  delegate :start_time, 
-    :end_time, 
-    :organizer, 
-    :organizer_email, 
-    :location, 
-    :time_zone, 
-    :summary, 
-    :date_format, 
+
+  delegate :start_time,
+    :end_time,
+    :organizer,
+    :organizer_email,
+    :location,
+    :time_zone,
+    :summary,
+    :date_format,
   to: :information, allow_nil: true
 
   delegate :name, to: :category, prefix: true
   delegate :name, to: :theme, prefix: true
-  
+
   scope :themes, -> () { where('events.is_theme = ?', true) }
   scope :include_categories, -> () { includes(:category) }
   scope :with_url, -> () { where('events.url IS NOT NULL') }
@@ -52,13 +52,14 @@ class Event < ActiveRecord::Base
   MAX_PICTURES_SIZE = 5
 
   def self.copy_from_theme(theme, options = {})
-    event = theme.deep_clone include: :appearance, except: [:is_theme, :name]
+    event = theme.dup
     event.theme = theme
+    event.build_appearance theme.appearance.attributes
     event.is_theme = false
     theme.pictures.each do |pic|
       event.pictures.new(order: pic.order, slideshow: pic.slideshow, image: pic.image)
     end
-    event.information = Information.new(in_use: true)
+    event.build_information in_use: true
     event.user = options[:user]
     event
   end
@@ -80,9 +81,9 @@ class Event < ActiveRecord::Base
     event.information ||= Information.new(in_use: true)
     existing_pic_orders = event.pictures.map(&:order) + [0] # => escape null
     missing_pics = theme.pictures.where('pictures.order NOT IN (?)', existing_pic_orders)
-    missing_pics.each do |pic| 
+    missing_pics.each do |pic|
       event.pictures.new(
-        order: pic.order, 
+        order: pic.order,
         slideshow: pic.slideshow
       )
     end

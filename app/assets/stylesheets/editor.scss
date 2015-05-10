@@ -101,50 +101,38 @@ $border-color: rgb(127, 159, 255);
                 }
               }
               .panel-content {
-                padding: 5px;
                 display: none;
               }
             }
             .panel.templates {
               .panel-header {
                 .header-icon {
-                  background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/templates_icon.svg'); 
+                  background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/templates_icon.svg');
                 }
               }
               .panel-content {
                 display: block;
-                .gallery {
-                  ul {
-                    list-style-type: none;
-                  }
-                  .themes {
-                    .gallery-theme {
-                      width: 78px;
-                      height: 78px;
-                      display: inline-block;
-                    }
-                  }
-                }
+                @import 'editor/gallery';
               }
             }
             .panel.text {
               .panel-header {
                 .header-icon {
-                  background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/text_icon.svg'); 
+                  background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/text_icon.svg');
                 }
               }
             }
             .panel.pictures {
               .panel-header {
                 .header-icon {
-                  background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/pictures_icon.svg'); 
+                  background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/pictures_icon.svg');
                 }
               }
             }
             .panel.calendar {
               .panel-header {
                 .header-icon {
-                  background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/calendar_icon.svg'); 
+                  background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/calendar_icon.svg');
                 }
               }
             }

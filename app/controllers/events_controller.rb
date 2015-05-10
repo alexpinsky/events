@@ -20,16 +20,16 @@ class EventsController < ApplicationController
     if params[:url]
       @event = Event.includes(
         :category,
-        :appearance, 
-        :information, 
+        :appearance,
+        :information,
         :pictures
       )
       .by_url(params[:url]).first
     else
       @event = Event.includes(
         :category,
-        :appearance, 
-        :information, 
+        :appearance,
+        :information,
         :pictures
       )
       .by_id(params[:id]).first
@@ -59,7 +59,7 @@ class EventsController < ApplicationController
       render :new
     end
   end
-  
+
   def edit
     @event = current_user.events.includes(:pictures, :appearance, :information).find(params[:id])
     Event.update_from_theme(
@@ -74,7 +74,7 @@ class EventsController < ApplicationController
 
     if @event.update_attributes(event_params)
       respond_to do |format|
-        
+
         format.html do
           flash[:success] = MESSAGES[:update][:success]
           redirect_to events_path
@@ -89,7 +89,7 @@ class EventsController < ApplicationController
         "Failed to update the Event.\n#{@event.errors.full_messages.join('\n,')}"
       )
       respond_to do |format|
-        
+
         format.html do
           @categories = Category.includes(:events).where('events.is_theme = ?', true).references(:events)
           flash[:alert] = error_msg
@@ -131,7 +131,7 @@ private
 
   def sanitaized_params
     params
-    # params[:event][:pictures_attributes].keep_if do |key, value| 
+    # params[:event][:pictures_attributes].keep_if do |key, value|
     #   value[:image].present? || value[:_destroy] == 'true' # => don't save just the order & slideshow
     # end
     # in_use = params[:event][:information_attributes][:in_use]
@@ -145,13 +145,14 @@ private
     else
       Category.first
     end
+
     if params[:theme_id]
-      category.events.themes.includes(:pictures).where(
+      category.events.themes.includes(:pictures, :information, :appearance).where(
         id: params[:theme_id]
       )
       .first
     else
-      category.events.themes.includes(:pictures).first
+      category.events.themes.includes(:pictures, :information, :appearance).first
     end
   end
 end

@@ -1,0 +1,35 @@
+.gallery {
+  height: 187px;
+  .gallery-header {
+    text-align: center;
+    background-color: rgb(77, 77, 77);
+    font-family: 'Quattrocento Sans', sans-serif;
+    .prev, .next {
+      color: white;
+      font-size: 16px;
+      display: inline-block;
+      text-decoration: none;
+    }
+    .prev {
+      margin-right: 5px;
+    }
+    .next {
+      margin-left: 5px;
+    }
+    .category-name {
+      font-size: 11px;
+      color: white;
+      display: inline-block;
+    }
+  }
+  .themes {
+    padding: 5px 80px 0;
+    .gallery-theme {
+      width: 78px;
+      height: 78px;
+      display: inline-block;
+      border: 1px solid $border-color;
+      cursor: pointer;
+    }
+  }
+}

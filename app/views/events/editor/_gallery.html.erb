@@ -1,32 +1,23 @@
 <div class="gallery">
-  <ul>
+  <div class='gallery-header'>
+    <a href="#" class="prev"><</a>
+    <div class='category-name'><%= categories.first.name.upcase %></div>
+    <a href="#" class="next">></a>
+  </div>
+  <div class='slide'>
     <% categories.each do |category| %>
-      <li>
-        <div class='gallery-header'>
-          <a href="#" class="next">></a>
-          <div class='category-name'><%= category.name %></div>
-          <a href="#" class="prev"><</a>
-        </div>
-        <div class="themes">
-          <% category.events.themes.each do |theme| %>
-              <div class='gallery-theme' style="background: url('<%= theme.thumbnail_url %>') no-repeat; background-size: cover;"></div>
-          <% end %>
-        </div>
-      </li>
-      <!-- fake -->
-      <li>
-        <div class='gallery-header'>
-          <a href="#" class="next">></a>
-          <div class='category-name'>fake</div>
-          <a href="#" class="prev"><</a>
-        </div>
-        <div class="themes">
-          <% category.events.themes.each do |theme| %>
-              <div class='gallery-theme' style="background: url('<%= theme.thumbnail_url %>') no-repeat; background-size: cover;"></div>
-          <% end %>
-        </div>
-      </li>
-      <!-- end of fake -->
+      <div class="themes" data-category-name="<%= category.name.upcase %>">
+        <% category.events.themes.each do |theme| %>
+          <div class='gallery-theme' data-theme="<%= theme.id %>" data-category="<%= category.id %>" style="background: url('<%= theme.thumbnail_url %>') no-repeat; background-size: cover;"></div>
+        <% end %>
+      </div>
     <% end %>
-  </ul>
+    <!-- fake -->
+    <div class="themes" data-category-name="FAKE">
+      <% 4.times do %>
+        <div class='gallery-theme' data-theme="" data-category="" style="background: url('') no-repeat; background-size: cover;"></div>
+      <% end %>
+    </div>
+    <!-- end of fake -->
+  </div>
 </div>

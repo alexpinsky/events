@@ -8,25 +8,31 @@ class @Editor
     @container = options.container
 
   init: ->
-    form = new Form
-      container: @container.find('.form-wrapper')
-    form.init()
-
     preview = new Preview
       container: @container.find('.preview-wrapper')
     preview.init()
-    # @initTemplates()
-    # @initText()
-    # @initBackground()
-    # @initPics()
-    # @initCalendar()
-    # @loadEvent()
 
-  initTemplates: ->
-    element = new SliderElement
-      slider_obj: @editor.find('.slider-element')
-    element.themeClick @onThemeClick
-    element.init()
+    form = new Form
+      container: @container.find('.form-wrapper')
+    form.themeClick @onThemeClick
+    form.init()
+
+  onThemeClick: (e) =>
+    @loadNewTheme e.category, e.theme
+
+  loadNewTheme: (category, theme) ->
+    console.log 'loadNewTheme'
+    console.log category
+    console.log theme
+    # eventId = $('.edit-event').data('event')
+    # if eventId
+    #   url = '/events/' + eventId + '/edit'
+    # else
+    #   url = '/events/new'
+    # $.ajax
+    #   url: url
+    #   data: { category_id: args.category, theme_id: args.theme }
+    #   dataType: "script"
 
   initBackground: ->
     element = new BackgroundElement
@@ -75,17 +81,6 @@ class @Editor
   #     type: 'image',
   #     onInvalid: (validationType, file) ->
   #       file['invalid'] = true
-
-  onThemeClick: (args = {}) =>
-    eventId = $('.edit-event').data('event')
-    if eventId
-      url = '/events/' + eventId + '/edit'
-    else
-      url = '/events/new'
-    $.ajax
-      url: url
-      data: { category_id: args.category, theme_id: args.theme }
-      dataType: "script"
 
   onTextChange: (args = {}) =>
     @preview.find("#" + args.targetId).text(args.val)

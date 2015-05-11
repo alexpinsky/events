@@ -9,6 +9,12 @@ class @Form
 
     gallery = new Gallery
       container: @container.find('.gallery')
+    gallery.themeClick @onThemeClick
     gallery.init()
 
+  themeClick: (handler) ->
+    @handler = handler
+
+  onThemeClick: (e) =>
+    @handler e
 

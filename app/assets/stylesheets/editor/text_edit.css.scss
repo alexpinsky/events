@@ -1,0 +1,32 @@
+.text-line {
+  .text-input {
+    margin-top: 11px;
+    .input-icon {
+      width: 24px;
+      height: 24px;
+      display: inline-block;
+      vertical-align: bottom;
+      background-color: $border-color;
+    }
+    .input-icon.icon-1 {
+      background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/1.svg');
+    }
+    input {
+      width: 200px;
+      height: 20px;
+      display: inline-block;
+      border: 1px solid $border-color;
+    }
+  }
+  .text-appearance {
+    .text-font {
+
+    }
+    .text-color {
+
+    }
+    .text-size {
+
+    }
+  }
+}

@@ -1,19 +1,16 @@
 class @Editor
   @start: ->
-    editor = new Editor
-      container: $('.page-wrapper.editor')
+    editor = new Editor container: $('.page-wrapper.editor')
     editor.init()
 
   constructor: (options = {})->
     @container = options.container
 
   init: ->
-    preview = new Preview
-      container: @container.find('.preview-wrapper')
+    preview = new Preview container: @container.find('.preview-wrapper')
     preview.init()
 
-    form = new Form
-      container: @container.find('.form-wrapper')
+    form = new Form container: @container.find('.form-wrapper')
     form.themeClick @onThemeClick
     form.init()
 

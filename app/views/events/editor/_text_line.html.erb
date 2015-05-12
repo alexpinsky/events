@@ -1,0 +1,32 @@
+<div class="text-line <%= count %>">
+  <div class='text-input'>
+    <div class='input-icon icon-<%= count %>'>
+    </div><%= event_form.text_field "text_#{count}",
+      id: "text_#{count}",
+      data: { target: "text_#{count}", context: "#{count}" }
+    %>
+  </div>
+  <div class='text-appearance'>
+    <div class='text-font'>
+      <%=
+        app_form.text_field "font_family_#{count}",
+        class: "font-family",
+        data: { target: "text_#{count}", context: "#{count}" }
+      %>
+    </div>
+    <div class='text-color'>
+      <%=
+        app_form.text_field "font_color_#{count}",
+        class: "minicolors font-color",
+        data: { target: "text_#{count}", context: "#{count}" }
+      %>
+    </div>
+    <div class='text-size'>
+      <%=
+        app_form.number_field "font_size_#{count}",
+        class: "font-size",
+        data: { target: "text_#{count}", context: "#{count}" }
+      %>
+    </div>
+  </div>
+</div>

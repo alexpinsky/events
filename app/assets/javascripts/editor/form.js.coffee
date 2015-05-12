@@ -3,14 +3,16 @@ class @Form
     @container = options.container
 
   init: ->
-    accordion = new Accordion
-      container: @container.find('.accordion')
+    accordion = new Accordion container: @container.find('.accordion')
     accordion.init()
 
-    gallery = new Gallery
-      container: @container.find('.gallery')
+    gallery = new Gallery container: @container.find('.gallery')
     gallery.themeClick @onThemeClick
     gallery.init()
+
+    text = new TextEdit container: @container.find('.text-edit')
+
+
 
   themeClick: (handler) ->
     @handler = handler

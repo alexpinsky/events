@@ -121,6 +121,10 @@ $border-color: rgb(127, 159, 255);
                   background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/text_icon.svg');
                 }
               }
+              .panel-content {
+                display: block;
+                @import 'editor/text_edit';
+              }
             }
             .panel.pictures {
               .panel-header {

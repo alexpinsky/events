@@ -1,12 +1,12 @@
-<div class="text-line <%= count %>">
-  <div class='text-input'>
+<div class="text-line">
+  <div class='input-wrapper'>
     <div class='input-icon icon-<%= count %>'>
     </div><%= event_form.text_field "text_#{count}",
       id: "text_#{count}",
       data: { target: "text_#{count}", context: "#{count}" }
     %>
   </div>
-  <div class='text-appearance'>
+  <div class='appearance-wrapper'>
     <div class='text-font'>
       <%=
         app_form.text_field "font_family_#{count}",

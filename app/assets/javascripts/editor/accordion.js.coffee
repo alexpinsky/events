@@ -6,7 +6,7 @@ class @Accordion
     @initPanels()
 
   initPanels: ->
-    @panels = []
+    panels = []
     @container.find('.panel').each (i, element) =>
       panel = new Panel
         container: $(element)
@@ -14,7 +14,7 @@ class @Accordion
         isOpen:    false
       panel.click @onPanelClick
       panel.init()
-      @panels.push panel
+      panels.push panel
 
   onPanelClick: ->
     console.log 'panel click'

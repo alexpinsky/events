@@ -1,6 +1,10 @@
 class @Form
   constructor: (options = {}) ->
     @container = options.container
+    @listener = options.listener
+
+  themeClick: (handler) ->
+    @handler = handler
 
   init: ->
     accordion = new Accordion container: @container.find('.accordion')
@@ -11,11 +15,11 @@ class @Form
     gallery.init()
 
     text = new TextEdit container: @container.find('.text-edit')
-
-
-
-  themeClick: (handler) ->
-    @handler = handler
+    text.textChange @listener.onTextChange
+    text.fontChange @listener.onFontChange
+    text.colorChange @listener.onColorChange
+    text.sizeChange @listener.onSizeChange
+    text.init()
 
   onThemeClick: (e) =>
     @handler e

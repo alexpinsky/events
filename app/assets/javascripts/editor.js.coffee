@@ -3,14 +3,17 @@ class @Editor
     editor = new Editor container: $('.page-wrapper.editor')
     editor.init()
 
-  constructor: (options = {})->
+  constructor: (options = {}) ->
     @container = options.container
 
   init: ->
     preview = new Preview container: @container.find('.preview-wrapper')
-    preview.init()
 
-    form = new Form container: @container.find('.form-wrapper')
+    delegator = new ChangesDelegator view: preview
+
+    form = new Form
+      container: @container.find('.form-wrapper')
+      listener: delegator
     form.themeClick @onThemeClick
     form.init()
 

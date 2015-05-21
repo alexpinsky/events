@@ -17,7 +17,8 @@ class @TextEdit
   init: ->
     lines = []
     @container.find('.text-line').each (i, element) =>
-      line = new TextLine container: $(element)
+      obj = $(element)
+      line = new TextLine container: obj, target: obj.data('target')
       line.textChange @onTextChange
       line.fontChange @onFontChange
       line.colorChange @onColorChange
@@ -35,5 +36,5 @@ class @TextEdit
   onColorChange: (id, val) =>
     @colorHandler id, val
 
-  onsSizeChange: (id, val) =>
+  onSizeChange: (id, val) =>
     @sizeHandler id, val

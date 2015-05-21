@@ -123,6 +123,7 @@ $border-color: rgb(127, 159, 255);
               }
               .panel-content {
                 display: block;
+                padding-left: 10px;
                 @import 'editor/text_edit';
               }
             }
@@ -162,6 +163,7 @@ $border-color: rgb(127, 159, 255);
           display: inline-block;
           background-color: white;
           position: relative;
+          overflow: hidden;
           .display {
             font-size: 62%;
             position: absolute;

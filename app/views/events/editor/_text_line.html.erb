@@ -1,31 +1,31 @@
-<div class="text-line">
+<div class="text-line" data-target="<%= "text_#{count}" %>">
   <div class='input-wrapper'>
     <div class='input-icon icon-<%= count %>'>
     </div><%= event_form.text_field "text_#{count}",
       id: "text_#{count}",
-      data: { target: "text_#{count}", context: "#{count}" }
+      data: { context: "#{count}" }
     %>
   </div>
   <div class='appearance-wrapper'>
     <div class='text-font'>
-      <%=
+      <div class="prefix" data-context="<%= count %>">FONT</div><%=
         app_form.text_field "font_family_#{count}",
         class: "font-family",
-        data: { target: "text_#{count}", context: "#{count}" }
+        data: { context: "#{count}" }
       %>
     </div>
     <div class='text-color'>
-      <%=
+      <div class="prefix" data-context="<%= count %>">COLOR</div><%=
         app_form.text_field "font_color_#{count}",
         class: "minicolors font-color",
-        data: { target: "text_#{count}", context: "#{count}" }
+        data: { context: "#{count}" }
       %>
     </div>
     <div class='text-size'>
-      <%=
+      <div class="prefix" data-context="<%= count %>">SIZE</div><%=
         app_form.number_field "font_size_#{count}",
         class: "font-size",
-        data: { target: "text_#{count}", context: "#{count}" }
+        data: { context: "#{count}" }
       %>
     </div>
   </div>

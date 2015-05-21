@@ -1,7 +1,7 @@
 class @TextLine
   constructor: (options = {}) ->
     @container = options.container
-    @id = options.id
+    @target = options.target
 
   init: ->
     @inputWrapper = @container.find('.input-wrapper')
@@ -13,7 +13,7 @@ class @TextLine
     size = @appearanceWrapper.find('.font-size')
 
     @initFocusinBehavior input
-    @initFocusoutBehavior input, font, color, size
+    @initFocusoutBehavior [input, font, color, size]
 
     @initChangeListeners input, font, color, size
 
@@ -33,17 +33,34 @@ class @TextLine
     input.focusin @onFocusin
     input.focusout @focusout
 
-  initFocusoutBehavior: (input, font, color, size) ->
-    input.focusout @onFocusout
-    font.focusout @onFocusout
-    color.focusout @onFocusout
-    size.focusout @onFocusout
+  initFocusoutBehavior: (objects) ->
+    for obj in objects
+      obj.focusout @onFocusout
 
-  onFocusin: =>
+  onFocusin: (e) =>
+    pressed = $(e.currentTarget)
+
+    icon = pressed.siblings('.input-icon')
+    iconCount = pressed.data('context')
+
+    pressed.css('border', '1px solid rgb(255, 141, 9)')
+    icon.css("background", "url(https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/#{iconCount}_icon_hover.svg)")
+
     @appearanceWrapper.slideDown()
 
   onFocusout: (e) =>
-    return if $(e.relatedTarget).data('context') == $(e.target).data('context')
+    pressed = $(e.relatedTarget)
+    unpressed = $(e.currentTarget)
+    return if pressed.data('context') == unpressed.data('context')
+
+    unpressed = @container.find('.input-wrapper :input') # change to the input
+
+    iconCount = unpressed.data('context')
+    icon = unpressed.siblings('.input-icon')
+    icon.css("background", "url(https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/#{iconCount}_icon.svg)")
+
+    unpressed.css('border', '1px solid rgb(127, 159, 255)')
+
     @appearanceWrapper.slideUp()
 
   initChangeListeners: (input, font, color, size) ->
@@ -56,11 +73,16 @@ class @TextLine
 
   onTextKeyup: (e) =>
     input = $(e.currentTarget)
-    @textHandler input.data('target'), input.val()
+    @textHandler @target, input.val()
 
   onFontChange: (e) =>
+    input = $(e.currentTarget)
+    @fontHandler @target, input.val()
 
   onSizeChange: (e) =>
+    input = $(e.currentTarget)
+    @sizeHandler @target, input.val()
 
   onColorChange: (hex, opacity) =>
+    @colorHandler @target, hex
 

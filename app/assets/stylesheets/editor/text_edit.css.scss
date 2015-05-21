@@ -1,4 +1,11 @@
 .text-line {
+  input {
+    font-family: 'Quattrocento Sans', sans-serif;
+    color: rgb(176, 176, 176);
+  }
+  input:focus {
+    outline: none;
+  }
   .input-wrapper {
     margin-top: 11px;
     .input-icon {
@@ -11,38 +18,66 @@
     .input-icon.icon-1 {
       background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/1_icon.svg');
     }
-    .input-icon.icon-1:hover {
-      background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/1_icon_hover.svg');
-    }
     .input-icon.icon-2 {
       background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/2_icon.svg');
-    }
-    .input-icon.icon-2:hover {
-      background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/2_icon_hover.svg');
     }
     .input-icon.icon-3 {
       background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/3_icon.svg');
     }
-    .input-icon.icon-3:hover {
-      background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/3_icon_hover.svg');
-    }
     input {
-      width: 200px;
+      width: 270px;
       height: 16px;
       display: inline-block;
       border: 1px solid $border-color;
+      padding-left: 10px;
     }
   }
   .appearance-wrapper {
     display: none;
+    font-family: 'Quattrocento Sans', sans-serif;
+    .prefix {
+      display: inline-block;
+      background-color: rgb(77, 77, 77);
+      color: white;
+      font-size: 9px;
+      padding: 4px 6px;
+      vertical-align: top;
+    }
+    input {
+      border: 1px solid rgb(77, 77, 77);
+      border-top: none;
+      height: 15px;
+      vertical-align: super;
+      font-size: 9px;
+    }
     .text-font {
-
+      display: inline-block;
+      input {
+        width: 100px;
+      }
     }
     .text-color {
-
+      display: inline-block;
+      margin-left: -5px;
+      .minicolors-theme-default {
+        .minicolors-swatch {
+          top: 3px;
+          left: 5px;
+          width: 10px;
+          height: 10px;
+        }
+        .minicolors-input {
+          padding-left: 16px;
+          width: 44px;
+        }
+      }
     }
     .text-size {
-
+      display: inline-block;
+      margin-left: -5px;
+      input {
+        width: 30px;
+      }
     }
   }
 }

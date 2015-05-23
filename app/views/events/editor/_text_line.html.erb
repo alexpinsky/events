@@ -9,7 +9,9 @@
   <div class='appearance-wrapper'>
     <div class='text-font'>
       <div class="prefix" data-context="<%= count %>">FONT</div><%=
-        app_form.text_field "font_family_#{count}",
+        app_form.select "font_family_#{count}",
+        fonts_for_select,
+        {},
         class: "font-family",
         data: { context: "#{count}" }
       %>

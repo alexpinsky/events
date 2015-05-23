@@ -7,7 +7,7 @@ module EventsHelper
   def image_url(event, order)
     picture = event.pictures.select do |pic|
       pic.order == order && pic.image_url
-    end 
+    end
     picture = event.theme.pictures.select do |pic|
       pic.order == order && pic.image_url
     end if picture.blank?
@@ -23,6 +23,13 @@ module EventsHelper
   end
 
   def fonts_for_select
-    [['Arial', 'Arial'], ['Hand Write', 'hand_write'], ['Jack Stroy', 'jack_story'], ['Adine Kirnberg', 'adine_kirnberg'], ['Little Flower', 'little_flower'], ['Munich', 'munich']]
+    [
+      ['Lobster', "'Lobster', cursive"],
+      ['Quattrocento', "'Quattrocento Sans', sans-serif"],
+      ['Lobster', "'Lobster', cursive"],
+      ['Vibur', "'Vibur', cursive"],
+      ['Fanwood Text', "'Fanwood Text', serif"],
+      ['Six Caps', "'Six Caps', sans-serif"]
+    ]
   end
 end

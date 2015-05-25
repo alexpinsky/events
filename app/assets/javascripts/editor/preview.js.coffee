@@ -39,3 +39,6 @@ class @Preview
       # multi line
       textDisplay = @container.find(".#{id}")
       textDisplay.css("font-size", "#{val}em")
+
+  updateBackground: (url) =>
+    @container.find('.display').css('background', "url(#{url})")

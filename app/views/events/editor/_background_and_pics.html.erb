@@ -1,0 +1,19 @@
+<div class='background-and-pics'>
+  <div class='background-section'>
+    <div class='background-tagline'>
+      <div class='background-icon'></div>
+      <div class='background-text'>choose your favorite background</div>
+    </div>
+    <div class='background-tiles'>
+      <% background_urls.each do |url| %>
+        <div class='background-tile' style="background: url(<%= url %>)" data-url="<%= url %>"></div>
+      <% end %>
+    </div>
+  </div>
+  <div class='pics-section'>
+    <div class='pics-tagline'>
+      <div class='pics-icon'></div>
+      <div class='pics-text'></div>
+    </div>
+  </div>
+</div>

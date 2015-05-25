@@ -1,4 +1,4 @@
-class @Gallery
+class @ThemeGallery
   constructor: (options = {}) ->
     @container = options.container
 
@@ -7,7 +7,7 @@ class @Gallery
     @initNavigation()
     @initThemeListeners()
 
-  themeClick: (handler) ->
+  click: (handler) ->
     @handler = handler
 
   startSlide: ->

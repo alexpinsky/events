@@ -1,0 +1,29 @@
+.background-and-pics {
+  .background-section {
+    .background-tagline {
+      padding-top: 10px;
+      .background-icon {
+        background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/background_icon.svg');
+        background-repeat: no-repeat;
+        width: 21px;
+        height: 21px;
+        display: inline-block;
+      }
+      .background-text {
+        font-family: 'Julius Sans One', sans-serif;
+        display: inline-block;
+        font-size: 11px;
+        vertical-align: super;
+      }
+    }
+    .background-tiles {
+      padding-top: 10px;
+      .background-tile {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+      }
+    }
+  }
+}

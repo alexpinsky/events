@@ -14,3 +14,6 @@ class @ChangesDelegator
   onSizeChange: (id, val) =>
     @view.updateSize id, val
 
+  onBackgroundChange: (url) =>
+    @view.updateBackground url
+

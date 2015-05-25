@@ -1,56 +1,63 @@
+<div class='form'>
 <%= form_for event, html: { id: '', class: '' } do |event_form| %>
   <%= event_form.hidden_field :theme_id %>
   <%= event_form.hidden_field :category_id %>
-    <%= event_form.fields_for :appearance, event.appearance do |app_form| %>
-      <div class='form'>
-        <div class='accordion'>
-          <div class='panel panel-1 templates' data-name='templates'>
-            <div class='panel-header'>
-              <div class='header-icon vertical-align'></div>
-              <div class='header-text'>templates</div>
-            </div>
-            <div class='panel-content'>
-              <%= render partial: "events/editor/gallery", locals: { categories: @categories } %>
-            </div>
-          </div>
-          <div class='panel panel-2 text' data-name='text'>
-            <div class='panel-header'>
-              <div class='header-icon vertical-align'></div>
-              <div class='header-text'>text</div>
-            </div>
-            <div class='panel-content'>
-              <%= render partial: "events/editor/text_edit", locals: {
-                event_form: event_form,
-                app_form: app_form,
-                event: event
-              } %>
-            </div>
-          </div>
-          <div class='panel panel-3 pictures' data-name='pictures'>
-            <div class='panel-header'>
-              <div class='header-icon vertical-align'></div>
-              <div class='header-text'>background & pics</div>
-            </div>
-            <div class='panel-content'>
-              <%= event_form.fields_for :pictures, event.pictures do |pic_form| %>
-                <% end %>
-            </div>
-          </div>
-          <div class='panel panel-4 calendar' data-name='calendar'>
-            <div class='panel-header'>
-              <div class='header-icon vertical-align'></div>
-              <div class='header-text'>sync calendar</div>
-            </div>
-            <div class='panel-content'>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </div>
-          </div>
-        </div>
+  <%= event_form.fields_for :pictures, event.pictures do |pic_form| %>
+  <% end %>
+  <%= event_form.fields_for :appearance, event.appearance do |app_form| %>
+    <%= app_form.hidden_field :background_image, id: "background-image" %>
+  <div class='accordion'>
+    <div class='panel panel-1 templates' data-name='templates'>
+      <div class='panel-header'>
+        <div class='header-icon vertical-align'></div>
+        <div class='header-text'>templates</div>
       </div>
+      <div class='panel-content'>
+        <%= render partial: "events/editor/gallery", locals: { categories: @categories } %>
+      </div>
+    </div>
+    <div class='panel panel-2 text' data-name='text'>
+      <div class='panel-header'>
+        <div class='header-icon vertical-align'></div>
+        <div class='header-text'>text</div>
+      </div>
+      <div class='panel-content'>
+        <%= render partial: "events/editor/text_edit", locals: {
+          event_form: event_form,
+          app_form: app_form,
+          event: event
+        } %>
+      </div>
+    </div>
+    <div class='panel panel-3 pictures' data-name='pictures'>
+      <div class='panel-header'>
+        <div class='header-icon vertical-align'></div>
+        <div class='header-text'>background & pics</div>
+      </div>
+      <div class='panel-content'>
+          <%= render partial: "events/editor/background_and_pics", locals: {
+              event_form: event_form,
+              app_form: app_form,
+              event: event
+            }
+          %>
+      </div>
+    </div>
+    <div class='panel panel-4 calendar' data-name='calendar'>
+      <div class='panel-header'>
+        <div class='header-icon vertical-align'></div>
+        <div class='header-text'>sync calendar</div>
+      </div>
+      <div class='panel-content'>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </div>
+    </div>
+  </div>
   <% end %>
 <% end %>
+</div>

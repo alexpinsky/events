@@ -13,7 +13,17 @@
   <div class='pics-section'>
     <div class='pics-tagline'>
       <div class='pics-icon'></div>
-      <div class='pics-text'></div>
+      <div class='pics-text'>upload up to 4 photos</div>
+    </div>
+    <div class='pics-tiles'>
+      <%= event_form.fields_for :pictures, event.pictures do |pic_form| %>
+        <div id="pic-input-<%= pic_form.object.order %>">
+        <%= pic_form.file_field :image, id: "image-file-#{pic_form.object.order}", class: "image-file", hidden: true, data: { order: pic_form.object.order } %>
+        </div>
+        <%= pic_form.hidden_field :slideshow %>
+        <%= pic_form.hidden_field :order %>
+        <%= pic_form.hidden_field :_destroy, id: "pic-destroy-#{pic_form.object.order}" %>
+      <% end %>
     </div>
   </div>
 </div>

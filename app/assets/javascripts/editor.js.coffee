@@ -1,29 +1,48 @@
 class @Editor
   @start: ->
-    editor = new Editor container: $('.page-wrapper.editor')
+    if window.currentEditor
+      prevEditor = window.currentEditor
+      prevEditor.destroy
+
+    event = new Event persistence: new LocalPersistence
+    event.init()
+
+    editor = new Editor container: $('.page-wrapper.editor'), event: event
     editor.init()
+
+    window.currentEditor = editor
 
   constructor: (options = {}) ->
     @container = options.container
+    @event = options.event
 
   init: ->
-    preview = new Preview container: @container.find('.preview-wrapper')
+    @preview = new Preview container: @container.find('.preview-wrapper')
+    @preview.init event: @event
 
-    delegator = new ChangesDelegator view: preview
+    @delegator  = new ChangesDelegator
+      event: @event
+      view: @preview
 
-    form = new Form
+    @form = new Form
       container: @container.find('.form-wrapper')
-      listener: delegator
-    form.themeClick @onThemeClick
-    form.init()
+      listener: @delegator
+    @form.themeClick @onThemeClick
+    @form.init event: @event
+
+  destroy: ->
+    @preview.destroy()
+    @delegator.destroy()
+    @form.destroy()
 
   onThemeClick: (e) =>
-    @loadNewTheme e.category, e.theme
+    @loadTheme e.category, e.theme
 
-  loadNewTheme: (category, theme) ->
-    console.log 'loadNewTheme'
-    console.log category
-    console.log theme
+  loadTheme: (category, theme) ->
+    $.ajax
+      url: '/events/new'
+      data: { category_id: category, theme_id: theme }
+      dataType: "script"
     # eventId = $('.edit-event').data('event')
     # if eventId
     #   url = '/events/' + eventId + '/edit'
@@ -33,6 +52,8 @@ class @Editor
     #   url: url
     #   data: { category_id: args.category, theme_id: args.theme }
     #   dataType: "script"
+
+  ###################################################################
 
   initBackground: ->
     element = new BackgroundElement
@@ -95,7 +116,7 @@ class @Editor
   storeEvent: (event) =>
     $('body').data('event', event)
 
-  loadEvent: =>
+  _loadEvent: =>
     event = @getEvent()
     $.each event.text, (key, val) =>
       @textElement.setText(key, val)

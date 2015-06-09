@@ -2,6 +2,14 @@ class @Preview
   constructor: (options = {}) ->
     @container = options.container
 
+  init: (options = {}) ->
+    event = options.event
+    @updateFromEvent(event) unless event.isEmpty()
+
+  destroy: ->
+
+  updateFromEvent: (event) ->
+
   updateText: (id, val) =>
     textDisplay = @container.find("##{id}")
 

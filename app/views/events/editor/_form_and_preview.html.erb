@@ -1,0 +1,10 @@
+<div class='form-wrapper'>
+  <%= render partial: "events/editor/form", locals: { event: event }  %>
+</div>
+<div class='preview-wrapper'>
+  <div class='frame-1'></div><div class='preview'>
+    <div class="display">
+      <%= render partial: "themes/#{event.category_name}/#{event.theme_name}", locals: { event: event } %>
+    </div>
+  </div><div class='frame-2'></div><div class='frame-3'></div>
+</div>

@@ -4,7 +4,7 @@ Events::Application.routes.draw do
 
   root 'pages#welcome'
 
-  devise_for :users, controllers: { 
+  devise_for :users, controllers: {
     registrations: 'devise_ext/registrations'
   }
 
@@ -14,13 +14,13 @@ Events::Application.routes.draw do
 
   resources :categories
   resources :events do
-    member do 
+    member do
       get 'reload_preview'
       get 'publish'
     end
   end
   resources :leads, only: :create
-  
+
   scope '/admin' do
     authenticate :user, lambda { |u| u.admin? } do
       resources :leads, only: :index
@@ -32,6 +32,6 @@ Events::Application.routes.draw do
       resources :events, only: :index
     end
   end
-  
+
   get '/:url', to: 'events#show'
 end

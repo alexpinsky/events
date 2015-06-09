@@ -49,16 +49,14 @@ class Event < ActiveRecord::Base
   scope :by_url, -> (url) { where('events.url = ?', url) }
   scope :by_id, -> (id) { where('events.id = ?', id) }
 
-  MAX_PICTURES_SIZE = 5
+  MAX_PICTURES_SIZE = 4
 
   def self.copy_from_theme(theme, options = {})
     event = theme.dup
     event.theme = theme
     event.build_appearance theme.appearance.attributes
     event.is_theme = false
-    theme.pictures.each do |pic|
-      event.pictures.new(order: pic.order, slideshow: pic.slideshow, image: pic.image)
-    end
+    event.build_pictures
     event.build_information in_use: true
     event.user = options[:user]
     event
@@ -91,6 +89,26 @@ class Event < ActiveRecord::Base
 
   def theme_name
     self.is_theme ? self.name : self.theme.name
+  end
+
+  def build_pictures
+    pictures = {}
+
+    theme.pictures.each do |pic|
+      pictures[pic.order] = pic
+    end
+
+    MAX_PICTURES_SIZE.times do |i|
+      pic = pictures[i + 1]
+
+      pic_values = if pic
+        { order: pic.order, slideshow: pic.slideshow, image: pic.image }
+      else
+        { order: i + 1, slideshow: true }
+      end
+
+      self.pictures.new pic_values
+    end
   end
 
   def thumbnail_url

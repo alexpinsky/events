@@ -1,5 +1,3 @@
-$(".new-event").html('<%= j render partial: "form_and_preview", locals: { event: @event } %>');
+$(".new-event .body").html('<%= j render partial: "events/editor/form_and_preview", locals: { event: @event } %>');
 addthisevent.refresh();
-$(document).foundation();
-editor = new Editor({editor: $("#editor"), preview: $("#preview")})
-editor.init()
+Editor.start();

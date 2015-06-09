@@ -2,8 +2,6 @@
 <%= form_for event, html: { id: '', class: '' } do |event_form| %>
   <%= event_form.hidden_field :theme_id %>
   <%= event_form.hidden_field :category_id %>
-  <%= event_form.fields_for :pictures, event.pictures do |pic_form| %>
-  <% end %>
   <%= event_form.fields_for :appearance, event.appearance do |app_form| %>
     <%= app_form.hidden_field :background_image, id: "background-image" %>
   <div class='accordion'>

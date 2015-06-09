@@ -22,20 +22,7 @@
       <div class='borderholder-2'></div>
     </div>
     <div class='body'>
-      <div class='form-wrapper'>
-        <%= render partial: "events/editor/form", locals: { event: event }  %>
-      </div>
-      <div class='preview-wrapper'>
-        <div class='frame-1'></div><div class='preview'>
-          <div class="display">
-            <% theme_path = "themes/#{event.category_name}/#{event.theme_name}" %>
-            <% content_for :header do %>
-              <%= stylesheet_link_tag "#{theme_path}/base" %>
-            <% end %>
-            <%= render partial: theme_path, locals: { event: event } %>
-          </div>
-        </div><div class='frame-2'></div><div class='frame-3'></div>
-      </div>
+      <%= render partial: "events/editor/form_and_preview", locals: { event: event } %>
     </div>
   </div>
 </div>

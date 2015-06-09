@@ -6,7 +6,11 @@ class @Form
   themeClick: (handler) ->
     @handler = handler
 
-  init: ->
+  updateFromEvent: (event) =>
+    @text.updateFromEvent event
+    @background.updateFromEvent event
+
+  init: (options = {}) ->
     accordion = new Accordion container: @container.find('.accordion')
     accordion.init()
 
@@ -14,16 +18,18 @@ class @Form
     theme.click @onThemeClick
     theme.init()
 
-    text = new TextEdit container: @container.find('.text-edit')
-    text.textChange @onTextChange
-    text.fontChange @onFontChange
-    text.colorChange @onColorChange
-    text.sizeChange @onSizeChange
-    text.init()
+    @text = new TextEdit container: @container.find('.text-edit')
+    @text.textChange @onTextChange
+    @text.fontChange @onFontChange
+    @text.colorChange @onColorChange
+    @text.sizeChange @onSizeChange
+    @text.init()
 
-    background = new BackgroundGallery container: @container.find('.background-section')
-    background.click @onBackgroundChange
-    background.init()
+    @background = new BackgroundGallery container: @container.find('.background-section')
+    @background.click @onBackgroundChange
+    @background.init()
+
+  destroy: ->
 
   onThemeClick: (e) =>
     @handler e

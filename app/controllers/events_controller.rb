@@ -139,6 +139,7 @@ private
     # params
   end
 
+  # TODO: fix it! make editor render slow as hell!!
   def theme_for_copy
     category = if params[:category_id].present?
       Category.find_by_id params[:category_id]

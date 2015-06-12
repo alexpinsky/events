@@ -5,6 +5,8 @@ class EventsController < ApplicationController
 
   skip_before_filter :authenticate_user!, only: :show
 
+  before_filter :set_theme, only: :new
+
   MESSAGES = {
     update: {
       success: "Event was successfully updated"
@@ -43,7 +45,7 @@ class EventsController < ApplicationController
   end
 
   def new
-    @event = Event.copy_from_theme(theme_for_copy, user: current_user)
+    @event = Event.copy_from_theme @theme, user: current_user
     @categories = Category.includes(:events).where('events.is_theme = ?', true).references(:events)
   end
 
@@ -123,10 +125,49 @@ class EventsController < ApplicationController
     redirect_to new_event_post_path(@event)
   end
 
-private
+  private
 
   def event_params
-    sanitaized_params.require(:event).permit(:id, :theme_id, :category_id, :text_1, :text_2, :text_3, :name, :url, pictures_attributes: [:id, :image, :order, :slideshow, :_destroy], appearance_attributes: [:id, :font_family_1, :font_color_1, :font_size_1, :font_family_2, :font_color_2, :font_size_2, :font_family_3, :font_color_3, :font_size_3, :background_image], information_attributes: [:id, :in_use, :summary, :location, :organizer, :organizer_email, :time_zone, :start_time, :end_time])
+    sanitaized_params.require(:event).permit(
+      :id,
+      :theme_id,
+      :category_id,
+      :text_1,
+      :text_2,
+      :text_3,
+      :name,
+      :url,
+      pictures_attributes: [
+        :id,
+        :image,
+        :order,
+        :slideshow,
+        :_destroy
+      ],
+      appearance_attributes: [
+        :id,
+        :font_family_1,
+        :font_color_1,
+        :font_size_1,
+        :font_family_2,
+        :font_color_2,
+        :font_size_2,
+        :font_family_3,
+        :font_color_3,
+        :font_size_3,
+        :background_image
+      ],
+      information_attributes: [
+        :id,
+        :in_use,
+        :summary,
+        :location,
+        :organizer,
+        :organizer_email,
+        :time_zone,
+        :start_time,
+        :end_time
+      ])
   end
 
   def sanitaized_params
@@ -139,21 +180,14 @@ private
     # params
   end
 
-  # TODO: fix it! make editor render slow as hell!!
-  def theme_for_copy
-    category = if params[:category_id].present?
-      Category.find_by_id params[:category_id]
-    else
-      Category.first
-    end
-
-    if params[:theme_id]
-      category.events.themes.includes(:pictures, :information, :appearance).where(
-        id: params[:theme_id]
-      )
-      .first
-    else
-      category.events.themes.includes(:pictures, :information, :appearance).first
-    end
+  def set_theme
+    @theme = Event.themes.includes(
+      :pictures,
+      :information,
+      :appearance
+    )
+    .by_id(
+      params[:theme_id]
+    ).first
   end
 end

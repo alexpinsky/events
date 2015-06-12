@@ -92,22 +92,8 @@ class Event < ActiveRecord::Base
   end
 
   def build_pictures
-    pictures = {}
-
-    theme.pictures.each do |pic|
-      pictures[pic.order] = pic
-    end
-
     MAX_PICTURES_SIZE.times do |i|
-      pic = pictures[i + 1]
-
-      pic_values = if pic
-        { order: pic.order, slideshow: pic.slideshow, image: pic.image }
-      else
-        { order: i + 1, slideshow: true }
-      end
-
-      self.pictures.new pic_values
+      self.pictures.new order: i + 1, slideshow: true
     end
   end
 

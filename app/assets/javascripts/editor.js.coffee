@@ -30,15 +30,15 @@ class @Editor
     @form.themeClick @onThemeClick
     @form.init event: @event
 
+    @container.find('.save-wrapper .save').click @onSaveClick
+
   destroy: ->
     @preview.destroy()
     @delegator.destroy()
     @form.destroy()
 
-  onThemeClick: (e) =>
-    @loadTheme e.category, e.theme
-
   loadTheme: (category, theme) ->
+    @event.save()
     $.ajax
       url: '/events/new'
       data: { category_id: category, theme_id: theme }
@@ -52,6 +52,12 @@ class @Editor
     #   url: url
     #   data: { category_id: args.category, theme_id: args.theme }
     #   dataType: "script"
+
+  onThemeClick: (e) =>
+    @loadTheme e.category, e.theme
+
+  onSaveClick: =>
+    @form.submit()
 
   ###################################################################
 

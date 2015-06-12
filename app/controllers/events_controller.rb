@@ -50,16 +50,16 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = current_user.events.new(event_params.merge({is_theme: false}))
-    if @event.save
-      redirect_to events_path
-      flash[:success] = "Event was successfully created"
-    else
-      error_msg = escape_javascript("Failed to create the Event.\n#{@event.errors.full_messages.join('\n,')}")
-      @categories = Category.includes(:events).where('events.is_theme = ?', true).references(:events)
-      flash[:alert] = error_msg
-      render :new
-    end
+    # @event = current_user.events.new(event_params.merge({is_theme: false}))
+    # if @event.save
+    #   redirect_to events_path
+    #   flash[:success] = "Event was successfully created"
+    # else
+    #   error_msg = escape_javascript("Failed to create the Event.\n#{@event.errors.full_messages.join('\n,')}")
+    #   @categories = Category.includes(:events).where('events.is_theme = ?', true).references(:events)
+    #   flash[:alert] = error_msg
+    #   render :new
+    # end
   end
 
   def edit

@@ -17,6 +17,9 @@ class @TextLine
 
     @initChangeListeners input, font, color, size
 
+  updateText: (val) ->
+    @inputWrapper.find('input').val val
+
   textChange: (handler) ->
     @textHandler = handler
 

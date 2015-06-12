@@ -3,13 +3,20 @@ class @Event
     @persistence = options.persistence
 
   init: ->
-    @data = @persistence.getData() || {'text': {}, 'pics': {}}
-    @persistence.clean()
+    @data = @persistence.getData() || {'texts': {}, 'pics': {}}
+    @persistence.clear()
+
+  save: ->
+    @persistence.saveData @data
 
   isEmpty: =>
-    $.isEmptyObject(@data['text']) && $.isEmptyObject(@data['pics'])
+    $.isEmptyObject(@data.texts) && $.isEmptyObject(@data.pics)
+
+  texts: ->
+    @data.texts
 
   updateText: (id, val) =>
+    @data.texts[id] = val
 
   updateFont: (id, val) =>
 

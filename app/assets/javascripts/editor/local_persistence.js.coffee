@@ -3,8 +3,8 @@ class @LocalPersistence
     data = localStorage['data']
     JSON.parse data if data
 
-  storeData: (data) ->
-    localStorage.setItem JSON.stringify data
+  saveData: (data) ->
+    localStorage.setItem 'data', JSON.stringify data
 
-  clean: ->
-    localStorage.removeItem['data']
+  clear: ->
+    localStorage.clear()

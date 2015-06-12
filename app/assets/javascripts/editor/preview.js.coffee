@@ -9,6 +9,8 @@ class @Preview
   destroy: ->
 
   updateFromEvent: (event) ->
+    for id, val of event.texts()
+      @updateText id, val
 
   updateText: (id, val) =>
     textDisplay = @container.find("##{id}")
@@ -22,7 +24,6 @@ class @Preview
       textDisplay = @container.find(".#{id}")
       for word in val.split(' ')
         divs += "<div>#{word}</div>"
-      console.log divs
       textDisplay.html divs
 
   updateFont: (id, val) =>

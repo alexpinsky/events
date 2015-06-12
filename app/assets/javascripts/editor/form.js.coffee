@@ -3,14 +3,10 @@ class @Form
     @container = options.container
     @listener = options.listener
 
-  themeClick: (handler) ->
-    @handler = handler
-
-  updateFromEvent: (event) =>
-    @text.updateFromEvent event
-    @background.updateFromEvent event
-
   init: (options = {}) ->
+    @form = @container.find('form')
+    @form.submit @onSubmit
+
     accordion = new Accordion container: @container.find('.accordion')
     accordion.init()
 
@@ -29,7 +25,56 @@ class @Form
     @background.click @onBackgroundChange
     @background.init()
 
+    event = options.event
+    @updateFromEvent(event) unless event.isEmpty()
+
+  themeClick: (handler) ->
+    @handler = handler
+
+  updateFromEvent: (event) ->
+    @text.updateFromEvent event
+
+  submit: ->
+    @form.submit()
+
   destroy: ->
+
+  onSubmit: (e) =>
+    formObj = $(e.currentTarget)
+    formURL = formObj.attr "action"
+    formData = new FormData e.currentTarget
+
+    console.log "formURL: #{formURL}"
+    console.log "formData:"
+    console.log formData
+
+    $.ajax
+      url: formURL
+      type: 'POST'
+      data: formData
+      dataType: 'JSON'
+      mimeType: "multipart/form-data"
+      contentType: false
+      cache: false
+      processData: false
+      success: (data, textStatus, jqXHR) =>
+        console.log "success"
+        console.log "data:"
+        console.log data
+        console.log "textStatus:"
+        console.log textStatus
+        console.log "jqXHR:"
+        console.log jqXHR
+      error: (jqXHR, textStatus, errorThrown) =>
+        console.log "error"
+        console.log "textStatus:"
+        console.log textStatus
+        console.log "jqXHR:"
+        console.log jqXHR
+        console.log "errorThrown:"
+        console.log errorThrown
+
+    e.preventDefault()
 
   onThemeClick: (e) =>
     @handler e

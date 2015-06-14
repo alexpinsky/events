@@ -1,3 +1,4 @@
 <div class="new-event">
-  <%= render partial: "events/editor", locals: { event: @event, theme: @theme }  %>
+  <!-- pass the theme as the display -->
+  <%= render partial: "events/editor", locals: { event: @event, theme: @theme, categories: @categories }  %>
 </div>

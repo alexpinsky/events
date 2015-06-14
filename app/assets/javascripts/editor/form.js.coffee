@@ -39,42 +39,25 @@ class @Form
 
   destroy: ->
 
-  onSubmit: (e) =>
+  onSubmit: (e) ->
+    # TODO: can't preventDefault()...
     formObj = $(e.currentTarget)
     formURL = formObj.attr "action"
     formData = new FormData e.currentTarget
 
-    console.log "formURL: #{formURL}"
-    console.log "formData:"
-    console.log formData
-
-    $.ajax
-      url: formURL
-      type: 'POST'
-      data: formData
-      dataType: 'JSON'
-      mimeType: "multipart/form-data"
-      contentType: false
-      cache: false
-      processData: false
-      success: (data, textStatus, jqXHR) =>
-        console.log "success"
-        console.log "data:"
-        console.log data
-        console.log "textStatus:"
-        console.log textStatus
-        console.log "jqXHR:"
-        console.log jqXHR
-      error: (jqXHR, textStatus, errorThrown) =>
-        console.log "error"
-        console.log "textStatus:"
-        console.log textStatus
-        console.log "jqXHR:"
-        console.log jqXHR
-        console.log "errorThrown:"
-        console.log errorThrown
+    # $.ajax
+    #   url: formURL
+    #   type: 'POST'
+    #   data: formData
+    #   dataType: 'json'
+    #   mimeType: "multipart/form-data"
+    #   success: (data, textStatus, jqXHR) =>
+    #     alert "success"
+    #   error: (jqXHR, textStatus, errorThrown) =>
+    #     alert "error"
 
     e.preventDefault()
+    false
 
   onThemeClick: (e) =>
     @handler e

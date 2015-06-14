@@ -20,7 +20,7 @@
       <%= render partial: 'themes/shared/calendar', locals: { event: event } %>
     </div>
     <div class='images-container'>
-      <%= render partial: 'elements/slideshow', locals: { images: event.pictures.sort { |pic_1, pic_2| pic_1.order <=> pic_2.order } } %>  
+      <%= render partial: 'elements/slideshow', locals: { images: slideshow_images_for(event) } %>
     </div>
   </div>
 </div>

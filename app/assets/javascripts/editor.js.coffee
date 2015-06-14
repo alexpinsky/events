@@ -39,19 +39,18 @@ class @Editor
 
   loadTheme: (category, theme) ->
     @event.save()
+
+    eventId = $('.edit-event').data('event')
+
+    if eventId
+      url = '/events/' + eventId + '/edit'
+    else
+      url = '/events/new'
+
     $.ajax
-      url: '/events/new'
+      url: url
       data: { category_id: category, theme_id: theme }
       dataType: "script"
-    # eventId = $('.edit-event').data('event')
-    # if eventId
-    #   url = '/events/' + eventId + '/edit'
-    # else
-    #   url = '/events/new'
-    # $.ajax
-    #   url: url
-    #   data: { category_id: args.category, theme_id: args.theme }
-    #   dataType: "script"
 
   onThemeClick: (e) =>
     @loadTheme e.category, e.theme

@@ -5,7 +5,8 @@ class EventsController < ApplicationController
 
   skip_before_filter :authenticate_user!, only: :show
 
-  before_filter :set_theme, only: :new
+  before_filter :set_theme, only: [:new, :edit]
+  before_filter :set_categories, only: [:new, :edit]
 
   MESSAGES = {
     update: {
@@ -46,62 +47,36 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.copy_from_theme @theme, user: current_user
-    @categories = Category.includes(:events).where('events.is_theme = ?', true).references(:events)
   end
 
   def create
-    # @event = current_user.events.new(event_params.merge({is_theme: false}))
-    # if @event.save
-    #   redirect_to events_path
-    #   flash[:success] = "Event was successfully created"
-    # else
-    #   error_msg = escape_javascript("Failed to create the Event.\n#{@event.errors.full_messages.join('\n,')}")
-    #   @categories = Category.includes(:events).where('events.is_theme = ?', true).references(:events)
-    #   flash[:alert] = error_msg
-    #   render :new
-    # end
+    @event = current_user.events.new event_params
+
+    if @event.save
+      render nothing: true, status: :ok
+    else
+      render nothing: true, status: :bad_request
+    end
   end
 
   def edit
-    @event = current_user.events.includes(:pictures, :appearance, :information).find(params[:id])
-    Event.update_from_theme(
-      event: @event,
-      theme: Event.themes.find_by_id(params[:theme_id])
+    @event = current_user.events.includes(
+      :pictures,
+      :appearance,
+      :information
     )
-    @categories = Category.includes(:events).where('events.is_theme = ?', true).references(:events)
+    .find params[:id]
+
+    @event.update_from_theme @theme
   end
 
   def update
     @event = current_user.events.find params[:id]
 
-    if @event.update_attributes(event_params)
-      respond_to do |format|
-
-        format.html do
-          flash[:success] = MESSAGES[:update][:success]
-          redirect_to events_path
-        end
-
-        format.json do
-          render json: { message: MESSAGES[:update][:success] }, status: :ok
-        end
-      end
+    if @event.update_attributes event_params
+      render nothing: true, status: :ok
     else
-      error_msg = escape_javascript(
-        "Failed to update the Event.\n#{@event.errors.full_messages.join('\n,')}"
-      )
-      respond_to do |format|
-
-        format.html do
-          @categories = Category.includes(:events).where('events.is_theme = ?', true).references(:events)
-          flash[:alert] = error_msg
-          render :edit
-        end
-
-        format.json do
-          render json: { message: error_msg }, status: :bad_request
-        end
-      end
+      render nothing: true, status: :bad_request
     end
   end
 
@@ -171,13 +146,16 @@ class EventsController < ApplicationController
   end
 
   def sanitaized_params
-    params
-    # params[:event][:pictures_attributes].keep_if do |key, value|
-    #   value[:image].present? || value[:_destroy] == 'true' # => don't save just the order & slideshow
-    # end
+    sanitaize_pictures_params
     # in_use = params[:event][:information_attributes][:in_use]
     # params[:event][:information_attributes][:in_use] = in_use == 'true'
-    # params
+    params.merge(is_theme: false)
+  end
+
+  def sanitaize_pictures_params
+    params[:event][:pictures_attributes].keep_if do |key, value|
+      value[:image].present? || value[:_destroy] == 'true' # => don't save just the order & slideshow
+    end
   end
 
   def set_theme
@@ -189,5 +167,9 @@ class EventsController < ApplicationController
     .by_id(
       params[:theme_id]
     ).first
+  end
+
+  def set_categories
+    @categories = Category.includes(:events).where('events.is_theme = ?', true).references(:events)
   end
 end

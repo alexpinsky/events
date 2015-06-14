@@ -1,7 +1,7 @@
 <div class="wedding classic event-wrapper" style="background-image: url(<%= background_collection_url(event.background_image) %>); background-size: cover;">
   <div class='theme-wrapper vertical-align'>
     <div class="images-container">
-      <%= render partial: 'elements/slideshow', locals: { images: event.pictures.sort { |pic_1, pic_2| pic_1.order <=> pic_2.order } } %>  
+      <%= render partial: 'elements/slideshow', locals: { images: slideshow_images_for(event) } %>
     </div>
     <div class='graphics-wrapper'>
       <div class='text-wrapper'>

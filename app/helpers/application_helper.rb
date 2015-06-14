@@ -1,5 +1,10 @@
 module ApplicationHelper
 
+  def time_format(time = nil)
+    return '' unless time
+    time.strftime('%F %H:%M')
+  end
+
   def asset_url(page_name, image_name)
     "https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/#{page_name}/#{image_name}"
   end

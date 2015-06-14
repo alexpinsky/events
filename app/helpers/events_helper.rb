@@ -1,5 +1,14 @@
 module EventsHelper
 
+  def slideshow_images_for(event)
+    event.pictures.sort { |pic_1, pic_2| pic_1.order <=> pic_2.order }.map { |pic| pic if pic.image_url }.compact
+  end
+
+  def dashboard_tile_backgroud_for(event)
+    pic = event.pictures.first
+    pic.nil? ? '' : pic.image_url
+  end
+
   def event_visibility(event)
     event.information.try(:in_use) ? 'visible' : 'hidden'
   end
@@ -12,10 +21,6 @@ module EventsHelper
       pic.order == order && pic.image_url
     end if picture.blank?
     picture.first.image_url
-  end
-
-  def slideshow_pics_for(event)
-    event.theme.pictures.select {|pic| pic.slideshow}.sort {|pic| pic.order}
   end
 
   def aws_asset_url(event, asset_name)

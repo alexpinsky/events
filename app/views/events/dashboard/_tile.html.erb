@@ -14,18 +14,18 @@
     </div>
   </div>
   <div class='image-wrapper'>
-    <div class='image' style="background: url('<%= event.pictures.first.image_url %>') no-repeat; background-size: cover;">
+    <div class='image' style="background: url('<%= dashboard_tile_backgroud_for event %>') no-repeat; background-size: cover;">
       <div class='menu-wrapper'>
         <div class='buttons'>
           <a class="preview" target="_blank" href="<%= event_path(id: event.id, preview: true) %>"></a>
-          <a class="edit" href="<%= new_event_path(theme_id: event.theme_id, category_id: event.category_id) %>"></a>
+          <a class="edit" href="<%= edit_event_path(event) %>"></a>
         </div>
         <div class='info'>
           <div class='theme-name'>
             "<%= event.theme_name %>"
           </div>
           <div class='date'>
-            <%= event.created_at.strftime('%F') %>            
+            <%= event.created_at.strftime('%F') %>
           </div>
         </div>
       </div>
@@ -41,7 +41,7 @@
     <div class="info">
       <div class='time'>
         <img src="<%= asset_url('dashboard', 'time_icon.svg') %>">
-        <div class='text'><%= event.start_time.strftime('%F %H:%M') %></div>
+        <div class='text'><%= time_format event.start_time %></div>
       </div>
       <div class='place'>
         <img src="<%= asset_url('dashboard', 'place_icon.svg') %>">

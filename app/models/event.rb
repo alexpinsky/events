@@ -40,7 +40,6 @@ class Event < ActiveRecord::Base
   to: :information, allow_nil: true
 
   delegate :name, to: :category, prefix: true
-  delegate :name, to: :theme, prefix: true
 
   scope :themes, -> () { where('events.is_theme = ?', true) }
   scope :include_categories, -> () { includes(:category) }
@@ -62,8 +61,17 @@ class Event < ActiveRecord::Base
     event
   end
 
+  def update_from_theme(theme = nil)
+    if theme
+      self.theme = theme
+    end
+    build_appearance self.theme.appearance.attributes
+    build_information unless self.information
+    build_pictures
+  end
+
   # args: {:event, :theme}
-  def self.update_from_theme(args)
+  def self._update_from_theme(args)
     event = args[:event]
     theme = args[:theme]
     if theme
@@ -92,8 +100,16 @@ class Event < ActiveRecord::Base
   end
 
   def build_pictures
+    pictures = {}
+
+    self.pictures.each do |pic|
+      pictures[pic.order] = true
+    end
+
     MAX_PICTURES_SIZE.times do |i|
-      self.pictures.new order: i + 1, slideshow: true
+      pic_present = pictures[i + 1]
+
+      self.pictures.new order: i + 1, slideshow: true unless pic_present
     end
   end
 

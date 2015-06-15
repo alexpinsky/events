@@ -27,7 +27,7 @@
       </div>
       <div class='preview-wrapper'>
         <div class='frame-1'></div><div class='preview'>
-          <div class="display">
+          <div class="display" style="background: url(<%= event.background_image %>)">
             <%= render partial: "themes/#{theme.category_name}/#{theme.theme_name}", locals: { event: theme } %>
           </div>
         </div><div class='frame-2'></div><div class='frame-3'></div>

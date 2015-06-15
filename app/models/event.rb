@@ -65,7 +65,9 @@ class Event < ActiveRecord::Base
     if theme
       self.theme = theme
     end
+    puts ">>>>>> before: #{self.appearance.to_yaml}"
     build_appearance self.theme.appearance.attributes
+    puts ">>>>>> after: #{self.appearance.to_yaml}"
     build_information unless self.information
     build_pictures
   end

@@ -5,7 +5,7 @@ class EventsController < ApplicationController
 
   skip_before_filter :authenticate_user!, only: :show
 
-  before_filter :set_theme, only: [:new, :edit]
+  before_filter :set_theme, only: :new
   before_filter :set_categories, only: [:new, :edit]
 
   MESSAGES = {
@@ -66,6 +66,12 @@ class EventsController < ApplicationController
       :information
     )
     .find params[:id]
+
+    if params[:theme_id]
+      set_theme
+    else
+      @theme = @event.theme
+    end
 
     @event.update_from_theme @theme
   end
@@ -159,14 +165,13 @@ class EventsController < ApplicationController
   end
 
   def set_theme
+    dynamic_clause = params[:theme_id].present? ? 'events.id = ?' : ''
     @theme = Event.themes.includes(
       :pictures,
       :information,
       :appearance
     )
-    .by_id(
-      params[:theme_id]
-    ).first
+    .where(dynamic_clause, params[:theme_id]).first
   end
 
   def set_categories

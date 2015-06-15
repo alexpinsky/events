@@ -169,6 +169,7 @@ $border-color: rgb(127, 159, 255);
           position: relative;
           overflow: hidden;
           .display {
+            z-index: 999;
             font-size: 62%;
             position: absolute;
             top: 0;

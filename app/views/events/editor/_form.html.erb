@@ -1,5 +1,5 @@
 <div class='form'>
-<%= form_for event, html: { id: '', class: '' } do |event_form| %>
+<%= form_for event, html: { id: '', class: '' }, remote: true do |event_form| %>
   <%= event_form.hidden_field :theme_id %>
   <%= event_form.hidden_field :category_id %>
   <%= event_form.fields_for :appearance, event.appearance do |app_form| %>

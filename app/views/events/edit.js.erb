@@ -1,3 +1,2 @@
-$(".edit-event .body").html('<%= j render partial: "events/editor/form_and_preview", locals: { event: @event, theme: @event, categories: @categories } %>');
-addthisevent.refresh();
+$(".edit-event").html('<%= j render partial: "events/editor", locals: { event: @event, theme: @event, categories: @categories } %>');
 Editor.start();

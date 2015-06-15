@@ -40,24 +40,26 @@ class @Form
   destroy: ->
 
   onSubmit: (e) ->
-    # TODO: can't preventDefault()...
     formObj = $(e.currentTarget)
     formURL = formObj.attr "action"
     formData = new FormData e.currentTarget
 
-    # $.ajax
-    #   url: formURL
-    #   type: 'POST'
-    #   data: formData
-    #   dataType: 'json'
-    #   mimeType: "multipart/form-data"
-    #   success: (data, textStatus, jqXHR) =>
-    #     alert "success"
-    #   error: (jqXHR, textStatus, errorThrown) =>
-    #     alert "error"
+    $.ajax
+      url: formURL
+      type: 'POST'
+      data: formData
+      mimeType: "multipart/form-data"
+      dataType: 'json'
+      contentType: false,
+      cache: false,
+      processData:false,
+      success: (data, textStatus, jqXHR) =>
+        alert "success"
+      error: (jqXHR, textStatus, errorThrown) =>
+        alert "error"
 
     e.preventDefault()
-    false
+    false # stop event propagation
 
   onThemeClick: (e) =>
     @handler e

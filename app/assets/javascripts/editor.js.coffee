@@ -2,7 +2,8 @@ class @Editor
   @start: ->
     if window.currentEditor
       prevEditor = window.currentEditor
-      prevEditor.destroy
+      prevEditor.destroy()
+      prevEditor = null
 
     event = new Event persistence: new LocalPersistence
     event.init()
@@ -17,6 +18,7 @@ class @Editor
     @event = options.event
 
   init: ->
+    @initVendor()
     @preview = new Preview container: @container.find('.preview-wrapper')
     @preview.init event: @event
 
@@ -32,10 +34,22 @@ class @Editor
 
     @container.find('.save-wrapper .save').click @onSaveClick
 
+  initVendor: ->
+    addthisevent.refresh()
+    imagesObj = $('.images')
+    if imagesObj.data('slideshow')
+      imagesObj.slick
+        autoplay: true,
+        arrows: false,
+        mobileFirst: true
+
   destroy: ->
     @preview.destroy()
+    @preview = null
     @delegator.destroy()
+    @delegator = null
     @form.destroy()
+    @form = null
 
   loadTheme: (category, theme) ->
     @event.save()

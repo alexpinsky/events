@@ -15,7 +15,7 @@ class EventsController < ApplicationController
   }
 
   def index
-    @events = current_user.events.with_url.includes(:category, :theme, :pictures)
+    @events = current_user.events.includes(:category, :theme, :pictures)
   end
 
   def show
@@ -74,9 +74,9 @@ class EventsController < ApplicationController
     @event = current_user.events.find params[:id]
 
     if @event.update_attributes event_params
-      render nothing: true, status: :ok
+      render json: {}, status: :ok
     else
-      render nothing: true, status: :bad_request
+      render json: {}, status: :bad_request
     end
   end
 
@@ -146,7 +146,7 @@ class EventsController < ApplicationController
   end
 
   def sanitaized_params
-    sanitaize_pictures_params
+    sanitaize_pictures_params if params[:event][:pictures_attributes]
     # in_use = params[:event][:information_attributes][:in_use]
     # params[:event][:information_attributes][:in_use] = in_use == 'true'
     params.merge(is_theme: false)

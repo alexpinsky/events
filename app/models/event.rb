@@ -53,48 +53,31 @@ class Event < ActiveRecord::Base
   def self.copy_from_theme(theme, options = {})
     event = theme.dup
     event.theme = theme
-    event.build_appearance theme.appearance.attributes
     event.is_theme = false
-    event.build_pictures
-    event.build_information in_use: true
+    event.update_appearance theme.appearance
+    event.build_missing
     event.user = options[:user]
     event
   end
 
-  def update_from_theme(theme = nil)
-    if theme
-      self.theme = theme
-    end
-    puts ">>>>>> before: #{self.appearance.to_yaml}"
-    build_appearance self.theme.appearance.attributes
-    puts ">>>>>> after: #{self.appearance.to_yaml}"
-    build_information unless self.information
-    build_pictures
+  def update_from_theme(theme)
+    self.theme = theme
+    update_appearance self.theme.appearance
   end
 
-  # args: {:event, :theme}
-  def self._update_from_theme(args)
-    event = args[:event]
-    theme = args[:theme]
-    if theme
-      # for change in theme
-      event_appearance = event.appearance
-      old_appearance = event_appearance.deep_clone
-      old_appearance.id = event_appearance.id
-      event.theme_id = theme.id
-      event_appearance.assign_attributes(theme.appearance.attributes)
-      event_appearance.id = old_appearance.id
+  def update_appearance(appearance)
+    attrs = appearance.attributes.except 'id', 'event_id'
+
+    if self.appearance
+      self.appearance.assign_attributes attrs
+    else
+      build_appearance attrs
     end
-    theme ||= event.theme
-    event.information ||= Information.new(in_use: true)
-    existing_pic_orders = event.pictures.map(&:order) + [0] # => escape null
-    missing_pics = theme.pictures.where('pictures.order NOT IN (?)', existing_pic_orders)
-    missing_pics.each do |pic|
-      event.pictures.new(
-        order: pic.order,
-        slideshow: pic.slideshow
-      )
-    end
+  end
+
+  def build_missing
+    build_information in_use: true unless self.information
+    build_pictures
   end
 
   def theme_name

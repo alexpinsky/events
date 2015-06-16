@@ -68,12 +68,12 @@ class EventsController < ApplicationController
     .find params[:id]
 
     if params[:theme_id]
+      # trying to change existing event's theme
       set_theme
-    else
-      @theme = @event.theme
+      @event.update_from_theme @theme
     end
 
-    @event.update_from_theme @theme
+    @event.build_missing
   end
 
   def update

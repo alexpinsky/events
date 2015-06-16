@@ -1,3 +1,37 @@
+.edit_btn_hover, .edit_btn, .preview_btn_hover, .preview_btn, .soon_thumbnail{
+  background: url(https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/categories/sprites.png) no-repeat;
+}
+
+.edit_btn_hover{
+  background-position: 0 -92px ;
+  width: 38px;
+  height: 38px;
+}
+
+.edit_btn{
+  background-position: 0 -137px ;
+  width: 38px;
+  height: 38px;
+}
+
+.preview_btn_hover{
+  background-position: 0 -45px ;
+  width: 38px;
+  height: 38px;
+}
+
+.preview_btn{
+  background-position: 0 0;
+  width: 38px;
+  height: 38px;
+}
+
+.soon_thumbnail{
+  background-position: -51px 0;
+  width: 128px;
+  height: 128px;
+}
+
 .page-wrapper.categories {
   font-family: 'Julius Sans One', sans-serif;
   margin-top: 20px;
@@ -68,21 +102,29 @@
             a {
               width: 37px;
               height: 37px;
-              background-repeat: no-repeat;
               display: block;
+              background: url(https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/categories/sprites.png) no-repeat;
             }
             a.preview {
               margin-bottom: 8px;
-              background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/categories/preview_btn.svg');
+              background-position: 0 0;
+              width: 38px;
+              height: 38px;
             }
             a.preview:hover {
-              background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/categories/preview_btn_hover.svg');
+              background-position: 0 -45px ;
+              width: 38px;
+              height: 38px;
             }
             a.edit {
-              background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/categories/edit_btn.svg');
+              background-position: 0 -137px ;
+              width: 38px;
+              height: 38px;
             }
             a.edit:hover {
-              background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/categories/edit_btn_hover.svg');
+              background-position: 0 -92px ;
+              width: 38px;
+              height: 38px;
             }
           }
         }

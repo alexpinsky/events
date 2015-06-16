@@ -18,7 +18,8 @@ class @Editor
     @event = options.event
 
   init: ->
-    @initVendor()
+    @initVendors()
+
     @preview = new Preview container: @container.find('.preview-wrapper')
     @preview.init event: @event
 
@@ -34,7 +35,7 @@ class @Editor
 
     @container.find('.save-wrapper .save').click @onSaveClick
 
-  initVendor: ->
+  initVendors: ->
     addthisevent.refresh()
     imagesObj = $('.images')
     if imagesObj.data('slideshow')

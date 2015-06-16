@@ -6,7 +6,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   process :quality => 80
   # process :resize_to_fill => [637, 424]
-  
+
   storage :fog
 
   include CarrierWave::MimeTypes

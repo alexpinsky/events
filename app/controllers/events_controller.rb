@@ -88,12 +88,12 @@ class EventsController < ApplicationController
 
   def destroy
     @event = current_user.events.find params[:id]
+
     if @event.destroy
-      flash[:success] = "Event was successfully deleted"
+      redirect_to events_path
     else
-      flash[:alert] = @event.errors.full_messages
+      redirect_to events_path
     end
-    redirect_to events_path
   end
 
   def reload_preview

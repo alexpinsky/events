@@ -43,5 +43,49 @@
         vertical-align: super;
       }
     }
+    .pics-tiles {
+      padding-top: 10px;
+      .pic-tile {
+        position: relative;
+        display: inline-block;
+        width: 70px;
+        height: 70px;
+      }
+      .pic-tile.image {
+        background-size: contain;
+        background-repeat: no-repeat;
+        a.remove {
+          background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/remove_pic_icon.svg');
+          background-repeat: no-repeat;
+          width: 6px;
+          height: 6px;
+          display: inline-block;
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+      }
+      .pic-tile.empty {
+        background: white;
+        a.add {
+          background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/add_pic_icon.svg');
+          background-repeat: no-repeat;
+          width: 16px;
+          height: 16px;
+          display: inline-block;
+          position: absolute;
+          top: 38%;
+          left: 35%;
+        }
+      }
+      .size-text {
+        padding-top: 10px;
+        font-family: 'Julius Sans One', sans-serif;
+        font-size: 10px;
+        a {
+          color: rgb(127, 160, 255);
+        }
+      }
+    }
   }
 }

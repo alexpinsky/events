@@ -17,13 +17,26 @@
     </div>
     <div class='pics-tiles'>
       <%= event_form.fields_for :pictures, event.pictures do |pic_form| %>
-        <div id="pic-input-<%= pic_form.object.order %>">
-        <%= pic_form.file_field :image, id: "image-file-#{pic_form.object.order}", class: "image-file", hidden: true, data: { order: pic_form.object.order } %>
-        </div>
+        <% pic_obj = pic_form.object %>
+        <% if pic_obj.image_url %>
+          <div class='pic-tile image' style="background-image: url(<%= pic_obj.image_url %>)">
+            <a href="#" class="remove"></a>
+          </div>
+        <% else %>
+          <div class='pic-tile empty'>
+            <a href="#" class="add"></a>
+          </div>
+        <% end %>
+        <%= pic_form.file_field :image, id: "image-file-#{pic_obj.order}", class: "image-file", hidden: true, data: { order: pic_obj.order } %>
         <%= pic_form.hidden_field :slideshow %>
         <%= pic_form.hidden_field :order %>
-        <%= pic_form.hidden_field :_destroy, id: "pic-destroy-#{pic_form.object.order}" %>
+        <%= pic_form.hidden_field :_destroy, id: "pic-destroy-#{pic_obj.order}" %>
       <% end %>
+      <div class='size-text'>
+        Image size should be under <strong>200kb</strong>.
+        <br/>
+        You can optimize the image size at <a href="http://www.imageoptimizer.net/Pages/Home.aspx" target="_blank">imageoptimizer</a>.
+      </div>
     </div>
   </div>
 </div>

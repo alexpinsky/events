@@ -196,3 +196,14 @@ $border-color: rgb(127, 159, 255);
     }
   }
 }
+.page-wrapper.editor:before {
+  display: none;
+  content:
+    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/save_btn_hover.svg')
+    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/publish_btn_hover.svg')
+    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/unpublish_btn_hover.svg')
+    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/templates_icon_hover.svg')
+    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/text_icon_hover.svg')
+    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/pictures_icon_hover.svg')
+    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/calendar_icon_hover.svg');
+}

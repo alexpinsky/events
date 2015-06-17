@@ -20,7 +20,7 @@
         background-repeat: no-repeat;
         width: 121px;
         height: 118px;
-        display: inline-block;      
+        display: inline-block;
       }
       a.weddings {
         background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/weddings_icon.svg');
@@ -94,4 +94,14 @@
       }
     }
   }
+}
+.page-wrapper.categories:before {
+  display: none;
+  content:
+    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/categories/preview_btn_hover.svg')
+    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/categories/edit_btn_hover.svg')
+    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/weddings_icon_hover.svg')
+    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/celebration_icon_hover.svg')
+    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/meetups_icon_hover.svg')
+    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/whatever_icon_hover.svg');
 }

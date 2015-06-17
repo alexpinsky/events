@@ -14,7 +14,7 @@
   font-family: 'Julius Sans One', sans-serif;
   .login {
     background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/login_btn.svg');
-    background-repeat: no-repeat;         
+    background-repeat: no-repeat;
     display: inline-block;
     width: 58px;
     height: 28px;
@@ -25,7 +25,7 @@
   }
   .start {
     background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/start_btn.svg');
-    background-repeat: no-repeat;         
+    background-repeat: no-repeat;
     display: inline-block;
     width: 105px;
     height: 30px;
@@ -89,7 +89,7 @@
           background-repeat: no-repeat;
           width: 121px;
           height: 118px;
-          display: inline-block;      
+          display: inline-block;
         }
         a.weddings {
           background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/weddings_icon.svg');
@@ -162,4 +162,15 @@
       }
     }
   }
+}
+.page-wrapper.welcome:before {
+  display: none;
+  content:
+    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/x_btn.svg')
+    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/login_btn_hover.svg')
+    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/start_btn_hover.svg')
+    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/weddings_icon_hover.svg')
+    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/celebration_icon_hover.svg')
+    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/meetups_icon_hover.svg')
+    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/whatever_icon_hover.svg');
 }

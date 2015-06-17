@@ -26,10 +26,10 @@
             display: inline-block;
           }
           a.new-event {
-            background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/new_event_btn.svg'); 
+            background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/new_event_btn.svg');
           }
           a.new-event:hover {
-            background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/new_event_btn_hover.svg'); 
+            background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/new_event_btn_hover.svg');
           }
           .text {
             padding-top: 8px;
@@ -342,4 +342,14 @@
       }
     }
   }
+}
+.page-wrapper.dashboard:before {
+  display: none;
+  content:
+    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/new_event_btn_hover.svg')
+    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/categories/preview_btn_hover.svg')
+    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/categories/edit_btn_hover.svg')
+    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/delete_btn_hover.svg')
+    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/publish_btn_hover.svg')
+    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/unpublish_btn_hover.svg');
 }

@@ -105,3 +105,10 @@ $border-color: rgb(127, 159, 255);
     }
   }
 }
+.text-line:before {
+  display: none;
+  content:
+    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/1_icon_hover.svg')
+    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/2_icon_hover.svg')
+    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/3_icon_hover.svg');
+}

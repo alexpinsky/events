@@ -57,7 +57,7 @@ class @Editor
   loadTheme: (category, theme) ->
     @event.save()
 
-    eventId = $('.edit-event').data('event')
+    eventId = $('.event').data('event')
 
     if eventId
       url = "/events/#{eventId}/edit"

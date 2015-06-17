@@ -2,8 +2,8 @@ class @Dashboard
   @start: ->
     dashboard = new Dashboard
       container: $(".page-wrapper.dashboard")
-    dashboard.init()  
-  
+    dashboard.init()
+
   constructor: (options = {}) ->
     @container = options.container
 

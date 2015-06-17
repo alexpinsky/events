@@ -27,7 +27,13 @@
             <a href="#" class="add"></a>
           </div>
         <% end %>
-        <%= pic_form.file_field :image, id: "image-file-#{pic_obj.order}", class: "image-file", hidden: true, data: { order: pic_obj.order } %>
+        <%=
+          pic_form.file_field :image,
+                              id: "image-file-#{pic_obj.order}",
+                              class: "image-file",
+                              hidden: true,
+                              data: { order: pic_obj.order }
+        %>
         <%= pic_form.hidden_field :slideshow %>
         <%= pic_form.hidden_field :order %>
         <%= pic_form.hidden_field :_destroy, id: "pic-destroy-#{pic_obj.order}" %>

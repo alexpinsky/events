@@ -4,17 +4,18 @@
   </div>
   <nav class="nav-collapse">
     <ul>
-      <li><a href="<%= root_path %>">home</a></li>
-      <li><a href="#">about</a></li>
-      <li><%= link_to 'templates', categories_path %></li>
+      <li><a class='underline' href="<%= root_path %>">home</a></li>
+      <li><a class='underline' href="#">about</a></li>
+      <li><a class='underline' href="<%= categories_path %>">templates</a></li>
       <% if welcome_page? %>
-        <li><a href="#">demo invitation</a></li>
+        <li><a class='underline' href="#">demo invitation</a></li>
       <% end %>
       <% if current_user %>
-        <li><%= link_to 'dashboard', events_path %></li>
-        <li><%= link_to 'editor', new_event_path %></li>
+        <li><a class='underline' href="<%= events_path %>">dashboard</a></li>
+        <li><a class='underline' href="<%= new_event_path %>">editor</a></li>
         <li class='user'>
-          <%= current_user.email %> (<%= link_to 'logout', destroy_user_session_path, method: :delete %>)
+          <%= current_user.email %>
+          (<a href="<%= destroy_user_session_path %>" data-method='delete'>logout</a>)
         </li>
       <% else %>
         <li><a href="#signInModal" rel="modal:open" class="login"></a></li>

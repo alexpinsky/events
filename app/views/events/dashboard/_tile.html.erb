@@ -10,7 +10,7 @@
   <div class='url-wrapper url-editor'>
     <div class='url vertical-align'>
       <div class='edit-icon'></div>
-      <%= ENV['ROOT_URL'] %><a href="#" class="event-url" data-type="text" data-url="<%= event_path(event) %>" data-pk="<%= event.id %>"><%= event.url %></a>
+      <%= ENV['ROOT_URL'] %><a href="#" class="event-url" data-type="text" data-url="<%= event_path(event) %>" data-pk="<%= event.id %>" data-value="<%= event_url(event) %>"><%= event_url(event) %></a>
     </div>
   </div>
   <div class='image-wrapper'>

@@ -9,12 +9,13 @@
       background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/logo_box_grey.svg");
       background-repeat: no-repeat;
       width: 102px;
-      height: 25px;       
+      height: 25px;
     }
   }
   .nav-collapse {
     display: inline-block;
     float: right;
+    height: 35px;
     ul {
       li {
         padding-right: 25.5px;
@@ -23,9 +24,13 @@
           text-decoration: none;
           color: rgb(149, 149, 149);
         }
+        a.underline:hover {
+          border-bottom: 2px solid rgb(127, 159, 255);
+        }
       }
       li.user {
-        font-size: 12px;
+        font-size: 10px;
+        padding-right: 0;
         a {
           text-decoration: underline;
           color: rgb(127, 159, 255);
@@ -33,7 +38,7 @@
       }
       .login {
         background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/login_btn.svg');
-        background-repeat: no-repeat;         
+        background-repeat: no-repeat;
         display: inline-block;
         width: 58px;
         height: 28px;

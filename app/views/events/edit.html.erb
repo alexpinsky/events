@@ -1,4 +1,4 @@
-<div class="edit-event" data-event="<%= @event.id %>">
+<div class="event" data-event="<%= @event.id %>">
   <!-- pass the event as the theme to display -->
   <%= render partial: "events/editor", locals: { event: @event, theme: @event, categories: @categories }  %>
 </div>

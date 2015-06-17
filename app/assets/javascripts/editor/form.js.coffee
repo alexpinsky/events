@@ -21,15 +21,27 @@ class @Form
     @text.sizeChange @onSizeChange
     @text.init()
 
-    @background = new BackgroundGallery container: @container.find('.background-section')
+    @background = new BackgroundGallery
+      container: @container.find('.background-section')
     @background.click @onBackgroundChange
     @background.init()
+
+    @pics = new PicsSelector container: @container.find('.pics-section')
+    @pics.add @onPicAdd
+    @pics.remove @onPicRemove
+    @pics.init()
 
     event = options.event
     @updateFromEvent(event) unless event.isEmpty()
 
   themeClick: (handler) ->
-    @handler = handler
+    @themeHandler = handler
+
+  submitSuccess: (handler) ->
+    @successHandler = handler
+
+  submitError: (handler) ->
+    @errorHandler = handler
 
   updateFromEvent: (event) ->
     @text.updateFromEvent event
@@ -39,7 +51,7 @@ class @Form
 
   destroy: ->
 
-  onSubmit: (e) ->
+  onSubmit: (e) =>
     formObj = $(e.currentTarget)
     formURL = formObj.attr "action"
     formData = new FormData e.currentTarget
@@ -54,15 +66,15 @@ class @Form
       cache: false,
       processData:false,
       success: (data, textStatus, jqXHR) =>
-        alert "success"
+        @successHandler data
       error: (jqXHR, textStatus, errorThrown) =>
-        alert "error"
+        @errorHandler()
 
     e.preventDefault()
     false # stop event propagation
 
   onThemeClick: (e) =>
-    @handler e
+    @themeHandler e
 
   onTextChange: (id, val) =>
     @listener.onTextChange id, val
@@ -79,4 +91,8 @@ class @Form
   onBackgroundChange: (url) =>
     @container.find('#background-image').val url
     @listener.onBackgroundChange url
+
+  onPicAdd: =>
+
+  onPicRemove: =>
 

@@ -57,8 +57,9 @@
         a.remove {
           background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/remove_pic_icon.svg');
           background-repeat: no-repeat;
-          width: 6px;
-          height: 6px;
+          background-size: cover;
+          width: 12px;
+          height: 12px;
           display: inline-block;
           position: absolute;
           top: 0;
@@ -70,12 +71,13 @@
         a.add {
           background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/add_pic_icon.svg');
           background-repeat: no-repeat;
-          width: 16px;
-          height: 16px;
+          background-size: cover;
+          width: 25px;
+          height: 25px;
           display: inline-block;
           position: absolute;
-          top: 38%;
-          left: 35%;
+          top: 35%;
+          left: 32%;
         }
       }
       .size-text {

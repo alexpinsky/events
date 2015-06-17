@@ -53,9 +53,9 @@ class EventsController < ApplicationController
     @event = current_user.events.new event_params
 
     if @event.save
-      render nothing: true, status: :ok
+      render json: { event_id: @event.id }, status: :ok
     else
-      render nothing: true, status: :bad_request
+      render json: {}, status: :bad_request
     end
   end
 
@@ -80,7 +80,7 @@ class EventsController < ApplicationController
     @event = current_user.events.find params[:id]
 
     if @event.update_attributes event_params
-      render json: {}, status: :ok
+      render json: { event_id: @event.id }, status: :ok
     else
       render json: {}, status: :bad_request
     end

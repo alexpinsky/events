@@ -31,6 +31,8 @@ class @Editor
       container: @container.find('.form-wrapper')
       listener: @delegator
     @form.themeClick @onThemeClick
+    @form.submitSuccess @onSubmitSuccess
+    @form.submitError @onSubmitError
     @form.init event: @event
 
     @container.find('.save-wrapper .save').click @onSaveClick
@@ -58,7 +60,7 @@ class @Editor
     eventId = $('.edit-event').data('event')
 
     if eventId
-      url = '/events/' + eventId + '/edit'
+      url = "/events/#{eventId}/edit"
     else
       url = '/events/new'
 
@@ -72,6 +74,16 @@ class @Editor
 
   onSaveClick: =>
     @form.submit()
+
+  onSubmitSuccess: (data) =>
+    alert('success')
+    # reload the page in edit mode (need to update all fields)
+    $.ajax
+      url: "/events/#{data.event_id}/edit"
+      dataType: "script"
+
+  onSubmitError: =>
+    alert('error')
 
   ###################################################################
 

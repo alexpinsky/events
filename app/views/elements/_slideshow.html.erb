@@ -5,8 +5,6 @@
 <% end %>
 <div class='images' data-slideshow="<%= slideshow %>">
   <% images.each do |pic| %>
-    <div id="image-wrapper-<%= pic.order %>" style="width: inherit; height: inherit;">
-      <img src="<%= pic.image_url %>">
-    </div>
+    <img id="image-<%= pic.order %>" src="<%= pic.image_url %>">
   <% end %>
 </div>

@@ -10,7 +10,7 @@
       </div>
       <div class='colaze-square'>
         <% image_1 = event.pictures.select { |pic| pic.order == 1 }.first %>
-        <img src="<%= image_1.try(:image_url) %>">
+        <img id="image-1" src="<%= image_1.try(:image_url) %>">
       </div>
       <div class='colaze-square'>
         <img src="<%= aws_asset_url(event, 'pattern.svg') %>">
@@ -19,7 +19,7 @@
     <div class='colaze-row'>
       <div class='colaze-square'>
         <% image_2 = event.pictures.select { |pic| pic.order == 2 }.first %>
-        <img src="<%= image_2.try(:image_url) %>">
+        <img id="image-2" src="<%= image_2.try(:image_url) %>">
       </div>
       <div class='colaze-square border'>
         <div class='text-wrapper-1 text_1 vertical-align' style="font-family: <%= event.font_family_1 %>;color: <%= event.font_color_1 %>; font-size: <%= event.font_size_1 %>em;">
@@ -31,7 +31,7 @@
       </div>
       <div class='colaze-square'>
         <% image_3 = event.pictures.select { |pic| pic.order == 3 }.first %>
-        <img src="<%= image_3.try(:image_url) %>">
+        <img id="image-3" src="<%= image_3.try(:image_url) %>">
       </div>
     </div>
     <div class='colaze-row bottom'>
@@ -46,7 +46,7 @@
       </div>
       <div class='colaze-square'>
         <% image_4 = event.pictures.select { |pic| pic.order == 4 }.first %>
-        <img src="<%= image_4.try(:image_url) %>">
+        <img id="image-4" src="<%= image_4.try(:image_url) %>">
       </div>
       <div class='colaze-square'>
         <div class='text-wrapper-3 vertical-align' style="font-family: <%= event.font_family_3 %>;color: <%= event.font_color_3 %>; font-size: <%= event.font_size_3 %>em;">

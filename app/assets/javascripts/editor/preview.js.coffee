@@ -5,6 +5,19 @@ class @Preview
   init: (options = {}) ->
     event = options.event
     @updateFromEvent(event) unless event.isEmpty()
+    @runSlideShow()
+
+  runSlideShow: (options = {}) ->
+    images = options.images || @container.find('.images')
+    if images.data('slideshow')
+      images.slick
+        autoplay: true,
+        arrows: false,
+        mobileFirst: true
+
+  stopSlideShow: (options = {}) ->
+    images = options.images || @container.find('.images')
+    images.slick 'unslick'
 
   destroy: ->
 
@@ -53,19 +66,29 @@ class @Preview
     @container.find('.display').css('background', "url(#{url})")
 
   addPic: (e) =>
-    wrapper = @container.find("#image-wrapper-#{e.order}")
-
-    if !wrapper[0]
-      images = @container.find('.images').append "<div id='image-wrapper-#{e.order}' style='width: inherit; height: inherit;'></div>"
-      @addPic e
-      return
-
     images = @container.find('.images')
-    if images && images.children().length > 1
-      images.data 'slideshow', true
-      images.slick
-        autoplay: true,
-        arrows: false,
-        mobileFirst: true
 
-    wrapper.html "<img src='#{e.url}'>"
+    if images.length == 1
+      @stopSlideShow(images: images) if images.data('slideshow')
+      images.find("#image-#{e.order}").remove()
+
+      images.append "<img id='image-#{e.order}' src='#{e.url}'>"
+
+      if images.children('img').length > 1
+        images.data 'slideshow', true
+        @runSlideShow(images: images)
+    else
+      @container.find("#image-#{e.order}").attr 'src', e.url
+
+  removePic: (e) =>
+    images = @container.find('.images')
+
+    if images.length == 1
+      @stopSlideShow(images: images)
+      images.find("#image-#{e.order}").remove()
+
+      if images.children('img').length > 1
+        images.data 'slideshow', true
+        @runSlideShow(images: images)
+    else
+      @container.find("#image-#{e.order}").attr 'src', ''

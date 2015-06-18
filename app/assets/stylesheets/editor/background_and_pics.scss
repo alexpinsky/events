@@ -56,7 +56,7 @@
             height: 70px;
           }
           .pic-tile.image {
-            background-size: contain;
+            background-size: cover;
             background-repeat: no-repeat;
             a.remove {
               background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/remove_pic_icon.svg');

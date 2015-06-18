@@ -28,3 +28,7 @@ class @ChangesDelegator
   onPicAdd: (e) =>
     @event.addPic e
     @view.addPic e
+
+  onPicRemove: (e) =>
+    @event.removePic e
+    @view.removePic e

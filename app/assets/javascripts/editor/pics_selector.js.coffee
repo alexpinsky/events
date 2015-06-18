@@ -20,4 +20,4 @@ class @PicsSelector
     @addHandler e
 
   onRemove: (e) =>
-    # @removeHandler()
+    @removeHandler e

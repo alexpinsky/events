@@ -27,3 +27,5 @@ class @Event
   updateBackground: (url) =>
 
   addPic: (e) =>
+
+  removePic: (e) =>

@@ -97,4 +97,5 @@ class @Form
     @listener.onPicAdd e
 
   onPicRemove: (e) =>
+    @listener.onPicRemove e
 

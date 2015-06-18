@@ -51,3 +51,21 @@ class @Preview
 
   updateBackground: (url) =>
     @container.find('.display').css('background', "url(#{url})")
+
+  addPic: (e) =>
+    wrapper = @container.find("#image-wrapper-#{e.order}")
+
+    if !wrapper[0]
+      images = @container.find('.images').append "<div id='image-wrapper-#{e.order}' style='width: inherit; height: inherit;'></div>"
+      @addPic e
+      return
+
+    images = @container.find('.images')
+    if images && images.children().length > 1
+      images.data 'slideshow', true
+      images.slick
+        autoplay: true,
+        arrows: false,
+        mobileFirst: true
+
+    wrapper.html "<img src='#{e.url}'>"

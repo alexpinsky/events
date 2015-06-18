@@ -52,6 +52,8 @@ class @Form
   destroy: ->
 
   onSubmit: (e) =>
+    e.preventDefault()
+
     formObj = $(e.currentTarget)
     formURL = formObj.attr "action"
     formData = new FormData e.currentTarget
@@ -70,7 +72,6 @@ class @Form
       error: (jqXHR, textStatus, errorThrown) =>
         @errorHandler()
 
-    e.preventDefault()
     false # stop event propagation
 
   onThemeClick: (e) =>
@@ -92,7 +93,8 @@ class @Form
     @container.find('#background-image').val url
     @listener.onBackgroundChange url
 
-  onPicAdd: =>
+  onPicAdd: (e) =>
+    @listener.onPicAdd e
 
-  onPicRemove: =>
+  onPicRemove: (e) =>
 

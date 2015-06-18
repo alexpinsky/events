@@ -15,4 +15,3 @@ class @Accordion
       panel.init()
 
   onPanelClick: ->
-    console.log 'panel click'

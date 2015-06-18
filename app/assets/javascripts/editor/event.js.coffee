@@ -25,3 +25,5 @@ class @Event
   updateSize: (id, val) =>
 
   updateBackground: (url) =>
+
+  addPic: (e) =>

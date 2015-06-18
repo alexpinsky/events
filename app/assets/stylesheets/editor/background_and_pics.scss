@@ -45,39 +45,45 @@
     }
     .pics-tiles {
       padding-top: 10px;
-      .pic-tile {
-        position: relative;
+      .pic-fields {
         display: inline-block;
-        width: 70px;
-        height: 70px;
-      }
-      .pic-tile.image {
-        background-size: contain;
-        background-repeat: no-repeat;
-        a.remove {
-          background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/remove_pic_icon.svg');
-          background-repeat: no-repeat;
-          background-size: cover;
-          width: 12px;
-          height: 12px;
+        .tile-wrapper {
           display: inline-block;
-          position: absolute;
-          top: 0;
-          left: 0;
-        }
-      }
-      .pic-tile.empty {
-        background: white;
-        a.add {
-          background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/add_pic_icon.svg');
-          background-repeat: no-repeat;
-          background-size: cover;
-          width: 25px;
-          height: 25px;
-          display: inline-block;
-          position: absolute;
-          top: 35%;
-          left: 32%;
+          .pic-tile {
+            position: relative;
+            display: inline-block;
+            width: 70px;
+            height: 70px;
+          }
+          .pic-tile.image {
+            background-size: contain;
+            background-repeat: no-repeat;
+            a.remove {
+              background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/remove_pic_icon.svg');
+              background-repeat: no-repeat;
+              background-size: cover;
+              width: 12px;
+              height: 12px;
+              display: inline-block;
+              position: absolute;
+              top: 0;
+              left: 0;
+            }
+          }
+          .pic-tile.empty {
+            background: white;
+            a.add {
+              background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/add_pic_icon.svg');
+              background-repeat: no-repeat;
+              background-size: cover;
+              width: 25px;
+              height: 25px;
+              display: inline-block;
+              position: absolute;
+              top: 35%;
+              left: 32%;
+            }
+          }
         }
       }
       .size-text {

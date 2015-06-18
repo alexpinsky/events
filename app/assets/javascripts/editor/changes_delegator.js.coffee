@@ -25,3 +25,6 @@ class @ChangesDelegator
     @event.updateBackground url
     @view.updateBackground url
 
+  onPicAdd: (e) =>
+    @event.addPic e
+    @view.addPic e

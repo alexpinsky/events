@@ -18,25 +18,25 @@
     <div class='pics-tiles'>
       <%= event_form.fields_for :pictures, event.pictures do |pic_form| %>
         <% pic_obj = pic_form.object %>
-        <% if pic_obj.image_url %>
-          <div class='pic-tile image' style="background-image: url(<%= pic_obj.image_url %>)">
-            <a href="#" class="remove"></a>
+        <div class='pic-fields' data-order="<%= pic_obj.order %>">
+          <div class='tile-wrapper'>
+            <% if pic_obj.image_url %>
+              <div class='pic-tile image' style="background-image: url(<%= pic_obj.image_url %>)">
+                <a href="#" class="remove" data-type="remove"></a>
+              </div>
+            <% else %>
+              <div class='pic-tile empty'>
+                <a href="#" class="add" data-type="add"></a>
+              </div>
+            <% end %>
           </div>
-        <% else %>
-          <div class='pic-tile empty'>
-            <a href="#" class="add"></a>
-          </div>
-        <% end %>
-        <%=
-          pic_form.file_field :image,
-                              id: "image-file-#{pic_obj.order}",
-                              class: "image-file",
-                              hidden: true,
-                              data: { order: pic_obj.order }
-        %>
-        <%= pic_form.hidden_field :slideshow %>
-        <%= pic_form.hidden_field :order %>
-        <%= pic_form.hidden_field :_destroy, id: "pic-destroy-#{pic_obj.order}" %>
+          <%= pic_form.file_field :image,
+                                  class: "image-file",
+                                  hidden: true %>
+          <%= pic_form.hidden_field :slideshow %>
+          <%= pic_form.hidden_field :order %>
+          <%= pic_form.hidden_field :_destroy, class: "destroy" %>
+        </div>
       <% end %>
       <div class='size-text'>
         Image size should be under <strong>200kb</strong>.

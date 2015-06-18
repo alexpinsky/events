@@ -60,8 +60,10 @@ class @Editor
     eventId = $('.event').data('event')
 
     if eventId
+      # edit mode -> use event for display
       url = "/events/#{eventId}/edit"
     else
+      # new mode -> use the theme for display
       url = '/events/new'
 
     $.ajax

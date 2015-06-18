@@ -45,6 +45,7 @@ class @Form
 
   updateFromEvent: (event) ->
     @text.updateFromEvent event
+    @pics.updateFromEvent event
 
   submit: ->
     @form.submit()

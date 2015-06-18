@@ -4,16 +4,22 @@ class @Event
 
   init: ->
     @data = @persistence.getData() || {'texts': {}, 'pics': {}}
-    @persistence.clear()
+    @clear()
 
   save: ->
     @persistence.saveData @data
+
+  clear: ->
+    @persistence.clear()
 
   isEmpty: =>
     $.isEmptyObject(@data.texts) && $.isEmptyObject(@data.pics)
 
   texts: ->
     @data.texts
+
+  pics: ->
+    @data.pics
 
   updateText: (id, val) =>
     @data.texts[id] = val
@@ -27,5 +33,7 @@ class @Event
   updateBackground: (url) =>
 
   addPic: (e) =>
+    @data.pics[e.order] = { url: e.url, input: e.input }
 
   removePic: (e) =>
+    @data.pics[e.order] = null

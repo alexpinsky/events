@@ -11,6 +11,12 @@ class @Picture
     @registerToAction()
     @fileInput.change @onInputChange
 
+  updatePic: (url, input) ->
+    @container.find('.input-wrapper').html input
+    @fileInput = @container.find('.image-file')
+    @fileInput.change @onInputChange
+    @drawImageTile url
+
   add: (handler) ->
     @addHandler = handler
 
@@ -48,7 +54,7 @@ class @Picture
   doAdd: (url) =>
     @drawImageTile url
     @destroyInput.val false
-    @addHandler url: url, order: @order
+    @addHandler url: url, order: @order, input: @fileInput[0]
 
   doRemove: =>
     @drawEmptyTile()

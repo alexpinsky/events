@@ -5,7 +5,7 @@ class @Editor
       prevEditor.destroy()
       prevEditor = null
 
-    event = new Event persistence: new LocalPersistence
+    event = new Event persistence: new DOMPersistence
     event.init()
 
     editor = new Editor container: $('.page-wrapper.editor'), event: event

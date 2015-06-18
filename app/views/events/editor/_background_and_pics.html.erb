@@ -30,9 +30,11 @@
               </div>
             <% end %>
           </div>
-          <%= pic_form.file_field :image,
-                                  class: "image-file",
-                                  hidden: true %>
+          <div class='input-wrapper'>
+            <%= pic_form.file_field :image,
+                                    class: "image-file",
+                                    hidden: true %>
+          </div>
           <%= pic_form.hidden_field :slideshow %>
           <%= pic_form.hidden_field :order %>
           <%= pic_form.hidden_field :_destroy, class: "destroy" %>

@@ -25,6 +25,9 @@ class @Preview
     for id, val of event.texts()
       @updateText id, val
 
+    for order, valObj of event.pics()
+      @addPic order: order, url: valObj.url
+
   updateText: (id, val) =>
     textDisplay = @container.find("##{id}")
 

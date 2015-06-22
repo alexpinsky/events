@@ -60,10 +60,13 @@ class @Editor
       # new mode -> use the theme for display
       url = '/events/new'
 
+    Loader.on()
     $.ajax
       url: url
       data: { category_id: category, theme_id: theme }
       dataType: "script"
+      complete: ->
+        Loader.off()
 
   onThemeClick: (e) =>
     @loadTheme e.category, e.theme

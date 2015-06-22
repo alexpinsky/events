@@ -59,6 +59,7 @@ class @Form
     formURL = formObj.attr "action"
     formData = new FormData e.currentTarget
 
+    Loader.on()
     $.ajax
       url: formURL
       type: 'POST'
@@ -72,6 +73,8 @@ class @Form
         @successHandler data
       error: (jqXHR, textStatus, errorThrown) =>
         @errorHandler()
+      complete: ->
+        Loader.off()
 
     false # stop event propagation
 

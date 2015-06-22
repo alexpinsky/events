@@ -9,7 +9,15 @@ class @Picture
     @destroyInput = @container.find('.destroy')
 
     @registerToAction()
+    @initSizeValidation()
     @fileInput.change @onInputChange
+
+  initSizeValidation: ->
+    @fileInput.fileValidator
+      maxSize: '200kb'
+      type: 'image'
+      onInvalid: (validationType, file) ->
+        file.invalid = true
 
   updatePic: (url, input) ->
     @container.find('.input-wrapper').html input
@@ -28,6 +36,8 @@ class @Picture
     @action.click @onActionClick
 
   onActionClick: (e) =>
+    e.preventDefault()
+
     if @action.data('type') == 'add'
       @fileInput.click()
     else
@@ -35,6 +45,12 @@ class @Picture
 
   onInputChange: (e) =>
     if @fileInput[0].files && @fileInput[0].files[0]
+      file = @fileInput[0].files[0]
+
+      if file.invalid
+        Notification.display 'Image size should be under 200kb', 'alert'
+        return
+
       reader = new FileReader
       reader.onload = (e) =>
         url = e.target.result
@@ -54,10 +70,12 @@ class @Picture
   doAdd: (url) =>
     @drawImageTile url
     @destroyInput.val false
+
     @addHandler url: url, order: @order, input: @fileInput[0]
 
   doRemove: =>
     @drawEmptyTile()
     @fileInput.val ''
     @destroyInput.val true
+
     @removeHandler order: @order

@@ -80,6 +80,8 @@ class @Preview
       if images.children('img').length > 1
         images.data 'slideshow', true
         @runSlideShow(images: images)
+      else
+        images.data 'slideshow', false
     else
       @container.find("#image-#{e.order}").attr 'src', e.url
 
@@ -87,11 +89,13 @@ class @Preview
     images = @container.find('.images')
 
     if images.length == 1
-      @stopSlideShow(images: images)
+      @stopSlideShow(images: images) if images.data('slideshow')
       images.find("#image-#{e.order}").remove()
 
       if images.children('img').length > 1
         images.data 'slideshow', true
         @runSlideShow(images: images)
+      else
+        images.data 'slideshow', false
     else
       @container.find("#image-#{e.order}").attr 'src', ''

@@ -1,0 +1,43 @@
+.notifications {
+  position: absolute;
+  top: 10%;
+  right: 10px;
+  z-index: 999;
+  .notification {
+    margin-bottom: 10px;
+    .icon {
+      background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/peggy.svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 28px;
+      height: 38px;
+      margin-left: 10px;
+    }
+    .content {
+      position: relative;
+      width: 250px;
+      min-height: 90px;
+      padding: 10px;
+      font-family: 'Quattrocento Sans', sans-serif;
+      color: white;
+      a.close {
+        top: 0px;
+        right: 5px;
+        text-decoration: none;
+        position: absolute;
+        color: white;
+        color: white;
+      }
+    }
+  }
+  .notification.alert {
+    .content {
+      background-color: rgb(190, 39, 45);
+    }
+  }
+  .notification.notice {
+    .content {
+      background-color: rgb(8, 212, 204);
+    }
+  }
+}

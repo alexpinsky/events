@@ -1,15 +1,17 @@
+<div class='notifications'></div>
+
 <% content_for :javascript do %>
   <script type="text/javascript">
     $(document).ready(function() {
-      <% flash.keys.each do |k| %> 
+      <% flash.keys.each do |k| %>
         <% if flash[k].is_a? String %>
-          Helpers.displayAlert("<%= flash[k] %>", "<%= k %>")
+          Notification.display("<%= flash[k] %>", "<%= k %>")
         <% else %>
           <% flash[k].each do |msg| %>
-            Helpers.displayAlert("<%= flash[k] %>", "<%= k %>")
-          <% end %>   
+            Notification.display("<%= msg %>", "<%= k %>")
+          <% end %>
         <% end %>
-      <% end %>   
+      <% end %>
     })
   </script>
 <% end %>

@@ -72,18 +72,11 @@ class @Editor
     @form.submit()
 
   onSubmitSuccess: (data) =>
-    alert('success')
+    Notification.display 'Your event was saved!', 'notice'
     # reload the page in edit mode (need to update all fields)
     $.ajax
       url: "/events/#{data.event_id}/edit"
       dataType: "script"
 
   onSubmitError: =>
-    alert('error')
-
-  # initImageValidators: (obj) ->
-  #   obj.fileValidator
-  #     maxSize: '1m',
-  #     type: 'image',
-  #     onInvalid: (validationType, file) ->
-  #       file['invalid'] = true
+    Notification.display 'Sorry... but something went wrong', 'alert'

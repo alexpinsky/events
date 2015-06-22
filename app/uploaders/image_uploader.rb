@@ -4,8 +4,7 @@ require 'carrierwave/processing/mini_magick'
 class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
-  process :quality => 80
-  # process :resize_to_fill => [637, 424]
+  process resize_to_fill: [600, 600]
 
   storage :fog
 

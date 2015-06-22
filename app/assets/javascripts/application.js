@@ -23,10 +23,9 @@
 //= require templates
 //= require editor
 //= require pages
-//= require helpers
+//= require notification
 //= require_tree ./dashboard
 //= require_tree ./editor
-//= require_tree ./elements
 
 // External Plugins
 

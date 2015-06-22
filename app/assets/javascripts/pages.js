@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  
+
   // init responsive nav
   responsiveNav(".nav-collapse");
 
@@ -9,4 +9,5 @@ $(document).ready(function() {
     arrows: false,
     mobileFirst: true
   });
+  $('.slideshow-wrapper').css('display', 'block');
 });

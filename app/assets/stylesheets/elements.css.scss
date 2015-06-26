@@ -1,3 +1,41 @@
+// checkbox
+.checkbox {
+  .checkbox-element {
+    width: 15px;
+    height: 15px;
+    border: 1px solid rgb(127, 159, 255);;
+    cursor: pointer;
+  }
+  .checkbox-element.checked {
+    background: url(https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/v_icon.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+}
+
+// loader
+#system-loader {
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 999;
+  opacity: 0.75;
+  background: rgb(119, 119, 119);
+  .spinner {
+    background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/shared/loading.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100px;
+    height: 100px;
+    left: 50%;
+  }
+}
+
+// notifications
 .notifications {
   position: absolute;
   top: 10%;

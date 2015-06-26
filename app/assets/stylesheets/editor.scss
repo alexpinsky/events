@@ -143,6 +143,10 @@ $border-color: rgb(127, 159, 255);
                   background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/calendar_icon.svg');
                 }
               }
+              .panel-content {
+                display: block;
+                @import 'editor/information';
+              }
             }
           }
         }
@@ -168,7 +172,7 @@ $border-color: rgb(127, 159, 255);
           position: relative;
           overflow: hidden;
           .display {
-            z-index: 999;
+            z-index: 900;
             font-size: 62%;
             position: absolute;
             top: 0;

@@ -31,6 +31,9 @@ class @Form
     @pics.remove @onPicRemove
     @pics.init()
 
+    @info = new Information container: @container.find('.information')
+    @info.init()
+
     event = options.event
     @updateFromEvent(event) unless event.isEmpty()
 

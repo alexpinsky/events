@@ -7,7 +7,8 @@ $(document).ready(function() {
   $('.slideshow').slick({
     autoplay: true,
     arrows: false,
-    mobileFirst: true
+    mobileFirst: true,
+    pauseOnHover: false
   });
   $('.slideshow-wrapper').css('display', 'block');
 });

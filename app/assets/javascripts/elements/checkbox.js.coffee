@@ -12,21 +12,21 @@ class @Checkbox
     @element.click @onClick
 
   onClick: =>
-    if @val
+    if @val == 't'
       @uncheck()
     else
       @check()
 
   check: ->
-    @val = true
+    @val = 't'
     @input.val @val
     @element.addClass 'checked'
 
   uncheck: ->
-    @val = false
+    @val = 'f'
     @input.val @val
     @element.removeClass 'checked'
 
   render: ->
-    klass = if @val then 'checked' else ''
+    klass = if @val == 't' then 'checked' else ''
     "<div class='checkbox-element #{klass}'></div>"

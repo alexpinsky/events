@@ -1,3 +1,28 @@
 .information {
   .hide { display: none; }
+  input:not(.input-checkbox) {
+    font-family: 'Quattrocento Sans', sans-serif;
+    color: #b0b0b0;
+    border: 1px solid rgb(127, 159, 255);
+    width: 270px;
+    height: 20px;
+    display: inline-block;
+    padding-left: 10px;
+  }
+  input:focus {
+    outline:none;
+  }
+  .sync-section {
+    .checkbox, .text {
+      display: inline-block;
+    }
+    .checkbox {
+      vertical-align: bottom;
+    }
+    .text {
+      font-family: 'Julius Sans One', sans-serif;
+      font-size: 11px;
+      color: rgb(127, 159, 255);
+    }
+  }
 }

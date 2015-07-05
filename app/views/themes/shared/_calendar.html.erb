@@ -1,7 +1,7 @@
 <a href="http://example.com/link-to-your-event" title="Add to Calendar" id="btn_calendar" class="addthisevent">
   Add to Calendar
-  <span class="_start"><%= event.start_time.try(:strftime, "%d-%m-%Y %H:%M:%S") %></span>
-  <span class="_end"><%= event.end_time.try(:strftime, "%d-%m-%Y %H:%M:%S") %></span>
+  <span class="_start"><%= event.start_time.try(:strftime, "%m-%d-%Y %H:%M:%S") %></span>
+  <span class="_end"><%= event.end_time.try(:strftime, "%m-%d-%Y %H:%M:%S") %></span>
   <span class="_zonecode"><%= event.time_zone %></span>
   <span class="_summary"><%= event.summary %></span>
   <span class="_location"><%= event.location %></span>

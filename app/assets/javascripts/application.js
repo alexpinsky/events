@@ -33,8 +33,11 @@
 //= require jquery.modal.min
 //= require responsive-nav.min
 //= require social-share-button
-//= require foundation-datetimepicker
 //= require file-validator
+//= require jquery.timepicker.min
+//= require jquery.datepair.min
+//= require bootstrap-datepicker
+//= require datepair.min
 
 $(document).ready(function() {
   App.start();

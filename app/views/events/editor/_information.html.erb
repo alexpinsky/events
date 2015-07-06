@@ -17,7 +17,7 @@
 
   <div class='organizer-section'>
     <div class='text'>
-      
+      event organizer
     </div>
 
     <div class='inputs'>
@@ -28,13 +28,18 @@
 
   <div class='time-section'>
     <div class='text'>
-      
+      date & time
     </div>
 
     <div class='inputs'>
       <%= info_form.select :time_zone, time_zones_options_string.html_safe %>
-      <%= info_form.text_field :start_time, placeholder: 'start time' %>
-      <%= info_form.text_field :end_time, placeholder: 'end time' %>
+      <input type="text" class="date start"/>
+      <input type="text" class="time start"/>
+      <div class='text'>to</div>
+      <input type="text" class="time end"/>
+      <input type="text" class="date end"/>
+      <%= info_form.text_field :start_time, hidden: true, class: 'hidden-input' %>
+      <%= info_form.text_field :end_time, hidden: true, class: 'hidden-input' %>
     </div>
   </div>
 </div>

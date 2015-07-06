@@ -122,8 +122,8 @@ $border-color: rgb(127, 159, 255);
                 }
               }
               .panel-content {
-                padding-left: 10px;
                 @import 'editor/text_edit';
+                padding-left: 10px;
               }
             }
             .panel.pictures {
@@ -133,8 +133,8 @@ $border-color: rgb(127, 159, 255);
                 }
               }
               .panel-content {
-                padding-left: 5px;
                 @import 'editor/background_and_pics';
+                padding-left: 10px;
               }
             }
             .panel.calendar {
@@ -144,8 +144,9 @@ $border-color: rgb(127, 159, 255);
                 }
               }
               .panel-content {
-                display: block;
                 @import 'editor/information';
+                padding-left: 10px;
+                display: block;
               }
             }
           }

@@ -32,6 +32,7 @@ class @Form
     @pics.init()
 
     @info = new Information container: @container.find('.information')
+    @info.syncClick @onSyncClick
     @info.init()
 
     event = options.event
@@ -106,3 +107,5 @@ class @Form
   onPicRemove: (e) =>
     @listener.onPicRemove e
 
+  onSyncClick: (state) =>
+    @listener.onSyncClick state

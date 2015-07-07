@@ -11,6 +11,9 @@ class @Checkbox
     @element = @container.find('.checkbox-element')
     @element.click @onClick
 
+  click: (handler) ->
+    @handler = handler
+
   onClick: =>
     if @val == 't'
       @uncheck()
@@ -21,12 +24,14 @@ class @Checkbox
     @val = 't'
     @input.val @val
     @element.addClass 'checked'
+    @handler 'checked'
 
   uncheck: ->
     @val = 'f'
     @input.val @val
     @element.removeClass 'checked'
+    @handler 'unchecked'
 
   render: ->
-    klass = if @val == 't' then 'checked' else ''
+    klass = if @val == 't' || @val == 'true' then 'checked' else ''
     "<div class='checkbox-element #{klass}'></div>"

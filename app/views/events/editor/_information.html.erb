@@ -36,10 +36,10 @@
       <input type="text" class="date start"/>
       <input type="text" class="time start"/>
       <div class='text'>to</div>
-      <input type="text" class="time end"/>
       <input type="text" class="date end"/>
-      <%= info_form.text_field :start_time, hidden: true, class: 'hidden-input' %>
-      <%= info_form.text_field :end_time, hidden: true, class: 'hidden-input' %>
+      <input type="text" class="time end"/>
+      <%= info_form.text_field :start_time, hidden: true, class: 'start-time hidden-input' %>
+      <%= info_form.text_field :end_time, hidden: true, class: 'end-time hidden-input' %>
     </div>
   </div>
 </div>

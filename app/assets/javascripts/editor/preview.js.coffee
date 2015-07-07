@@ -99,3 +99,9 @@ class @Preview
         images.data 'slideshow', false
     else
       @container.find("#image-#{e.order}").attr 'src', ''
+
+  addCalendar: =>
+    @container.find('.calendar-wrapper').css('visibility', 'visible')
+
+  removeCalendar: =>
+    @container.find('.calendar-wrapper').css('visibility', 'hidden')

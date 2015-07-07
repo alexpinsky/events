@@ -1,5 +1,0 @@
-images_object = $("#preview .images");
-images_object.slideUp();
-images_object.html('<%= j render partial: "themes/images", locals: { pictures: @event.pictures } %>');
-images_object.slideDown(1000);
-$(document).foundation();

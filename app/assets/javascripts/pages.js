@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  
+
   // init responsive nav
   responsiveNav(".nav-collapse");
 
@@ -7,6 +7,10 @@ $(document).ready(function() {
   $('.slideshow').slick({
     autoplay: true,
     arrows: false,
-    mobileFirst: true
+    mobileFirst: true,
+    pauseOnHover: false,
+    draggable: false,
+    speed: 1000
   });
+  $('.slideshow-wrapper').css('display', 'block');
 });

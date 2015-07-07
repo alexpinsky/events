@@ -31,6 +31,10 @@ class @Form
     @pics.remove @onPicRemove
     @pics.init()
 
+    @info = new Information container: @container.find('.information')
+    @info.syncClick @onSyncClick
+    @info.init()
+
     event = options.event
     @updateFromEvent(event) unless event.isEmpty()
 
@@ -59,6 +63,7 @@ class @Form
     formURL = formObj.attr "action"
     formData = new FormData e.currentTarget
 
+    Loader.on()
     $.ajax
       url: formURL
       type: 'POST'
@@ -72,6 +77,8 @@ class @Form
         @successHandler data
       error: (jqXHR, textStatus, errorThrown) =>
         @errorHandler()
+      complete: ->
+        Loader.off()
 
     false # stop event propagation
 
@@ -100,3 +107,5 @@ class @Form
   onPicRemove: (e) =>
     @listener.onPicRemove e
 
+  onSyncClick: (state) =>
+    @listener.onSyncClick state

@@ -13,21 +13,23 @@
     <%= favicon_link_tag shared_assets_url 'favicon.ico' %>
     <%= stylesheet_link_tag  "application" %>
     <%= render partial: 'layouts/shared/external_stylesheets' %>
-    <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/jquery-editable/css/jquery-editable.css" rel="stylesheet"/>
+
     <%= csrf_meta_tags %>
 
     <%= yield(:header) %>
   </head>
   <body>
     <%= render partial: "shared/header" %>
+    <%= render partial: "shared/notifications" %>
+
     <%= yield %>
+
     <%= render partial: "shared/footer" %>
     <!-- Javascripts
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= render partial: 'layouts/shared/external_javascripts' %>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/jquery-editable/js/jquery-editable-poshytip.min.js"></script>
     <%= yield(:javascript) %>
   </body>
 </html>

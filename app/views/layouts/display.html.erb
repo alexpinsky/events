@@ -4,11 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <%= render partial: "layouts/og_tags", locals: {event: @event} %>
-    
+
     <title>
       <%= content_for?(:title) ? yield(:title) : "Event" %>
     </title>
-    
+
     <%= favicon_link_tag shared_assets_url 'favicon.ico' %>
     <%= stylesheet_link_tag  "display" %>
     <%= render partial: 'layouts/shared/external_stylesheets' %>

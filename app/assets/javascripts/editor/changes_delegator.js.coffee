@@ -32,3 +32,9 @@ class @ChangesDelegator
   onPicRemove: (e) =>
     @event.removePic e
     @view.removePic e
+
+  onSyncClick: (state) =>
+    if state == 'on'
+      @view.addCalendar()
+    else
+      @view.removeCalendar()

@@ -12,6 +12,8 @@
  *= require responsive-nav
  *= require jquery.minicolors
  *= require jquery.modal
+ *= require jquery.timepicker
+ *= require bootstrap-datepicker
  *= require social-share-button
 
  *= require dashboard
@@ -20,8 +22,8 @@
  *= require fonts
  *= require devise
  *= require categories
+ *= require elements
  *= require_tree ./themes
- *= require_tree ./elements
  *= require_tree ./shared
 */
 body { margin: 0 }

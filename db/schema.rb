@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150110112021) do
+ActiveRecord::Schema.define(version: 20150719160534) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(version: 20150110112021) do
     t.string   "font_size_4"
   end
 
+  add_index "appearances", ["event_id"], name: "index_appearances_on_event_id", using: :btree
+
   create_table "categories", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -55,7 +57,11 @@ ActiveRecord::Schema.define(version: 20150110112021) do
     t.integer  "theme_id"
     t.boolean  "is_theme"
     t.string   "text_4"
+    t.boolean  "published",   default: false
   end
+
+  add_index "events", ["url"], name: "index_events_on_url", using: :btree
+  add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
 
   create_table "information", force: true do |t|
     t.integer  "event_id"
@@ -71,6 +77,8 @@ ActiveRecord::Schema.define(version: 20150110112021) do
     t.datetime "updated_at"
     t.boolean  "in_use"
   end
+
+  add_index "information", ["event_id"], name: "index_information_on_event_id", using: :btree
 
   create_table "leads", force: true do |t|
     t.string   "email"
@@ -90,6 +98,9 @@ ActiveRecord::Schema.define(version: 20150110112021) do
     t.boolean  "slideshow"
     t.integer  "order"
   end
+
+  add_index "pictures", ["displayable_id"], name: "index_pictures_on_displayable_id", using: :btree
+  add_index "pictures", ["displayable_type"], name: "index_pictures_on_displayable_type", using: :btree
 
   create_table "songs", force: true do |t|
     t.integer  "listenable_id"

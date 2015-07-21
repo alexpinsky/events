@@ -29,13 +29,26 @@ class @Editor
 
     @form = new Form
       container: @container.find('.form-wrapper')
-      listener: @delegator
+      listener:  @delegator
     @form.themeClick @onThemeClick
-    @form.submitSuccess @onSubmitSuccess
-    @form.submitError @onSubmitError
+
+    @saver = new Saver
+      container: @container.find('.')
+      form:      @form
+      event:     event
+    @saver.success @onSaverSuccess
+    @saver.error   @onSaverError
+    @saver.publish @onSaverPublish
+
+    @saver.init()
     @form.init event: @event
 
+    @publisher = new Publisher
+      container: @container.find('')
+    @publisher.init()
+
     @container.find('.save-wrapper .save').click @onSaveClick
+    @container.find('').click @onPublishClick
 
   initVendors: ->
     addthisevent.refresh()
@@ -72,14 +85,17 @@ class @Editor
     @loadTheme e.category, e.theme
 
   onSaveClick: =>
-    @form.submit()
+    @saver.save()
 
-  onSubmitSuccess: (data) =>
-    Notification.display 'Your event was saved!', 'notice'
+  onSaverSuccess: (data) =>
     # reload the page in edit mode (need to update all fields)
     $.ajax
       url: "/events/#{data.event_id}/edit"
       dataType: "script"
 
-  onSubmitError: =>
-    Notification.display 'Sorry... but something went wrong', 'alert'
+  onSaverError: =>
+
+  onSaverPublish: =>
+
+  onPublishClick: =>
+    

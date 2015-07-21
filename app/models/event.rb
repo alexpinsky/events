@@ -41,12 +41,12 @@ class Event < ActiveRecord::Base
 
   delegate :name, to: :category, prefix: true
 
-  scope :themes, -> () { where('events.is_theme = ?', true) }
-  scope :include_categories, -> () { includes(:category) }
-  scope :with_url, -> () { where('events.url IS NOT NULL') }
-  scope :by_category, -> (category_name) { joins(:category).where('categories.name = ?', category_name) }
-  scope :by_url, -> (url) { where('events.url = ?', url) }
-  scope :by_id, -> (id) { where('events.id = ?', id) }
+  scope :themes,             -> ()              { where('events.is_theme = ?', true) }
+  scope :include_categories, -> ()              { includes(:category) }
+  scope :with_url,           -> ()              { where('events.url IS NOT NULL') }
+  scope :by_category,        -> (category_name) { joins(:category).where('categories.name = ?', category_name) }
+  scope :by_url,             -> (url)           { where('events.url = ?', url) }
+  scope :by_id,              -> (id)            { where('events.id = ?', id) }
 
   MAX_PICTURES_SIZE = 4
 

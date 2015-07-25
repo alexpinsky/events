@@ -172,7 +172,7 @@ $border-color: rgb(127, 159, 255);
           position: relative;
           overflow: hidden;
           .display {
-            z-index: 900;
+            z-index: 1;
             font-size: 62%;
             position: absolute;
             top: 0;
@@ -198,6 +198,9 @@ $border-color: rgb(127, 159, 255);
       }
     }
   }
+  .modals {
+    @import 'editor/modals';
+  }
 }
 .page-wrapper.editor:before {
   display: none;
@@ -208,5 +211,11 @@ $border-color: rgb(127, 159, 255);
     url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/templates_icon_hover.svg')
     url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/text_icon_hover.svg')
     url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/pictures_icon_hover.svg')
-    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/calendar_icon_hover.svg');
+    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/calendar_icon_hover.svg')
+    url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/save.png")
+    url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/save_hover.png")
+    url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/cancel.png")
+    url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/cancel_hover.png")
+    url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/done.png")
+    url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/done_hover.png");
 }

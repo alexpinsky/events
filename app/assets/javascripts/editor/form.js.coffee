@@ -7,6 +7,8 @@ class @Form
     @form = @container.find('form')
     @form.submit @onSubmit
 
+    @nameInput = @container.find('input#event_name')
+
     accordion = new Accordion container: @container.find('.accordion')
     accordion.init()
 
@@ -41,9 +43,6 @@ class @Form
   themeClick: (handler) ->
     @themeHandler = handler
 
-  submitSuccess: (handler) ->
-    @successHandler = handler
-
   submitError: (handler) ->
     @errorHandler = handler
 
@@ -51,7 +50,15 @@ class @Form
     @text.updateFromEvent event
     @pics.updateFromEvent event
 
-  submit: ->
+  updateName: (name) ->
+    @nameInput.val name
+
+  isNamePresent: ->
+    console.log "isNamePresent: #{@nameInput.val() != ''}"
+    @nameInput.val() != ''
+
+  submit: (args) ->
+    @successHandler = args.success
     @form.submit()
 
   destroy: ->

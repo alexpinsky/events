@@ -1,54 +1,56 @@
-class Saver
-  constructor: (arguments) ->
-    @container = arguments.container
-    @event     = arguments.event
-    @form      = arguments.form
+class @Saver
+  constructor: (args) ->
+    @container = args.container
+    @event     = args.event
+    @form      = args.form
 
   init: ->
-    @form.submitSuccess @onSubmitSuccess
-    @form.submitError   @onSubmitError
+    @form.submitError @onSubmitError
 
-    @saveModal = new SaveModal container: @container.find('saveModal')
+    @saveModal = new SaveModal modal: @container.find('#save-event')
     @saveModal.save   @onSaveModalSave
-    @saveModal.cancel @onSaveModalCancel
+    @saveModal.close  @onSaveModalClose
+    @saveModal.init()
 
-    @savedModal = new SavedModal container: @container.find('savedModal')
-    @savedModal.pubilsh @onSavedModalPublish
-    @savedModal.done    @onSavedModalDone
+    @savedModal = new SavedModal modal: @container.find('#event-saved')
+    @savedModal.publish @onSavedModalPublish
+    @savedModal.close   @onSavedModalClose
+    @savedModal.init()
 
-  save: ->
-    if @event.isNameless
-      @saveModal.show()
-    else
-      @form.submit()
-
-  success: (handler) ->
-    @successHandler = handler
+  close: (handler) ->
+    @closeHandler = handler
 
   error: (handler) ->
     @errorHandler = handler
 
-  publish: (handler) ->
+  afterSavePublish: (handler) ->
     @publishHandler = handler
 
-  onSubmitSuccess: (data) =>
-    Notification.display 'Your event was saved!', 'notice'
-    @savedModal.show()
-    @successHandler data
+  save: (args) ->
+    if @form.isNamePresent()
+      @submit callback: (data) ->
+        Notification.display 'Your event was saved!', 'notice'
+        args.success data
+    else
+      @saveModal.show()
+
+  submit: (args) ->
+    @form.submit success: (data) -> args.callback data
 
   onSubmitError: =>
-    Notification.display 'Sorry... but something went wrong', 'alert'
     @errorHandler()
 
   onSaveModalSave: (data) =>
     @form.updateName data.name
-    @save()
+    @submit callback: (data) =>
+      @savedModal.show()
 
-  onSaveModalCancel: =>
+  onSaveModalClose: =>
     @saveModal.hide()
 
-  onSavedModalDone: =>
+  onSavedModalClose: =>
     @savedModal.hide()
+    @closeHandler()
 
   onSavedModalPublish: =>
     @publishHandler()

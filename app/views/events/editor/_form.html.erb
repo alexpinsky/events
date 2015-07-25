@@ -2,6 +2,7 @@
 <%= form_for event, html: { id: '', class: '' }, remote: true do |event_form| %>
   <%= event_form.hidden_field :theme_id %>
   <%= event_form.hidden_field :category_id %>
+  <%= event_form.hidden_field :name %>
   <div class='accordion'>
     <div class='panel panel-1 templates' data-name='templates'>
       <div class='panel-header'>

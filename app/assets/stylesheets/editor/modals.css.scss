@@ -1,0 +1,100 @@
+.modal {
+  height: 250px;
+  width: 600px;
+  border-radius: 0 !important;
+  border: 1px solid rgb(127, 159, 255);
+  .close-modal {
+    background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/x.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    top: 2px;
+    right: 2px;
+    width: 20px;
+  }
+  .modal-logo {
+    background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/peggy.svg");
+    width: 92px;
+    height: 127px;
+    position: absolute;
+    background-repeat: no-repeat;
+    top: -126px;
+  }
+  .modal-header {
+    color: #4d4d4d;
+    font-family: 'Quattrocento Sans', sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+    padding-top: 10px;
+  }
+  .modal-actions {
+    margin-top: 10px;
+    a {
+      background-repeat: no-repeat;
+      width: 100px;
+      height: 27px;
+      display: inline-block;
+    }
+  }
+  .modal-text {
+    font-family: 'Quattrocento Sans', sans-serif;
+    color: rgb(77, 77, 77);
+    margin-top: 22px;
+    width: 500px;
+    font-size: 18px;
+  }
+}
+
+#save-event {
+  input {
+    font-family: 'Quattrocento Sans', sans-serif;
+    color: #7f9fff;
+    font-size: 18px;
+    border: 1px solid #7f9fff;
+    height: 28px;
+    width: 400px;
+    margin-top: 25px;
+    padding-left: 7px;
+  }
+  input {
+    outline: none;
+  }
+  .modal-actions {
+    .save {
+      background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/save.png");
+      background-size: cover;
+    }
+    .save:hover {
+      background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/save_hover.png");
+      background-size: cover;
+    }
+    .cancel {
+      background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/cancel.png");
+      background-size: cover;
+      margin-left: 5px;
+    }
+    .cancel:hover {
+      background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/cancel_hover.png");
+      background-size: cover;
+    }
+  }
+}
+
+#event-saved {
+  .modal-text {
+    width: 397px;
+    a {
+      color: rgb(127, 159, 255);
+    }
+  }
+  .modal-actions {
+    margin-top: 20px;
+    .done {
+      background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/done.png");
+      background-size: cover;
+    }
+    .done:hover {
+      background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/done_hover.png");
+      background-size: cover;
+    }
+  }
+}

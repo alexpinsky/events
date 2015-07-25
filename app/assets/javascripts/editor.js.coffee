@@ -33,22 +33,23 @@ class @Editor
     @form.themeClick @onThemeClick
 
     @saver = new Saver
-      container: @container.find('.')
+      container: @container.find('.modals')
       form:      @form
-      event:     event
-    @saver.success @onSaverSuccess
-    @saver.error   @onSaverError
-    @saver.publish @onSaverPublish
+      event:     @event
+    @saver.close            @onSaverClose
+    @saver.error            @onSaverError
+    @saver.afterSavePublish @onAfterSavePublish
 
     @saver.init()
     @form.init event: @event
 
     @publisher = new Publisher
       container: @container.find('')
+    @publisher.close @onPublisherClose
     @publisher.init()
 
     @container.find('.save-wrapper .save').click @onSaveClick
-    @container.find('').click @onPublishClick
+    @container.find('').click                    @onPublishClick
 
   initVendors: ->
     addthisevent.refresh()
@@ -81,21 +82,27 @@ class @Editor
       complete: ->
         Loader.off()
 
+  loadEvent: (args) ->
+    $.ajax
+      url: "/events/#{args.event_id}/edit"
+      dataType: "script"
+
   onThemeClick: (e) =>
     @loadTheme e.category, e.theme
 
   onSaveClick: =>
-    @saver.save()
-
-  onSaverSuccess: (data) =>
-    # reload the page in edit mode (need to update all fields)
-    $.ajax
-      url: "/events/#{data.event_id}/edit"
-      dataType: "script"
-
-  onSaverError: =>
-
-  onSaverPublish: =>
+    @saver.save success: (data) => @loadEvent data
 
   onPublishClick: =>
-    
+    @saver.save success: -> @onAfterSavePublish()
+
+  onAfterSavePublish: =>
+    @publisher.publish()
+
+  onSaverError: (data) =>
+    Notification.display 'Sorry... but something went wrong', 'alert'
+
+  onSaverClose: (data) =>
+    @loadEvent event_id: data.event_id
+
+  onPublisherClose: =>

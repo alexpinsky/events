@@ -15,7 +15,7 @@ class EventsController < ApplicationController
   }
 
   def index
-    @events = current_user.events.includes(:category, :theme, :pictures)
+    @events = current_user.events.includes(:category, :theme, :pictures).order('events.updated_at DESC')
   end
 
   def show

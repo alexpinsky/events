@@ -51,12 +51,13 @@ class Event < ActiveRecord::Base
   MAX_PICTURES_SIZE = 4
 
   def self.copy_from_theme(theme, options = {})
-    event = theme.dup
-    event.theme = theme
+    event          = theme.dup
+    event.theme    = theme
+    event.name     = nil
     event.is_theme = false
+    event.user     = options[:user]
     event.update_appearance theme.appearance
     event.build_missing
-    event.user = options[:user]
     event
   end
 

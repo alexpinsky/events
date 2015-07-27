@@ -77,9 +77,9 @@ class @Form
       data: formData
       mimeType: "multipart/form-data"
       dataType: 'json'
-      contentType: false,
-      cache: false,
-      processData:false,
+      contentType: false
+      cache: false
+      processData: false
       success: (data, textStatus, jqXHR) =>
         @successHandler data
       error: (jqXHR, textStatus, errorThrown) =>

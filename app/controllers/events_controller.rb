@@ -96,14 +96,12 @@ class EventsController < ApplicationController
     end
   end
 
-  def reload_preview
-    @event = current_user.events.includes(:pictures, :appearance, :information, :song).find params[:id]
+  def publish
+    
   end
 
-  def publish
-    # event make public and other stuff
-    @event = current_user.events.find(params[:id])
-    redirect_to new_event_post_path(@event)
+  def unpublish
+    
   end
 
   private

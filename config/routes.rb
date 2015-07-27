@@ -15,8 +15,8 @@ Events::Application.routes.draw do
   resources :categories
   resources :events do
     member do
-      get 'reload_preview'
-      get 'publish'
+      put 'publish'
+      put 'unpublish'
     end
   end
   resources :leads, only: :create

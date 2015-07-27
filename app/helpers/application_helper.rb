@@ -1,4 +1,7 @@
 module ApplicationHelper
+  def event_url(event)
+    event.url.present? ? event.url : "events/#{event.id}"
+  end
 
   def time_format(time = nil)
     return '' unless time

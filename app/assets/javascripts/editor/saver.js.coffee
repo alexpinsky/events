@@ -1,15 +1,14 @@
 class @Saver
   constructor: (args) ->
     @container = args.container
-    @event     = args.event
     @form      = args.form
 
   init: ->
     @form.submitError @onSubmitError
 
     @saveModal = new SaveModal modal: @container.find('#save-event')
-    @saveModal.save   @onSaveModalSave
-    @saveModal.close  @onSaveModalClose
+    @saveModal.save  @onSaveModalSave
+    @saveModal.close @onSaveModalClose
     @saveModal.init()
 
     @savedModal = new SavedModal modal: @container.find('#event-saved')

@@ -33,7 +33,7 @@ class @Editor
     @form.themeClick @onThemeClick
 
     @saver = new Saver
-      container: @container.find('.modals')
+      container: @container.find('.modals .save-modals')
       form:      @form
       event:     @event
     @saver.close            @onSaverClose
@@ -43,13 +43,16 @@ class @Editor
     @saver.init()
     @form.init event: @event
 
+    publishContainer = @container.find('.modals .publish-modals')
     @publisher = new Publisher
-      container: @container.find('')
+      container: publishContainer
+      root_url:  @container.data('root-url')
+      url:       publishContainer.data('event-url')
     @publisher.close @onPublisherClose
     @publisher.init()
 
-    @container.find('.save-wrapper .save').click @onSaveClick
-    @container.find('').click                    @onPublishClick
+    @container.find('.save-wrapper .save').click       @onSaveClick
+    @container.find('.publish-wrapper .publish').click @onPublishClick
 
   initVendors: ->
     addthisevent.refresh()
@@ -94,10 +97,11 @@ class @Editor
     @saver.save success: (data) => @loadEvent data
 
   onPublishClick: =>
-    @saver.save success: -> @onAfterSavePublish()
+    # @saver.save success: (data) => @onAfterSavePublish data
+    @onAfterSavePublish { event_id: 40 }
 
-  onAfterSavePublish: =>
-    @publisher.publish()
+  onAfterSavePublish: (data) =>
+    @publisher.publish event_id: data.event_id, root_url: @rootUrl
 
   onSaverError: (data) =>
     Notification.display 'Sorry... but something went wrong', 'alert'
@@ -105,4 +109,5 @@ class @Editor
   onSaverClose: (data) =>
     @loadEvent event_id: data.event_id
 
-  onPublisherClose: =>
+  onPublisherClose: (data) =>
+    @loadEvent data

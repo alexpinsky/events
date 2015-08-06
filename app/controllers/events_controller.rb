@@ -5,6 +5,12 @@ class EventsController < ApplicationController
 
   skip_before_filter :authenticate_user!, only: :show
 
+  before_filter :set_event, only: [
+    :update,
+    :destroy,
+    :publish,
+    :unpublish
+  ]
   before_filter :set_theme, only: :new
   before_filter :set_categories, only: [:new, :edit]
 
@@ -77,8 +83,6 @@ class EventsController < ApplicationController
   end
 
   def update
-    @event = current_user.events.find params[:id]
-
     if @event.update_attributes event_params
       render json: { event_id: @event.id }, status: :ok
     else
@@ -87,8 +91,6 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    @event = current_user.events.find params[:id]
-
     if @event.destroy
       redirect_to events_path
     else
@@ -97,11 +99,15 @@ class EventsController < ApplicationController
   end
 
   def publish
-    
+    if @event.update_attributes url: params[:url], published: true
+      render json: { url: @event.full_url }, status: :ok
+    else
+      render json: @event.errors.full_messages.join(', '), status: :bad_request
+    end
   end
 
   def unpublish
-    
+
   end
 
   private
@@ -160,6 +166,10 @@ class EventsController < ApplicationController
     params[:event][:pictures_attributes].keep_if do |key, value|
       value[:image].present? || value[:_destroy] == 'true' # => don't save just the order & slideshow
     end
+  end
+
+  def set_event
+    @event = current_user.events.find params[:id]
   end
 
   def set_theme

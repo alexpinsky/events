@@ -34,6 +34,15 @@
       height: 27px;
       display: inline-block;
     }
+    .cancel {
+      background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/cancel.png");
+      background-size: cover;
+      margin-left: 5px;
+    }
+    .cancel:hover {
+      background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/cancel_hover.png");
+      background-size: cover;
+    }
   }
   .modal-text {
     font-family: 'Quattrocento Sans', sans-serif;
@@ -42,21 +51,23 @@
     width: 500px;
     font-size: 18px;
   }
+  .input-style {
+    font-family: 'Quattrocento Sans', sans-serif;
+    font-size: 18px;
+  }
+  input {
+    color: #7f9fff;
+    border: 1px solid #7f9fff;
+    height: 28px;
+    padding-left: 7px;
+    outline: none;
+  }
 }
 
 #save-event {
   input {
-    font-family: 'Quattrocento Sans', sans-serif;
-    color: #7f9fff;
-    font-size: 18px;
-    border: 1px solid #7f9fff;
-    height: 28px;
-    width: 400px;
     margin-top: 25px;
-    padding-left: 7px;
-  }
-  input {
-    outline: none;
+    width: 400px;
   }
   .modal-actions {
     .save {
@@ -65,15 +76,6 @@
     }
     .save:hover {
       background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/save_hover.png");
-      background-size: cover;
-    }
-    .cancel {
-      background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/cancel.png");
-      background-size: cover;
-      margin-left: 5px;
-    }
-    .cancel:hover {
-      background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/cancel_hover.png");
       background-size: cover;
     }
   }
@@ -94,6 +96,32 @@
     }
     .done:hover {
       background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/done_hover.png");
+      background-size: cover;
+    }
+  }
+}
+
+#publish-event {
+  .modal-header {
+    font-weight: normal;
+  }
+  .url-wrapper {
+    margin-top: 25px;
+    .input-style {
+      display: inline-block;
+    }
+    input {
+      display: inline-block;
+      width: 200px;
+    }
+  }
+  .modal-actions {
+    .publish {
+      background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/publish.png");
+      background-size: cover;
+    }
+    .publish:hover {
+      background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/publish_hover.png");
       background-size: cover;
     }
   }

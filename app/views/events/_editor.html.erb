@@ -1,4 +1,4 @@
-<div class='page-wrapper editor' data-root-url="<%= ENV['ROOT_URL'] %>">
+<div class='page-wrapper editor'>
   <div class='page-container'>
     <div class='top'>
       <div class='borderholder-1'></div>
@@ -39,8 +39,8 @@
       <%= render partial: "events/editor/modals/save_event" %>
       <%= render partial: "events/editor/modals/event_saved" %>
     </div>
-    <div class='publish-modals' data-event-url="<%= event_url(event) %>">
-      <%= render partial: "events/editor/modals/publish_event" %>
+    <div class='publish-modals'>
+      <%= render partial: "events/editor/modals/publish_event", locals: { event: event } %>
     </div>
   </div>
 </div>

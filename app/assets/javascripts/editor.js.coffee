@@ -46,8 +46,6 @@ class @Editor
     publishContainer = @container.find('.modals .publish-modals')
     @publisher = new Publisher
       container: publishContainer
-      root_url:  @container.data('root-url')
-      url:       publishContainer.data('event-url')
     @publisher.close @onPublisherClose
     @publisher.init()
 
@@ -98,7 +96,7 @@ class @Editor
 
   onPublishClick: =>
     # @saver.save success: (data) => @onAfterSavePublish data
-    @onAfterSavePublish { event_id: 40 }
+    @onAfterSavePublish { event_id: 16 }
 
   onAfterSavePublish: (data) =>
     @publisher.publish event_id: data.event_id, root_url: @rootUrl

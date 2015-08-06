@@ -104,7 +104,12 @@ class Event < ActiveRecord::Base
   end
 
   def published?
+    # published
     false
+  end
+
+  def full_url
+    "#{ENV['ROOT_URL']}#{url}"
   end
 
   def views_count

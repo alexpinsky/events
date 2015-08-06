@@ -104,8 +104,7 @@ class Event < ActiveRecord::Base
   end
 
   def published?
-    # published
-    false
+    published
   end
 
   def full_url

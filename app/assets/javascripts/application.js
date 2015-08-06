@@ -38,6 +38,7 @@
 //= require jquery.datepair.min
 //= require bootstrap-datepicker
 //= require datepair.min
+//= require ZeroClipboard.min
 
 $(document).ready(function() {
   App.start();

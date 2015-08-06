@@ -5,7 +5,7 @@ class @Editor
       prevEditor.destroy()
       prevEditor = null
 
-    event = new Event persistence: new DOMPersistence
+    event = new Event id: $('.event').data('event'), persistence: new DOMPersistence
     event.init()
 
     editor = new Editor container: $('.page-wrapper.editor'), event: event
@@ -51,6 +51,7 @@ class @Editor
 
     @container.find('.save-wrapper .save').click       @onSaveClick
     @container.find('.publish-wrapper .publish').click @onPublishClick
+    @container.find('.publish-wrapper .unpublish').click @onUnpublishClick
 
   initVendors: ->
     addthisevent.refresh()
@@ -66,11 +67,9 @@ class @Editor
   loadTheme: (category, theme) ->
     @event.save()
 
-    eventId = $('.event').data('event')
-
-    if eventId
+    if @event.id
       # edit mode -> use event for display
-      url = "/events/#{eventId}/edit"
+      url = "/events/#{@event.id}/edit"
     else
       # new mode -> use the theme for display
       url = '/events/new'
@@ -85,7 +84,7 @@ class @Editor
 
   loadEvent: (args) ->
     $.ajax
-      url: "/events/#{args.event_id}/edit"
+      url: "/events/#{@event.id}/edit"
       dataType: "script"
 
   onThemeClick: (e) =>
@@ -98,6 +97,8 @@ class @Editor
     # @saver.save success: (data) => @onAfterSavePublish data
     @onAfterSavePublish { event_id: 16 }
 
+  onUnpublishClick: =>
+
   onAfterSavePublish: (data) =>
     @publisher.publish event_id: data.event_id, root_url: @rootUrl
 
@@ -105,7 +106,8 @@ class @Editor
     Notification.display 'Sorry... but something went wrong', 'alert'
 
   onSaverClose: (data) =>
+    console.log data
     @loadEvent event_id: data.event_id
 
   onPublisherClose: (data) =>
-    @loadEvent data
+    @loadEvent event_id: data.event_id

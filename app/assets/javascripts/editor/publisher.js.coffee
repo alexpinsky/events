@@ -11,7 +11,8 @@ class @Publisher
 
     @publishedModal = new PublishedModal
       modal:    @container.find '#event-published'
-      root_url: @root_url
+    @publishedModal.close @onPublishedModalClose
+    @publishedModal.init()
 
   close: (handler) ->
     @closeHandler = handler
@@ -44,5 +45,9 @@ class @Publisher
   onPublishModalClose: =>
     @publishModal.hide()
 
-  onPublishSuccess: (data) =>
-    @publishedModal.show url: data.url
+  onPublishedModalClose: =>
+    @publishedModal.hide()
+    @closeHandler event_id: @eventId
+
+  onPublishSuccess: (url) =>
+    @publishedModal.show url

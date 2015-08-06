@@ -54,7 +54,6 @@ class @Form
     @nameInput.val name
 
   isNamePresent: ->
-    console.log "isNamePresent: #{@nameInput.val() != ''}"
     @nameInput.val() != ''
 
   submit: (args) ->

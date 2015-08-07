@@ -5,7 +5,7 @@ class @PublishedModal
   init: ->
     @input   = @modal.find('.url-wrapper input')
     @copyBtn = @modal.find('.modal-actions .copy')
-    ZeroClipboard.config swfPath: "https://s3-eu-west-1.amazonaws.com/events-assets-static/shared/ZeroClipboard.swf"
+    ZeroClipboard.config swfPath: "http://s3-eu-west-1.amazonaws.com/events-assets-static/shared/ZeroClipboard.swf"
     @client  = new ZeroClipboard @copyBtn
 
     @client.on 'ready', ((e) =>

@@ -128,5 +128,31 @@
 }
 
 #event-published {
-  
+  .modal-header {
+    font-weight: normal;
+  }
+  .url-wrapper {
+    margin-top: 10px;
+    input {
+      width: 422px;
+    }
+  }
+  .modal-actions {
+    .copy {
+      background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/copy.png");
+      background-size: cover;
+    }
+    .copy:hover {
+      background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/copy_hover.png");
+      background-size: cover;
+    }
+    .done {
+      background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/done.png");
+      background-size: cover;
+    }
+    .done:hover {
+      background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/done_hover.png");
+      background-size: cover;
+    }
+  }
 }

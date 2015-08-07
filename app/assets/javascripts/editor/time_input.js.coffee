@@ -5,7 +5,7 @@ class @TimeInput
 
   init: ->
     currentVal = @bindInput.val()
-    time = currentVal.split(' ')[1]
+    time = currentVal.split(' ')[1] if currentVal
 
     @input.val time
     @input.timepicker

@@ -36,8 +36,8 @@ class @Editor
       container: @container.find('.modals .save-modals')
       form:      @form
       event:     @event
-    @saver.close            @onSaverClose
-    @saver.error            @onSaverError
+    @saver.close @onSaverClose
+    @saver.error @onSaverError
     @saver.afterSavePublish @onAfterSavePublish
 
     @saver.init()
@@ -47,11 +47,12 @@ class @Editor
     @publisher = new Publisher
       container: publishContainer
     @publisher.close @onPublisherClose
+    @publisher.afterUnpublish @afterUnpublish
     @publisher.init()
 
-    @container.find('.save-wrapper .save').click       @onSaveClick
+    @container.find('.save-wrapper .save').click @onSaveClick
     @container.find('.publish-wrapper .publish').click @onPublishClick
-    @container.find('.publish-wrapper .unpublish').click @onUnpublishClick
+    @container.find('.unpublish-wrapper .unpublish').click @onUnpublishClick
 
   initVendors: ->
     addthisevent.refresh()
@@ -82,7 +83,7 @@ class @Editor
       complete: ->
         Loader.off()
 
-  loadEvent: (args) ->
+  loadEvent: ->
     $.ajax
       url: "/events/#{@event.id}/edit"
       dataType: "script"
@@ -91,13 +92,18 @@ class @Editor
     @loadTheme e.category, e.theme
 
   onSaveClick: =>
-    @saver.save success: (data) => @loadEvent data
+    @saver.save success: @afterEventSave
+
+  afterEventSave: (data) =>
+    Notification.display 'Your event was saved!', 'notice'
+    @event.id = data.event_id
+    @loadEvent()
 
   onPublishClick: =>
-    # @saver.save success: (data) => @onAfterSavePublish data
-    @onAfterSavePublish { event_id: 16 }
+    @saver.save success: (data) => @onAfterSavePublish data
 
   onUnpublishClick: =>
+    @publisher.unpublish event_id: @event.id
 
   onAfterSavePublish: (data) =>
     @publisher.publish event_id: data.event_id, root_url: @rootUrl
@@ -106,8 +112,10 @@ class @Editor
     Notification.display 'Sorry... but something went wrong', 'alert'
 
   onSaverClose: (data) =>
-    console.log data
-    @loadEvent event_id: data.event_id
+    @afterEventSave data
 
   onPublisherClose: (data) =>
-    @loadEvent event_id: data.event_id
+    @loadEvent()
+
+  afterUnpublish: =>
+    @loadEvent()

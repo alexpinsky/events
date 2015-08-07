@@ -17,6 +17,9 @@ class @Publisher
   close: (handler) ->
     @closeHandler = handler
 
+  afterUnpublish: (handler) ->
+    @afterUnpublishHandler = handler
+
   publish: (args) ->
     @eventId = args.event_id
     @publishModal.show event_id: args.event_id
@@ -27,7 +30,8 @@ class @Publisher
       type: 'PUT'
       dataType: 'json'
       success: (data, textStatus, jqXHR) =>
-        Notification.display 'Your event is private now', 'notice'
+        Notification.display data.message, 'notice'
+        @afterUnpublishHandler()
       error: (jqXHR, textStatus, errorThrown) =>
         Notification.display jqXHR.responseText, 'alert'
 

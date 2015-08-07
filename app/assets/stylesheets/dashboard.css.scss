@@ -332,6 +332,7 @@
             display: inline-block;
             color: rgb(255, 140, 0);
             a.unpublish {
+              margin-left: 6px;
               background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/unpublish_btn.svg');
             }
             a.unpublish:hover {

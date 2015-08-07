@@ -108,6 +108,7 @@ class Event < ActiveRecord::Base
   end
 
   def full_url
+    url = self.url.blank? ? "events/#{id}" : self.url
     "#{ENV['ROOT_URL']}#{url}"
   end
 

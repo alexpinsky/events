@@ -5,7 +5,7 @@ class @DateInput
 
   init: ->
     currentVal = @bindInput.val()
-    date = currentVal.split(' ')[0]
+    date = currentVal.split(' ')[0] if currentVal
 
     @input.val date
     @input.datepicker

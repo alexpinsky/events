@@ -60,8 +60,10 @@ $border-color: rgb(127, 159, 255);
         }
         .unpublish-wrapper {
           display: inline-block;
+          margin-right: 12px;
           color: rgb(255, 140, 0);
           a.unpublish {
+            margin-left: 5px;
             background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/unpublish_btn.svg');
           }
           a.unpublish:hover {
@@ -219,5 +221,7 @@ $border-color: rgb(127, 159, 255);
     url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/done.png")
     url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/done_hover.png")
     url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/publish.png")
-    url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/publish_hover.png");
+    url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/publish_hover.png")
+    url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/copy.png")
+    url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/copy_hover.png");
 }

@@ -1,8 +1,4 @@
-require 'action_view/helpers/javascript_helper'
-
 class EventsController < ApplicationController
-  include ActionView::Helpers::JavaScriptHelper
-
   skip_before_filter :authenticate_user!, only: :show
 
   before_filter :set_event, only: [
@@ -13,12 +9,6 @@ class EventsController < ApplicationController
   ]
   before_filter :set_theme, only: :new
   before_filter :set_categories, only: [:new, :edit]
-
-  MESSAGES = {
-    update: {
-      success: "Event was successfully updated"
-    }
-  }
 
   def index
     @events = current_user.events.includes(:category, :theme, :pictures).order('events.updated_at DESC')
@@ -44,7 +34,7 @@ class EventsController < ApplicationController
       .by_id(params[:id]).first
     end
 
-    if @event
+    if @event && (@event.published? || @preview)
       render layout: "display"
     else
       redirect_to root_path
@@ -92,22 +82,42 @@ class EventsController < ApplicationController
 
   def destroy
     if @event.destroy
-      redirect_to events_path
+      redirect_to events_path, notice: 'Your event has been deleted'
     else
-      redirect_to events_path
+      redirect_to events_path, alert: 'Sorry... but something went wrong'
     end
   end
 
   def publish
-    if @event.update_attributes url: params[:url], published: true
-      render json: { url: @event.full_url }, status: :ok
+    if @event.update_attributes publish_params
+      respond_to do |format|
+        message = 'Your event is public now!'
+
+        format.json { render json: { url: @event.full_url, message: message }, status: :ok }
+        format.html { redirect_to events_path, notice: message }
+      end
     else
-      render json: @event.errors.full_messages.join(', '), status: :bad_request
+      respond_to do |format|
+        format.json { render json: @event.errors.full_messages.join(', '), status: :bad_request }
+        format.html { redirect_to events_path }
+      end
     end
   end
 
   def unpublish
+    if @event.update_attribute(:published, false)
+      respond_to do |format|
+        message = 'Your event is private now!'
 
+        format.json { render json: { message: message }, status: :ok }
+        format.html { redirect_to events_path, notice: message }
+      end
+    else
+      respond_to do |format|
+        format.json { render json: {}, status: :bad_request }
+        format.html { redirect_to events_path }
+      end
+    end
   end
 
   private
@@ -153,6 +163,19 @@ class EventsController < ApplicationController
         :start_time,
         :end_time
       ])
+  end
+
+  def publish_params
+    publish_params = { published: true }
+    publish_params.merge!(
+      url: params[:url]
+    ) unless default_route? event_id: @event.id, url: params[:url]
+
+    publish_params
+  end
+
+  def default_route?(args)
+    "events/#{args[:event_id]}" == args[:url]
   end
 
   def sanitaized_params

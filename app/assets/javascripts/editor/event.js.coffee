@@ -1,12 +1,17 @@
 class @Event
   constructor: (options = {}) ->
-    @id          = options.id
     @persistence = options.persistence
+    @id          = options.id
 
   init: ->
-    console.log "eventId: #{@id}"
     @data = @persistence.getData() || { texts: {}, pics: {} }
     @clear()
+
+  id: ->
+    @id
+
+  id: (id) ->
+    @id = id
 
   save: ->
     @persistence.saveData @data
@@ -16,9 +21,6 @@ class @Event
 
   isEmpty: =>
     $.isEmptyObject(@data.texts) && $.isEmptyObject(@data.pics)
-
-  id: ->
-    @id
 
   texts: ->
     @data.texts

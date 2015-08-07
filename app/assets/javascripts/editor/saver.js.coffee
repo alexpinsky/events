@@ -27,8 +27,8 @@ class @Saver
 
   save: (args) ->
     if @form.isNamePresent()
-      @submit callback: (data) ->
-        Notification.display 'Your event was saved!', 'notice'
+      @submit callback: (data) =>
+        @afterSave data
         args.success data
     else
       @saveModal.show()
@@ -36,12 +36,16 @@ class @Saver
   submit: (args) ->
     @form.submit success: (data) -> args.callback data
 
+  afterSave: (data) =>
+    @eventId = data.event_id
+
   onSubmitError: =>
     @errorHandler()
 
   onSaveModalSave: (data) =>
     @form.updateName data.name
     @submit callback: (data) =>
+      @afterSave data
       @savedModal.show()
 
   onSaveModalClose: =>
@@ -49,7 +53,7 @@ class @Saver
 
   onSavedModalClose: =>
     @savedModal.hide()
-    @closeHandler()
+    @closeHandler event_id: @eventId
 
   onSavedModalPublish: =>
     @publishHandler()

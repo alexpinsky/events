@@ -51,17 +51,17 @@
     <div class="actions">
       <% if event.published? %>
         <div class='unpublish-wrapper'>
-          <a class="unpublish" href="#"></a>
+          <a class="unpublish" href="<%= unpublish_event_path event %>" data-method="put"></a>
           <div class='text'>UNPUBLISH</div>
         </div>
       <% else %>
         <div class='publish-wrapper'>
-          <a class="publish" href="#"></a>
+          <a class="publish" href="<%= publish_event_path event %>" data-method="put"></a>
           <div class='text'>PUBLISH</div>
         </div>
       <% end %>
         <div class='delete-wrapper'>
-          <a class="delete" href="<%= event_path event %>" data-method="delete"></a>
+          <a class="delete" href="<%= event_path event %>" data-method="delete" data-confirm="Are you sure?"></a>
           <div class='text'>DELETE</div>
         </div>
     </div>

@@ -105,8 +105,8 @@ class @Editor
   onUnpublishClick: =>
     @publisher.unpublish event_id: @event.id
 
-  onAfterSavePublish: (data) =>
-    @publisher.publish event_id: data.event_id, root_url: @rootUrl
+  onAfterSavePublish: =>
+    @publisher.publish event_id: @event.id
 
   onSaverError: (data) =>
     Notification.display 'Sorry... but something went wrong', 'alert'

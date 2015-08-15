@@ -35,13 +35,6 @@
     </div>
   </div>
   <div class='modals'>
-    <div class='save-modals'>
-      <%= render partial: "events/editor/modals/save_event" %>
-      <%= render partial: "events/editor/modals/event_saved" %>
-    </div>
-    <div class='publish-modals'>
-      <%= render partial: "events/editor/modals/publish_event", locals: { event: event } %>
-      <%= render partial: "events/editor/modals/event_published" %>
-    </div>
+    <%= render partial: "shared/state_modals" %>
   </div>
 </div>

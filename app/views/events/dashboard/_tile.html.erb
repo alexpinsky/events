@@ -1,4 +1,4 @@
-<div class='tile'>
+<div class='tile' data-event-id="<%= event.id %>">
   <div class='tile-header'>
     <div class='name-wrapper name-editor'>
       <div class='name vertical-align'>
@@ -7,11 +7,11 @@
       </div>
     </div>
   </div>
-  <div class='url-wrapper url-editor'>
-    <div class='url vertical-align'>
-      <div class='edit-icon'></div>
-      <%= ENV['ROOT_URL'] %><a href="#" class="event-url" data-type="text" data-url="<%= event_path(event) %>" data-pk="<%= event.id %>" data-value="<%= event_url(event) %>"><%= event_url(event) %></a>
+  <div class='url-wrapper'>
+    <div class='btn-wrapper'>
+      <div class='copy-icon'></div>
     </div>
+    <input type="text" value="<%= "#{ENV['ROOT_URL']}#{event_url(event)}" %>">
   </div>
   <div class='image-wrapper'>
     <div class='image' style="background: url('<%= dashboard_tile_backgroud_for event %>') no-repeat; background-size: cover;">
@@ -51,12 +51,12 @@
     <div class="actions">
       <% if event.published? %>
         <div class='unpublish-wrapper'>
-          <a class="unpublish" href="<%= unpublish_event_path event %>" data-method="put"></a>
+          <div class="unpublish"></div>
           <div class='text'>UNPUBLISH</div>
         </div>
       <% else %>
         <div class='publish-wrapper'>
-          <a class="publish" href="<%= publish_event_path event %>" data-method="put"></a>
+          <div class="publish"></div>
           <div class='text'>PUBLISH</div>
         </div>
       <% end %>

@@ -23,6 +23,8 @@
 //= require templates
 //= require editor
 //= require pages
+//= require state_handler
+//= require_tree ./state_handler
 //= require_tree ./dashboard
 //= require_tree ./editor
 //= require_tree ./elements

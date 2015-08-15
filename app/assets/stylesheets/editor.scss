@@ -201,7 +201,7 @@ $border-color: rgb(127, 159, 255);
     }
   }
   .modals {
-    @import 'editor/modals';
+    @import 'shared/modals';
   }
 }
 .page-wrapper.editor:before {

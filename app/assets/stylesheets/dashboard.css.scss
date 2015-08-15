@@ -48,7 +48,7 @@
         background-color: white;
         padding: 38px 0 18px;
         .name-wrapper {
-          width: 209px;
+          width: 217px;
           height: 49px;
           margin: 0 auto;
           font-family: 'Julius Sans One', sans-serif;
@@ -122,80 +122,43 @@
         }
       }
       .url-wrapper {
-        background-color: white;
-        height: 24px;
+        height: 28px;
         border-top: 1px solid #e7e7e7;
         border-bottom: 1px solid #e7e7e7;
-        font-family: 'Quattrocento Sans', sans-serif;
-        font-size: 12px;
-        color: rgb(176, 176, 176);
-        .edit-icon {
-          background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/edit_icon.svg');
-          width: 20px;
-          height: 20px;
-          display: block;
-          background-repeat: no-repeat;
+        position: relative;
+        .btn-wrapper {
+          background-color: rgb(127, 159, 255);
+          width: 28px;
+          height: 28px;
+          display: inline-block;
           position: absolute;
-          z-index: -9999;
-          left: 5px;
-          bottom: -5px;
+          left: 0;
+          cursor: pointer;
+          .copy-icon {
+            background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/link_btn.svg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 28px;
+            height: 28px;
+          }
+          .copy-icon:hover {
+            background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/link_btn_hover.svg');
+            background-size: cover;
+          }
         }
-        a {
+        input {
+          border: none;
+          height: 26px;
+          width: 237px;
+          font-family: 'Quattrocento Sans', sans-serif;
+          font-size: 12px;
           color: rgb(176, 176, 176);
-          text-decoration: none;
-          border-bottom: none;
+          right: 0;
+          position: absolute;
+          padding-left: 7px;
         }
-        .editable-container {
-          input {
-            border: none;
-            height: 20px;
-            width: 269px;
-            position: absolute;
-            left: 0;
-            text-align: center;
-            font-family: 'Quattrocento Sans', sans-serif;
-            font-size: 12px;
-            color: rgb(176, 176, 176);
-          }
-          input:focus {
-            outline: none;
-          }
-          .editable-buttons {
-            position: absolute;
-            bottom: -4px;
-            right: 5px;
-            margin: 0;
-            button {
-              width: 10px;
-              height: 10px;
-              display: block;
-              background-repeat: no-repeat;
-              border: none;
-              color: transparent;
-              overflow: hidden;
-              margin: 0;
-              padding: 0;
-            }
-            button:focus {
-              outline: none;
-            }
-            button.editable-submit {
-              background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/ok_btn.svg');
-              margin-right: 2px;
-              display: inline-block;
-            }
-            button.editable-cancel {
-              background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/cancel_btn.svg');
-              display: inline-block;
-            }
-          }
-        }
-      }
-      .url-wrapper:hover {
-        background-color: rgb(245, 247, 255);
-        border: 1px solid rgb(127, 159, 255);
-        a {
-          color: rgb(127, 159, 255);
+        input:focus {
+          outline: none;
         }
       }
       .image-wrapper {
@@ -319,23 +282,33 @@
             }
           }
           .publish-wrapper {
+            cursor: pointer;
             display: inline-block;
             color: rgb(8, 212, 204);
-            a.publish {
+            .publish {
               background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/publish_btn.svg');
+              width: 52px;
+              height: 51px;
+              background-repeat: no-repeat;
+              display: block;
             }
-            a.publish:hover {
+            .publish:hover {
               background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/publish_btn_hover.svg');
             }
           }
           .unpublish-wrapper {
+            cursor: pointer;
             display: inline-block;
             color: rgb(255, 140, 0);
-            a.unpublish {
+            width: 52px;
+            height: 51px;
+            background-repeat: no-repeat;
+            display: block;
+            .unpublish {
               margin-left: 6px;
               background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/unpublish_btn.svg');
             }
-            a.unpublish:hover {
+            .unpublish:hover {
               background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/unpublish_btn_hover.svg');
             }
           }
@@ -352,5 +325,7 @@
     url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/categories/edit_btn_hover.svg')
     url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/delete_btn_hover.svg')
     url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/publish_btn_hover.svg')
-    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/unpublish_btn_hover.svg');
+    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/unpublish_btn_hover.svg')
+    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/link_btn.svg')
+    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/link_btn_hover.svg');
 }

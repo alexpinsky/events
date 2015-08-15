@@ -8,19 +8,15 @@ class @Dashboard
     @container = options.container
 
   init: ->
-    @initNameEditors()
-    @initUrlEditors()
+    @stateHandler = new StateHandler
+    @stateHandler.init()
 
-  initNameEditors: ->
-    @container.find(".name-editor").each ->
-      nameEditor = new NameEditor
-        container: $(this)
-        editable: $(this).find(".event-name")
-      nameEditor.init()
-
-  initUrlEditors: ->
-    @container.find(".url-editor").each ->
-      urlEditor = new UrlEditor
-        container: $(this)
-        editable: $(this).find(".event-url")
-      urlEditor.init()
+    @container.find('.tile').not('.placeholder').each (tile) =>
+      tileObj = $(tile)
+      tile = new Tile
+        container: tileObj,
+        stateHandler: @stateHandler
+        eventId: tileObj.data('event-id')
+      tile.publish   @onPublish
+      tile.unpublish @onUnpublish
+      tile.init()

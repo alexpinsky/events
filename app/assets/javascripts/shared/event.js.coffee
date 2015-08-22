@@ -1,17 +1,18 @@
 class @Event
-  constructor: (options = {}) ->
-    @persistence = options.persistence
-    @id          = options.id
+  constructor: (args) ->
+    @persistence = args.persistence
+    @id          = args.id
+    @name        = args.name
 
   init: ->
     @data = @persistence.getData() || { texts: {}, pics: {} }
     @clear()
 
-  id: ->
-    @id
+  id: -> @id
+  id: (id) -> @id = id
 
-  id: (id) ->
-    @id = id
+  name: -> @name
+  name: (name) -> @name = name
 
   save: ->
     @persistence.saveData @data

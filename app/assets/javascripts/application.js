@@ -24,10 +24,11 @@
 //= require editor
 //= require pages
 //= require state_handler
+//= require_tree ./shared
+//= require_tree ./elements
 //= require_tree ./state_handler
 //= require_tree ./dashboard
 //= require_tree ./editor
-//= require_tree ./elements
 
 // External Plugins
 
@@ -41,6 +42,8 @@
 //= require bootstrap-datepicker
 //= require datepair.min
 //= require ZeroClipboard.min
+//= require jquery-editable-poshytip.min
+//= require slick.min
 
 $(document).ready(function() {
   App.start();

@@ -43,9 +43,6 @@ class @Form
   themeClick: (handler) ->
     @themeHandler = handler
 
-  submitError: (handler) ->
-    @errorHandler = handler
-
   updateFromEvent: (event) ->
     @text.updateFromEvent event
     @pics.updateFromEvent event
@@ -58,6 +55,8 @@ class @Form
 
   submit: (args) ->
     @successHandler = args.success
+    @errorHandler   = args.success
+
     @form.submit()
 
   destroy: ->

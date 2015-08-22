@@ -1,48 +1,42 @@
 class @Tile
   constructor: (args) ->
     @container    = args.container
-    @eventId      = args.eventId
+    @event        = args.event
     @stateHandler = args.stateHandler
+    @editable     = new Editable target: @container.find('.event-name')
 
   updateIcon: (icon) =>
 
-  updateName: (name) =>
+  onNameSave: (data) =>
+    @event.name = data.newName
 
   onPublishClick: (e) =>
     @stateHandler.publish
-      eventId: @eventId
-      success: @onPublishSuccess
-      error:   @onPublishError
+      event:      @event
+      submitable: @editable
+      saved:      @onSaved
+      published:  @onPublished
+      error:      @onPublishError
 
   onUpublishClick: (e) =>
     @stateHandler.unpublish
-      eventId: @eventId
-      success: @onUnpublishSuccess
-      error:   @onUnpublishError
+      event:       @event
+      unpublished: @onUnpublished
+      error:       @onUnpublishError
 
-  onPublishSuccess: (data) =>
-    @updateName data.eventName
+  onPublished: (data) =>
     @updateIcon 'unpublish'
 
-  onUnpublishSuccess: (data) =>
+  onUnpublished: (data) =>
     @updateIcon 'publish'
 
   onPublishError: (data) =>
   onUnpublishError: (data) =>
+  onSaved: (data) =>
 
   init: ->
-    @initInlineUpdate()
+    @editable.save @onNameSave
+    @editable.init()
+
     @container.find('.actions .publish').click   @onPublishClick
     @container.find('.actions .unpublish').click @onUnpublishClick
-
-  initInlineUpdate: ->
-    @container.find('.name-editor').editable
-      mode: 'inline'
-      clear: false
-      ajaxOptions:
-        type: 'put'
-        dataType: 'json'
-      params: (params) ->
-        event: {
-          name: params.value
-        }

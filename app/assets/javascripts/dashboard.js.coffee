@@ -8,15 +8,14 @@ class @Dashboard
     @container = options.container
 
   init: ->
-    @stateHandler = new StateHandler
-    @stateHandler.init()
+    @stateHandler = new StateHandler container: @container
 
-    @container.find('.tile').not('.placeholder').each (tile) =>
-      tileObj = $(tile)
+    @container.find('.tile').not('.placeholder').each (i, tileElement) =>
+      tileObj = $(tileElement)
       tile = new Tile
         container: tileObj,
         stateHandler: @stateHandler
-        eventId: tileObj.data('event-id')
-      tile.publish   @onPublish
-      tile.unpublish @onUnpublish
+        event: new Event
+          id: tileObj.data('event-id')
+          persistence: new FakePersistence
       tile.init()

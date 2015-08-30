@@ -4,12 +4,12 @@
   border-radius: 0 !important;
   border: 1px solid rgb(127, 159, 255);
   .close-modal {
-    background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/x.png");
-    background-repeat: no-repeat;
-    background-size: contain;
-    top: 2px;
-    right: 2px;
-    width: 20px;
+    background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/x.png") !important;
+    background-repeat: no-repeat !important;
+    background-size: contain !important;
+    top: 2px !important;
+    right: 2px !important;
+    width: 20px !important;
   }
   .modal-logo {
     background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/peggy.svg");

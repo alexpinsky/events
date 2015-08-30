@@ -49,9 +49,14 @@ class EventsController < ApplicationController
     @event = current_user.events.new event_params
 
     if @event.save
-      render json: { event_id: @event.id }, status: :ok
+      render json: {
+        event:   { id: @event.id, name: @event.name },
+        message: 'Your event was saved!'
+      }, status: :ok
     else
-      render json: {}, status: :bad_request
+      render json: {
+        message: @event.errors.full_messages.join(', ')
+      }, status: :bad_request
     end
   end
 
@@ -74,9 +79,14 @@ class EventsController < ApplicationController
 
   def update
     if @event.update_attributes event_params
-      render json: { event_id: @event.id }, status: :ok
+      render json: {
+        event:   { id: @event.id, name: @event.name },
+        message: 'Your event was saved!'
+      }, status: :ok
     else
-      render json: {}, status: :bad_request
+      render json: {
+        message: @event.errors.full_messages.join(', ')
+      }, status: :bad_request
     end
   end
 
@@ -93,7 +103,16 @@ class EventsController < ApplicationController
       respond_to do |format|
         message = 'Your event is public now!'
 
-        format.json { render json: { url: @event.full_url, message: message }, status: :ok }
+        format.json do
+          render json: {
+            event: {
+              url: @event.url,
+              full_url: @event.full_url
+            },
+            message: message
+          },
+          status: :ok
+        end
         format.html { redirect_to events_path, notice: message }
       end
     else

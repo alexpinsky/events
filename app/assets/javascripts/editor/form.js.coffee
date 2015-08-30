@@ -55,7 +55,9 @@ class @Form
 
   submit: (args) ->
     @successHandler = args.success
-    @errorHandler   = args.success
+    @errorHandler   = args.error
+
+    @updateName args.name
 
     @form.submit()
 
@@ -79,7 +81,7 @@ class @Form
       cache: false
       processData: false
       success: (data, textStatus, jqXHR) =>
-        @successHandler data
+        @successHandler $.extend(data, {displayMessage: true})
       error: (jqXHR, textStatus, errorThrown) =>
         @errorHandler()
       complete: ->

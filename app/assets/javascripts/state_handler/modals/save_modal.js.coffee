@@ -4,16 +4,13 @@ class @SaveModal
 
   init: ->
     @input = @modal.find 'input'
-    @modal.find('a.save').click @onSave
+    @modal.find('a.save').click   @onSave
     @modal.find('a.cancel').click @onCancel
 
-  save: (handler) ->
-    @saveHandler = handler
+  show: (args) ->
+    @cancelHandler = args.cancel
+    @saveHandler   = args.save
 
-  close: (handler) ->
-    @closeHandler = handler
-
-  show: ->
     @modal.modal clickClose: false
 
   hide: ->
@@ -27,4 +24,4 @@ class @SaveModal
       Notification.display 'You must enter a name', 'alert'
 
   onCancel: =>
-    @closeHandler()
+    @cancelHandler()

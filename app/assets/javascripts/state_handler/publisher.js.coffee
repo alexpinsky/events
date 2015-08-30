@@ -2,56 +2,50 @@ class @Publisher
   constructor: (args) ->
     @container = args.container
 
-  init: ->
-    @publishModal = new PublishModal
-      modal:    @container.find '#publish-event'
-    @publishModal.close   @onPublishModalClose
-    @publishModal.publish @onPublishModalPublish
-    @publishModal.init()
-
-    @publishedModal = new PublishedModal
-      modal:    @container.find '#event-published'
-    @publishedModal.close @onPublishedModalClose
-    @publishedModal.init()
-
-  close: (handler) ->
-    @closeHandler = handler
-
-  afterUnpublish: (handler) ->
-    @afterUnpublishHandler = handler
-
+  # args; {event, success, error}
   publish: (args) ->
-    @eventId = args.event_id
-    @publishModal.show event_id: args.event_id
+    onPublishSuccess = (data, textStatus, jqXHR) =>
+      @publishedModal.show
+        url: data.event.full_url
+        done: =>
+          @publishedModal.hide()
+          args.success event: data.event
 
+    onPublishClick = (data) =>
+      $.ajax
+        url: "/events/#{args.event.id}/publish"
+        data: { url: data.url }
+        type: 'PUT'
+        dataType: 'json'
+        success: onPublishSuccess
+        error: (jqXHR, textStatus, errorThrown) =>
+          Notification.display jqXHR.responseText, 'alert'
+          args.error()
+
+    @publishModal.show
+      url:     args.event.url
+      publish: onPublishClick
+      cancel:  (=> @publishModal.hide() )
+
+  # args; {event, success, error}
   unpublish: (args) ->
+    console.log 'unpublish'
     $.ajax
-      url: "/events/#{args.event_id}/unpublish"
+      url: "/events/#{args.event.id}/unpublish"
       type: 'PUT'
       dataType: 'json'
       success: (data, textStatus, jqXHR) =>
         Notification.display data.message, 'notice'
-        @afterUnpublishHandler()
+        args.success()
       error: (jqXHR, textStatus, errorThrown) =>
         Notification.display jqXHR.responseText, 'alert'
+        args.error()
 
-  onPublishModalPublish: (data) =>
-    $.ajax
-      url: "/events/#{@eventId}/publish"
-      data: { url: data.url }
-      type: 'PUT'
-      dataType: 'json'
-      success: (data, textStatus, jqXHR) =>
-        @onPublishSuccess data.url
-      error: (jqXHR, textStatus, errorThrown) =>
-        Notification.display jqXHR.responseText, 'alert'
+  init: ->
+    @publishModal = new PublishModal
+      modal: @container.find('#publish-event')
+    @publishModal.init()
 
-  onPublishModalClose: =>
-    @publishModal.hide()
-
-  onPublishedModalClose: =>
-    @publishedModal.hide()
-    @closeHandler event_id: @eventId
-
-  onPublishSuccess: (url) =>
-    @publishedModal.show url
+    @publishedModal = new PublishedModal
+      modal: @container.find('#event-published')
+    @publishedModal.init()

@@ -5,7 +5,11 @@ class @Editor
       prevEditor.destroy()
       prevEditor = null
 
-    event = new Event id: $('.event').data('event'), persistence: new DOMPersistence
+    eventObj = $('.event')
+    event = new Event
+      id:          eventObj.data('id')
+      name:        eventObj.data('name')
+      persistence: new DOMPersistence
     event.init()
 
     editor = new Editor container: $('.page-wrapper.editor'), event: event
@@ -20,6 +24,8 @@ class @Editor
   init: ->
     @initVendors()
 
+    @stateHandler = new StateHandler container: @container
+
     @preview = new Preview container: @container.find('.preview-wrapper')
     @preview.init event: @event
 
@@ -31,24 +37,7 @@ class @Editor
       container: @container.find('.form-wrapper')
       listener:  @delegator
     @form.themeClick @onThemeClick
-
-    @saver = new Saver
-      container: @container.find('.modals .save-modals')
-      form:      @form
-      event:     @event
-    @saver.close @onSaverClose
-    @saver.error @onSaverError
-    @saver.afterSavePublish @onAfterSavePublish
-
-    @saver.init()
     @form.init event: @event
-
-    publishContainer = @container.find('.modals .publish-modals')
-    @publisher = new Publisher
-      container: publishContainer
-    @publisher.close @onPublisherClose
-    @publisher.afterUnpublish @afterUnpublish
-    @publisher.init()
 
     @container.find('.save-wrapper .save').click @onSaveClick
     @container.find('.publish-wrapper .publish').click @onPublishClick
@@ -83,39 +72,55 @@ class @Editor
       complete: ->
         Loader.off()
 
-  loadEvent: ->
+  loadEvent: (event) ->
     $.ajax
-      url: "/events/#{@event.id}/edit"
+      url: "/events/#{event.id}/edit"
       dataType: "script"
 
   onThemeClick: (e) =>
     @loadTheme e.category, e.theme
 
   onSaveClick: =>
-    @saver.save success: @afterEventSave
+    savedPublishClick = =>
+      @stateHandler.publish
+        event:   @event
+        success: @onPublished
+        error:   @onPublishError
 
-  afterEventSave: (data) =>
-    Notification.display 'Your event was saved!', 'notice'
-    @event.id = data.event_id
-    @loadEvent()
+    @stateHandler.save
+      event:      @event
+      submitable: @form
+      success:    @onSaved
+      publish:    savedPublishClick
+      error:      @onSaveError
 
-  onPublishClick: =>
-    @saver.save success: (data) => @onAfterSavePublish data
+  onPublishClick: (e) =>
+    @stateHandler.saveAndPublish
+      event:      @event
+      submitable: @form
+      saved:      @onSaved
+      published:  @onPublished
+      error:      @onPublishError
 
-  onUnpublishClick: =>
-    @publisher.unpublish event_id: @event.id
+  onUnpublishClick: (e) =>
+    @stateHandler.unpublish
+      event:   @event
+      success: @onUnpublished
+      error:   @onUnpublishError
 
-  onAfterSavePublish: =>
-    @publisher.publish event_id: @event.id
+  # data: {event}
+  onPublished: (data) =>
+    console.log 'onPublished'
+    console.log data
 
-  onSaverError: (data) =>
-    Notification.display 'Sorry... but something went wrong', 'alert'
+  # data: {event}
+  onSaved: (data) =>
+    @loadEvent data.event
 
-  onSaverClose: (data) =>
-    @afterEventSave data
+  onUnpublished: (data) =>
+    console.log 'onUnpublished'
+    console.log data
 
-  onPublisherClose: (data) =>
-    @loadEvent()
-
-  afterUnpublish: =>
-    @loadEvent()
+  onPublishError: (data) =>
+  onSaveError: (data) =>
+  onUnpublishError: (data) =>

@@ -1,26 +1,24 @@
 class @PublishModal
   constructor: (args) ->
-    @modal   = args.modal
+    @modal = args.modal
 
   init: ->
     @modal.find('.modal-actions .publish').click @onPublishClick
     @modal.find('.modal-actions .cancel').click  @onCancelClick
     @input = @modal.find('.url-wrapper input')
 
-  close: (handler) ->
-    @closeHandler = handler
+  show: (args) ->
+    @cancelHandler  = args.cancel
+    @publishHandler = args.publish
+    @input.val args.url
 
-  publish: (handler) ->
-    @publishHandler = handler
-
-  show: ->
     @modal.modal clickClose: false
 
   hide: ->
     $.modal.close()
 
   onCancelClick: =>
-    @closeHandler()
+    @cancelHandler()
 
   onPublishClick: =>
     @publishHandler url: @input.val()

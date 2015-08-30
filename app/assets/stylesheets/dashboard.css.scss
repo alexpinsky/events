@@ -300,13 +300,13 @@
             cursor: pointer;
             display: inline-block;
             color: rgb(255, 140, 0);
-            width: 52px;
-            height: 51px;
-            background-repeat: no-repeat;
-            display: block;
             .unpublish {
               margin-left: 6px;
               background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/unpublish_btn.svg');
+              width: 52px;
+              height: 51px;
+              background-repeat: no-repeat;
+              display: block;
             }
             .unpublish:hover {
               background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/unpublish_btn_hover.svg');
@@ -327,5 +327,15 @@
     url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/publish_btn_hover.svg')
     url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/unpublish_btn_hover.svg')
     url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/link_btn.svg')
-    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/link_btn_hover.svg');
+    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/link_btn_hover.svg')
+    url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/save.png")
+    url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/save_hover.png")
+    url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/cancel.png")
+    url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/cancel_hover.png")
+    url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/done.png")
+    url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/done_hover.png")
+    url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/publish.png")
+    url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/publish_hover.png")
+    url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/copy.png")
+    url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/copy_hover.png");
 }

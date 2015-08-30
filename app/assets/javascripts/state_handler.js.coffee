@@ -1,8 +1,12 @@
 class @StateHandler
   constructor: (args) ->
     @container = args.container
-    @saver     = new Saver container: @container
-    @publisher = new Publisher
+
+    @saver = new Saver container: @container
+    @saver.init()
+
+    @publisher = new Publisher container: @container
+    @publisher.init()
 
   save: (args) ->
     @saver.save
@@ -21,24 +25,18 @@ class @StateHandler
       error:      args.error
     }
 
+    publishCallback = () =>
+      @publish
+        event:   event
+        success: args.published
+        error:   args.error
+
     if event.name
       # when the event has a name, it will do quick save and go to publish.
-      onSuccess = (data) =>
-        @publish
-          event:   event
-          success: args.published
-          error:   args.error
-
-      options = { success: onSuccess }
+      options = { success: publishCallback }
     else
       # when the event has no name, it will do save with a name. To publish, the user have to press the publish again.
-      onPublished = (data) =>
-        @publish
-          event:   event
-          success: args.published
-          error:   args.error
-
-      options = { publish: onPublished, success: args.saved }
+      options = { publish: publishCallback, success: args.saved }
 
     @save $.extend(baseOptions, options)
 

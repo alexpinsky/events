@@ -16,6 +16,8 @@ class @Dashboard
         container: tileObj,
         stateHandler: @stateHandler
         event: new Event
-          id: tileObj.data('event-id')
+          id:   tileObj.data('id')
+          name: tileObj.data('name')
+          url:  tileObj.data('url')
           persistence: new FakePersistence
       tile.init()

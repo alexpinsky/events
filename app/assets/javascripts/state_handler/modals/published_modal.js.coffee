@@ -17,11 +17,10 @@ class @PublishedModal
     @modal.find('.modal-actions .done').click @onDoneClick
     @copyBtn.click @onCopyClick
 
-  close: (handler) ->
-    @closeHandler = handler
+  show: (args) ->
+    @input.val args.url
+    @doneHandler = args.done
 
-  show: (url) ->
-    @input.val url
     @modal.modal clickClose: false
 
   hide: ->
@@ -31,5 +30,5 @@ class @PublishedModal
     @input.select()
 
   onDoneClick: =>
-    @closeHandler()
+    @doneHandler()
 

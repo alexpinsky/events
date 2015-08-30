@@ -3,6 +3,7 @@ class @Event
     @persistence = args.persistence
     @id          = args.id
     @name        = args.name
+    @url         = args.url
 
   init: ->
     @data = @persistence.getData() || { texts: {}, pics: {} }
@@ -13,6 +14,9 @@ class @Event
 
   name: -> @name
   name: (name) -> @name = name
+
+  url: -> @url
+  url: (url) -> @url = url
 
   save: ->
     @persistence.saveData @data

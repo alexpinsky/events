@@ -6,20 +6,18 @@ class @SavedModal
     @modal.find('a.done').click    @onDone
     @modal.find('a.publish').click @onPublish
 
-  show: ->
+  show: (args) ->
+    @event          = args.event
+    @doneHandler    = args.done
+    @publishHandler = args.publish
+
     @modal.modal clickClose: false
 
   hide: ->
     $.modal.close()
 
-  publish: (handler) ->
-    @publishHandler = handler
-
-  close: (handler) ->
-    @closeHandler = handler
-
   onDone: =>
-    @closeHandler()
+    @doneHandler event: @event
 
   onPublish: =>
     @publishHandler()

@@ -2,13 +2,30 @@ class @Editable
   constructor: (args) ->
     @target = args.target
 
-  save: (handler) ->
-    @saveHandler = handler
+  submit: (args) ->
+    if args.name
+      args.success displayMessage: false
+    else
+      options = {
+        ajaxOptions: {
+          type: 'put',
+          dataType: 'json'
+        },
+        data: {
+          event: { name: args.name }
+        },
+        error: args.error,
+        success: args.success
+      }
 
-  submit: ->
+      @target.text args.name
+      @target.editable 'submit', options
 
-  onSave: (e, params) =>
-    @saveHandler newName: params.newValue
+  success: (handler) ->
+    @successHandler = handler
+
+  afterSave: (e, params) =>
+    @successHandler event: { name: params.newValue }
 
   init: ->
     @target.editable
@@ -22,4 +39,4 @@ class @Editable
           name: params.value
         }
 
-    @target.on 'save', @onSave
+    @target.on 'save', @afterSave

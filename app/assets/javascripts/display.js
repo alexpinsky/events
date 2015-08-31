@@ -1,6 +1,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require initializers
+//= require slick.min
 
 var resizeFn = function() {
   var bodyHeight = $('body').height();

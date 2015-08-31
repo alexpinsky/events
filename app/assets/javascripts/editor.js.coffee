@@ -7,8 +7,9 @@ class @Editor
 
     eventObj = $('.event')
     event = new Event
-      id:          eventObj.data('id')
-      name:        eventObj.data('name')
+      id:   eventObj.data('id')
+      name: eventObj.data('name')
+      url:  eventObj.data('url')
       persistence: new DOMPersistence
     event.init()
 
@@ -81,9 +82,9 @@ class @Editor
     @loadTheme e.category, e.theme
 
   onSaveClick: =>
-    savedPublishClick = =>
+    savedPublishClick = (args) =>
       @stateHandler.publish
-        event:   @event
+        event:   args.event
         success: @onPublished
         error:   @onPublishError
 
@@ -110,16 +111,14 @@ class @Editor
 
   # data: {event}
   onPublished: (data) =>
-    console.log 'onPublished'
-    console.log data
+    @loadEvent data.event
 
   # data: {event}
   onSaved: (data) =>
     @loadEvent data.event
 
   onUnpublished: (data) =>
-    console.log 'onUnpublished'
-    console.log data
+    @loadEvent data.event
 
   onPublishError: (data) =>
   onSaveError: (data) =>

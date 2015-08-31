@@ -20,4 +20,4 @@ class @SavedModal
     @doneHandler event: @event
 
   onPublish: =>
-    @publishHandler()
+    @publishHandler event: @event

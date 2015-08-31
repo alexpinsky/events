@@ -106,7 +106,8 @@ class EventsController < ApplicationController
         format.json do
           render json: {
             event: {
-              url: @event.url,
+              id:       @event.id,
+              url:      @event.url,
               full_url: @event.full_url
             },
             message: message
@@ -126,9 +127,15 @@ class EventsController < ApplicationController
   def unpublish
     if @event.update_attribute(:published, false)
       respond_to do |format|
-        message = 'Your event is private now!'
+        message =  'Your event is private now!'
 
-        format.json { render json: { message: message }, status: :ok }
+        format.json do
+          render json: {
+            event:   { id: @event.id },
+            message: message
+          },
+          status: :ok
+        end
         format.html { redirect_to events_path, notice: message }
       end
     else

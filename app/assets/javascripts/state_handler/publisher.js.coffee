@@ -29,14 +29,13 @@ class @Publisher
 
   # args; {event, success, error}
   unpublish: (args) ->
-    console.log 'unpublish'
     $.ajax
       url: "/events/#{args.event.id}/unpublish"
       type: 'PUT'
       dataType: 'json'
       success: (data, textStatus, jqXHR) =>
         Notification.display data.message, 'notice'
-        args.success()
+        args.success event: data.event
       error: (jqXHR, textStatus, errorThrown) =>
         Notification.display jqXHR.responseText, 'alert'
         args.error()

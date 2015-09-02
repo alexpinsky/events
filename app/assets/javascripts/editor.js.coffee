@@ -82,21 +82,39 @@ class @Editor
     @loadTheme e.category, e.theme
 
   onSaveClick: =>
-    onSavePublishClick = (args) =>
-      console.log args
-      @stateHandler.publish
-        event:   args.event
-        success: @publishSuccessCallback
-        error:   @publishErrorCallback
-
-    @stateHandler.save
-      event:      @event
-      submitable: @form
-      success:    @saveSuccessCallback
-      publish:    onSavePublishClick
-      error:      @saveErrorCallback
+    @stateHandler.save(event: @event, submitable: @form)
+    .then((saveResponse) =>
+      if saveResponse
+        @stateHandler.publish(event: saveResponse.event)
+        .then((publishResponse) =>
+          @loadEvent publishResponse.event
+        )
+        .catch((publishResponse) ->
+          Notification.display saveResponse.message, 'alert'
+        )
+      else
+        Notification.display saveResponse.message, 'notice'
+        @loadEvent saveResponse.event
+    )
+    .catch((saveResponse) ->
+      Notification.display saveResponse.message, 'alert'
+    )
 
   onPublishClick: (e) =>
+    @stateHandler.save(event: @event, submitable: @form)
+    .then((saveResponse) =>
+      @stateHandler.publish(event: saveResponse.event)
+      .then((publishResponse) =>
+        @loadEvent publishResponse.event
+      )
+      .catch((publishResponse) ->
+        Notification.display saveResponse.message, 'alert'
+      )
+    )
+    .catch((saveResponse) ->
+      Notification.display saveResponse.message, 'alert'
+    )
+
     @stateHandler.saveAndPublish
       event:      @event
       submitable: @form

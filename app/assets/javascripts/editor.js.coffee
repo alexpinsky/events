@@ -82,44 +82,45 @@ class @Editor
     @loadTheme e.category, e.theme
 
   onSaveClick: =>
-    savedPublishClick = (args) =>
+    onSavePublishClick = (args) =>
+      console.log args
       @stateHandler.publish
         event:   args.event
-        success: @onPublished
-        error:   @onPublishError
+        success: @publishSuccessCallback
+        error:   @publishErrorCallback
 
     @stateHandler.save
       event:      @event
       submitable: @form
-      success:    @onSaved
-      publish:    savedPublishClick
-      error:      @onSaveError
+      success:    @saveSuccessCallback
+      publish:    onSavePublishClick
+      error:      @saveErrorCallback
 
   onPublishClick: (e) =>
     @stateHandler.saveAndPublish
       event:      @event
       submitable: @form
-      saved:      @onSaved
-      published:  @onPublished
-      error:      @onPublishError
+      saved:      @saveSuccessCallback
+      published:  @publishSuccessCallback
+      error:      @publishErrorCallback
 
   onUnpublishClick: (e) =>
     @stateHandler.unpublish
       event:   @event
-      success: @onUnpublished
-      error:   @onUnpublishError
+      success: @unpublishSuccessCallback
+      error:   @unpublishErrorCallback
 
   # data: {event}
-  onPublished: (data) =>
+  saveSuccessCallback: (data) =>
     @loadEvent data.event
+  saveErrorCallback: (data) =>
 
   # data: {event}
-  onSaved: (data) =>
+  publishSuccessCallback: (data) =>
     @loadEvent data.event
+  publishErrorCallback: (data) =>
 
-  onUnpublished: (data) =>
+  # data: {event}
+  unpublishSuccessCallback: (data) =>
     @loadEvent data.event
-
-  onPublishError: (data) =>
-  onSaveError: (data) =>
-  onUnpublishError: (data) =>
+  unpublishErrorCallback: (data) =>

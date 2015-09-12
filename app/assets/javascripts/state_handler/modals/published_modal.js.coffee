@@ -5,14 +5,12 @@ class @PublishedModal
   init: ->
     @input   = @modal.find('.url-wrapper input')
     @copyBtn = @modal.find('.modal-actions .copy')
-    ZeroClipboard.config swfPath: "http://s3-eu-west-1.amazonaws.com/events-assets-static/shared/ZeroClipboard.swf"
-    @client  = new ZeroClipboard @copyBtn
 
-    @client.on 'ready', ((e) =>
-      @client.on 'copy', ((e) =>
-        e.clipboardData.setData 'text/plain', @input.val()
-      )
-    )
+    clip = new Clip
+      target:    @copyBtn
+      clipData:  @clipData
+      afterClip: @afterClip
+    clip.init()
 
     @modal.find('.modal-actions .done').click @onDoneClick
     @copyBtn.click @onCopyClick
@@ -25,6 +23,13 @@ class @PublishedModal
 
   hide: ->
     $.modal.close()
+
+  clipData: =>
+    @input.val()
+
+  afterClip: =>
+    @copyBtn.addClass 'link-copied'
+    setTimeout((=> @copyBtn.removeClass('link-copied')), 1000)
 
   onCopyClick: =>
     @input.select()

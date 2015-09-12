@@ -142,8 +142,12 @@
       background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/copy.png");
       background-size: cover;
     }
-    .copy:hover {
+    .zeroclipboard-is-hover {
       background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/copy_hover.png");
+      background-size: cover;
+    }
+    .link-copied {
+      background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/link_copied.png");
       background-size: cover;
     }
     .done {

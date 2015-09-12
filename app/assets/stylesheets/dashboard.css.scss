@@ -80,8 +80,8 @@
         .editable-container {
           input {
             border: none;
-            width: 205px;
-            height: 45px;
+            width: 215px;
+            height: 46px;
             text-align: center;
             font-family: 'Julius Sans One', sans-serif;
             color: rgb(176, 176, 176);
@@ -127,7 +127,7 @@
         border-bottom: 1px solid #e7e7e7;
         position: relative;
         .btn-wrapper {
-          background-color: rgb(127, 159, 255);
+          background-color: rgb(245, 247, 255);
           width: 28px;
           height: 28px;
           display: inline-block;
@@ -141,8 +141,12 @@
             width: 28px;
             height: 28px;
           }
-          .copy-icon:hover {
+          .zeroclipboard-is-hover {
             background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/link_btn_hover.svg');
+            background-size: cover;
+          }
+          .link-copied {
+            background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/link_copied.svg');
             background-size: cover;
           }
         }
@@ -337,5 +341,6 @@
     url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/publish.png")
     url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/publish_hover.png")
     url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/copy.png")
-    url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/copy_hover.png");
+    url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/copy_hover.png")
+    url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/link_copied.png");
 }

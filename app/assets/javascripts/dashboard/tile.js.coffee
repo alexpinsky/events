@@ -6,6 +6,33 @@ class @Tile
     @editable     = new Editable target: @container.find('.event-name')
     @urlInput     = @container.find('.url-wrapper input')
 
+  init: ->
+    @editable.success @onSaved
+    @editable.init()
+
+    @input   = @container.find('.url-wrapper input')
+    @copyBtn = @container.find('.url-wrapper .copy-icon')
+
+    clip = new Clip
+      target:    @copyBtn
+      clipData:  @clipData
+      afterClip: @afterClip
+    clip.init()
+
+    @container.find('.actions .publish').click   @onPublishClick
+    @container.find('.actions .unpublish').click @onUnpublishClick
+    @copyBtn.click @onCopyClick
+
+  clipData: =>
+    @input.val()
+
+  afterClip: =>
+    @copyBtn.addClass 'link-copied'
+    setTimeout((=> @copyBtn.removeClass('link-copied')), 1000)
+
+  onCopyClick: =>
+    @input.select()
+
   onPublishClick: (e) =>
     @stateHandler.saveAndPublish
       event:      @event
@@ -53,10 +80,3 @@ class @Tile
       <div class='#{type}''></div>
       <div class='text'>#{type.toUpperCase()}</div>
     </div>"
-
-  init: ->
-    @editable.success @onSaved
-    @editable.init()
-
-    @container.find('.actions .publish').click   @onPublishClick
-    @container.find('.actions .unpublish').click @onUnpublishClick

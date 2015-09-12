@@ -11,7 +11,12 @@ class EventsController < ApplicationController
   before_filter :set_categories, only: [:new, :edit]
 
   def index
-    @events = current_user.events.includes(:category, :theme, :pictures).order('events.updated_at DESC')
+    @events = current_user.events.includes(
+      :category,
+      :theme,
+      :pictures
+    )
+    .order('events.created_at DESC')
   end
 
   def show

@@ -20,10 +20,12 @@ Events::Application.routes.draw do
     end
   end
   resources :leads, only: :create
+  resources :contact_requests, only: [:new, :create]
 
   scope '/admin' do
     authenticate :user, lambda { |u| u.admin? } do
       resources :leads, only: :index
+      resources :contact_requests, except: [:new, :create]
     end
   end
 

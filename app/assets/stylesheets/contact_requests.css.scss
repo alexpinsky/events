@@ -1,0 +1,72 @@
+.page-wrapper.contact-us {
+  padding: 159px 0 120px;
+  background-color: #f8f8f8;
+  min-height: 420px;
+  .contact-container {
+    height: 421px;
+    width: 852px;
+    border: 1px solid rgb(127, 159, 255);
+    margin: 0 auto;
+    position: relative;
+    .contact-logo {
+      background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/peggy.svg");
+      background-repeat: no-repeat;
+      width: 92px;
+      height: 127px;
+      position: absolute;
+      top: -126px;
+      left: 28px;
+    }
+    .contact-header {
+      font-size: 20px;
+      font-family: 'Julius Sans One', sans-serif;
+      letter-spacing: 8px;
+      color: rgb(77, 77, 77);
+      padding: 35px 0 20px 28px;
+    }
+    .contact-text {
+      font-size: 16px;
+      font-family: 'Julius Sans One', sans-serif;
+      color: #4d4d4d;
+      padding: 0 0 20px 28px;
+      width: 380px;
+      line-height: 25px;
+    }
+    .form-wrapper {
+      .shadow {
+        -moz-box-shadow:    5px 2px 20px 2px #e7e7e7;
+        -webkit-box-shadow: 5px 2px 20px 2px #e7e7e7;
+        box-shadow:         5px 2px 20px 2px #e7e7e7;
+      }
+      ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+        color: rgb(127, 159, 255);
+      }
+      :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+        color: rgb(127, 159, 255);
+      }
+      ::-moz-placeholder { /* Mozilla Firefox 19+ */
+        color: rgb(127, 159, 255);
+      }
+      :-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color: rgb(127, 159, 255);
+      }
+      .email-input {
+        height: 30px;
+        width: 657px;
+        margin-left: 28px;
+        padding-left: 10px;
+        font-family: 'Quattrocento Sans', sans-serif;
+        font-size: 14px;
+        color: rgb(77, 77, 77);
+        display: block;
+        border: none;
+        outline: none;
+      }
+    }
+  }
+}
+.page-wrapper.contact-us:before {
+  display: none;
+  content:
+    url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/peggy.svg");
+}

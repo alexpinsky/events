@@ -1,4 +1,9 @@
 module EventsHelper
+  def background_style_for(event)
+    bg_image = event.background_image
+    bg_image.present? ? "background: url(#{bg_image})" : "background: white"
+  end
+
   def dashboard_tile_backgroud_for(event)
     pic = event.pictures.first
     pic.nil? ? '' : pic.image_url

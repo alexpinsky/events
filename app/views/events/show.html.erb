@@ -8,6 +8,7 @@
   <%= stylesheet_link_tag "#{theme_path}/base" %>
 <% end %>
 
-<div class="display fullscreen-background" style="background: url(<%= @event.background_image %>)">
+<div class="display fullscreen-background" style="<%= background_style_for(@event) %>">
   <%= render partial: theme_path, locals: { event: @event } %>
 </div>
+<%= render partial: "layouts/display_footer" %>

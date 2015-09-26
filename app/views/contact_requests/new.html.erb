@@ -9,10 +9,20 @@
     </div>
     <div class='form-wrapper'>
       <%= form_for @contact_request do |contact_form| %>
-        <%= contact_form.email_field :email, class: 'email-input shadow', placeholder: 'Email' %>
-        <%= contact_form.text_area   :message %>
-        <%= contact_form.submit %>
+        <%= contact_form.email_field :email, class: 'email-input contact-input', placeholder: 'Email' %>
+        <%= contact_form.text_area :message, class: 'message-input contact-input', placeholder: 'Message' %>
+        <%= contact_form.submit '', class: 'submit-btn' %>
       <% end %>
     </div>
   </div>
 </div>
+<!-- Sign In modal -->
+<div id="signInModal" class="modal">
+  <%= render partial: 'devise/shared/sign_in' %>
+</div>
+<!--  -->
+<!-- Sign Up modal -->
+<div id="signUpModal" class="modal">
+  <%= render partial: 'devise/shared/sign_up' %>
+</div>
+<!--  -->

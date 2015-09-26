@@ -3,9 +3,9 @@
   background-color: #f8f8f8;
   min-height: 420px;
   .contact-container {
-    height: 421px;
+    height: 450px;
     width: 852px;
-    border: 1px solid rgb(127, 159, 255);
+    border: 2px solid rgb(127, 159, 255);
     margin: 0 auto;
     position: relative;
     .contact-logo {
@@ -14,7 +14,7 @@
       width: 92px;
       height: 127px;
       position: absolute;
-      top: -126px;
+      top: -127px;
       left: 28px;
     }
     .contact-header {
@@ -33,10 +33,17 @@
       line-height: 25px;
     }
     .form-wrapper {
-      .shadow {
-        -moz-box-shadow:    5px 2px 20px 2px #e7e7e7;
+      .contact-input {
+        -moz-box-shadow: 5px 2px 20px 2px #e7e7e7;
         -webkit-box-shadow: 5px 2px 20px 2px #e7e7e7;
-        box-shadow:         5px 2px 20px 2px #e7e7e7;
+        box-shadow: 5px 2px 20px 2px #e7e7e7;
+        margin-left: 28px;
+        font-family: 'Quattrocento Sans', sans-serif;
+        font-size: 14px;
+        color: rgb(77, 77, 77);
+        display: block;
+        border: none;
+        outline: none;
       }
       ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
         color: rgb(127, 159, 255);
@@ -53,14 +60,25 @@
       .email-input {
         height: 30px;
         width: 657px;
-        margin-left: 28px;
         padding-left: 10px;
-        font-family: 'Quattrocento Sans', sans-serif;
-        font-size: 14px;
-        color: rgb(77, 77, 77);
-        display: block;
+      }
+      .message-input {
+        margin-top: 25px;
+        height: 152px;
+        width: 649px;
+        padding: 7px 10px 0 10px;
+      }
+      .submit-btn {
+        background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/contact_us/send_btn.svg');
+        width: 137px;
+        height: 28px;
         border: none;
-        outline: none;
+        cursor: pointer;
+        margin-top: 25px;
+        margin-left: 28px;
+      }
+      .submit-btn:hover {
+        background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/contact_us/send_btn_hover.svg');
       }
     }
   }
@@ -68,5 +86,7 @@
 .page-wrapper.contact-us:before {
   display: none;
   content:
-    url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/peggy.svg");
+    url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/peggy.svg"),
+    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/contact_us/send_btn.svg'),
+    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/contact_us/send_btn_hover.svg');
 }

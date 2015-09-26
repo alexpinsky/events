@@ -31,7 +31,8 @@ class ContactRequestsController < ApplicationController
 
   def destroy
   end
- private
+
+  private
 
   def _contact_request_params
     params.require(:contact_request).permit(:email, :message)

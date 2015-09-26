@@ -4,6 +4,9 @@ class PagesController < ApplicationController
   def welcome
   end
 
+  def about
+  end
+
   def ping
     render nothing: true, status: :ok
   end

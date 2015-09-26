@@ -86,7 +86,5 @@
 .page-wrapper.contact-us:before {
   display: none;
   content:
-    url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/peggy.svg"),
-    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/contact_us/send_btn.svg'),
     url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/contact_us/send_btn_hover.svg');
 }

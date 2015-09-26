@@ -1,0 +1,43 @@
+.page-wrapper.about {
+  padding: 159px 0 120px;
+  background-color: #f8f8f8;
+  min-height: 420px;
+  .about-container {
+    height: 450px;
+    width: 852px;
+    border: 2px solid rgb(127, 159, 255);
+    margin: 0 auto;
+    position: relative;
+    .about-logo {
+      background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/peggy.svg");
+      background-repeat: no-repeat;
+      width: 92px;
+      height: 127px;
+      position: absolute;
+      top: -127px;
+      left: 28px;
+    }
+    .about-header {
+      font-size: 20px;
+      font-family: 'Julius Sans One', sans-serif;
+      letter-spacing: 8px;
+      color: rgb(77, 77, 77);
+      padding: 35px 0 20px 28px;
+      .logo {
+        background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/about/logo_eventit.svg');
+        width: 117px;
+        height: 18px;
+        display: inline-block;
+        background-repeat: no-repeat;
+        vertical-align: text-top;
+      }
+    }
+    .about-text {
+      font-size: 16px;
+      font-family: 'Julius Sans One', sans-serif;
+      color: #4d4d4d;
+      padding: 20px 28px;
+      line-height: 25px;
+    }
+  }
+}

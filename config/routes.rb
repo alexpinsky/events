@@ -8,8 +8,9 @@ Events::Application.routes.draw do
     registrations: 'devise_ext/registrations'
   }
 
-  get 'ping'        => 'pages#ping'
   get 'welcome'     => 'pages#welcome'
+  get 'about'       => 'pages#about'
+  get 'ping'        => 'pages#ping'
   get 'coming_soon' => 'pages#comming_soon'
 
   resources :categories

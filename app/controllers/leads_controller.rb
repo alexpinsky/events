@@ -4,39 +4,35 @@ class LeadsController < ApplicationController
   def index
     @leads = Lead.all
   end
-  
+
   def show
-    
   end
 
   def new
-    
   end
 
   def create
-    lead = Lead.new lead_params
+    lead = Lead.new _lead_params
+
     if lead.save
       render json: {}, status: :created
     else
-      render json: {error: lead.errors.full_messages}, status: :bad_request
+      render json: { error: lead.errors.full_messages }, status: :bad_request
     end
   end
 
   def edit
-    
   end
 
   def update
-    
   end
 
   def destroy
-    
   end
 
-private
+  private
 
-  def lead_params
+  def _lead_params
     params.require(:lead).permit(:email)
   end
 end

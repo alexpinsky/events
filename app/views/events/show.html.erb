@@ -8,7 +8,12 @@
   <%= stylesheet_link_tag "#{theme_path}/base" %>
 <% end %>
 
-<div class="display fullscreen-background" style="<%= background_style_for(@event) %>">
+<div class="display" style="<%= background_style_for(@event) %>">
   <%= render partial: theme_path, locals: { event: @event } %>
 </div>
-<%= render partial: "layouts/display_footer" %>
+<div class="display-footer">
+  <div class='footer-container'>
+    <img src="<%= shared_assets_url('logo_footer.svg') %>">
+    <a href="<%= root_path %>" target="_blank">click to eventit yourself >></a>
+  </div>
+</div>

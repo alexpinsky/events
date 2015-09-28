@@ -12,11 +12,22 @@ body { margin: 0 }
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-.fullscreen-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: -1;
+.display {
+  padding-bottom: 20px;
+}
+.display-footer {
+  height: 25px;
+  width: 100%;
+  background-color: rgb(87, 87, 87);
+  .footer-container {
+    text-align: center;
+    a {
+      vertical-align: text-top;
+      text-decoration: none;
+      color: white;
+      font-family: 'Julius Sans One', sans-serif;
+      font-size: 12px;
+      text-shadow: 1px 1px rgba(0, 0, 0, 0.33);
+    }
+  }
 }

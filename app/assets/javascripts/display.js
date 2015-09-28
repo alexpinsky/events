@@ -3,36 +3,22 @@
 //= require initializers
 //= require slick.min
 
-var resizeFn = function() {
-  var bodyHeight = $('body').height();
-  console.log('body: ' + bodyHeight);
-  if (bodyHeight <= 966 && bodyHeight >= 350) {
-    var imgHeight = $('.images-container').height();
-    console.log('image: ' + imgHeight);
-    var marginTop = ((bodyHeight - imgHeight) / 2) - bodyHeight * 5 / 100;
-    console.log('margin-top: ' + marginTop);
-    if (marginTop < 0) {
-      marginTop = 0;
-    };
-    $('.theme-wrapper').css('margin-top', marginTop + 'px');
-  } else {
-    $('.theme-wrapper').css('margin-top', 0);
-  }
-};
-
 $(document).ready(function() {
   Initializers.init();
-  // $(window).resize(function () {
-  //   setTimeout(function() {
-  //     resizeFn();
-  //   }, 100);
-  // });
   $('span').click(function() {
     ga('send', 'event', { eventCategory: 'invites', eventAction: 'add to calendar'});
   });
 });
 
+var stretchDisplay = function() {
+  // starch background -  20 for display padding-bottom, 25 for footer height
+  $('.display').css('min-height', $(window).height() - 20 - 25);
+};
+
 $(window).load(function() {
-  // resizeFn();
+  stretchDisplay();
 });
 
+$(window).resize(function() {
+  stretchDisplay();
+});

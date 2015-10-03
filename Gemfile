@@ -15,6 +15,7 @@ gem 'fog'
 gem "figaro"
 gem 'social-share-button'
 gem 'deep_cloneable', '~> 2.0.0'
+gem 'mobylette'
 
 gem 'rack-cache'
 gem 'dalli'

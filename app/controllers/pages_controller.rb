@@ -2,6 +2,10 @@ class PagesController < ApplicationController
   skip_before_filter :authenticate_user!
 
   def welcome
+    respond_to do |format|
+      format.html   {  }
+      format.mobile { render layout: false }
+    end
   end
 
   def about

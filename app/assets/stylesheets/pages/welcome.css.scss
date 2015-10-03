@@ -34,17 +34,20 @@
     background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/start_btn_hover.svg');
   }
   .slideshow-wrapper {
-    display: none;
     clear: both;
     margin-top: 120px;
     position: relative;
-    .slick-list {
-      .slick-track {
-        @media (max-width:  1439px) {
-          margin: -50px auto 0;
-        }
-        @media (min-width:  1440px) {
-          margin: -200px auto 0;
+    min-height: 350px;
+    .images {
+      display: none; // hide images till slide show starts
+      .slick-list {
+        .slick-track {
+          @media (max-width:  1439px) {
+            margin: -50px auto 0;
+          }
+          @media (min-width:  1440px) {
+            margin: -200px auto 0;
+          }
         }
       }
     }

@@ -12,5 +12,5 @@ $(document).ready(function() {
     draggable: false,
     speed: 1000
   });
-  $('.slideshow-wrapper').css('display', 'block');
+  $('.images').css('display', 'block');
 });

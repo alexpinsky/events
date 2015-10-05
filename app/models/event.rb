@@ -47,6 +47,8 @@ class Event < ActiveRecord::Base
   scope :by_category,        -> (category_name) { joins(:category).where('categories.name = ?', category_name) }
   scope :by_url,             -> (url)           { where('events.url = ?', url) }
   scope :by_id,              -> (id)            { where('events.id = ?', id) }
+  scope :active,             ->                 { where('events.state != ?', STATES[:disabled]) }
+  scope :published,          ->                 { where('events.state = ?', STATES[:published]) }
 
   MAX_PICTURES_SIZE = 4
   STATES = { unpublished: 0, published: 1, disabled: 2 }

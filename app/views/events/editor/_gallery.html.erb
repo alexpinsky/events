@@ -7,7 +7,7 @@
   <div class='slide'>
     <% categories.each do |category| %>
       <div class="themes" data-category-name="<%= category.name.upcase %>">
-        <% category.events.themes.each do |theme| %>
+        <% category.events.themes.active.each do |theme| %>
           <div class='gallery-theme' data-theme="<%= theme.id %>" data-category="<%= category.id %>" style="background: url('<%= theme.thumbnail_url %>') no-repeat; background-size: cover;"></div>
         <% end %>
       </div>

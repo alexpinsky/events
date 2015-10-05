@@ -2,6 +2,39 @@ namespace :templates do
 
   namespace :wedding do
 
+    namespace :simple do
+
+      task create: :environment do
+        ActiveRecord::Base.transaction do
+          categroy = Category.by_name('wedding').first || Category.create!(name: 'wedding')
+          theme = Event.create!({
+            "name" => "simple",
+            "text_1" => "21/12/15",
+            "text_2" => "save the date",
+            "text_3" => "natasha & jonathan",
+            "category_id" => categroy.id,
+            "is_theme" => true,
+            'appearance_attributes' => {
+              "background_image" => "",
+              "font_family_1" => "'Rozha One', serif",
+              "font_color_1" => "",
+              "font_size_1" => "7",
+              "font_family_2" => "'Julius Sans One', sans-serif",
+              "font_color_2" => "",
+              "font_size_2" => "3",
+              "font_family_3" => "'Rozha One', serif",
+              "font_color_3" => "",
+              "font_size_3" => "10",
+            }
+          })
+          Information.create!(in_use: true, event: theme)
+          pic = theme.pictures.new(slideshow: false, order: 1)
+          pic.remote_image_url = 'https://s3-eu-west-1.amazonaws.com/events-assets-static/categories/wedding/themes/simple/images/simple.jpg'
+          pic.save!
+        end
+      end
+    end
+
     namespace :classic do
 
       task create: :environment do

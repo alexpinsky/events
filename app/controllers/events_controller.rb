@@ -228,7 +228,7 @@ class EventsController < ApplicationController
 
   def set_theme
     dynamic_clause = params[:theme_id].present? ? 'events.id = ?' : ''
-    @theme = Event.themes.includes(
+    @theme = Event.themes.active.includes(
       :pictures,
       :information,
       :appearance

@@ -49,6 +49,7 @@ class Event < ActiveRecord::Base
   scope :by_id,              -> (id)            { where('events.id = ?', id) }
 
   MAX_PICTURES_SIZE = 4
+  STATES = { unpublished: 0, published: 1, disabled: 2 }
 
   def self.copy_from_theme(theme, options = {})
     event          = theme.dup
@@ -104,7 +105,7 @@ class Event < ActiveRecord::Base
   end
 
   def published?
-    published
+    state == STATES[:published]
   end
 
   def full_url

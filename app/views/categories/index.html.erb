@@ -2,35 +2,35 @@
   <h2>pick your favorite template and start eventit</h2>
   <div class='tiles-wrapper'>
     <div class='weddings'>
-      <%= 
+      <%=
         render partial: 'tiles_row', locals: {
           category: 'weddings',
-          templates: @templates['wedding'] 
-        } 
+          templates: @templates['wedding']
+        }
       %>
     </div>
     <div class='celebration'>
-      <%= 
-        render partial: 'tiles_row', locals: { 
+      <%=
+        render partial: 'tiles_row', locals: {
           category: 'celebration',
-          templates: @templates['celebration'] 
-        } 
+          templates: @templates['celebration']
+        }
       %>
     </div>
     <div class='meetups'>
-      <%= 
-        render partial: 'tiles_row', locals: { 
+      <%=
+        render partial: 'tiles_row', locals: {
           category: 'meetups',
-          templates: @templates['meetups'] 
-        } 
+          templates: @templates['meetups']
+        }
       %>
     </div>
     <div class='whatever'>
-      <%= 
-        render partial: 'tiles_row', locals: { 
+      <%=
+        render partial: 'tiles_row', locals: {
           category: 'whatever',
-          templates: @templates['whatever'] 
-        } 
+          templates: @templates['whatever']
+        }
       %>
     </div>
   </div>

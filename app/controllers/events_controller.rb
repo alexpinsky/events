@@ -130,7 +130,7 @@ class EventsController < ApplicationController
   end
 
   def unpublish
-    if @event.update_attribute(:published, false)
+    if @event.update_attribute(:state, Event::STATES[:unpublished])
       respond_to do |format|
         message =  'Your event is private now!'
 
@@ -197,7 +197,7 @@ class EventsController < ApplicationController
   end
 
   def publish_params
-    publish_params = { published: true }
+    publish_params = { state: Event::STATES[:published] }
     publish_params.merge!(
       url: params[:url]
     ) unless default_route? event_id: @event.id, url: params[:url]
@@ -228,7 +228,7 @@ class EventsController < ApplicationController
 
   def set_theme
     dynamic_clause = params[:theme_id].present? ? 'events.id = ?' : ''
-    @theme = Event.themes.includes(
+    @theme = Event.themes.active.includes(
       :pictures,
       :information,
       :appearance

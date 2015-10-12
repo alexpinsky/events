@@ -7,17 +7,21 @@
   <div class='slide'>
     <% categories.each do |category| %>
       <div class="themes" data-category-name="<%= category.name.upcase %>">
-        <% category.events.themes.each do |theme| %>
+        <% category.events.themes.active.each do |theme| %>
           <div class='gallery-theme' data-theme="<%= theme.id %>" data-category="<%= category.id %>" style="background: url('<%= theme.thumbnail_url %>') no-repeat; background-size: cover;"></div>
         <% end %>
       </div>
     <% end %>
-    <!-- fake -->
-    <div class="themes" data-category-name="FAKE">
-      <% 4.times do %>
-        <div class='gallery-theme'></div>
-      <% end %>
+    <!-- COMING SOON -->
+    <div class="themes" data-category-name="CELEBRATION">
+      <div>Coming Soon..</div>
     </div>
-    <!-- end of fake -->
+    <div class="themes" data-category-name="MEETUPS">
+      <div>Coming Soon..</div>
+    </div>
+    <div class="themes" data-category-name="WHATEVER">
+      <div>Coming Soon..</div>
+    </div>
+    <!--  -->
   </div>
 </div>

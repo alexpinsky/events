@@ -12,5 +12,5 @@ $(document).ready(function() {
     draggable: false,
     speed: 1000
   });
-  $('.images').css('display', 'block');
+  $('.welcome .images').css('display', 'block');
 });

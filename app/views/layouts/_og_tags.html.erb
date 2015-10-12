@@ -1,7 +1,7 @@
 <% if event %>
-  <meta property="og:title" content="<%= event.name %>" />
-  <meta property="og:image" content="<%= event.pictures.first.try(:image_url) %>" />
-  <meta property="og:site_name" content="webivte.com/<%= event.url %>" />
-  <meta property="og:url" content="webivte.com/<%= event.url %>" />
+  <meta property="og:title"       content="<%= event.name %>" />
+  <meta property="og:image"       content="<%= event.pictures.first.try(:image_url) %>" />
+  <meta property="og:site_name"   content="eventit.com/<%= event.url %>" />
+  <meta property="og:url"         content="webivte.com/<%= event.url %>" />
   <meta property="og:description" content="<%= "#{event.name} #{event.start_time} #{event.location}" %>" />
 <% end %>

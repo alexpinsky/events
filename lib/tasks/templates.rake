@@ -11,20 +11,20 @@ namespace :templates do
             "name" => "simple",
             "text_1" => "21/12/15",
             "text_2" => "save the date",
-            "text_3" => "natasha & jonathan",
+            "text_3" => "Natasha & Jonathan",
             "category_id" => categroy.id,
             "is_theme" => true,
             'appearance_attributes' => {
               "background_image" => "",
               "font_family_1" => "'Rozha One', serif",
-              "font_color_1" => "",
-              "font_size_1" => "7",
+              "font_color_1" => "#000",
+              "font_size_1" => "3",
               "font_family_2" => "'Julius Sans One', sans-serif",
-              "font_color_2" => "",
-              "font_size_2" => "3",
+              "font_color_2" => "#000",
+              "font_size_2" => "4",
               "font_family_3" => "'Rozha One', serif",
-              "font_color_3" => "",
-              "font_size_3" => "10",
+              "font_color_3" => "#000",
+              "font_size_3" => "4"
             }
           })
           Information.create!(in_use: true, event: theme)

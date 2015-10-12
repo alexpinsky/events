@@ -1,5 +1,32 @@
 .display {
   font-size: 100%;
+  @media screen and (max-width: 1260px) {
+    font-size: 90%;
+  }
+  @media screen and (max-width: 1150px) {
+    font-size: 80%;
+  }
+  @media screen and (max-width: 1015px) {
+    font-size: 75%;
+  }
+  @media screen and (max-width: 930px) {
+    font-size: 65%;
+  }
+  @media screen and (max-width: 810px) {
+    font-size: 55%;
+  }
+  @media screen and (max-width: 695px) {
+    font-size: 45%;
+  }
+  @media screen and (max-width: 600px) {
+    font-size: 37%;
+  }
+  @media screen and (max-width: 479px) {
+    font-size: 45%;
+  }
+  @media screen and (max-width: 320px) {
+    font-size: 35%;
+  }
   .event-wrapper.simple {
     .panel {
       width: 50%;
@@ -8,18 +35,67 @@
       }
       text-align: center;
       display: inline-block;
-      overflow: hidden;
+      position: relative;
     }
-    .left {
-      float: left;
+    .panel-left {
+      padding-top: 5em;
     }
-    .right {
+    .panel-right {
+      padding-top: 2em;
       float: right;
     }
     .images-container {
-      
+      .images {
+        border-radius: 100%;
+        height: 38em;
+        width: 38em;
+        @media screen and (max-width: 810px) {
+          height: 36em;
+          width: 36em;
+        }
+        @media screen and (max-width: 695px) {
+          height: 30em;
+          width: 30em;
+        }
+        @media screen and (max-width: 568px) {
+          height: 25em;
+          width: 25em;
+        }
+        @media screen and (max-width: 479px) {
+          height: 33em;
+          width: 33em;
+        }
+        @media screen and (max-width: 320px) {
+          height: 30em;
+          width: 30em;
+        }
+        display: inline-block;
+        .slick-list {
+          border-radius: inherit;
+        }
+        img {
+          border-radius: inherit;
+          width: inherit;
+          height: inherit;
+        }
+      }
     }
     .content-container {
+      .calendar-wrapper {
+        .addthisevent-drop {
+          font-family: 'Fanwood Text', serif;
+          font-size: 1.5em;
+          padding: 0.3em 1em;
+          background: rgb(60, 87, 255);
+          color: white!important;
+          .addthisevent_icon {
+            // display: none;
+          }
+        }
+        .addthisevent-drop:hover {
+          background: rgba(203, 203, 203, 0.7);
+        }
+      }
     }
   }
 }

@@ -5,12 +5,14 @@ module EditorHelper
 
   def fonts_for_select
     [
-      ['Lobster', "'Lobster', cursive"],
+      ['Lobster',      "'Lobster', cursive"],
       ['Quattrocento', "'Quattrocento Sans', sans-serif"],
-      ['Lobster', "'Lobster', cursive"],
-      ['Vibur', "'Vibur', cursive"],
+      ['Lobster',      "'Lobster', cursive"],
+      ['Vibur',        "'Vibur', cursive"],
       ['Fanwood Text', "'Fanwood Text', serif"],
-      ['Six Caps', "'Six Caps', sans-serif"]
+      ['Six Caps',     "'Six Caps', sans-serif"],
+      ['Rozha',        "'Rozha One', serif"],
+      ['Julius',       "'Julius Sans One', sans-serif"]
     ]
   end
 

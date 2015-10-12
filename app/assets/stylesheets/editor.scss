@@ -181,6 +181,24 @@ $border-color: rgb(127, 159, 255);
             left: 0;
             bottom: 0;
             right: 0;
+            // cannot fix with font-size
+            .wedding.simple {
+              .panel-left {
+                padding-top: 10em;
+                .images-container {
+                  .images {
+                    height: 25em;
+                    width: 25em;
+                  }
+                }
+              }
+              .panel-right {
+                padding-top: 15em;
+                .content-container {
+                  font-size: 70%;
+                }
+              }
+            }
           }
         }
         .frame-2 {

@@ -4,20 +4,25 @@
   </div>
   <div class="segment-text"><%= category %></div>
 </div>
-<% templates.each do |template| %>
-
-  <div class='tile-wrapper'>
-    <div class='tile <%= klass_for template %>' style="background: url('<%= thumbnail_url_for template %>') no-repeat; background-size: cover;">
-      <% if need_menu_for? template %>
-        <!-- prepand menu if not placeholder -->
-        <div class='menu-wrapper'>
-          <div class='buttons'>
-            <a class="preview" target="_blank" href="<%= event_path(id: template.id, preview: true) %>"></a>
-            <a class="edit" href="<%= new_event_path(theme_id: template.id, category_id: template.category_id) %>"></a>
-          </div>
+<% last_index = templates.size - 1 %>
+<% templates.each_with_index do |template, index| %>
+  <% 
+    klass = if index == 0 %>
+    <% 'first' %>
+  <% elsif index == last_index %>
+    <% 'last' %>
+  <% else %>
+    <% '' %>
+  <% end %>
+  <div class='tile-wrapper <%= klass %>'>
+    <div class='tile' style="background: url('<%= template.thumbnail_url %>') no-repeat; background-size: cover;">
+      <div class='menu-wrapper'>
+        <div class='buttons'>
+          <a class="preview" target="_blank" href="<%= event_path(id: template.id, preview: true) %>"></a>
+          <a class="edit" href="<%= new_event_path(theme_id: template.id, category_id: template.category_id) %>"></a>
         </div>
-      <% end %>
+      </div>
     </div>
-    <div class='tile-text'><%= name_for(template) %></div>
+    <div class='tile-text'><%= template.name %></div>
   </div>
 <% end %>

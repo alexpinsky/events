@@ -1,21 +1,21 @@
 .page-wrapper.categories {
   font-family: 'Julius Sans One', sans-serif;
   margin-top: 20px;
-  padding-top: 20px;
+  padding-top: 30px;
   text-align: center;
   background-color: rgb(248, 248, 248);
-  h2 {
+  .categories-title {
     font-size: 20px;
     color: rgb(126, 124, 124);
-    border-bottom: 1px solid rgb(126, 124, 124);
     display: inline;
+    letter-spacing: 9px;
   }
   .tiles-wrapper {
-    padding: 20px 0;
+    padding: 30px 0;
     color: rgb(127, 159, 255);
     .segment-wrapper {
       display: inline-block;
-      padding: 15px 30px 10px;
+      padding: 15px 70px 10px 0;
       a {
         background-repeat: no-repeat;
         width: 121px;
@@ -52,9 +52,15 @@
         font-size: 12px;
       }
     }
+    .tile-wrapper.first {
+      padding-left: 0;
+    }
+    .tile-wrapper.last {
+      padding-right: 0;
+    }
     .tile-wrapper {
       display: inline-block;
-      padding: 0 10px;
+      padding: 0 13px;
       .tile {
         width: 130px;
         height: 130px;
@@ -92,6 +98,34 @@
         padding-top: 5px;
         text-align: left;
       }
+    }
+    .row-wrapper {
+      width: 617px;
+      height: 132px;
+      display: inline-block;
+      position: relative;
+      .category-text {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        font-family: 'Quattrocento Sans', sans-serif;
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+        letter-spacing: 3px;
+      }
+    }
+    .row-wrapper.celebration {
+      background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/categories/pic-celebration.jpg') no-repeat;
+      background-size: cover;
+    }
+    .row-wrapper.meetups {
+      background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/categories/pic-meetups.jpg') no-repeat;
+      background-size: cover;
+    }
+    .row-wrapper.whatever {
+      background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/categories/pic-whatever.jpg') no-repeat;
+      background-size: cover;
     }
   }
 }

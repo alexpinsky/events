@@ -83,17 +83,22 @@
     .content-container {
       .calendar-wrapper {
         .addthisevent-drop {
-          font-family: 'Fanwood Text', serif;
-          font-size: 1.5em;
-          padding: 0.3em 1em;
+          font-family: 'Quattrocento Sans', sans-serif;
+          font-size: 1em;
+          padding: 0.8em 0.8em 0.8em 2em;
           background: rgb(60, 87, 255);
           color: white!important;
           .addthisevent_icon {
-            // display: none;
+            width: 1.5em;
+            height: 1.5em;
+            background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/categories/shared/calendar_icon.svg") no-repeat;
+            background-size: contain;
+            left: 0.5em;
+            top: 0.4em;
           }
         }
         .addthisevent-drop:hover {
-          background: rgba(203, 203, 203, 0.7);
+          background: rgb(0, 3, 255);
         }
       }
     }

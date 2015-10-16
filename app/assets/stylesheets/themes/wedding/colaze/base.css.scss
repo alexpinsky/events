@@ -23,10 +23,10 @@
     width: 35em;
     text-align: center;
     padding: 2em 0;
-    border-top: 0.1em solid; 
+    border-top: 0.1em solid;
     border-bottom: 0.1em solid;
     @media only screen and (max-width  436px) {
-      border-top: 0.2em solid; 
+      border-top: 0.2em solid;
       border-bottom: 0.2em solid;
     }
   }
@@ -46,13 +46,13 @@
         height: inherit;
       }
     }
-    .colaze-square.border { 
-      border: 0.1em solid; 
+    .colaze-square.border {
+      border: 0.1em solid;
       @media only screen and (max-width : 436px) {
-        border: 0.2em solid; 
+        border: 0.2em solid;
       }
     }
-    .colaze-square.relative { 
+    .colaze-square.relative {
       position: relative;
     }
   }
@@ -81,21 +81,5 @@
     line-height: 1em;
     padding: 0.1em;
   }
-  .calendar-wrapper {
-    text-align: center;
-    .addthisevent-drop {
-      font-family: 'Quattrocento Sans', sans-serif;
-      font-size: 1em;
-      padding: 0.3em 1em;
-      background: rgb(160, 189, 189);
-      color: white !important;
-      width: 12em;
-      .addthisevent_icon {
-        display: none;
-      }
-    }
-    .addthisevent-drop:hover {
-      background: rgb(200, 205, 187);
-    }
-  }
+  @import 'themes/shared/calendar';
 }

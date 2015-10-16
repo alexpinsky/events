@@ -50,23 +50,6 @@
         display: inline-block;
       }
     }
-    .calendar-wrapper {
-      .addthisevent-drop {
-        font-family: 'Fanwood Text', serif;
-        font-style: italic;
-        font-size: 1em;
-        padding: 0.3em 1em;
-        background: rgb(234, 234, 234);
-        color: #595757!important;
-        border: 1em;
-        border-radius: 1em!important;
-        .addthisevent_icon {
-          display: none;
-        }
-      }
-      .addthisevent-drop:hover {
-        background: rgba(203, 203, 203, 0.7);
-      }
-    }
+    @import 'themes/shared/calendar';
   }
 }

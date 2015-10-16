@@ -71,25 +71,7 @@
         width: 22em;
       }
     }
-    .calendar-wrapper {
-      text-align: center;
-      .addthisevent-drop {
-        border: none;
-        font-family: 'Quattrocento Sans', sans-serif;
-        font-size: 1em;
-        padding: 0.5em 1em;
-        border-radius: 1em;
-        background: rgb(230, 186, 175);
-        color: white !important;
-        width: 12em;
-        .addthisevent_icon {
-          display: none;
-        }
-      }
-      .addthisevent-drop:hover {
-        background: rgb(255, 215, 199);
-      }
-    }
+    @import 'themes/shared/calendar';
     .images-container {
       text-align: center;
       padding-top: 1.1em;

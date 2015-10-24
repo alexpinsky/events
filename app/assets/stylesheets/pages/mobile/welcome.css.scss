@@ -96,7 +96,7 @@ html, body {
       }
       .tagline-2 {
         font-family: 'Quattrocento Sans', sans-serif;
-        font-size: 14px;
+        font-size: 16px;
         font-style: italic;
         letter-spacing: 4.3px;
         line-height: 30px;
@@ -116,11 +116,12 @@ html, body {
         display: inline-block;
         width: 48%;
         border-bottom: 2px solid white;
-        padding-bottom: 20px;
+        padding: 20px 0;
         .icon {
           background-repeat: no-repeat;
-          width: 110px;
-          height: 115px;
+          background-size: cover !important;
+          width: 70px;
+          height: 75px;
           display: inline-block;
         }
         .weddings {
@@ -149,6 +150,7 @@ html, body {
       .image-wrapper {
         img {
           margin: 0 auto;
+          width: 50%;
         }
       }
     }
@@ -157,6 +159,11 @@ html, body {
     background-color: rgb(227, 227, 227);
     color: rgb(127, 127, 127);
     text-align: center;
+    .slick-slider {
+      .slick-dots {
+        padding-bottom: 20px !important;
+      }
+    }
     .couple-wrapper {
       .image-wrapper {
         padding-top: 45px;
@@ -170,7 +177,7 @@ html, body {
         color: rgb(127, 159, 255);
       }
       .text-wrapper {
-        padding: 50px 0 90px;
+        padding: 50px 0 10px;
         font-size: 14px;
         @media screen and (max-width: 320px) {
           font-size: 12px;
@@ -220,9 +227,6 @@ html, body {
     }
     a.twitter {
       background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/twitter_icon.svg');
-    }
-    a.google {
-      background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/google_plus_icon.svg');
     }
   }
   .footer-nav {

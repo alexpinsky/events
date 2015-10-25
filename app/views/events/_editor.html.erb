@@ -7,7 +7,7 @@
           <a class="save" href="#"></a>
           <div class='text'>SAVE</div>
         </div>
-        <% if event.published? %>
+        <% if show_unpublish_button?(event) %>
           <div class='unpublish-wrapper'>
             <a class="unpublish" href="#"></a>
             <div class='text'>UNPUBLISH</div>

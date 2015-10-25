@@ -1,4 +1,9 @@
 module ApplicationHelper
+
+  def show_unpublish_button?(event)
+    event.published? || event.pending?
+  end
+
   def event_url(event)
     event.url.present? ? event.url : "events/#{event.id}"
   end

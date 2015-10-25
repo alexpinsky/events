@@ -7,8 +7,7 @@ class @Publisher
     onPublishSuccess = (data, textStatus, jqXHR) =>
       @publishedModal.show
         url: data.event.full_url
-        done: =>
-          @publishedModal.hide()
+        done: ->
           args.success event: data.event
 
     onPublishClick = (data) =>

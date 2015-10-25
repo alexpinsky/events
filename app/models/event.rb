@@ -41,17 +41,19 @@ class Event < ActiveRecord::Base
 
   delegate :name, to: :category, prefix: true
 
-  scope :themes,             -> ()              { where('events.is_theme = ?', true) }
-  scope :include_categories, -> ()              { includes(:category) }
-  scope :with_url,           -> ()              { where('events.url IS NOT NULL') }
-  scope :by_category,        -> (category_name) { joins(:category).where('categories.name = ?', category_name) }
-  scope :by_url,             -> (url)           { where('events.url = ?', url) }
-  scope :by_id,              -> (id)            { where('events.id = ?', id) }
-  scope :active,             ->                 { where('events.state != ?', STATES[:disabled]) }
-  scope :published,          ->                 { where('events.state = ?', STATES[:published]) }
+  scope :themes,             -> ()    { where('events.is_theme = ?', true) }
+  scope :with_url,           -> ()    { where('events.url IS NOT NULL') }
+  scope :by_url,             -> (url) { where('events.url = ?', url) }
+  scope :by_id,              -> (id)  { where('events.id = ?', id) }
+  scope :active,             ->       { where('events.state != ?', STATES[:disabled]) }
+  scope :published,          ->       { where('events.state = ?', STATES[:published]) }
+  scope :include_categories, -> ()    { includes(:category) }
+  scope :by_category,        -> (category_name) {
+    joins(:category).where('categories.name = ?', category_name)
+  }
 
   MAX_PICTURES_SIZE = 4
-  STATES = { unpublished: 0, published: 1, disabled: 2 }
+  STATES = { unpublished: 0, published: 1, disabled: 2, pending: 3 }
 
   def self.copy_from_theme(theme, options = {})
     event          = theme.dup
@@ -106,8 +108,16 @@ class Event < ActiveRecord::Base
     "https://s3-eu-west-1.amazonaws.com/events-assets-static/categories/#{category_name}/themes/#{theme_name}/thumbnail.jpg"
   end
 
+  def viewable_for?(user)
+    published? || user_id == user.try(:id)
+  end
+
   def published?
     state == STATES[:published]
+  end
+
+  def pending?
+    state == STATES[:pending]
   end
 
   def full_url

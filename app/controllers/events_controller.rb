@@ -20,7 +20,6 @@ class EventsController < ApplicationController
   end
 
   def show
-    @preview = params[:preview].present? ? true : false
     if params[:url]
       @event = Event.includes(
         :category,
@@ -39,7 +38,7 @@ class EventsController < ApplicationController
       .by_id(params[:id]).first
     end
 
-    if @event && (@event.published? || @preview)
+    if @event && @event.viewable_for?(current_user)
       render layout: "display"
     else
       redirect_to root_path
@@ -197,7 +196,7 @@ class EventsController < ApplicationController
   end
 
   def publish_params
-    publish_params = { state: Event::STATES[:published] }
+    publish_params = { state: Event::STATES[:pending] }
     publish_params.merge!(
       url: params[:url]
     ) unless default_route? event_id: @event.id, url: params[:url]

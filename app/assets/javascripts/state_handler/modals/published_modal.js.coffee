@@ -3,20 +3,21 @@ class @PublishedModal
     @modal = args.modal
 
   init: ->
-    @input   = @modal.find('.url-wrapper input')
-    @copyBtn = @modal.find('.modal-actions .copy')
+    # @input   = @modal.find('.url-wrapper input')
+    # @copyBtn = @modal.find('.modal-actions .copy')
+    # @copyBtn.click @onCopyClick
 
-    clip = new Clip
-      target:    @copyBtn
-      clipData:  @clipData
-      afterClip: @afterClip
-    clip.init()
+    # clip = new Clip
+    #   target:    @copyBtn
+    #   clipData:  @clipData
+    #   afterClip: @afterClip
+    # clip.init()
 
-    @modal.find('.modal-actions .done').click @onDoneClick
-    @copyBtn.click @onCopyClick
+    @modal.find('.modal-actions .done').click @hide
+    @modal.on $.modal.CLOSE, @onClose
 
   show: (args) ->
-    @input.val args.url
+    # @input.val args.url
     @doneHandler = args.done
 
     @modal.modal clickClose: false
@@ -34,6 +35,6 @@ class @PublishedModal
   onCopyClick: =>
     @input.select()
 
-  onDoneClick: =>
+  onClose: =>
     @doneHandler()
 

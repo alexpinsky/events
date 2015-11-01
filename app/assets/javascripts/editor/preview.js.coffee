@@ -66,7 +66,7 @@ class @Preview
       textDisplay.css("font-size", "#{val}em")
 
   updateBackground: (url) =>
-    @container.find('.display').css('background', "url(#{url})")
+    @container.find('.preview').css('background', "url(#{url})")
 
   addPic: (e) =>
     images = @container.find('.images')

@@ -1,7 +1,8 @@
 class @Form
   constructor: (options = {}) ->
-    @container = options.container
-    @listener = options.listener
+    @container   = options.container
+    @listener    = options.listener
+    @persistence = options.persistence
 
   init: (options = {}) ->
     @form = @container.find('form')
@@ -9,7 +10,7 @@ class @Form
 
     @nameInput = @container.find('input#event_name')
 
-    accordion = new Accordion container: @container.find('.accordion')
+    accordion = new Accordion container: @container.find('.accordion'), persistence: @persistence
     accordion.init()
 
     theme = new ThemeGallery container: @container.find('.gallery')

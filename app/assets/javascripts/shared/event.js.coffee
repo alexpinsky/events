@@ -6,7 +6,7 @@ class @Event
     @url         = args.url
 
   init: ->
-    @data = @persistence.getData() || { texts: {}, pics: {} }
+    @data = @persistence.getData(key: 'event') || { texts: {}, pics: {} }
     @clear()
 
   id: -> @id
@@ -19,10 +19,10 @@ class @Event
   url: (url) -> @url = url
 
   save: ->
-    @persistence.saveData @data
+    @persistence.saveData key: 'event', data: @data
 
   clear: ->
-    @persistence.clear()
+    @persistence.clear key: 'event'
 
   isEmpty: =>
     $.isEmptyObject(@data.texts) && $.isEmptyObject(@data.pics)

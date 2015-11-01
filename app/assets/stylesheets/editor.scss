@@ -3,7 +3,7 @@ $border-color: rgb(127, 159, 255);
 
 .page-wrapper.editor {
   margin-top: 20px;
-  min-height: 1050px;
+  min-height: 1300px;
   background-color: $bg-color;
   .page-container {
     width: 960px;
@@ -125,7 +125,6 @@ $border-color: rgb(127, 159, 255);
               }
               .panel-content {
                 @import 'editor/text_edit';
-                padding-left: 10px;
               }
             }
             .panel.pictures {
@@ -172,7 +171,7 @@ $border-color: rgb(127, 159, 255);
           display: inline-block;
           background-color: white;
           position: relative;
-          overflow: hidden;
+          overflow: scroll;
           .display {
             z-index: 1;
             font-size: 62%;

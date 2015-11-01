@@ -22,7 +22,7 @@
         </div>
       </div>
       <div class='tagline-2'>
-        EASY, QUICK & AWESOME
+        Easy, Quick & Awesome
       </div>
       <div class='start-wrapper'>
         <a href="#signUpModal" rel="modal:open" class="start"></a>
@@ -33,25 +33,25 @@
     <div class='segments'>
       <div class='segment-wrapper'>
         <div class='segment-icon'>
-          <a href="#" class="weddings"></a>
+          <a href="<%= categories_path %>" class="weddings"></a>
         </div>
         <div class="segment-text">weddings</div>
       </div>
       <div class='segment-wrapper'>
         <div class='segment-icon'>
-          <a href="#" class="celebration"></a>
+          <a href="<%= categories_path %>" class="celebration"></a>
         </div>
         <div class="segment-text">celebration</div>
       </div>
       <div class='segment-wrapper'>
         <div class='segment-icon'>
-          <a href="#" class="meetups"></a>
+          <a href="<%= categories_path %>" class="meetups"></a>
         </div>
         <div class="segment-text">meetups</div>
       </div>
       <div class='segment-wrapper'>
         <div class='segment-icon'>
-          <a href="#" class="whatever"></a>
+          <a href="<%= categories_path %>" class="whatever"></a>
         </div>
         <div class="segment-text">whatever</div>
       </div>
@@ -112,13 +112,15 @@
     </div>
   </div>
 </div>
-<!-- Sign In modal -->
-<div id="signInModal" class="modal">
-  <%= render partial: 'devise/shared/sign_in' %>
-</div>
-<!--  -->
-<!-- Sign Up modal -->
-<div id="signUpModal" class="modal">
-  <%= render partial: 'devise/shared/sign_up' %>
-</div>
-<!--  -->
+<% if current_user.nil? %>
+  <!-- Sign In modal -->
+  <div id="signInModal" class="modal">
+    <%= render partial: 'devise/shared/sign_in' %>
+  </div>
+  <!--  -->
+  <!-- Sign Up modal -->
+  <div id="signUpModal" class="modal">
+    <%= render partial: 'devise/shared/sign_up' %>
+  </div>
+  <!--  -->
+<% end %>

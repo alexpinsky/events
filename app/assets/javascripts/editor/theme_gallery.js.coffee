@@ -11,8 +11,14 @@ class @ThemeGallery
     @handler = handler
 
   startSlide: ->
-    @container.find('.slide').slick arrows: false
-    @container.find('.slide').on('beforeChange', @onBeforeChange)
+    slideObj = @container.find('.slide')
+    slideObj.on('init', (->
+      $(this).css 'visibility', 'visible'
+    ))
+    slideObj.slick arrows: false
+    slideObj.show()
+
+    slideObj.on('beforeChange', @onBeforeChange)
 
   initNavigation: ->
     @container.find('.gallery-header .prev').click @slidePrev

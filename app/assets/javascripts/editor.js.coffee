@@ -5,22 +5,24 @@ class @Editor
       prevEditor.destroy()
       prevEditor = null
 
-    eventObj = $('.event')
+    eventObj    = $('.event')
+    persistence = new DOMPersistence
     event = new Event
       id:   eventObj.data('id')
       name: eventObj.data('name')
       url:  eventObj.data('url')
-      persistence: new DOMPersistence
+      persistence: persistence
     event.init()
 
-    editor = new Editor container: $('.page-wrapper.editor'), event: event
+    editor = new Editor container: $('.page-wrapper.editor'), event: event, persistence: persistence
     editor.init()
 
     window.currentEditor = editor
 
   constructor: (options = {}) ->
-    @container = options.container
-    @event = options.event
+    @container   = options.container
+    @event       = options.event
+    @persistence = options.persistence
 
   init: ->
     @initVendors()
@@ -35,8 +37,9 @@ class @Editor
       view: @preview
 
     @form = new Form
-      container: @container.find('.form-wrapper')
-      listener:  @delegator
+      container:   @container.find('.form-wrapper')
+      listener:    @delegator
+      persistence: @persistence
     @form.themeClick @onThemeClick
     @form.init event: @event
 
@@ -83,7 +86,6 @@ class @Editor
 
   onSaveClick: =>
     onSavePublishClick = (args) =>
-      console.log args
       @stateHandler.publish
         event:   args.event
         success: @publishSuccessCallback
@@ -117,7 +119,8 @@ class @Editor
 
   # data: {event}
   publishSuccessCallback: (data) =>
-    @loadEvent data.event
+    window.location.href = '/events'
+
   publishErrorCallback: (data) =>
 
   # data: {event}

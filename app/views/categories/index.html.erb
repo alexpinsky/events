@@ -1,5 +1,5 @@
 <div class='page-wrapper categories'>
-  <div class="categories-title">pick your favorite template and start eventit</div>
+  <div class="categories-title">pick your favorite template and start <div class='logo'></div></div>
   <div class='tiles-wrapper'>
     <div class='weddings'>
       <%=
@@ -35,3 +35,15 @@
     </div>
   </div>
 </div>
+<% if current_user.nil? %>
+  <!-- Sign In modal -->
+  <div id="signInModal" class="modal">
+    <%= render partial: 'devise/shared/sign_in' %>
+  </div>
+  <!--  -->
+  <!-- Sign Up modal -->
+  <div id="signUpModal" class="modal">
+    <%= render partial: 'devise/shared/sign_up' %>
+  </div>
+  <!--  -->
+<% end %>

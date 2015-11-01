@@ -13,7 +13,7 @@ Events::Application.routes.draw do
   get 'ping'        => 'pages#ping'
   get 'coming_soon' => 'pages#comming_soon'
 
-  resources :categories
+  resources :categories, path: 'templates'
   resources :events do
     member do
       put 'publish'

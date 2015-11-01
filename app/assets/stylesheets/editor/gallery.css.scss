@@ -24,6 +24,9 @@ $border-color: rgb(127, 159, 255);
       display: inline-block;
     }
   }
+  .slide {
+    visibility: hidden;
+  }
   .themes {
     padding: 5px 80px 0;
     .gallery-theme {

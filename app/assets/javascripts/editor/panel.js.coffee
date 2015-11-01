@@ -2,6 +2,7 @@ class @Panel
   constructor: (options = {}) ->
     @container = options.container
     @name      = options.name
+    @isOpen    = options.isOpen
 
   init: ->
     @header = @container.find('.panel-header')
@@ -9,10 +10,12 @@ class @Panel
     @header.hover @onHeaderHover, @onHeaderHoverOut
     @header.click @onHeaderClick
 
+    @toggle() if @isOpen
+
   click: (handler) ->
     @headerClickHandler = handler
 
-  open: ->
+  toggle: ->
     @content.slideToggle()
 
   onHeaderHover: (e) =>
@@ -22,8 +25,9 @@ class @Panel
     @header.find('.header-icon').css('background', "url(https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/#{@name}_icon.svg)")
 
   onHeaderClick: (e) =>
-    @open()
-    @headerClickHandler()
+    @toggle()
+    @isOpen = !@isOpen
+    @headerClickHandler name: @name, isOpen: @isOpen
 
 
 

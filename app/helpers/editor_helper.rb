@@ -18,12 +18,20 @@ module EditorHelper
 
   def background_urls
     [
-      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/blue_stripes.png",
-      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/dark_stripes.png",
       "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/diagonal_striped_brick.png",
       "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/swirl_pattern.png",
       "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/wavegrid.png",
-      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/whitediamond.png"
+      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/whitediamond.png",
+      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p1.jpg",
+      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p2.jpg",
+      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p3.jpg",
+      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p4.jpg",
+      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p5.jpg",
+      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p6.jpg",
+      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p7.jpg",
+      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p8.jpg",
+      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p9.jpg",
+      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p10.jpg"
     ]
   end
 

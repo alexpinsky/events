@@ -49,7 +49,7 @@ class @TextLine
     pressed.css('border', '1px solid rgb(255, 141, 9)')
     icon.css("background", "url(https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/#{iconCount}_icon_hover.svg)")
 
-    @appearanceWrapper.slideDown()
+    # @appearanceWrapper.slideDown()
 
   onFocusout: (e) =>
     pressed = $(e.relatedTarget)
@@ -64,7 +64,7 @@ class @TextLine
 
     unpressed.css('border', '1px solid rgb(127, 159, 255)')
 
-    @appearanceWrapper.slideUp()
+    # @appearanceWrapper.slideUp()
 
   initChangeListeners: (input, font, color, size) ->
     input.keyup @onTextKeyup

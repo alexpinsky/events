@@ -1,6 +1,10 @@
 <div class='segment-wrapper'>
   <div class='segment-icon'>
-    <a href="#" class="<%= category %>"></a>
+    <% if current_user %>
+      <a href="<%= new_event_path %>" class="<%= category %>"></a>
+    <% else %>
+      <a href="#signInModal" rel="modal:open" class="<%= category %>"></a>
+    <% end %>
   </div>
   <div class="segment-text"><%= category %></div>
 </div>
@@ -19,7 +23,11 @@
       <div class='menu-wrapper'>
         <div class='buttons'>
           <a class="preview" target="_blank" href="<%= event_path(id: template.id, preview: true) %>"></a>
-          <a class="edit" href="<%= new_event_path(theme_id: template.id, category_id: template.category_id) %>"></a>
+          <% if current_user %>
+            <a class="edit" href="<%= new_event_path(theme_id: template.id, category_id: template.category_id) %>"></a>
+          <% else %>
+            <a href="#signInModal" rel="modal:open" class="edit"></a>
+          <% end %>
         </div>
       </div>
     </div>

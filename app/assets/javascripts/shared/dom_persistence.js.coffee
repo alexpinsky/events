@@ -1,9 +1,9 @@
 class @DOMPersistence
-  getData: ->
-    data = $('body').data 'data'
+  getData: (args) ->
+    $('body').data(args.key)
 
-  saveData: (data) ->
-    $('body').data 'data', data
+  saveData: (args) ->
+    $('body').data args.key, args.data
 
-  clear: ->
-    $('body').data 'data', null
+  clear: (args) ->
+    $('body').data args.key, null

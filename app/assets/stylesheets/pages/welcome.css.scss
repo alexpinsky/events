@@ -69,13 +69,13 @@
         margin: 0 auto;
         width: 300px;
         .logo-wrapper {
-          padding: 20px 0 16px;
+          padding: 35px 0 16px;
           img {
             width: 300px;
           }
         }
         .tagline-1 {
-          margin-bottom: 15px;
+          margin-bottom: 26px;
           font-size: 18px;
           letter-spacing: 4.3px;
           line-height: 30px;
@@ -85,8 +85,12 @@
         font-family: 'Quattrocento Sans', sans-serif;
         font-size: 16px;
         font-style: italic;
-        letter-spacing: 4.3px;
+        letter-spacing: 2px;
         line-height: 30px;
+        margin-top: 20px;
+      }
+      .start-wrapper {
+        margin-top: 17px;
       }
     }
   }
@@ -162,7 +166,7 @@
     text-align: center;
     .couple-wrapper {
       .image-wrapper {
-        padding-top: 100px;
+        padding-top: 67px;
         img {
           display: inline-block;
           text-align: center;

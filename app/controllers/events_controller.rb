@@ -1,14 +1,14 @@
 class EventsController < ApplicationController
   skip_before_filter :authenticate_user!, only: :show
 
-  before_filter :set_event, only: [
+  before_filter :_set_event, only: [
     :update,
     :destroy,
     :publish,
     :unpublish
   ]
-  before_filter :set_theme, only: :new
-  before_filter :set_categories, only: [:new, :edit]
+  before_filter :_set_theme,      only: :new
+  before_filter :_set_categories, only: [:new, :edit]
 
   def index
     @events = current_user.events.includes(
@@ -50,7 +50,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = current_user.events.new event_params
+    @event = current_user.events.new _event_params
 
     if @event.save
       render json: {
@@ -74,7 +74,7 @@ class EventsController < ApplicationController
 
     if params[:theme_id]
       # trying to change existing event's theme
-      set_theme
+      _set_theme
       @event.update_from_theme @theme
     end
 
@@ -82,7 +82,7 @@ class EventsController < ApplicationController
   end
 
   def update
-    if @event.update_attributes event_params
+    if @event.update_attributes _event_params
       render json: {
         event:   { id: @event.id, name: @event.name },
         message: 'Your event was saved!'
@@ -103,7 +103,7 @@ class EventsController < ApplicationController
   end
 
   def publish
-    if @event.update_attributes publish_params
+    if @event.update_attributes _publish_params
       respond_to do |format|
         message = 'Your event is public now!'
 
@@ -152,8 +152,8 @@ class EventsController < ApplicationController
 
   private
 
-  def event_params
-    sanitaized_params.require(:event).permit(
+  def _event_params
+    _sanitaized_params.require(:event).permit(
       :id,
       :theme_id,
       :category_id,
@@ -195,37 +195,37 @@ class EventsController < ApplicationController
       ])
   end
 
-  def publish_params
+  def _publish_params
     publish_params = { state: Event::STATES[:pending] }
     publish_params.merge!(
       url: params[:url]
-    ) unless default_route? event_id: @event.id, url: params[:url]
+    ) unless _default_route? event_id: @event.id, url: params[:url]
 
     publish_params
   end
 
-  def default_route?(args)
+  def _default_route?(args)
     "events/#{args[:event_id]}" == args[:url]
   end
 
-  def sanitaized_params
-    sanitaize_pictures_params if params[:event][:pictures_attributes]
+  def _sanitaized_params
+    _sanitaize_pictures_params if params[:event][:pictures_attributes]
     # in_use = params[:event][:information_attributes][:in_use]
     # params[:event][:information_attributes][:in_use] = in_use == 'true'
     params.merge(is_theme: false)
   end
 
-  def sanitaize_pictures_params
+  def _sanitaize_pictures_params
     params[:event][:pictures_attributes].keep_if do |key, value|
       value[:image].present? || value[:_destroy] == 'true' # => don't save just the order & slideshow
     end
   end
 
-  def set_event
+  def _set_event
     @event = current_user.events.find params[:id]
   end
 
-  def set_theme
+  def _set_theme
     dynamic_clause = params[:theme_id].present? ? 'events.id = ?' : ''
     @theme = Event.themes.active.includes(
       :pictures,
@@ -235,7 +235,7 @@ class EventsController < ApplicationController
     .where(dynamic_clause, params[:theme_id]).first
   end
 
-  def set_categories
+  def _set_categories
     @categories = Category.includes(:events).where('events.is_theme = ?', true).references(:events)
   end
 end

@@ -4,7 +4,7 @@ $border-color: rgb(127, 159, 255);
   input {
     font-family: 'Quattrocento Sans', sans-serif;
     color: rgb(176, 176, 176);
-    font-size: 12px;
+    font-size: 14px;
   }
   input:focus {
     outline: none;
@@ -28,46 +28,46 @@ $border-color: rgb(127, 159, 255);
       background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/3_icon.svg');
     }
     input {
-      width: 270px;
-      height: 16px;
+      width: 296px;
+      height: 28px;
       display: inline-block;
       border: 1px solid $border-color;
       padding-left: 10px;
     }
   }
   .appearance-wrapper {
-    display: none;
+    // display: none;
     font-family: 'Quattrocento Sans', sans-serif;
     .prefix {
       display: inline-block;
       background-color: rgb(77, 77, 77);
       color: white;
       font-size: 9px;
-      padding: 4px 6px;
+      padding: 8px 6px;
       vertical-align: top;
     }
     input {
       border: 1px solid rgb(77, 77, 77);
       border-top: none;
-      height: 15px;
+      height: 23px;
       vertical-align: super;
-      font-size: 9px;
+      font-size: 10px;
     }
     .text-font {
       display: inline-block;
+      vertical-align: top;
       .prefix {
-        margin-top: -3px;
       }
       select {
         font-family: 'Quattrocento Sans', sans-serif;
         color: rgb(176, 176, 176);
         padding-left: 5px;
-        width: 104px;
+        width: 110px;
         border: 1px solid rgb(77, 77, 77);
         border-top: none;
         border-left: none;
-        height: 15px;
-        font-size: 9px;
+        height: 26px;
+        font-size: 12px;
         background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/drop_down_icon.svg') no-repeat 93px;
         -webkit-appearance: none;
         -moz-appearance: none;
@@ -86,14 +86,14 @@ $border-color: rgb(127, 159, 255);
       margin-left: -5px;
       .minicolors-theme-default {
         .minicolors-swatch {
-          top: 3px;
+          top: 6px;
           left: 5px;
           width: 10px;
           height: 10px;
         }
         .minicolors-input {
           padding-left: 16px;
-          width: 44px;
+          width: 51px;
         }
       }
     }
@@ -101,7 +101,8 @@ $border-color: rgb(127, 159, 255);
       display: inline-block;
       margin-left: -5px;
       input {
-        width: 30px;
+        width: 39px;
+        padding-left: 5px;
       }
     }
   }

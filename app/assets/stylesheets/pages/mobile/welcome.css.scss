@@ -51,7 +51,7 @@ html, body {
     }
     .box-wrapper {
       position: absolute;
-      top: 75px;
+      top: 83px;
       @media screen and (max-width: 320px) {
         top: 50px;
       }
@@ -98,9 +98,9 @@ html, body {
         font-family: 'Quattrocento Sans', sans-serif;
         font-size: 16px;
         font-style: italic;
-        letter-spacing: 4.3px;
+        letter-spacing: 2px;
         line-height: 30px;
-        padding: 50px;
+        padding: 27px;
       }
     }
   }

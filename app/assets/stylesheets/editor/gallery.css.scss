@@ -6,17 +6,19 @@ $border-color: rgb(127, 159, 255);
     text-align: center;
     background-color: rgb(77, 77, 77);
     font-family: 'Quattrocento Sans', sans-serif;
+    position: relative;
     .prev, .next {
       color: white;
       font-size: 16px;
       display: inline-block;
       text-decoration: none;
+      position: absolute;
     }
     .prev {
-      margin-right: 5px;
+      left: 116px;
     }
     .next {
-      margin-left: 5px;
+      right: 115px;
     }
     .category-name {
       font-size: 11px;
@@ -27,14 +29,40 @@ $border-color: rgb(127, 159, 255);
   .slide {
     visibility: hidden;
   }
-  .themes {
-    padding: 5px 80px 0;
-    .gallery-theme {
-      width: 78px;
-      height: 78px;
-      display: inline-block;
-      border: 1px solid $border-color;
-      cursor: pointer;
+  .themes-wrapper {
+    width: 330px;
+    height: 180px;
+    .themes {
+      width: 166px;
+      margin: 8px auto;
+      .gallery-theme {
+        width: 78px;
+        height: 78px;
+        display: inline-block;
+        border: 1px solid $border-color;
+        cursor: pointer;
+      }
+    }
+    .coming-soon {
+      background-size: cover !important;
+      height: 180px;
+      .category-text {
+        font-family: 'Quattrocento Sans', sans-serif;
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+        letter-spacing: 3px;
+        padding: 5px;
+      }
+    }
+    .coming-soon.celebration {
+      background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/categories/pic-celebration.jpg") no-repeat;
+    }
+    .coming-soon.meetups {
+      background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/categories/pic-meetups.jpg") no-repeat;
+    }
+    .coming-soon.whatever {
+      background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/categories/pic-whatever.jpg") no-repeat;
     }
   }
 }

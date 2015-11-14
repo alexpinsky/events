@@ -43,5 +43,6 @@ class @ThemeGallery
     @changeCategroyName nextSlide
 
   changeCategroyName: (nextSlide) ->
-    nextCategoryName = nextSlide.data('category-name')
+    console.log nextSlide
+    nextCategoryName = nextSlide.children().first().data('category-name')
     @container.find('.gallery-header .category-name').text(nextCategoryName)

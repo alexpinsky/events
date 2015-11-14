@@ -6,21 +6,29 @@
   </div>
   <div class='slide'>
     <% categories.each do |category| %>
-      <div class="themes" data-category-name="<%= category.name.upcase %>">
-        <% category.events.themes.active.each do |theme| %>
-          <div class='gallery-theme' data-theme="<%= theme.id %>" data-category="<%= category.id %>" style="background: url('<%= theme.thumbnail_url %>') no-repeat; background-size: cover;"></div>
-        <% end %>
+      <div class='themes-wrapper'>
+        <div class="themes" data-category-name="<%= category.name.upcase %>">
+          <% category.events.themes.active.each do |theme| %>
+            <div class='gallery-theme' data-theme="<%= theme.id %>" data-category="<%= category.id %>" style="background: url('<%= theme.thumbnail_url %>') no-repeat; background-size: cover;"></div>
+          <% end %>
+        </div>
       </div>
     <% end %>
     <!-- COMING SOON -->
-    <div class="themes" data-category-name="CELEBRATION">
-      <div>Coming Soon..</div>
+    <div class='themes-wrapper'>
+      <div class="coming-soon celebration" data-category-name="CELEBRATION">
+        <div class="category-text">COMING SOON</div>
+      </div>
     </div>
-    <div class="themes" data-category-name="MEETUPS">
-      <div>Coming Soon..</div>
+    <div class='themes-wrapper'>
+      <div class="coming-soon meetups" data-category-name="MEETUPS">
+        <div class="category-text">COMING SOON</div>
+      </div>
     </div>
-    <div class="themes" data-category-name="WHATEVER">
-      <div>Coming Soon..</div>
+    <div class='themes-wrapper'>
+      <div class="coming-soon whatever" data-category-name="WHATEVER">
+        <div class="category-text">COMING SOON</div>
+      </div>
     </div>
     <!--  -->
   </div>

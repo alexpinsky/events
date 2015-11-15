@@ -11,6 +11,14 @@ class PagesController < ApplicationController
   def about
   end
 
+  def privacy_policy
+    render layout: false
+  end
+
+  def terms_of_service
+    render layout: false
+  end
+
   def ping
     render nothing: true, status: :ok
   end

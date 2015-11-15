@@ -8,10 +8,12 @@ Events::Application.routes.draw do
     registrations: 'devise_ext/registrations'
   }
 
-  get 'welcome'     => 'pages#welcome'
-  get 'about'       => 'pages#about'
-  get 'ping'        => 'pages#ping'
-  get 'coming_soon' => 'pages#comming_soon'
+  get 'welcome'          => 'pages#welcome'
+  get 'about'            => 'pages#about'
+  get 'privacy_policy'   => 'pages#privacy_policy'
+  get 'terms_of_service' => 'pages#terms_of_service'
+  get 'ping'             => 'pages#ping'
+  get 'coming_soon'      => 'pages#comming_soon'
 
   resources :categories, path: 'templates'
   resources :events do

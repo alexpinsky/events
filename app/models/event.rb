@@ -8,6 +8,7 @@ class Event < ActiveRecord::Base
   has_one :information, dependent: :destroy
 
   has_many :pictures, as: :displayable, dependent: :destroy
+  has_many :views, dependent: :destroy
 
   validates :url, uniqueness: true, allow_blank: true
 
@@ -39,7 +40,8 @@ class Event < ActiveRecord::Base
     :date_format,
   to: :information, allow_nil: true
 
-  delegate :name, to: :category, prefix: true
+  delegate :name,  to: :category, prefix: true
+  delegate :count, to: :views,    prefix: true
 
   scope :themes,             -> ()    { where('events.is_theme = ?', true) }
   scope :with_url,           -> ()    { where('events.url IS NOT NULL') }
@@ -123,9 +125,5 @@ class Event < ActiveRecord::Base
   def full_url
     url = self.url.blank? ? "events/#{id}" : self.url
     "#{ENV['ROOT_URL']}#{url}"
-  end
-
-  def views_count
-    0
   end
 end

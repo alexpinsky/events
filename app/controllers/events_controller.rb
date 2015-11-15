@@ -14,7 +14,8 @@ class EventsController < ApplicationController
     @events = current_user.events.includes(
       :category,
       :theme,
-      :pictures
+      :pictures,
+      :views
     )
     .order('events.created_at DESC')
   end
@@ -39,6 +40,7 @@ class EventsController < ApplicationController
     end
 
     if @event && @event.viewable_for?(current_user)
+      Analytics::ViewsCounter.new_view event: @event, ip: request.ip, referer: request.referer
       render layout: "display"
     else
       redirect_to root_path

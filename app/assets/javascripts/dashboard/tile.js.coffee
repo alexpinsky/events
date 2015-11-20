@@ -54,6 +54,7 @@ class @Tile
 
   onUnpublished: (data) =>
     @updateIcon 'publish'
+    @updateUrl data.event.full_url
 
   onPublishError: (data) =>
   onUnpublishError: (data) =>

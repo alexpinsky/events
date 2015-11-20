@@ -131,13 +131,17 @@ class EventsController < ApplicationController
   end
 
   def unpublish
-    if @event.update_attribute(:state, Event::STATES[:unpublished])
+    if @event.update_attributes(state: Event::STATES[:unpublished], url: nil)
       respond_to do |format|
         message =  'Your event is private now!'
 
         format.json do
           render json: {
-            event:   { id: @event.id },
+           event: {
+              id:       @event.id,
+              url:      @event.url,
+              full_url: @event.full_url
+            },
             message: message
           },
           status: :ok
@@ -200,7 +204,7 @@ class EventsController < ApplicationController
   def _publish_params
     publish_params = { state: Event::STATES[:pending] }
     publish_params.merge!(
-      url: params[:url]
+      url: params[:url].gsub(' ', '-')
     ) unless _default_route? event_id: @event.id, url: params[:url]
 
     publish_params
@@ -212,8 +216,6 @@ class EventsController < ApplicationController
 
   def _sanitaized_params
     _sanitaize_pictures_params if params[:event][:pictures_attributes]
-    # in_use = params[:event][:information_attributes][:in_use]
-    # params[:event][:information_attributes][:in_use] = in_use == 'true'
     params.merge(is_theme: false)
   end
 

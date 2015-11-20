@@ -4,9 +4,17 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :events, :dependent => :destroy
+  has_many :events, dependent: :destroy
 
   def admin?
-    ['alex_pinsky85@yahoo.com', 'gilmagen15@gmail.com', 'ron.gilat@gmail.com'].include?(self.email) 
+    ADMINS[email]
   end
+
+  private
+
+  ADMINS = {
+    'alex_pinsky85@yahoo.com' => true,
+    'gilmagen15@gmail.com'    => true,
+    'hilashamir4@gmail.com'   => true
+  }
 end

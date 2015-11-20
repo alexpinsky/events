@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151115211202) do
+ActiveRecord::Schema.define(version: 20151120150618) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,14 +44,11 @@ ActiveRecord::Schema.define(version: 20151115211202) do
   end
 
   create_table "contact_requests", force: true do |t|
-    t.integer  "lead_id"
     t.string   "email"
     t.text     "message"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "contact_requests", ["lead_id"], name: "index_contact_requests_on_lead_id", using: :btree
 
   create_table "events", force: true do |t|
     t.integer  "user_id"
@@ -90,14 +87,6 @@ ActiveRecord::Schema.define(version: 20151115211202) do
   end
 
   add_index "information", ["event_id"], name: "index_information_on_event_id", using: :btree
-
-  create_table "leads", force: true do |t|
-    t.string   "email"
-    t.string   "assigned"
-    t.string   "status"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "pictures", force: true do |t|
     t.integer  "displayable_id"

@@ -9,6 +9,7 @@ Events::Application.routes.draw do
   }
 
   get 'welcome'          => 'pages#welcome'
+  get 'admin'            => 'pages#admin'
   get 'about'            => 'pages#about'
   get 'privacy_policy'   => 'pages#privacy_policy'
   get 'terms_of_service' => 'pages#terms_of_service'
@@ -22,19 +23,12 @@ Events::Application.routes.draw do
       put 'unpublish'
     end
   end
-  resources :leads, only: :create
   resources :contact_requests, only: [:new, :create]
-
-  scope '/admin' do
-    authenticate :user, lambda { |u| u.admin? } do
-      resources :leads, only: :index
-      resources :contact_requests, except: [:new, :create]
-    end
-  end
 
   namespace :admin do
     authenticate :user, lambda { |u| u.admin? } do
       resources :events, only: :index
+      resources :contact_requests, only: [:index, :show]
     end
   end
 

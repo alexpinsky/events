@@ -8,6 +8,9 @@ class PagesController < ApplicationController
     end
   end
 
+  def admin
+  end
+
   def about
   end
 

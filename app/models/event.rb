@@ -43,16 +43,15 @@ class Event < ActiveRecord::Base
   delegate :name,  to: :category, prefix: true
   delegate :count, to: :views,    prefix: true
 
-  scope :themes,             -> ()    { where('events.is_theme = ?', true) }
-  scope :with_url,           -> ()    { where('events.url IS NOT NULL') }
-  scope :by_url,             -> (url) { where('events.url = ?', url) }
-  scope :by_id,              -> (id)  { where('events.id = ?', id) }
-  scope :active,             ->       { where('events.state != ?', STATES[:disabled]) }
-  scope :published,          ->       { where('events.state = ?', STATES[:published]) }
-  scope :include_categories, -> ()    { includes(:category) }
-  scope :by_category,        -> (category_name) {
-    joins(:category).where('categories.name = ?', category_name)
-  }
+  scope :themes, -> () { where('events.is_theme = ?', true) }
+  scope :with_user, -> () { where('events.user_id IS NOT NULL') }
+  scope :with_url, -> () { where('events.url IS NOT NULL') }
+  scope :by_url, -> (url) { where('events.url = ?', url) }
+  scope :by_id, -> (id) { where('events.id = ?', id) }
+  scope :active, -> { where('events.state != ?', STATES[:disabled]) }
+  scope :published, -> { where('events.state = ?', STATES[:published]) }
+  scope :include_categories, -> () { includes(:category) }
+  scope :by_category, -> (category_name) { joins(:category).where('categories.name = ?', category_name) }
 
   MAX_PICTURES_SIZE = 4
   STATES = { unpublished: 0, published: 1, disabled: 2, pending: 3 }

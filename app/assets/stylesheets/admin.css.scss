@@ -1,0 +1,38 @@
+.page-wrapper {
+  font-family: 'Quattrocento Sans', sans-serif;
+  position: relative;
+  padding: 50px 0;
+  min-height: 500px;
+  .label {
+    padding: 5px;
+  }
+  .table-wrapper {
+    margin: 50px;
+  }
+  .sum-wrapper {
+    position: absolute;
+    top: 75px;
+    left: 50px;
+  }
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  empty-cells: show;
+  border: 1px solid #cbcbcb;
+  thead {
+    background-color: #e0e0e0;
+    color: #000;
+    text-align: left;
+    vertical-align: bottom;
+  }
+  th, td {
+    padding: 0.5em 1em;
+    background-color: transparent;
+    border-left: 1px solid #cbcbcb;
+    border-width: 0 0 0 1px;
+    font-size: inherit;
+    margin: 0;
+    overflow: visible;
+  }
+}

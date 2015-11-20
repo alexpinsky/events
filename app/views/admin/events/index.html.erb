@@ -1,10 +1,11 @@
-<h1>Events</h1>
-<div class='row'>
-  <div class='small-12 columns'>
+<div class='page-wrapper'>
+  <div class='table-wrapper'>
     <table>
       <thead>
         <tr>
           <th>#</th>
+          <th>USER</th>
+          <th>STATE</th>
           <th>URL</th>
           <th>Theme</th>
           <th>Name</th>
@@ -16,7 +17,7 @@
         <% 
           themes_sum_hash = {}
           @events.each_with_index do |event, i|
-            url = "#{ENV['ROOT_URL']}#{event.url}"
+            url = event.full_url
             theme_name = event.theme_name
             themes_sum_hash.merge!({
               theme_name.to_sym => {
@@ -29,6 +30,8 @@
             <% theme_hash = themes_sum_hash[theme_name.to_sym] %>
             <% theme_hash[:count] += 1 %>
             <td><%= i + 1 %></td>
+            <td><%= event.user.email %></td>
+            <td><%= Event::STATES.invert[event.state] %></td>
             <td>
               <a target="_blank" href="<%= url %>"><%= url %></a>
             </td>
@@ -42,10 +45,10 @@
         <% end %>
       </tbody>
     </table>
+  </div>
+  <div class='sum-wrapper'>
     <% themes_sum_hash.each do |k,v| %>
-      <span class="label" style="background-color: <%= v[:color] %>">
-        <%= k %>
-      </span> X <%= v[:count] %>
+      <span class="label" style="background-color: <%= v[:color] %>"><%= k %></span> X <%= v[:count] %>
     <% end %>
   </div>
 </div>

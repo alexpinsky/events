@@ -25,9 +25,9 @@ class @StateHandler
       error:      args.error
     }
 
-    publishCallback = () =>
+    publishCallback = (data) =>
       @publish
-        event:   event
+        event:   data.event || args.event
         success: args.published
         error:   args.error
 

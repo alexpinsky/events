@@ -115,6 +115,7 @@ class @Editor
   # data: {event}
   saveSuccessCallback: (data) =>
     @loadEvent data.event
+
   saveErrorCallback: (data) =>
 
   # data: {event}

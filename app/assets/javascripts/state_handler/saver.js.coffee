@@ -25,8 +25,9 @@ class @Saver
         @savedModal.show
           event:     data.event
           done:      onSuccess
-          publish: args.publish
-
+          publish:   (->
+            args.publish event: data.event
+          )
 
       onSaveClick = (data) =>
         args.submitable.submit

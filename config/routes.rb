@@ -27,7 +27,12 @@ Events::Application.routes.draw do
 
   namespace :admin do
     authenticate :user, lambda { |u| u.admin? } do
-      resources :events, only: :index
+      resources :events, only: :index do
+        member do
+          put 'publish'
+          put 'unpublish'
+        end
+      end
       resources :contact_requests, only: [:index, :show]
     end
   end

@@ -49,4 +49,14 @@ module ApplicationHelper
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
   end
+
+  def friendly_color
+    random = Random.new
+    # randomize rgb and mix with white color
+    red   = (random.rand(256) + 255) / 2
+    green = (random.rand(256) + 255) / 2
+    blue  = (random.rand(256) + 255) / 2
+
+    "rgb(#{red}, #{green}, #{blue})"
+  end
 end

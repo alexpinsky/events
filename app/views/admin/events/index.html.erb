@@ -1,4 +1,4 @@
-<div class='page-wrapper'>
+<div class='page-wrapper admin-events'>
   <div class='table-wrapper'>
     <table>
       <thead>
@@ -11,17 +11,18 @@
           <th>Name</th>
           <th>Created At</th>
           <th>ID</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
-        <% 
+        <%
           themes_sum_hash = {}
           @events.each_with_index do |event, i|
             url = event.full_url
             theme_name = event.theme_name
             themes_sum_hash.merge!({
               theme_name.to_sym => {
-                color: "##{SecureRandom.hex(3)}",
+                color: friendly_color,
                 count: 0
               }
             }) unless themes_sum_hash[theme_name.to_sym]
@@ -41,6 +42,11 @@
             <td><%= event.name %></td>
             <td><%= event.created_at.strftime("%d/%m/%Y") %></td>
             <td><%= event.id %></td>
+            <% if event.published? %>
+              <td><%= button_to 'unpublish', unpublish_admin_event_path(event), method: :put %></td>
+            <% else %>
+              <td><%= button_to 'Publish', publish_admin_event_path(event), method: :put %></td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>

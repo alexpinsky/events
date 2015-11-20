@@ -110,7 +110,7 @@ class Event < ActiveRecord::Base
   end
 
   def viewable_for?(user)
-    published? || user_id == user.try(:id)
+    published? || user_id == user.try(:id) || user.admin?
   end
 
   def published?

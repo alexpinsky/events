@@ -38,8 +38,8 @@
 
 // notifications
 .notifications {
-  position: absolute;
-  top: 0;
+  position: fixed;
+  top: 10;
   right: 10px;
   z-index: 999;
   .notification {

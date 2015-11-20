@@ -25,7 +25,11 @@
         Easy, Quick & Awesome
       </div>
       <div class='start-wrapper'>
-        <a href="#signUpModal" rel="modal:open" class="start"></a>
+        <% if current_user.nil? %>
+          <a href="#signUpModal" rel="modal:open" class="start"></a>
+        <% else %>
+          <a href="<%= events_path %>" class="start"></a>
+        <% end %>
       </div>
     </div>
   </div>

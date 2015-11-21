@@ -110,7 +110,9 @@ class Event < ActiveRecord::Base
   end
 
   def viewable_for?(user)
-    published? || user_id == user.try(:id) || user.admin?
+    return true  if published? # if published visible for everyone
+    return false if user.nil?  # not published and no user
+    return user_id == user.id || user.admin?
   end
 
   def published?

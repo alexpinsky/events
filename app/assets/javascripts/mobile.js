@@ -10,7 +10,7 @@ $(document).ready(function() {
     mobileFirst: true,
     pauseOnHover: false,
     draggable: false,
-    speed: 1000
+    speed: 2000
   }
 
   $('.slideshow').slick(options);

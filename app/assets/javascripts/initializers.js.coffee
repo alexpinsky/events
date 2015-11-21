@@ -6,4 +6,5 @@ class @Initializers
       imagesObj.slick
         autoplay: true,
         arrows: false,
-        mobileFirst: true
+        mobileFirst: true,
+        speed: 2000

@@ -52,6 +52,15 @@
       }
     }
     .box-wrapper {
+      @media (min-width:  1670px) {
+        font-size: 110%;
+      }
+      @media (max-width:  1500px) {
+        font-size: 95%;
+      }
+      @media (max-width:  1024px) {
+        font-size: 85%;
+      }
       position: absolute;
       top: -95px;
       text-align: center;
@@ -59,6 +68,7 @@
       color: white;
       .peggy-wrapper {
         img {
+          width: 6em;
           display: block;
           margin: 0 auto;
         }
@@ -67,30 +77,29 @@
         border-top: 2px solid;
         border-bottom: 2px solid;
         margin: 0 auto;
-        width: 300px;
+        width: 20em;
         .logo-wrapper {
-          padding: 35px 0 16px;
+          padding: 2em 0 1.5em;
           img {
-            width: 300px;
+            width: 20em;
           }
         }
         .tagline-1 {
-          margin-bottom: 26px;
-          font-size: 18px;
-          letter-spacing: 4.3px;
-          line-height: 30px;
+          margin-bottom: 1em;
+          font-size: 1.3em;
+          letter-spacing: 0.2em;
+          line-height: 1.5em;
         }
       }
       .tagline-2 {
         font-family: 'Quattrocento Sans', sans-serif;
-        font-size: 16px;
+        font-size: 1em;
         font-style: italic;
-        letter-spacing: 2px;
-        line-height: 30px;
-        margin-top: 20px;
+        letter-spacing: 0.1em;
+        margin-top: 3em;
       }
       .start-wrapper {
-        margin-top: 17px;
+        margin-top: 2em;
       }
     }
   }
@@ -104,6 +113,9 @@
       .segment-wrapper {
         display: inline-block;
         width: 24%;
+        @media (min-width:  1441px) {
+          width: 20%;
+        }
         a {
           background-repeat: no-repeat;
           width: 121px;

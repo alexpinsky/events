@@ -5,5 +5,5 @@
   <% end %>
   <meta property="og:site_name" content="eventit.com/<%= event.url %>" />
   <meta property="og:url" content="webivte.com/<%= event.url %>" />
-  <meta property="og:description" content="<%= "#{event.name} #{event.start_time} #{event.location}" %>" />
+  <meta property="og:description" content="<%= "#{event.name} #{event.start_time.try(:strftime, '%F')} #{event.location}" %>" />
 <% end %>

@@ -4,8 +4,10 @@
 //= require slick.min
 
 var stretchDisplay = function() {
-  // starch background -  20 for display padding-bottom, 25 for footer height
-  $('.display').css('min-height', $(window).height() - 20 - 25);
+  var windowHeight = $(window).height();
+  var footerOffsetFromTop = $('.display-footer').offset().top
+  var minHeight = windowHeight > footerOffsetFromTop ? windowHeight : footerOffsetFromTop;
+  $('.display').css('min-height', minHeight);
 };
 
 var verticalAlign = function() {

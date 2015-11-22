@@ -44,16 +44,16 @@ var verticalAlign = function() {
 
 $(document).ready(function() {
   Initializers.init();
-  stretchDisplay();
   verticalAlign();
+  stretchDisplay();
   $('span').click(function() {
     ga('send', 'event', { eventCategory: 'invites', eventAction: 'add to calendar'});
   });
 });
 
 $(window).load(function() {
-  stretchDisplay();
   verticalAlign();
+  stretchDisplay();
 });
 
 $(window).resize(function() {

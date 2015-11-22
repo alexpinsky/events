@@ -22,16 +22,16 @@ module EditorHelper
       "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/swirl_pattern.png",
       "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/wavegrid.png",
       "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/whitediamond.png",
-      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p1.jpg",
-      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p2.jpg",
-      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p3.jpg",
-      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p4.jpg",
-      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p5.jpg",
-      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p6.jpg",
-      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p7.jpg",
-      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p8.jpg",
-      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p9.jpg",
-      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p10.jpg"
+      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p1.png",
+      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p2.png",
+      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p3.png",
+      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p4.png",
+      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p5.png",
+      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p6.png",
+      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p7.png",
+      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p8.png",
+      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p9.png",
+      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p10.png"
     ]
   end
 

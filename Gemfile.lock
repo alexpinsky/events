@@ -157,6 +157,7 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
+    rack-zippy (3.0.1)
     rails (4.0.0.rc1)
       actionmailer (= 4.0.0.rc1)
       actionpack (= 4.0.0.rc1)
@@ -283,6 +284,7 @@ DEPENDENCIES
   pry
   quiet_assets
   rack-cache
+  rack-zippy
   rails (= 4.0.0.rc1)
   rails_12factor
   rspec-rails (~> 3.0.0.beta)

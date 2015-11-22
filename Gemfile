@@ -18,6 +18,8 @@ gem 'deep_cloneable', '~> 2.0.0'
 gem 'mobylette'
 
 gem 'rack-cache'
+gem 'rack-zippy'
+
 gem 'dalli'
 gem 'kgio'
 gem "memcachier"

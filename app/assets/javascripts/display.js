@@ -5,10 +5,17 @@
 
 var stretchDisplay = function() {
   var windowHeight = $(window).height();
-  var footerOffsetFromTop = $('.display-footer').offset().top
-  var minHeight = windowHeight > footerOffsetFromTop ? windowHeight : footerOffsetFromTop;
-  $('.display').css('min-height', minHeight);
+  var docHeight    = $(document).height();
+  var extractSize  = 45; // 20 for display padding-bottom, 25 for footer height
+
+  var minHeight = Math.max(windowHeight, docHeight);
+
+  $('.display').css('min-height', docHeight - extractSize);
 };
+
+var restretchDisplay = function() {
+  $('.display').css('min-height', '');
+}
 
 var verticalAlign = function() {
   $('.vertical-js').each(function(index) {
@@ -26,8 +33,8 @@ var verticalAlign = function() {
       var leftVal = (verticalObj.parent().width() - verticalObj.width()) / 2;
       var styles  = {
         position: 'absolute',
-        top:      topVal + 'px',
-        left:     leftVal + 'px'
+        top: topVal + 'px',
+        left: leftVal + 'px'
       }
     }
 
@@ -50,7 +57,7 @@ $(window).load(function() {
 });
 
 $(window).resize(function() {
-  stretchDisplay();
-  verticalAlign();
+  restretchDisplay();
   verticalAlign(); // call it twice because with is not always updated at the first time.. :(
+  stretchDisplay();
 });

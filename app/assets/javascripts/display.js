@@ -42,10 +42,15 @@ var verticalAlign = function() {
   });
 };
 
+var removeOverlay = function() {
+  $('.overlay').remove();
+};
+
 $(document).ready(function() {
   Initializers.init();
   verticalAlign();
   stretchDisplay();
+  removeOverlay();
   $('span').click(function() {
     ga('send', 'event', { eventCategory: 'invites', eventAction: 'add to calendar'});
   });
@@ -58,6 +63,6 @@ $(window).load(function() {
 
 $(window).resize(function() {
   restretchDisplay();
-  verticalAlign(); // call it twice because with is not always updated at the first time.. :(
+  verticalAlign();
   stretchDisplay();
 });

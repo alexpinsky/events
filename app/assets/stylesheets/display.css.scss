@@ -8,6 +8,24 @@ html, body {
   min-height: 100%;
   margin: 0
 }
+.overlay {
+  background-color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 999;
+  .spinner-container {
+    height: 100%;
+    img {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto;
+      display: block;
+    }
+  }
+}
 .vertical-align {
   position: relative;
   top: 50%;

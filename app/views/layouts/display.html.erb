@@ -17,6 +17,11 @@
     <%= yield(:header) %>
   </head>
   <body>
+    <div class="overlay">
+      <div class='spinner-container'>
+        <img class="vertical-align" src="https://s3-eu-west-1.amazonaws.com/events-assets-static/shared/loading.gif">
+      </div>
+    </div>
     <%= yield %>
     <!-- Javascripts
     ================================================== -->

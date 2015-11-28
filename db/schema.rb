@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151120150618) do
+ActiveRecord::Schema.define(version: 20151128144952) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -102,6 +102,16 @@ ActiveRecord::Schema.define(version: 20151120150618) do
   add_index "pictures", ["displayable_id"], name: "index_pictures_on_displayable_id", using: :btree
   add_index "pictures", ["displayable_type"], name: "index_pictures_on_displayable_type", using: :btree
 
+  create_table "social_providers", force: true do |t|
+    t.integer "type_enum"
+    t.integer "user_id"
+    t.string  "token"
+    t.string  "expires_at"
+  end
+
+  add_index "social_providers", ["type_enum"], name: "index_social_providers_on_type_enum", using: :btree
+  add_index "social_providers", ["user_id"], name: "index_social_providers_on_user_id", using: :btree
+
   create_table "songs", force: true do |t|
     t.integer  "listenable_id"
     t.string   "listenable_type"
@@ -125,10 +135,14 @@ ActiveRecord::Schema.define(version: 20151120150618) do
     t.datetime "updated_at"
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["provider"], name: "index_users_on_provider", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["uid"], name: "index_users_on_uid", using: :btree
 
   create_table "views", force: true do |t|
     t.integer  "event_id"

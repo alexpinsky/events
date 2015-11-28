@@ -5,7 +5,8 @@ Events::Application.routes.draw do
   root 'pages#welcome'
 
   devise_for :users, controllers: {
-    registrations: 'devise_ext/registrations'
+    registrations: 'devise_ext/registrations',
+    omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
   get 'welcome'          => 'pages#welcome'
@@ -25,6 +26,7 @@ Events::Application.routes.draw do
   end
   resources :contact_requests, only: [:new, :create]
 
+  # ADMIN
   namespace :admin do
     authenticate :user, lambda { |u| u.admin? } do
       resources :events, only: :index do

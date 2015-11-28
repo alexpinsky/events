@@ -28,6 +28,9 @@ gem 'sidekiq'
 gem 'sinatra', require: false
 gem 'slim'
 
+# API
+gem 'omniauth-facebook'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0.rc1'
 gem 'sass', '3.4.5'

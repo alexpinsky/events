@@ -1,6 +1,7 @@
 <div class="devise-wrapper">
   <div class="header-wrapper">
     <h2>SIGN IN</h2>
+    <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
     <div class='text'>
       new user? <a href="#signUpModal" rel="modal:open">sign up</a>
     </div>

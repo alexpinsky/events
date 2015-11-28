@@ -30,6 +30,7 @@ gem 'slim'
 
 # API
 gem 'omniauth-facebook'
+gem "koala", "~> 2.2"
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0.rc1'

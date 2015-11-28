@@ -1,7 +1,7 @@
 module EventsHelper
   def background_style_for(event)
     bg_image = event.background_image
-    bg_image.present? ? "background: url(#{bg_image})" : "background: white"
+    bg_image.present? && bg_image != 'white' ? "background: url(#{bg_image})" : "background: white"
   end
 
   def dashboard_tile_backgroud_for(event)

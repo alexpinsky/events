@@ -66,7 +66,12 @@ class @Preview
       textDisplay.css("font-size", "#{val}em")
 
   updateBackground: (url) =>
-    @container.find('.preview').css('background', "url(#{url})")
+    # Bad implementation - need to handle colors and not just urls.
+    if url == 'white'
+      @container.find('.preview').css('background', "#{url}")
+    else
+      @container.find('.preview').css('background', "url(#{url})")
+
 
   addPic: (e) =>
     images = @container.find('.images')

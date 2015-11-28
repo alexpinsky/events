@@ -26,7 +26,7 @@
         <%= render partial: "events/editor/form", locals: { event: event, categories: categories }  %>
       </div>
       <div class='preview-wrapper'>
-        <div class='frame-1'></div><div class='preview'  style="background: url(<%= event.background_image %>)">
+        <div class='frame-1'></div><div class='preview' style="<%= background_style_for(event) %>">
           <div class="display">
             <%= render partial: "themes/#{theme.category_name}/#{theme.theme_name}", locals: { event: theme } %>
           </div>

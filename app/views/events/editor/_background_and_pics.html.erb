@@ -5,6 +5,7 @@
       <div class='background-text'>choose your favorite background</div>
     </div>
     <div class='background-tiles'>
+      <div class='background-tile' style="background: white" data-url="white"></div>
       <% background_urls.each do |url| %>
         <div class='background-tile' style="background: url(<%= url %>)" data-url="<%= url %>"></div>
       <% end %>

@@ -21,7 +21,6 @@ module EditorHelper
       "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/diagonal_striped_brick.png",
       "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/swirl_pattern.png",
       "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/wavegrid.png",
-      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/whitediamond.png",
       "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p1.png",
       "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p2.png",
       "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p3.png",

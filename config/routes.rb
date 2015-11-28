@@ -34,6 +34,7 @@ Events::Application.routes.draw do
         end
       end
       resources :contact_requests, only: [:index, :show]
+      resources :users, only: :index
     end
   end
 

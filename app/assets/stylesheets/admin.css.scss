@@ -42,7 +42,10 @@ table {
 .admin-menu {
   .menu-list {
     margin: 0 auto;
-    width: 700px;
+    width: 720px;
+  }
+  .btn.users {
+    background-color: blueviolet;
   }
   .btn.events {
     background-color: darkseagreen;
@@ -52,6 +55,12 @@ table {
   }
 }
 
+.admin-users {
+  .table-wrapper {
+    width: 600px;
+    margin: 0 auto;
+  }
+}
 .admin-events {
   .table-wrapper {
     margin: 50px;

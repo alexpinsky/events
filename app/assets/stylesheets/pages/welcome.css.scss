@@ -48,6 +48,9 @@
           @media (min-width:  1440px) {
             margin: -200px auto 0;
           }
+          .slick-slide {
+            -webkit-transform: translate3d(0, 0, 0);
+          }
         }
       }
     }

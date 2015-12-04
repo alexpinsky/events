@@ -1,3 +1,19 @@
+#signInModal, #signUpModal {
+  width: 500px;
+  top: 44% !important;
+  border-radius: 0;
+  .close-modal {
+    background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/x_btn.svg');
+    background-repeat: no-repeat;
+    top: 0;
+  }
+}
+#signInModal {
+  height: 305px;
+}
+#signUpModal {
+  height: 362px;
+}
 .devise-wrapper {
   padding: 4px 31px;
   .header-wrapper {
@@ -53,6 +69,14 @@
       }
     }
   }
+}
+a.fb-login {
+  background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/shared/fb-login.jpg");
+  width: 196px;
+  height: 41px;
+  display: block;
+  background-size: cover;
+  margin: 20px auto;
 }
 .devise-wrapper:before {
   display: none;

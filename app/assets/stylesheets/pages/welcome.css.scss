@@ -1,15 +1,3 @@
-#signInModal, #signUpModal {
-  @import 'devise';
-  width: 500px;
-  height: 305px;
-  top: 44% !important;
-  border-radius: 0;
-  .close-modal {
-    background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/x_btn.svg');
-    background-repeat: no-repeat;
-    top: 0;
-  }
-}
 .page-wrapper.welcome {
   font-family: 'Julius Sans One', sans-serif;
   .login {

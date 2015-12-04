@@ -13,6 +13,7 @@
       <div class='action'><%= f.submit '', class: "button sign-up" %></div>
     <% end %>
   </div>
+  <a href="<%= user_omniauth_authorize_path(:facebook) %>" class="fb-login"></a>
   <% if false %>
     <%= render "devise/shared/links" %>
   <% end %>

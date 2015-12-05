@@ -31,5 +31,6 @@ module Events
     config.cache_store = :dalli_store
 
     config.middleware.swap(ActionDispatch::Static, Rack::Zippy::AssetServer)
+    config.react.jsx_transformer_class = React::JSX::JSXTransformer
   end
 end

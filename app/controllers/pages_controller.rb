@@ -26,9 +26,9 @@ class PagesController < ApplicationController
     render nothing: true, status: :ok
   end
 
-  def comming_soon
-    @lead = Lead.new
-    render layout: false
+  def react
+    event = Event.last
+    render :react, locals: { event: { id: event.id, name: event.name }.to_json }
   end
 
   private

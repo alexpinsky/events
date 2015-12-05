@@ -24,6 +24,9 @@
 //= require editor
 //= require pages
 //= require state_handler
+//= require react
+//= require react_ujs
+//= require components
 //= require_tree ./shared
 //= require_tree ./elements
 //= require_tree ./state_handler

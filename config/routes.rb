@@ -15,6 +15,7 @@ Events::Application.routes.draw do
   get 'terms_of_service' => 'pages#terms_of_service'
   get 'ping'             => 'pages#ping'
   get 'react'            => 'pages#react'
+  post 'image'            => 'pages#image'
 
   resources :categories, path: 'templates'
   resources :events do

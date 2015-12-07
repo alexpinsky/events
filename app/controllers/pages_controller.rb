@@ -31,6 +31,12 @@ class PagesController < ApplicationController
     render :react, locals: { event: { id: event.id, name: event.name }.to_json }
   end
 
+  def image
+    preloaded = Cloudinary::PreloadedFile.new(params[:image_id])
+    puts ">>>>>> preloaded.valid?: #{preloaded.valid?}"
+    puts ">>>>>> preloaded.identifier: #{preloaded.identifier}"
+  end
+
   private
 
   def _set_page

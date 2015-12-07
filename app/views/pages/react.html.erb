@@ -1,1 +1,9 @@
-<div id="test" data-json="<%= event %>"></div>
+<%= cloudinary_js_config %>
+<div id="test" data-json="<%= event %>">
+  <%= form_tag('/image', :method => :post) do  %>
+    <%= cl_image_upload_tag('picture_1',  :crop => :limit, :width => 600, :height => 600) %>
+    <%= cl_image_upload_tag('picture_2',  :crop => :limit, :width => 600, :height => 600) %>
+    <%= submit_tag 'Save' %>
+  <% end %>
+  <div class='progress_bar' style="background-color: green; height: 25px; width: 0;"></div>
+</div>

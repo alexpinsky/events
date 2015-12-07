@@ -9,6 +9,7 @@ gem 'hirb'
 
 gem 'devise'
 gem 'faker'
+gem 'cloudinary'
 gem 'carrierwave'
 gem "mini_magick"
 gem 'fog'

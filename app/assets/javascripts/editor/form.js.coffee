@@ -40,6 +40,7 @@ class @Form
 
     event = options.event
     @updateFromEvent(event) unless event.isEmpty()
+    ReactDOM.render(React.createElement(Pictures), @container.find('.pics-section')[0])
 
   themeClick: (handler) ->
     @themeHandler = handler

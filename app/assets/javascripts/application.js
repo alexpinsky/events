@@ -36,6 +36,7 @@
 
 // External Plugins
 
+//= require q
 //= require jquery.minicolors.min
 //= require jquery.modal.min
 //= require responsive-nav.min

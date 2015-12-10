@@ -7,7 +7,7 @@ class @PicsSelector
     @container.find('.pic-fields').each (i, element) =>
       obj = $(element)
       order = obj.data('order')
-      pic = new Picture container: obj, order: order
+      pic = new OldPicture container: obj, order: order
       pic.add @onAdd
       pic.remove @onRemove
       pic.init()

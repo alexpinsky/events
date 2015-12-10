@@ -49,6 +49,9 @@
       padding-top: 10px;
       .pic-fields {
         display: inline-block;
+        .tile-wrapper.needs-space {
+          margin-right: 8px;
+        }
         .tile-wrapper {
           display: inline-block;
           .pic-tile {

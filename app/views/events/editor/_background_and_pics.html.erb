@@ -16,36 +16,6 @@
       <div class='pics-icon'></div>
       <div class='pics-text'>upload up to 4 photos</div>
     </div>
-    <div class='pics-tiles'>
-      <%= event_form.fields_for :pictures, event.pictures do |pic_form| %>
-        <% pic_obj = pic_form.object %>
-        <div class='pic-fields' data-order="<%= pic_obj.order %>">
-          <div class='tile-wrapper'>
-            <% if pic_obj.image_url %>
-              <div class='pic-tile image' style="background-image: url(<%= pic_obj.image_url %>)">
-                <a href="#" class="remove" data-type="remove"></a>
-              </div>
-            <% else %>
-              <div class='pic-tile empty'>
-                <a href="#" class="add" data-type="add"></a>
-              </div>
-            <% end %>
-          </div>
-          <div class='input-wrapper'>
-            <%= pic_form.file_field :image,
-                                    class: "image-file",
-                                    hidden: true %>
-          </div>
-          <%= pic_form.hidden_field :slideshow %>
-          <%= pic_form.hidden_field :order %>
-          <%= pic_form.hidden_field :_destroy, class: "destroy" %>
-        </div>
-      <% end %>
-      <div class='size-text'>
-        Image size should be under <strong>200kb</strong>.
-        <br/>
-        You can optimize the image size at <a href="http://www.imageoptimizer.net/Pages/Home.aspx" target="_blank">imageoptimizer</a>.
-      </div>
-    </div>
+    <div class='pics-tiles'><!-- React Component (Pictures.js.jsx) --></div>
   </div>
 </div>

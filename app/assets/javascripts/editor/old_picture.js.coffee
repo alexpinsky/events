@@ -1,4 +1,4 @@
-class @Picture
+class @OldPicture
   constructor: (options = {}) ->
     @container = options.container
     @order     = options.order

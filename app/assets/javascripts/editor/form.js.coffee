@@ -34,13 +34,25 @@ class @Form
     @pics.remove @onPicRemove
     @pics.init()
 
+    pictures = [
+      {url: '', order: 1},
+      {url: '', order: 2},
+      {url: '', order: 3},
+      {url: '', order: 4}
+    ]
+
+    ReactDOM.render(
+      React.createElement(Pictures, {pictures: pictures}),
+      @container.find('.pics-section')[0]
+    );
+
+
     @info = new Information container: @container.find('.information')
     @info.syncClick @onSyncClick
     @info.init()
 
     event = options.event
     @updateFromEvent(event) unless event.isEmpty()
-    ReactDOM.render(React.createElement(Pictures), @container.find('.pics-section')[0])
 
   themeClick: (handler) ->
     @themeHandler = handler

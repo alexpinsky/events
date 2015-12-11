@@ -7,25 +7,28 @@ var Picture = React.createClass({
     removePicture: React.PropTypes.func.isRequired
   },
 
-  getInitialState: function() {
+  getInitialState() {
     return { url: this.props.initialUrl, destroy: false }
   },
 
-  handleAddPicture: function(e) {
-    Q(this.props.addPicture())
+  componentWillUnmount() {
+  },
+
+  handleAddPicture(e) {
+    Q(this.props.addPicture({order: this.props.order}))
     .then(function(newUrl) {
       this.setState({url: newUrl, destroy: false});
     }.bind(this));
   },
 
-  handleRemovePicture: function(e) {
-    Q(this.props.removePicture())
+  handleRemovePicture(e) {
+    Q(this.props.removePicture({order: this.props.order}))
     .then(function() {
       this.setState({url: '', destroy: true});
     }.bind(this));
   },
 
-  imageTile: function() {
+  imageTile() {
     var divStyle = { backgroundImage: 'url(' + this.state.url + ')' };
     return (
       <div className='pic-tile image' style={divStyle} >
@@ -34,7 +37,7 @@ var Picture = React.createClass({
     )
   },
 
-  emptyTile: function() {
+  emptyTile() {
     return (
       <div className='pic-tile empty'>
         <a href="#" className="add" onClick={this.handleAddPicture} />
@@ -42,15 +45,15 @@ var Picture = React.createClass({
     )
   },
 
-  isUrlPresent: function() {
+  isUrlPresent() {
     return this.state.url != '';
   },
 
-  marginClass: function() {
+  marginClass() {
     return this.props.isLast ? '' : ' needs-space';
   },
 
-  render: function() {
+  render() {
     var inputCount = this.props.order - 1;
     return (
       <div className='pic-fields'>

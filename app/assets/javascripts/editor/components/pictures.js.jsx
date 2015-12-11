@@ -1,12 +1,24 @@
 var Pictures = React.createClass({
-  handleAddPicture: function() {
-    return 'https://events-assets-users.s3.amazonaws.com/uploads/development/picture/image/27/image_2.jpg';
+  propTypes: {
+    pictures: React.PropTypes.array.isRequired,
+    addPicture: React.PropTypes.func.isRequired,
+    removePicture: React.PropTypes.func.isRequired
   },
 
-  handleRemovePicture: function() {
+  componentWillUnmount() {
   },
 
-  render: function() {
+  handleAddPicture(args) {
+    var url = 'https://events-assets-users.s3.amazonaws.com/uploads/development/picture/image/27/image_2.jpg';
+    this.props.addPicture({order: args.order, url: url});
+    return url;
+  },
+
+  handleRemovePicture(args) {
+    this.props.removePicture({order: args.order});
+  },
+
+  render() {
     var picturesSize = this.props.pictures.length;
     var pictures = this.props.pictures.map(function(picture, index) {
       return (
@@ -20,8 +32,14 @@ var Pictures = React.createClass({
       )
     }.bind(this));
     return (
-      <div className='pics-tiles'>
-        {pictures}
+      <div>
+        <div className='pics-tagline'>
+          <div className='pics-icon' />
+          <div className='pics-text'>upload up to 4 photos</div>
+        </div>
+        <div className='pics-tiles'>
+          {pictures}
+        </div>
       </div>
     )
   }

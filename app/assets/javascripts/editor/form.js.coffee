@@ -29,24 +29,6 @@ class @Form
     @background.click @onBackgroundChange
     @background.init()
 
-    @pics = new PicsSelector container: @container.find('.pics-section')
-    @pics.add @onPicAdd
-    @pics.remove @onPicRemove
-    @pics.init()
-
-    pictures = [
-      {url: '', order: 1},
-      {url: '', order: 2},
-      {url: '', order: 3},
-      {url: '', order: 4}
-    ]
-
-    ReactDOM.render(
-      React.createElement(Pictures, {pictures: pictures}),
-      @container.find('.pics-section')[0]
-    );
-
-
     @info = new Information container: @container.find('.information')
     @info.syncClick @onSyncClick
     @info.init()
@@ -54,12 +36,40 @@ class @Form
     event = options.event
     @updateFromEvent(event) unless event.isEmpty()
 
+    @reactDOMElement = @container.find('.pics-section')[0]
+    console.log "@reactDOMElement: #{@reactDOMElement}"
+    # console.log event
+    # console.log @pictures(event)
+    ReactDOM.render(
+      React.createElement(Pictures, {
+        pictures: @pictures(event),
+        addPicture: @onPicAdd,
+        removePicture: @onPicRemove
+      }),
+      @reactDOMElement
+    );
+
+  pictures: (event) ->
+    pictures = null
+    for order, valObj of event.pics()
+      console.log pictures
+      pictures ||= []
+      pictures.push { order: order, url: valObj.url }
+
+    pictures ||= [
+      {url: '', order: 1},
+      {url: '', order: 2},
+      {url: '', order: 3},
+      {url: '', order: 4}
+    ]
+    console.log pictures
+    pictures
+
   themeClick: (handler) ->
     @themeHandler = handler
 
   updateFromEvent: (event) ->
     @text.updateFromEvent event
-    @pics.updateFromEvent event
 
   updateName: (name) ->
     @nameInput.val name
@@ -76,6 +86,7 @@ class @Form
     @form.submit()
 
   destroy: ->
+    React.unmountComponentAtNode @reactDOMElement
 
   onSubmit: (e) =>
     e.preventDefault()

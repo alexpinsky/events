@@ -45,7 +45,7 @@ class @Event
   updateBackground: (url) =>
 
   addPic: (e) =>
-    @data.pics[e.order] = { url: e.url, input: e.input }
+    @data.pics[e.order] = { url: e.url }
 
   removePic: (e) =>
     @data.pics[e.order] = null

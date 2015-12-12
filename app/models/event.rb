@@ -4,10 +4,9 @@ class Event < ActiveRecord::Base
   belongs_to :theme, class_name: 'Event', foreign_key: 'theme_id'
 
   has_one :appearance, dependent: :destroy
-  has_one :song, as: :listenable, dependent: :destroy
   has_one :information, dependent: :destroy
 
-  has_many :pictures, as: :displayable, dependent: :destroy
+  has_many :pictures, dependent: :destroy
   has_many :views, dependent: :destroy
 
   validates :url, uniqueness: true, allow_blank: true
@@ -15,7 +14,6 @@ class Event < ActiveRecord::Base
   accepts_nested_attributes_for :pictures,
     :appearance,
     :information,
-    :song,
   allow_destroy: true
 
   delegate :background_image,
@@ -87,7 +85,11 @@ class Event < ActiveRecord::Base
   end
 
   def theme_name
-    self.is_theme ? self.name : self.theme.name
+    theme? ? self.name : self.theme.name
+  end
+
+  def theme?
+    self.is_theme
   end
 
   def build_pictures
@@ -109,6 +111,7 @@ class Event < ActiveRecord::Base
   end
 
   def viewable_for?(user)
+    return true  if theme? # if theme visible for everyone
     return true  if published? # if published visible for everyone
     return false if user.nil?  # not published and no user
     return user_id == user.id || user.admin?

@@ -39,9 +39,6 @@
 //= require q
 //= require jquery.minicolors.min
 //= require jquery.modal.min
-//= require responsive-nav.min
-//= require social-share-button
-//= require file-validator
 //= require jquery.timepicker.min
 //= require jquery.datepair.min
 //= require bootstrap-datepicker

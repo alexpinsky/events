@@ -1,8 +1,4 @@
 $(document).ready(function() {
-
-  // init responsive nav
-  responsiveNav(".nav-collapse");
-
   var options = {
     autoplay: true,
     arrows: false,

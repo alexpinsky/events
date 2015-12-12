@@ -1,22 +1,22 @@
 class @Event
   constructor: (args) ->
+    @jsonData = args.data
     @persistence = args.persistence
-    @id          = args.id
-    @name        = args.name
-    @url         = args.url
 
   init: ->
-    @data = @persistence.getData(key: 'event') || { texts: {}, pics: {} }
+    @data = @persistence.getData(key: 'event') || @jsonData
     @clear()
 
-  id: -> @id
-  id: (id) -> @id = id
+  getData: -> @data
 
-  name: -> @name
-  name: (name) -> @name = name
+  id: -> @data.id
+  id: (id) -> @data.id = id
 
-  url: -> @url
-  url: (url) -> @url = url
+  name: -> @data.name
+  name: (name) -> @data.name = name
+
+  url: -> @data.url
+  url: (url) -> @data.url = url
 
   save: ->
     @persistence.saveData key: 'event', data: @data
@@ -24,14 +24,11 @@ class @Event
   clear: ->
     @persistence.clear key: 'event'
 
-  isEmpty: =>
-    $.isEmptyObject(@data.texts) && $.isEmptyObject(@data.pics)
-
   texts: ->
     @data.texts
 
   pics: ->
-    @data.pics
+    @data.pictures
 
   updateText: (id, val) =>
     @data.texts[id] = val
@@ -45,7 +42,7 @@ class @Event
   updateBackground: (url) =>
 
   addPic: (e) =>
-    @data.pics[e.order] = { url: e.url }
+    @data.pictures[e.order] = { url: e.url, order: e.order }
 
   removePic: (e) =>
-    @data.pics[e.order] = null
+    @data.pictures[e.order] = null

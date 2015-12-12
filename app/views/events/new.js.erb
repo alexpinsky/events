@@ -1,2 +1,5 @@
-$(".event").html('<%= j render partial: "events/editor", locals: { event: @event, theme: @theme, categories: @categories } %>');
+$(".event").html(
+  '<%= j render partial: "events/editor", locals: { event: event, theme: theme, categories: categories } %>'
+);
+
 Editor.start();

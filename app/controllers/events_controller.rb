@@ -14,6 +14,7 @@ class EventsController < ApplicationController
     @events = current_user.events.includes(
       :category,
       :theme,
+      :information,
       :pictures,
       :views
     )
@@ -48,7 +49,13 @@ class EventsController < ApplicationController
   end
 
   def new
-    @event = Event.copy_from_theme @theme, user: current_user
+    event = Event.copy_from_theme @theme, user: current_user
+    render :new, locals: {
+      event: event,
+      event_json: event.to_json(new_event: true),
+      theme: @theme,
+      categories: @categories
+    }
   end
 
   def create
@@ -67,7 +74,7 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @event = current_user.events.includes(
+    event = current_user.events.includes(
       :pictures,
       :appearance,
       :information
@@ -77,10 +84,17 @@ class EventsController < ApplicationController
     if params[:theme_id]
       # trying to change existing event's theme
       _set_theme
-      @event.update_from_theme @theme
+      event.update_from_theme @theme
     end
 
-    @event.build_missing
+    event.build_missing
+
+    render :edit, locals: {
+      event: event,
+      event_json: event.to_json,
+      theme: @theme,
+      categories: @categories
+    }
   end
 
   def update
@@ -172,7 +186,6 @@ class EventsController < ApplicationController
         :id,
         :image,
         :order,
-        :slideshow,
         :_destroy
       ],
       appearance_attributes: [

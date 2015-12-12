@@ -3,9 +3,7 @@ class @Preview
     @container = options.container
 
   init: (options = {}) ->
-    event = options.event
-    @updateFromEvent(event) unless event.isEmpty()
-    @runSlideShow()
+    @updateFromEvent options.event
 
   runSlideShow: (options = {}) ->
     images = options.images || @container.find('.images')
@@ -23,13 +21,13 @@ class @Preview
 
   updateFromEvent: (event) ->
     for id, val of event.texts()
-      @updateText id, val
+      @updateText id, val if val
 
     for order, valObj of event.pics()
-      @addPic order: order, url: valObj.url
+      @addPic order: order, url: valObj.url if valObj.url
 
   updateText: (id, val) =>
-    textDisplay = @container.find("##{id}")
+    textDisplay = @container.find("#text_#{id}")
 
     if textDisplay.length == 1
       # single line
@@ -37,32 +35,32 @@ class @Preview
     else
       # multi line
       divs = ""
-      textDisplay = @container.find(".#{id}")
+      textDisplay = @container.find(".text_#{id}")
       for word in val.split(' ')
         divs += "<div>#{word}</div>"
       textDisplay.html divs
 
   updateFont: (id, val) =>
-    textDisplay = @container.find("##{id}")
-    textDisplay = @container.find(".#{id}") if textDisplay.length != 1
+    textDisplay = @container.find("#text_#{id}")
+    textDisplay = @container.find(".text_#{id}") if textDisplay.length != 1
 
     textDisplay.css("font-family", val)
 
   updateColor: (id, val) =>
-    textDisplay = @container.find("##{id}")
-    textDisplay = @container.find(".#{id}") if textDisplay.length != 1
+    textDisplay = @container.find("#text_#{id}")
+    textDisplay = @container.find(".text_#{id}") if textDisplay.length != 1
 
     textDisplay.css("color", val)
 
   updateSize: (id, val) =>
-    textDisplay = @container.find("##{id}")
+    textDisplay = @container.find("#text_#{id}")
 
     if textDisplay.length == 1
       # single line
       textDisplay.parent().css("font-size", "#{val}em")
     else
       # multi line
-      textDisplay = @container.find(".#{id}")
+      textDisplay = @container.find(".text_#{id}")
       textDisplay.css("font-size", "#{val}em")
 
   updateBackground: (url) =>

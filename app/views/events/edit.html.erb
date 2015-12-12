@@ -1,4 +1,4 @@
-<div class="event" data-id="<%= @event.id %>" data-name="<%= @event.name %>" data-url="<%= @event.url %>">
+<div class="event" data-json="<%= event_json %>">
   <!-- pass the event as the theme to display -->
-  <%= render partial: "events/editor", locals: { event: @event, theme: @event, categories: @categories }  %>
-</div>
+  <%= render partial: "events/editor", locals: { event: event, theme: event, categories: categories }  %>
+</div

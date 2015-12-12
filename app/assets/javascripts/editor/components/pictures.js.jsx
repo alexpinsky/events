@@ -1,6 +1,6 @@
 var Pictures = React.createClass({
   propTypes: {
-    pictures: React.PropTypes.array.isRequired,
+    pictures: React.PropTypes.object.isRequired,
     addPicture: React.PropTypes.func.isRequired,
     removePicture: React.PropTypes.func.isRequired
   },
@@ -19,18 +19,21 @@ var Pictures = React.createClass({
   },
 
   render() {
-    var picturesSize = this.props.pictures.length;
-    var pictures = this.props.pictures.map(function(picture, index) {
-      return (
+    var picturesSize = Object.keys(this.props.pictures).length;
+    var pictures = [];
+    for(id in this.props.pictures) {
+      picture = this.props.pictures[id]
+      pictures.push(
         <Picture
-          key={index}
+          key={id}
           initialUrl={picture.url}
           order={picture.order}
-          isLast={index == picturesSize - 1}
+          isLast={id == picturesSize}
           addPicture={this.handleAddPicture}
           removePicture={this.handleRemovePicture} />
-      )
-    }.bind(this));
+      );
+    }
+
     return (
       <div>
         <div className='pics-tagline'>

@@ -1,9 +1,5 @@
-var eventWrapper = $(".event");
-
-eventWrapper.data('id', <%= @event.id %>);
-eventWrapper.data('name', '<%= @event.name %>');
-eventWrapper.data('url', '<%= @event.name %>');
-
-eventWrapper.html('<%= j render partial: "events/editor", locals: { event: @event, theme: @event, categories: @categories } %>');
+$(".event").html(
+  '<%= j render partial: "events/editor", locals: { event: event, theme: event, categories: categories } %>'
+);
 
 Editor.start();

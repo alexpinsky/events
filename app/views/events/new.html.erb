@@ -1,4 +1,3 @@
-<div class="event">
-  <!-- pass the theme as the display -->
-  <%= render partial: "events/editor", locals: { event: @event, theme: @theme, categories: @categories }  %>
+<div class="event" data-json="<%= event_json %>">
+  <%= render partial: "events/editor", locals: { event: event, theme: theme, categories: categories }  %>
 </div>

@@ -41,7 +41,6 @@ class Event < ActiveRecord::Base
   to: :information, allow_nil: true
 
   delegate :name,  to: :category, prefix: true
-  delegate :count, to: :views,    prefix: true
 
   scope :themes, -> () { where('events.is_theme = ?', true) }
   scope :with_user, -> () { where('events.user_id IS NOT NULL') }
@@ -101,7 +100,7 @@ class Event < ActiveRecord::Base
     MAX_PICTURES_SIZE.times do |i|
       pic_present = pictures[i + 1]
 
-      self.pictures.new order: i + 1, slideshow: true unless pic_present
+      self.pictures.new order: i + 1 unless pic_present
     end
   end
 
@@ -126,5 +125,25 @@ class Event < ActiveRecord::Base
   def full_url
     url = self.url.blank? ? "events/#{id}" : self.url
     "#{ENV['ROOT_URL']}#{url}"
+  end
+
+  def as_json(options = {})
+    base = {
+      id: self.id,
+      name: self.name,
+      url: self.url,
+      texts: {},
+      pictures: Hash[self.pictures.map { |pic| [pic.order, pic.as_json] }],
+    }
+
+    base.merge!(
+      texts: {
+        1 => self.text_1,
+        2 => self.text_2,
+        3 => self.text_3
+      }
+    ) unless options[:new_event]
+
+    base
   end
 end

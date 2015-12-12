@@ -1,6 +1,5 @@
 var Picture = React.createClass({
   propTypes: {
-    initialUrl: React.PropTypes.string.isRequired,
     order: React.PropTypes.number.isRequired,
     isLast: React.PropTypes.bool.isRequired,
     addPicture: React.PropTypes.func.isRequired,
@@ -46,7 +45,7 @@ var Picture = React.createClass({
   },
 
   isUrlPresent() {
-    return this.state.url != '';
+    return this.state.url != undefined;
   },
 
   marginClass() {
@@ -63,17 +62,17 @@ var Picture = React.createClass({
         <div className='inputs'>
           <input
             id={`event_pictures_attributes_${inputCount}_image`}
-            name={`event[picture_attributes][${inputCount}][image]`}
+            name={`event[pictures_attributes][${inputCount}][image]`}
             value={this.state.url}
             type='hidden' />
           <input
             id={`event_pictures_attributes_${inputCount}__destroy`}
-            name={`event[picture_attributes][${inputCount}][_destroy]`}
+            name={`event[pictures_attributes][${inputCount}][_destroy]`}
             value={this.state.destroy}
             type='hidden' />
           <input
             id={`event_pictures_attributes_${inputCount}_order`}
-            name={`event[picture_attributes][${inputCount}][order]`}
+            name={`event[pictures_attributes][${inputCount}][order]`}
             value={this.props.order}
             type='hidden' />
         </div>

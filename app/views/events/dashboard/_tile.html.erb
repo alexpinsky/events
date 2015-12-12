@@ -1,4 +1,4 @@
-<div class='tile' data-id="<%= event.id %>" data-name="<%= event.name %>" data-url="<%= event.url %>">
+<div class='tile' data-json="<%= event.to_json %>">
   <div class='tile-header'>
     <div class='name-wrapper name-editor'>
       <div class='name vertical-align'>
@@ -34,7 +34,7 @@
   <div class='analytics'>
     <div class='views'>
       <img src="<%= asset_url('dashboard', 'view_icon.svg') %>">
-      <div class='text'><%= event.views_count %></div>
+      <div class='text'><%= event.views.length %></div>
     </div>
   </div>
   <div class='tile-footer'>

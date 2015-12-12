@@ -34,36 +34,17 @@ class @Form
     @info.init()
 
     event = options.event
-    @updateFromEvent(event) unless event.isEmpty()
+    @updateFromEvent(event)
 
     @reactDOMElement = @container.find('.pics-section')[0]
-    console.log "@reactDOMElement: #{@reactDOMElement}"
-    # console.log event
-    # console.log @pictures(event)
     ReactDOM.render(
       React.createElement(Pictures, {
-        pictures: @pictures(event),
+        pictures: event.pics(),
         addPicture: @onPicAdd,
         removePicture: @onPicRemove
       }),
       @reactDOMElement
     );
-
-  pictures: (event) ->
-    pictures = null
-    for order, valObj of event.pics()
-      console.log pictures
-      pictures ||= []
-      pictures.push { order: order, url: valObj.url }
-
-    pictures ||= [
-      {url: '', order: 1},
-      {url: '', order: 2},
-      {url: '', order: 3},
-      {url: '', order: 4}
-    ]
-    console.log pictures
-    pictures
 
   themeClick: (handler) ->
     @themeHandler = handler
@@ -108,7 +89,7 @@ class @Form
       success: (data, textStatus, jqXHR) =>
         @successHandler $.extend(data, {displayMessage: true})
       error: (jqXHR, textStatus, errorThrown) =>
-        @errorHandler()
+        @errorHandler message: JSON.parse(jqXHR.responseText).message
       complete: ->
         Loader.off()
 

@@ -11,10 +11,16 @@ var Picture = React.createClass({
   },
 
   handleAddPicture(e) {
-    Q(this.props.addPicture({order: this.props.order}))
+    this.props.addPicture({order: this.props.order})
     .then(function(newUrl) {
+      console.log('newUrl');
+      console.log(newUrl);
       this.setState({url: newUrl, destroy: false});
-    }.bind(this));
+    }.bind(this),
+    function(data) {
+      console.log('picture-error:');
+      console.log(data);
+    });
   },
 
   handleRemovePicture(e) {

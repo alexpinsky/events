@@ -6,12 +6,10 @@ var Pictures = React.createClass({
   },
 
   componentWillMount() {
-    console.log('componentWillMount')
     this.init();
   },
 
   componentWillUnmount() {
-    console.log('componentWillUnmount')
     this._pictureService = null;
   },
 
@@ -20,23 +18,21 @@ var Pictures = React.createClass({
   },
 
   handleAddPicture(args) {
-    this._pictureService.upload()
+    return this._pictureService.upload()
     .then(function(url) {
-      console.log(url);
-      console.log(this.props);
-      // this.props.addPicture({order: args.order, url: url});
-      // return url;
+      this.props.addPicture({order: args.order, url: url});
+      return url;
+    }.bind(this),
+    function(data) {
+      console.log('picuters-error:');
+      console.log(data);
     },
-    function (data) {
-      console.log('progress')
+    function(data) {
+      console.log('progress');
+      console.log(data.loaded);
+      console.log (data.total);
         // $('.progress_bar').css('width', Math.round((data.loaded * 100.0) / data.total) + '%');
     });
-
-    // Q(this._pictureService.upload())
-    // .then(function(url) {
-    //   this.props.addPicture({order: args.order, url: url});
-    //   return url;
-    // }.bind(this));
   },
 
   handleRemovePicture(args) {

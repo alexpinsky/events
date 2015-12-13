@@ -10,9 +10,6 @@ var Picture = React.createClass({
     return { url: this.props.initialUrl, destroy: false }
   },
 
-  componentWillUnmount() {
-  },
-
   handleAddPicture(e) {
     Q(this.props.addPicture({order: this.props.order}))
     .then(function(newUrl) {
@@ -61,8 +58,8 @@ var Picture = React.createClass({
         </div>
         <div className='inputs'>
           <input
-            id={`event_pictures_attributes_${inputCount}_image`}
-            name={`event[pictures_attributes][${inputCount}][image]`}
+            id={`event_pictures_attributes_${inputCount}_image_url`}
+            name={`event[pictures_attributes][${inputCount}][image_url]`}
             value={this.state.url}
             type='hidden' />
           <input

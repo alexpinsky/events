@@ -5,13 +5,38 @@ var Pictures = React.createClass({
     removePicture: React.PropTypes.func.isRequired
   },
 
+  componentWillMount() {
+    console.log('componentWillMount')
+    this.init();
+  },
+
   componentWillUnmount() {
+    console.log('componentWillUnmount')
+    this._pictureService = null;
+  },
+
+  init() {
+    this._pictureService = new PictureService;
   },
 
   handleAddPicture(args) {
-    var url = 'https://events-assets-users.s3.amazonaws.com/uploads/development/picture/image/27/image_2.jpg';
-    this.props.addPicture({order: args.order, url: url});
-    return url;
+    this._pictureService.upload()
+    .then(function(url) {
+      console.log(url);
+      console.log(this.props);
+      // this.props.addPicture({order: args.order, url: url});
+      // return url;
+    },
+    function (data) {
+      console.log('progress')
+        // $('.progress_bar').css('width', Math.round((data.loaded * 100.0) / data.total) + '%');
+    });
+
+    // Q(this._pictureService.upload())
+    // .then(function(url) {
+    //   this.props.addPicture({order: args.order, url: url});
+    //   return url;
+    // }.bind(this));
   },
 
   handleRemovePicture(args) {

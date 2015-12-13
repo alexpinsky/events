@@ -184,7 +184,7 @@ class EventsController < ApplicationController
       :url,
       pictures_attributes: [
         :id,
-        :image,
+        :image_url,
         :order,
         :_destroy
       ],

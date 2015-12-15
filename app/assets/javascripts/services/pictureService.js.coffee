@@ -1,27 +1,26 @@
 class @PictureService
-  constructor: (args) ->
-    @uploadInput = $('.cloudinary-fileupload')
-    @uploadInput2 = $('.cloudinary-fileupload.second')
 
   upload: (args) ->
-    if @second
-      input = @uploadInput2
-    else
-      @second = true
-      input = @uploadInput
+    Q.Promise((resolve, reject, notify) =>
+      fileInput = $('.cloudinary-fileupload')
 
-    Q.Promise((resolve, reject, notify) ->
-      input.bind 'cloudinarydone', ((e, data) ->
-        $(this).remove()
+      fileInput.bind 'cloudinarydone', ((e, data) ->
+        fileInput.unbind 'cloudinarydone'
+        fileInput.unbind 'fileuploadfail'
+        fileInput.unbind 'fileuploadprogress'
+
         resolve data.result.url
       )
-      input.bind 'fileuploadfail', ((e, data) ->
+
+      fileInput.bind 'fileuploadfail', ((e, data) ->
         reject data
       )
-      input.bind 'fileuploadprogress', ((e, data) ->
+
+      fileInput.bind 'fileuploadprogress', ((e, data) ->
         notify data
       )
-      input.click()
+
+      fileInput.click()
     )
 
   delete: (args) ->

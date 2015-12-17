@@ -5,7 +5,7 @@ var Pictures = React.createClass({
     removePicture: React.PropTypes.func.isRequired
   },
 
-  getDefaultProps() {
+  getInitialState() {
     return { progress: 0 }
   },
 
@@ -32,9 +32,13 @@ var Pictures = React.createClass({
       console.log(data);
     },
     function(data) {
-      console.log(Math.round((data.loaded * 100.0) / data.total));
-      this.setProps({progress: Math.round((data.loaded * 100.0) / data.total)});
-      console.log(this.props.progress);
+      var progress = Math.round((data.loaded * 100.0) / data.total);
+      if (progress == 100) {
+        setTimeout(function() {
+          this.setState({progress: 0});
+        }.bind(this), 3000);
+      };
+      this.setState({progress: progress});
     }.bind(this));
   },
 
@@ -67,7 +71,7 @@ var Pictures = React.createClass({
         <div className='pics-tiles'>
           {pictures}
         </div>
-        <ProgressBar progress={this.props.progress} />
+        <ProgressBar progress={this.state.progress}/>
       </div>
     )
   }

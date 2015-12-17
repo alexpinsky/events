@@ -5,6 +5,10 @@ var Pictures = React.createClass({
     removePicture: React.PropTypes.func.isRequired
   },
 
+  getDefaultProps() {
+    return { progress: 0 }
+  },
+
   componentWillMount() {
     this.init();
   },
@@ -28,11 +32,10 @@ var Pictures = React.createClass({
       console.log(data);
     },
     function(data) {
-      console.log('progress');
-      console.log(data.loaded);
-      console.log (data.total);
-        // $('.progress_bar').css('width', Math.round((data.loaded * 100.0) / data.total) + '%');
-    });
+      console.log(Math.round((data.loaded * 100.0) / data.total));
+      this.setProps({progress: Math.round((data.loaded * 100.0) / data.total)});
+      console.log(this.props.progress);
+    }.bind(this));
   },
 
   handleRemovePicture(args) {
@@ -64,6 +67,7 @@ var Pictures = React.createClass({
         <div className='pics-tiles'>
           {pictures}
         </div>
+        <ProgressBar progress={this.props.progress} />
       </div>
     )
   }

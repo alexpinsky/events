@@ -13,8 +13,6 @@ var Picture = React.createClass({
   handleAddPicture(e) {
     this.props.addPicture({order: this.props.order})
     .then(function(newUrl) {
-      console.log('newUrl');
-      console.log(newUrl);
       this.setState({url: newUrl, destroy: false});
     }.bind(this),
     function(data) {

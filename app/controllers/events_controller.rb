@@ -233,8 +233,8 @@ class EventsController < ApplicationController
   end
 
   def _sanitaize_pictures_params
-    params[:event][:pictures_attributes].keep_if do |key, value|
-      value[:image].present? || value[:_destroy] == 'true' # => don't save just the order & slideshow
+    params[:event][:pictures_attributes].keep_if do |_, value|
+      value[:image_url].present? || value[:_destroy] == 'true' # => don't save just the order & slideshow
     end
   end
 

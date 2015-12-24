@@ -1,4 +1,23 @@
+Function::property = (prop, desc) ->
+  Object.defineProperty @prototype, prop, desc
+
 class @Event
+  @property 'data',
+    get: -> @_data
+    set: (newData) -> @_data = newData
+
+  @property 'id',
+    get: -> @data.id
+    set: (newId) -> @data.id = newId
+
+  @property 'name',
+    get: -> @data.name
+    set: (newName) -> @data.name = newName
+
+  @property 'url',
+    get: -> @data.url
+    set: (newUrl) -> @data.url = newUrl
+
   constructor: (args) ->
     @jsonData = args.data
     @persistence = args.persistence
@@ -6,17 +25,6 @@ class @Event
   init: ->
     @data = @persistence.getData(key: 'event') || @jsonData
     @clear()
-
-  getData: -> @data
-
-  id: -> @data.id
-  id: (id) -> @data.id = id
-
-  name: -> @data.name
-  name: (name) -> @data.name = name
-
-  url: -> @data.url
-  url: (url) -> @data.url = url
 
   save: ->
     @persistence.saveData key: 'event', data: @data

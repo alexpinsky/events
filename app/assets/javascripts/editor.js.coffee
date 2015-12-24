@@ -57,9 +57,9 @@ class @Editor
   loadTheme: (category, theme) ->
     @event.save()
 
-    if @event.id()
+    if @event.id
       # edit mode -> use event for display
-      url = "/events/#{@event.id()}/edit"
+      url = "/events/#{@event.id}/edit"
     else
       # new mode -> use the theme for display
       url = '/events/new'
@@ -88,7 +88,7 @@ class @Editor
         error:   @publishErrorCallback
 
     @stateHandler.save
-      event:      @event.getData()
+      event:      @event.data
       submitable: @form
       success:    @saveSuccessCallback
       publish:    onSavePublishClick
@@ -96,7 +96,7 @@ class @Editor
 
   onPublishClick: (e) =>
     @stateHandler.saveAndPublish
-      event:      @event.getData()
+      event:      @event.data
       submitable: @form
       saved:      @saveSuccessCallback
       published:  @publishSuccessCallback
@@ -104,7 +104,7 @@ class @Editor
 
   onUnpublishClick: (e) =>
     @stateHandler.unpublish
-      event:   @event.getData()
+      event:   @event.data
       success: @unpublishSuccessCallback
       error:   @unpublishErrorCallback
 

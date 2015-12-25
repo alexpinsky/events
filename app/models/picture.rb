@@ -6,6 +6,7 @@ class Picture < ActiveRecord::Base
 
   def as_json(options = {})
     {
+      id: self.id,
       order: self.order,
       url: self.image_url
     }

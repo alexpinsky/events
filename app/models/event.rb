@@ -50,7 +50,6 @@ class Event < ActiveRecord::Base
   scope :include_categories, -> () { includes(:category) }
   scope :by_category, -> (category_name) { joins(:category).where('categories.name = ?', category_name) }
 
-  MAX_PICTURES_SIZE = 4
   STATES = { unpublished: 0, published: 1, disabled: 2, pending: 3 }
 
   def self.copy_from_theme(theme, options = {})
@@ -92,6 +91,7 @@ class Event < ActiveRecord::Base
     self.is_theme
   end
 
+  MAX_PICTURES_SIZE = 4
   def build_pictures
     pictures = {}
 

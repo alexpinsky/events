@@ -49,14 +49,15 @@ var Pictures = React.createClass({
   render() {
     var picturesSize = Object.keys(this.props.pictures).length;
     var pictures = [];
-    for(id in this.props.pictures) {
-      picture = this.props.pictures[id]
+    for(index in this.props.pictures) {
+      picture = this.props.pictures[index]
       pictures.push(
         <Picture
-          key={id}
+          key={index}
+          id={picture.id}
           initialUrl={picture.url}
           order={picture.order}
-          isLast={id == picturesSize}
+          isLast={index == picturesSize}
           addPicture={this.handleAddPicture}
           removePicture={this.handleRemovePicture} />
       );

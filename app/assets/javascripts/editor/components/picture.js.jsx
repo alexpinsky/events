@@ -76,6 +76,11 @@ var Picture = React.createClass({
             name={`event[pictures_attributes][${inputCount}][order]`}
             value={this.props.order}
             type='hidden' />
+          <input
+            id={`event_pictures_attributes_${inputCount}_id`}
+            name={`event[pictures_attributes][${inputCount}][id]`}
+            value={this.props.id}
+            type="hidden" />
         </div>
       </div>
     )

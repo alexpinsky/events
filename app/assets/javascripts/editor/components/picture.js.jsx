@@ -16,7 +16,7 @@ var Picture = React.createClass({
       this.setState({url: newUrl, destroy: false});
     }.bind(this),
     function(data) {
-      console.log('picture-error:');
+      console.log('add-picture-error:');
       console.log(data);
     });
   },
@@ -25,7 +25,11 @@ var Picture = React.createClass({
     Q(this.props.removePicture({order: this.props.order}))
     .then(function() {
       this.setState({url: '', destroy: true});
-    }.bind(this));
+    }.bind(this),
+    function(data) {
+      console.log('remove-picture-error:');
+      console.log(data);
+    });
   },
 
   imageTile() {
@@ -46,7 +50,7 @@ var Picture = React.createClass({
   },
 
   isUrlPresent() {
-    return this.state.url != undefined;
+    return this.state.url != undefined && this.state.url != '';
   },
 
   marginClass() {

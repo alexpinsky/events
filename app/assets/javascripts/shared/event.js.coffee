@@ -20,6 +20,7 @@ class @Event
 
   constructor: (args) ->
     @jsonData = args.data
+    @jsonData = JSON.parse @jsonData if typeof @jsonData == 'string'
     @persistence = args.persistence
 
   init: ->

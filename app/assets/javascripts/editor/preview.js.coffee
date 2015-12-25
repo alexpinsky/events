@@ -5,18 +5,6 @@ class @Preview
   init: (options = {}) ->
     @updateFromEvent options.event
 
-  runSlideShow: (options = {}) ->
-    images = options.images || @container.find('.images')
-    if images.data('slideshow')
-      images.slick
-        autoplay: true,
-        arrows: false,
-        mobileFirst: true
-
-  stopSlideShow: (options = {}) ->
-    images = options.images || @container.find('.images')
-    images.slick 'unslick'
-
   destroy: ->
 
   updateFromEvent: (event) ->
@@ -102,6 +90,19 @@ class @Preview
         images.data 'slideshow', false
     else
       @container.find("#image-#{e.order}").attr 'src', ''
+
+  runSlideShow: (options = {}) ->
+    images = options.images || @container.find('.images')
+    if images.data('slideshow')
+      images.slick
+        autoplay: true,
+        arrows: false,
+        mobileFirst: true,
+        speed: 2000
+
+  stopSlideShow: (options = {}) ->
+    images = options.images || @container.find('.images')
+    images.slick 'unslick' if images.hasClass('slick-initialized')
 
   addCalendar: =>
     @container.find('.calendar-wrapper').css('visibility', 'visible')

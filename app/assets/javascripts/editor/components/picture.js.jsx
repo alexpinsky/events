@@ -36,7 +36,7 @@ var Picture = React.createClass({
     var divStyle = { backgroundImage: 'url(' + this.state.url + ')' };
     return (
       <div className='pic-tile image' style={divStyle} >
-        <a href="#" className="remove" onClick={this.handleRemovePicture} />
+        <div className="remove" onClick={this.handleRemovePicture} />
       </div>
     )
   },
@@ -44,7 +44,7 @@ var Picture = React.createClass({
   emptyTile() {
     return (
       <div className='pic-tile empty'>
-        <a href="#" className="add" onClick={this.handleAddPicture} />
+        <div className="add" onClick={this.handleAddPicture} />
       </div>
     )
   },

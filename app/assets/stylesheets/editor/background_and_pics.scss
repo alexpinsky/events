@@ -69,7 +69,8 @@
           .pic-tile.image {
             background-size: cover;
             background-repeat: no-repeat;
-            a.remove {
+            .remove {
+              cursor: pointer;
               background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/remove_pic_icon.svg');
               background-repeat: no-repeat;
               background-size: cover;
@@ -83,7 +84,8 @@
           }
           .pic-tile.empty {
             background: white;
-            a.add {
+            .add {
+              cursor: pointer;
               background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/add_pic_icon.svg');
               background-repeat: no-repeat;
               background-size: cover;

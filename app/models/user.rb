@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   private
 
   ADMINS = {
-    'alex_pinsky85@yahoo.com' => true,
+    'alex.pinsky85@gmail.com' => true,
     'gilmagen15@gmail.com'    => true,
     'hilashamir4@gmail.com'   => true
   }

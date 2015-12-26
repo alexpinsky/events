@@ -51,7 +51,7 @@ class @Event
   updateBackground: (url) =>
 
   addPic: (e) =>
-    @data.pictures[e.order] = { url: e.url, order: e.order }
+    @data.pictures[e.order] = { id: e.id, url: e.url, order: e.order }
 
   removePic: (e) =>
-    @data.pictures[e.order] = null
+    @data.pictures[e.order] = { id: e.id, url: null, order: e.order }

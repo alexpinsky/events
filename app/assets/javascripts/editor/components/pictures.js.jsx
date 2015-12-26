@@ -28,7 +28,7 @@ var Pictures = React.createClass({
       return url;
     }.bind(this),
     function(data) {
-      console.log('picuters-error:');
+      console.log('pictures-error:');
       console.log(data);
     },
     function(data) {
@@ -44,6 +44,7 @@ var Pictures = React.createClass({
 
   handleRemovePicture(args) {
     this.props.removePicture({order: args.order});
+    this._pictureService.delete({url: args.url, id: args.id});
   },
 
   render() {

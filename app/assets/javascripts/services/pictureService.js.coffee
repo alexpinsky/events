@@ -24,3 +24,12 @@ class @PictureService
     )
 
   delete: (args) ->
+    Q.Promise((resolve, reject) =>
+      $.ajax
+        url: "/pictures/remote_source"
+        data: { url: args.url }
+        type: 'DELETE'
+        dataType: 'json'
+
+      resolve
+    )

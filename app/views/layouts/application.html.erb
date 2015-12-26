@@ -23,7 +23,7 @@
     <%= render partial: "shared/notifications" %>
 
     <%= yield %>
-    <%= cl_image_upload_tag 'image', crop: :limit,
+    <%= cl_image_upload_tag 'image', crop: :pad,
                                      width: 600,
                                      height: 600,
                                      html: { hidden: 'hidden' } %>

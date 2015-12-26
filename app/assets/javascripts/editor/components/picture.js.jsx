@@ -22,7 +22,7 @@ var Picture = React.createClass({
   },
 
   handleRemovePicture(e) {
-    Q(this.props.removePicture({order: this.props.order}))
+    Q(this.props.removePicture({order: this.props.order, id: this.props.id, url: this.state.url}))
     .then(function() {
       this.setState({url: '', destroy: true});
     }.bind(this),

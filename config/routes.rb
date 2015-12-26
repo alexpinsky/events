@@ -24,6 +24,7 @@ Events::Application.routes.draw do
       put 'unpublish'
     end
   end
+  resources :pictures, only: :destroy
   resources :contact_requests, only: [:new, :create]
 
   namespace :admin do

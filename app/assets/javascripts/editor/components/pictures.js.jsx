@@ -22,6 +22,8 @@ var Pictures = React.createClass({
   },
 
   handleAddPicture(args) {
+    if (this.state.progress > 0) { return false };
+
     return this._pictureService.upload()
     .then(function(url) {
       this.props.addPicture({order: args.order, url: url});

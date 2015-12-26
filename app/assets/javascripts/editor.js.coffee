@@ -5,12 +5,9 @@ class @Editor
       prevEditor.destroy()
       prevEditor = null
 
-    eventObj    = $('.event')
     persistence = new DOMPersistence
     event = new Event
-      id:   eventObj.data('id')
-      name: eventObj.data('name')
-      url:  eventObj.data('url')
+      data: $('.event').data('json')
       persistence: persistence
     event.init()
 
@@ -35,7 +32,6 @@ class @Editor
     @delegator  = new ChangesDelegator
       event: @event
       view: @preview
-
     @form = new Form
       container:   @container.find('.form-wrapper')
       listener:    @delegator
@@ -92,7 +88,7 @@ class @Editor
         error:   @publishErrorCallback
 
     @stateHandler.save
-      event:      @event
+      event:      @event.data
       submitable: @form
       success:    @saveSuccessCallback
       publish:    onSavePublishClick
@@ -100,7 +96,7 @@ class @Editor
 
   onPublishClick: (e) =>
     @stateHandler.saveAndPublish
-      event:      @event
+      event:      @event.data
       submitable: @form
       saved:      @saveSuccessCallback
       published:  @publishSuccessCallback
@@ -108,7 +104,7 @@ class @Editor
 
   onUnpublishClick: (e) =>
     @stateHandler.unpublish
-      event:   @event
+      event:   @event.data
       success: @unpublishSuccessCallback
       error:   @unpublishErrorCallback
 
@@ -117,6 +113,7 @@ class @Editor
     @loadEvent data.event
 
   saveErrorCallback: (data) =>
+    Notification.display data.message, 'alert'
 
   # data: {event}
   publishSuccessCallback: (data) =>

@@ -15,7 +15,6 @@ Events::Application.routes.draw do
   get 'privacy_policy'   => 'pages#privacy_policy'
   get 'terms_of_service' => 'pages#terms_of_service'
   get 'ping'             => 'pages#ping'
-  get 'coming_soon'      => 'pages#comming_soon'
 
   resources :categories, path: 'templates'
   resources :events do
@@ -24,6 +23,7 @@ Events::Application.routes.draw do
       put 'unpublish'
     end
   end
+  resources :pictures, only: :destroy
   resources :contact_requests, only: [:new, :create]
 
   # ADMIN

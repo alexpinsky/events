@@ -29,24 +29,28 @@ class @Form
     @background.click @onBackgroundChange
     @background.init()
 
-    @pics = new PicsSelector container: @container.find('.pics-section')
-    @pics.add @onPicAdd
-    @pics.remove @onPicRemove
-    @pics.init()
-
     @info = new Information container: @container.find('.information')
     @info.syncClick @onSyncClick
     @info.init()
 
     event = options.event
-    @updateFromEvent(event) unless event.isEmpty()
+    @updateFromEvent(event)
+
+    @reactDOMElement = @container.find('.pics-section')[0]
+    ReactDOM.render(
+      React.createElement(Pictures, {
+        pictures: event.pics(),
+        addPicture: @onPicAdd,
+        removePicture: @onPicRemove
+      }),
+      @reactDOMElement
+    );
 
   themeClick: (handler) ->
     @themeHandler = handler
 
   updateFromEvent: (event) ->
     @text.updateFromEvent event
-    @pics.updateFromEvent event
 
   updateName: (name) ->
     @nameInput.val name
@@ -63,6 +67,7 @@ class @Form
     @form.submit()
 
   destroy: ->
+    React.unmountComponentAtNode @reactDOMElement
 
   onSubmit: (e) =>
     e.preventDefault()
@@ -84,7 +89,7 @@ class @Form
       success: (data, textStatus, jqXHR) =>
         @successHandler $.extend(data, {displayMessage: true})
       error: (jqXHR, textStatus, errorThrown) =>
-        @errorHandler()
+        @errorHandler message: JSON.parse(jqXHR.responseText).message
       complete: ->
         Loader.off()
 

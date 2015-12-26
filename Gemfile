@@ -9,11 +9,8 @@ gem 'hirb'
 
 gem 'devise'
 gem 'faker'
-gem 'carrierwave'
-gem "mini_magick"
-gem 'fog'
+gem 'cloudinary'
 gem "figaro"
-gem 'social-share-button'
 gem 'deep_cloneable', '~> 2.0.0'
 gem 'mobylette'
 
@@ -47,6 +44,8 @@ gem 'jquery-rails'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.0.1'
+
+gem 'react-rails', '~> 1.5.0'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

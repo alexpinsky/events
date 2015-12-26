@@ -1,16 +1,22 @@
-require 'file_size_validator'
-
 class Picture < ActiveRecord::Base
-  belongs_to :displayable, polymorphic: true
+  belongs_to :event
 
-  mount_uploader :image, ImageUploader
-  validates :image,
-    presence: true,
-    file_size: {
-      maximum: 1.megabytes.to_i
-    }
-
-  scope :slideshow, -> () { where('pictures.slideshow = ?', true) }
   scope :by_order, -> (order) { where('pictures.order = ?', order).first }
   scope :ordered, -> () { order('pictures.order ASC') }
+
+  before_destroy :remove_image_from_source!
+
+  def as_json(options = {})
+    {
+      id: self.id,
+      order: self.order,
+      url: self.image_url
+    }
+  end
+
+  def remove_image_from_source!
+    return true if changes[:image_url].blank?
+    Files::Service.remove_by_url changes[:image_url].first
+    true
+  end
 end

@@ -22,7 +22,7 @@
     <div class='tile' style="background: url('<%= template.thumbnail_url %>') no-repeat; background-size: cover;">
       <div class='menu-wrapper'>
         <div class='buttons'>
-          <a class="preview" title="preview" target="_blank" href="<%= event_path(id: template.id, preview: true) %>"></a>
+          <a class="preview" title="preview" target="_blank" href="<%= event_path(template) %>"></a>
           <% if current_user %>
             <a class="edit" title="edit" href="<%= new_event_path(theme_id: template.id, category_id: template.category_id) %>"></a>
           <% else %>

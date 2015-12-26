@@ -1,22 +1,31 @@
+Function::property = (prop, desc) ->
+  Object.defineProperty @prototype, prop, desc
+
 class @Event
+  @property 'data',
+    get: -> @_data
+    set: (newData) -> @_data = newData
+
+  @property 'id',
+    get: -> @data.id
+    set: (newId) -> @data.id = newId
+
+  @property 'name',
+    get: -> @data.name
+    set: (newName) -> @data.name = newName
+
+  @property 'url',
+    get: -> @data.url
+    set: (newUrl) -> @data.url = newUrl
+
   constructor: (args) ->
+    @jsonData = args.data
+    @jsonData = JSON.parse @jsonData if typeof @jsonData == 'string'
     @persistence = args.persistence
-    @id          = args.id
-    @name        = args.name
-    @url         = args.url
 
   init: ->
-    @data = @persistence.getData(key: 'event') || { texts: {}, pics: {} }
+    @data = @persistence.getData(key: 'event') || @jsonData
     @clear()
-
-  id: -> @id
-  id: (id) -> @id = id
-
-  name: -> @name
-  name: (name) -> @name = name
-
-  url: -> @url
-  url: (url) -> @url = url
 
   save: ->
     @persistence.saveData key: 'event', data: @data
@@ -24,14 +33,11 @@ class @Event
   clear: ->
     @persistence.clear key: 'event'
 
-  isEmpty: =>
-    $.isEmptyObject(@data.texts) && $.isEmptyObject(@data.pics)
-
   texts: ->
     @data.texts
 
   pics: ->
-    @data.pics
+    @data.pictures
 
   updateText: (id, val) =>
     @data.texts[id] = val
@@ -45,7 +51,7 @@ class @Event
   updateBackground: (url) =>
 
   addPic: (e) =>
-    @data.pics[e.order] = { url: e.url, input: e.input }
+    @data.pictures[e.order] = { id: e.id, url: e.url, order: e.order }
 
   removePic: (e) =>
-    @data.pics[e.order] = null
+    @data.pictures[e.order] = { id: e.id, url: null, order: e.order }

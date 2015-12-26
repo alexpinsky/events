@@ -29,6 +29,12 @@
     }
   }
   .pics-section {
+    .progress-bar {
+      background-color: #7FA0FF;
+      height: 10px;
+      max-width: 304px;
+      margin-top: 8px;
+    }
     .pics-tagline {
       padding-top: 10px;
       .pics-icon {
@@ -49,6 +55,9 @@
       padding-top: 10px;
       .pic-fields {
         display: inline-block;
+        .tile-wrapper.needs-space {
+          margin-right: 8px;
+        }
         .tile-wrapper {
           display: inline-block;
           .pic-tile {
@@ -60,7 +69,8 @@
           .pic-tile.image {
             background-size: cover;
             background-repeat: no-repeat;
-            a.remove {
+            .remove {
+              cursor: pointer;
               background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/remove_pic_icon.svg');
               background-repeat: no-repeat;
               background-size: cover;
@@ -74,7 +84,8 @@
           }
           .pic-tile.empty {
             background: white;
-            a.add {
+            .add {
+              cursor: pointer;
               background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/add_pic_icon.svg');
               background-repeat: no-repeat;
               background-size: cover;

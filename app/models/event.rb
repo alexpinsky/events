@@ -4,10 +4,9 @@ class Event < ActiveRecord::Base
   belongs_to :theme, class_name: 'Event', foreign_key: 'theme_id'
 
   has_one :appearance, dependent: :destroy
-  has_one :song, as: :listenable, dependent: :destroy
   has_one :information, dependent: :destroy
 
-  has_many :pictures, as: :displayable, dependent: :destroy
+  has_many :pictures, dependent: :destroy
   has_many :views, dependent: :destroy
 
   validates :url, uniqueness: true, allow_blank: true
@@ -15,7 +14,6 @@ class Event < ActiveRecord::Base
   accepts_nested_attributes_for :pictures,
     :appearance,
     :information,
-    :song,
   allow_destroy: true
 
   delegate :background_image,
@@ -41,7 +39,6 @@ class Event < ActiveRecord::Base
   to: :information, allow_nil: true
 
   delegate :name,  to: :category, prefix: true
-  delegate :count, to: :views,    prefix: true
 
   scope :themes, -> () { where('events.is_theme = ?', true) }
   scope :with_user, -> () { where('events.user_id IS NOT NULL') }
@@ -53,7 +50,6 @@ class Event < ActiveRecord::Base
   scope :include_categories, -> () { includes(:category) }
   scope :by_category, -> (category_name) { joins(:category).where('categories.name = ?', category_name) }
 
-  MAX_PICTURES_SIZE = 4
   STATES = { unpublished: 0, published: 1, disabled: 2, pending: 3 }
 
   def self.copy_from_theme(theme, options = {})
@@ -88,9 +84,14 @@ class Event < ActiveRecord::Base
   end
 
   def theme_name
-    self.is_theme ? self.name : self.theme.name
+    theme? ? self.name : self.theme.name
   end
 
+  def theme?
+    self.is_theme
+  end
+
+  MAX_PICTURES_SIZE = 4
   def build_pictures
     pictures = {}
 
@@ -101,7 +102,7 @@ class Event < ActiveRecord::Base
     MAX_PICTURES_SIZE.times do |i|
       pic_present = pictures[i + 1]
 
-      self.pictures.new order: i + 1, slideshow: true unless pic_present
+      self.pictures.new order: i + 1 unless pic_present
     end
   end
 
@@ -110,6 +111,7 @@ class Event < ActiveRecord::Base
   end
 
   def viewable_for?(user)
+    return true  if theme? # if theme visible for everyone
     return true  if published? # if published visible for everyone
     return false if user.nil?  # not published and no user
     return user_id == user.id || user.admin?
@@ -126,5 +128,25 @@ class Event < ActiveRecord::Base
   def full_url
     url = self.url.blank? ? "events/#{id}" : self.url
     "#{ENV['ROOT_URL']}#{url}"
+  end
+
+  def as_json(options = {})
+    base = {
+      id: self.id,
+      name: self.name,
+      url: self.url,
+      texts: {},
+      pictures: Hash[self.pictures.map { |pic| [pic.order, pic.as_json] }],
+    }
+
+    base.merge!(
+      texts: {
+        1 => self.text_1,
+        2 => self.text_2,
+        3 => self.text_3
+      }
+    ) unless options[:new_event]
+
+    base
   end
 end

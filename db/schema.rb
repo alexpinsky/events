@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20151128144952) do
+=======
+ActiveRecord::Schema.define(version: 20151212125503) do
+>>>>>>> master
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,16 +93,14 @@ ActiveRecord::Schema.define(version: 20151128144952) do
   add_index "information", ["event_id"], name: "index_information_on_event_id", using: :btree
 
   create_table "pictures", force: true do |t|
-    t.integer  "displayable_id"
-    t.string   "displayable_type"
-    t.string   "image"
+    t.string   "image_url"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "image_processing"
-    t.boolean  "slideshow"
     t.integer  "order"
+    t.integer  "event_id"
   end
 
+<<<<<<< HEAD
   add_index "pictures", ["displayable_id"], name: "index_pictures_on_displayable_id", using: :btree
   add_index "pictures", ["displayable_type"], name: "index_pictures_on_displayable_type", using: :btree
 
@@ -119,6 +121,9 @@ ActiveRecord::Schema.define(version: 20151128144952) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+=======
+  add_index "pictures", ["event_id"], name: "index_pictures_on_event_id", using: :btree
+>>>>>>> master
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

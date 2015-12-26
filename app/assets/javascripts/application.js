@@ -15,6 +15,10 @@
 
 //= require jquery
 //= require jquery_ujs
+//= require react
+//= require react_ujs
+//= require cloudinary
+//= require q
 
 // Application
 
@@ -24,9 +28,6 @@
 //= require editor
 //= require pages
 //= require state_handler
-//= require react
-//= require react_ujs
-//= require cloudinary
 //= require_tree ./shared
 //= require_tree ./elements
 //= require_tree ./state_handler
@@ -36,7 +37,6 @@
 
 // External Plugins
 
-//= require q
 //= require jquery.minicolors.min
 //= require jquery.modal.min
 //= require jquery.timepicker.min

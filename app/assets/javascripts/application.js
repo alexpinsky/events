@@ -26,7 +26,6 @@
 //= require state_handler
 //= require react
 //= require react_ujs
-//= require components
 //= require cloudinary
 //= require_tree ./shared
 //= require_tree ./elements

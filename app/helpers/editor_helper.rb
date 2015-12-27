@@ -7,12 +7,12 @@ module EditorHelper
     [
       ['Lobster',      "'Lobster', cursive"],
       ['Quattrocento', "'Quattrocento Sans', sans-serif"],
-      ['Lobster',      "'Lobster', cursive"],
       ['Vibur',        "'Vibur', cursive"],
       ['Fanwood Text', "'Fanwood Text', serif"],
       ['Six Caps',     "'Six Caps', sans-serif"],
       ['Rozha',        "'Rozha One', serif"],
-      ['Julius',       "'Julius Sans One', sans-serif"]
+      ['Julius',       "'Julius Sans One', sans-serif"],
+      ['עברית',        "'narkis_block'"]
     ]
   end
 

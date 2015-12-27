@@ -58,7 +58,7 @@ $border-color: rgb(127, 159, 255);
       vertical-align: top;
       .prefix {
       }
-      select {
+      .selected-font {
         font-family: 'Quattrocento Sans', sans-serif;
         color: rgb(176, 176, 176);
         padding-left: 5px;
@@ -77,7 +77,7 @@ $border-color: rgb(127, 159, 255);
         border-radius: 0;
         vertical-align: text-top;
       }
-      select:focus {
+      .selected-font:focus {
         outline: none;
       }
     }

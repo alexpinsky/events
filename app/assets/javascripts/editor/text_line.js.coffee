@@ -8,14 +8,22 @@ class @TextLine
     @appearanceWrapper = @container.find('.appearance-wrapper')
 
     input = @inputWrapper.find('input')
-    font = @appearanceWrapper.find('.font-family')
     color = @appearanceWrapper.find('.font-color')
     size = @appearanceWrapper.find('.font-size')
 
-    @initFocusinBehavior input
-    @initFocusoutBehavior [input, font, color, size]
+    @fontComponentWrapper = @appearanceWrapper.find('.text-font')
+    ReactDOM.render(
+      React.createElement(FontPicker, {
+        count: @fontComponentWrapper.data('count'),
+        initialFont: {name: 'kaka', value: 'pipi'}
+      }),
+      @fontComponentWrapper[0]
+    );
 
-    @initChangeListeners input, font, color, size
+    @initFocusinBehavior input
+    @initFocusoutBehavior [input, color, size]
+
+    @initChangeListeners input, color, size
 
   updateText: (val) ->
     @inputWrapper.find('input').val val
@@ -66,9 +74,8 @@ class @TextLine
 
     # @appearanceWrapper.slideUp()
 
-  initChangeListeners: (input, font, color, size) ->
+  initChangeListeners: (input, color, size) ->
     input.keyup @onTextKeyup
-    font.change @onFontChange
     size.change @onSizeChange
     color.minicolors
       defaultValue: '#ffffff'

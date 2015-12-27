@@ -22,8 +22,6 @@ class @Event
     @jsonData = args.data
     @jsonData = JSON.parse @jsonData if typeof @jsonData == 'string'
     @persistence = args.persistence
-
-  init: ->
     @data = @persistence.getData(key: 'event') || @jsonData
     @clear()
 

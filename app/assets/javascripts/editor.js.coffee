@@ -9,7 +9,6 @@ class @Editor
     event = new Event
       data: $('.event').data('json')
       persistence: persistence
-    event.init()
 
     editor = new Editor container: $('.page-wrapper.editor'), event: event, persistence: persistence
     editor.init()

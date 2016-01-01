@@ -20,6 +20,7 @@
     <div class='text-size'>
       <div class="prefix" data-context="<%= count %>">SIZE</div><%=
         app_form.number_field "font_size_#{count}",
+        step: 0.1,
         class: "font-size",
         data: { context: "#{count}" }
       %>

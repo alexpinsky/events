@@ -1,6 +1,7 @@
 $border-color: rgb(127, 159, 255);
 
 .text-line {
+  position: relative;
   input {
     font-family: 'Quattrocento Sans', sans-serif;
     color: rgb(176, 176, 176);
@@ -56,29 +57,50 @@ $border-color: rgb(127, 159, 255);
     .text-font {
       display: inline-block;
       vertical-align: top;
-      .prefix {
-      }
       .selected-font {
+        display: inline-block;
         font-family: 'Quattrocento Sans', sans-serif;
         color: rgb(176, 176, 176);
-        padding-left: 5px;
-        width: 110px;
+        padding: 7px 0 0 5px;
+        width: 104px;
         border: 1px solid rgb(77, 77, 77);
         border-top: none;
         border-left: none;
-        height: 26px;
+        height: 18px;
         font-size: 12px;
         background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/drop_down_icon.svg') no-repeat 93px;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        -webkit-border-radius: 0;
-        -moz-border-radius: 0;
-        border-radius: 0;
-        vertical-align: text-top;
+        background-color: white;
+        vertical-align: top;
       }
       .selected-font:focus {
         outline: none;
+      }
+      .fonts-list {
+        position: absolute;
+        top: -300px;
+        height: 400px;
+        overflow: scroll;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        z-index: 999;
+        background-color: #F8F8F8;
+        border: 1px solid #c5c5c5;
+        -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+        -moz-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+        box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        .fonts-list-item {
+          cursor: pointer;
+          border-left: 3px solid #F8F8F8;
+          text-align: center;
+          padding: 3px 6px 3px 4px;
+        }
+        .fonts-list-item:hover {
+          border-left: 3px solid #7FA0FF;
+        }
       }
     }
     .text-color {

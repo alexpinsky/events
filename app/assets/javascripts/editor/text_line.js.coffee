@@ -15,7 +15,8 @@ class @TextLine
     ReactDOM.render(
       React.createElement(FontPicker, {
         count: @fontComponentWrapper.data('count'),
-        initialFont: {name: 'kaka', value: 'pipi'}
+        initialFontVal: @fontComponentWrapper.data('font'),
+        handleChange: @onFontChange
       }),
       @fontComponentWrapper[0]
     );
@@ -24,6 +25,9 @@ class @TextLine
     @initFocusoutBehavior [input, color, size]
 
     @initChangeListeners input, color, size
+
+  destroy: ->
+    React.unmountComponentAtNode @fontComponentWrapper[0]
 
   updateText: (val) ->
     @inputWrapper.find('input').val val
@@ -85,9 +89,8 @@ class @TextLine
     input = $(e.currentTarget)
     @textHandler @target, input.val()
 
-  onFontChange: (e) =>
-    input = $(e.currentTarget)
-    @fontHandler @target, input.val()
+  onFontChange: (newFont) =>
+    @fontHandler @target, newFont.value
 
   onSizeChange: (e) =>
     input = $(e.currentTarget)

@@ -10,15 +10,11 @@ var Pictures = React.createClass({
   },
 
   componentWillMount() {
-    this.init();
+    this._pictureService = new PictureService;
   },
 
   componentWillUnmount() {
     this._pictureService = null;
-  },
-
-  init() {
-    this._pictureService = new PictureService;
   },
 
   handleAddPicture(args) {

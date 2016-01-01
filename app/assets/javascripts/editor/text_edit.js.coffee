@@ -16,6 +16,10 @@ class @TextEdit
 
       @lines[target] = line
 
+  destroy: ->
+   for _id, line of @lines
+      line.destroy()
+
   updateFromEvent: (event) ->
     for id, val of event.texts()
       @updateText id, val

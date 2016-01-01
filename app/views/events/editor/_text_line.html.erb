@@ -7,7 +7,7 @@
     %>
   </div>
   <div class='appearance-wrapper'>
-    <div class='text-font' data-count="<%= count %>">
+    <div class='text-font' data-count="<%= count %>" data-font="<%= app_form.object.send("font_family_#{count}") %>">
       <!-- react component -->
     </div>
     <div class='text-color'>

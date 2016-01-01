@@ -26,20 +26,25 @@ var Pictures = React.createClass({
 
     return this._pictureService.upload()
     .then(function(url) {
+      // resolve
       this.props.addPicture({order: args.order, url: url});
       return url;
     }.bind(this),
     function(data) {
+      // reject
       console.log('pictures-error:');
       console.log(data);
     },
     function(data) {
+      // progress
       var progress = Math.round((data.loaded * 100.0) / data.total);
+
       if (progress == 100) {
         setTimeout(function() {
           this.setState({progress: 0});
         }.bind(this), 3000);
       };
+
       this.setState({progress: progress});
     }.bind(this));
   },

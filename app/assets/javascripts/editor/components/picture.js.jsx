@@ -10,6 +10,12 @@ var Picture = React.createClass({
     return { url: this.props.initialUrl, destroy: false }
   },
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return (
+      this.state.url !== nextState.url || this.state.destroy !== nextState.destroy
+    );
+  },
+
   handleAddPicture(e) {
     this.props.addPicture({order: this.props.order})
     .then(function(newUrl) {

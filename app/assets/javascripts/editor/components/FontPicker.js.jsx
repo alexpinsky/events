@@ -3,10 +3,10 @@ var FontPicker = React.createClass({
   getDefaultProps() {
     return {
       fonts: [
-        { name: 'Narkis Block', value: "'narkis_block'" },
+        { name: 'נרקיס בלוק', value: "'narkis_block'" },
+        { name: 'אלף', value: "'Alef', sans-serif" },
         { name: 'Oswald', value: "'Oswald', sans-serif" },
         { name: 'Gidugu', value: "'Gidugu', sans-serif" },
-        { name: 'Alef', value: "'Alef', sans-serif" },
         { name: 'Six Caps', value: "'Six Caps', sans-serif" },
         { name: 'Tauri', value: "'Tauri', sans-serif" },
         { name: 'Julius Sans', value: "'Julius Sans One', sans-serif" },

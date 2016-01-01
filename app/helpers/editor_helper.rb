@@ -3,34 +3,35 @@ module EditorHelper
     event.pictures.sort { |pic_1, pic_2| pic_1.order <=> pic_2.order }.map { |pic| pic if pic.image_url }.compact
   end
 
-  def fonts_for_select
-    [
-      ['Lobster',      "'Lobster', cursive"],
-      ['Quattrocento', "'Quattrocento Sans', sans-serif"],
-      ['Vibur',        "'Vibur', cursive"],
-      ['Fanwood Text', "'Fanwood Text', serif"],
-      ['Six Caps',     "'Six Caps', sans-serif"],
-      ['Rozha',        "'Rozha One', serif"],
-      ['Julius',       "'Julius Sans One', sans-serif"],
-      ['עברית',        "'narkis_block'"]
-    ]
-  end
-
   def background_urls
     [
-      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/diagonal_striped_brick.png",
-      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/swirl_pattern.png",
-      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/wavegrid.png",
-      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p1.png",
-      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p2.png",
-      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p3.png",
-      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p4.png",
-      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p5.png",
-      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p6.png",
-      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p7.png",
-      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p8.png",
-      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p9.png",
-      "https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p10.png"
+      "http://res.cloudinary.com/eventit-me/image/upload/v1451683819/P_W_flowers_enccu0.png",
+      "http://res.cloudinary.com/eventit-me/image/upload/v1451683819/P_triangular_ts1dpa.png",
+      "http://res.cloudinary.com/eventit-me/image/upload/v1451683819/P_triangular_b_c8fkq1.png",
+      "http://res.cloudinary.com/eventit-me/image/upload/v1451683819/P_tiger_b_ymvflz.png",
+      "http://res.cloudinary.com/eventit-me/image/upload/v1451683819/P_tiger_a_ucn8bw.png",
+      "http://res.cloudinary.com/eventit-me/image/upload/v1451683819/P_Stripes_p_vde1oz.png",
+      "http://res.cloudinary.com/eventit-me/image/upload/v1451683818/P_Stripes_b_m5owjb.png",
+      "http://res.cloudinary.com/eventit-me/image/upload/v1451683818/P_Stars_oepmkd.png",
+      "http://res.cloudinary.com/eventit-me/image/upload/v1451683818/P_spots_y_htxdro.png",
+      "http://res.cloudinary.com/eventit-me/image/upload/v1451683818/p_spots_b_oofv0d.png",
+      "http://res.cloudinary.com/eventit-me/image/upload/v1451683818/P_Planet_w_nqhfd4.png",
+      "http://res.cloudinary.com/eventit-me/image/upload/v1451683818/P_Planet_b_l3pvaj.png",
+      "http://res.cloudinary.com/eventit-me/image/upload/v1451683818/P_picnic_sfcvph.png",
+      "http://res.cloudinary.com/eventit-me/image/upload/v1451683817/P_party_horrqu.png",
+      "http://res.cloudinary.com/eventit-me/image/upload/v1451683817/P_modernism_jzc9mm.png",
+      "http://res.cloudinary.com/eventit-me/image/upload/v1451683817/P_Lines_b_x21klh.png",
+      "http://res.cloudinary.com/eventit-me/image/upload/v1451683817/P_Lines_a_rw1f2w.png",
+      "http://res.cloudinary.com/eventit-me/image/upload/v1451683817/P_flowery_p_olomdn.png",
+      "http://res.cloudinary.com/eventit-me/image/upload/v1451683817/P_flowery_b_jh2fhp.png",
+      "http://res.cloudinary.com/eventit-me/image/upload/v1451683817/P_Birds_y_pu4gsq.png",
+      "http://res.cloudinary.com/eventit-me/image/upload/v1451683817/P_Birds_w_aznlar.png",
+      "http://res.cloudinary.com/eventit-me/image/upload/v1451683816/P_abstract_d_aztrwu.png",
+      "http://res.cloudinary.com/eventit-me/image/upload/v1451683816/P_abstract_c_kahrto.png",
+      "http://res.cloudinary.com/eventit-me/image/upload/v1451683816/P_abstract_b_ulk7it.png",
+      "http://res.cloudinary.com/eventit-me/image/upload/v1451683816/P_abstract_a_cdqdp9.png",
+      "http://res.cloudinary.com/eventit-me/image/upload/v1451684700/diagonal_striped_brick_fruxru.png",
+      "http://res.cloudinary.com/eventit-me/image/upload/v1451684809/swirl_pattern_dj7qd6.png"
     ]
   end
 

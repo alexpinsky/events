@@ -27,6 +27,6 @@ Events::Application.configure do
   # number of complex assets.
   config.assets.debug = true
 
-  config.react.jsx_transformer_class = React::JSX::BabelTransformer
+  config.react.jsx_transformer_class = React::JSX::JSXTransformer
   config.react.variant = :development
 end

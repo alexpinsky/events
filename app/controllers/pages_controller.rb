@@ -26,6 +26,10 @@ class PagesController < ApplicationController
     render nothing: true, status: :ok
   end
 
+  def play
+    render layout: false
+  end
+
   private
 
   def _set_page

@@ -15,6 +15,7 @@ Events::Application.routes.draw do
   get 'privacy_policy'   => 'pages#privacy_policy'
   get 'terms_of_service' => 'pages#terms_of_service'
   get 'ping'             => 'pages#ping'
+  get 'play'             => 'pages#play'
 
   resources :categories, path: 'templates'
   resources :events do

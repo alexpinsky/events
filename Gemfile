@@ -16,7 +16,6 @@ gem 'mobylette'
 gem 'sitemap_generator'
 
 gem 'rack-cache'
-gem 'rack-zippy'
 
 gem 'dalli'
 gem 'kgio'

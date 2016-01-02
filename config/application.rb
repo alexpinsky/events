@@ -28,7 +28,5 @@ module Events
     config.assets.precompile += %w( jquery.minicolors.png )
 
     config.cache_store = :dalli_store
-
-    config.middleware.swap(ActionDispatch::Static, Rack::Zippy::AssetServer)
   end
 end

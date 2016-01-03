@@ -4,10 +4,6 @@
   <%= @event.name %>
 <% end %>
 
-<% content_for :header do %>
-  <%= stylesheet_link_tag "#{theme_path}/base" %>
-<% end %>
-
 <div class="display" style="<%= background_style_for(@event) %>">
   <%= render partial: theme_path, locals: { event: @event } %>
 </div>

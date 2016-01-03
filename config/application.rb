@@ -22,10 +22,6 @@ module Events
     config.generators do |g|
       g.test_framework :rspec
     end
-    config.assets.precompile += %w( vendor/modernizr.js )
-    config.assets.precompile += %w( jquery.minicolors.min.js )
-    config.assets.precompile += %w( jquery.minicolors.css )
-    config.assets.precompile += %w( jquery.minicolors.png )
 
     config.cache_store = :dalli_store
   end

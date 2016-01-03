@@ -3,3 +3,5 @@
 //= require react
 //= require react_ujs
 //= require q
+
+// = require_tree ./play

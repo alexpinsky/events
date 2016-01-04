@@ -31,8 +31,7 @@ gem 'omniauth-facebook'
 # Use SCSS for stylesheets
 gem 'sass-rails'
 gem 'sass', '3.4.5'
-gem 'sprockets', '>=3.0.0.beta'
-gem 'sprockets-es6'
+gem 'sprockets'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -62,8 +61,6 @@ end
 group :development do
   gem 'pry'
   gem 'quiet_assets'
-  gem "better_errors"
-  gem "binding_of_caller"
 end
 
 group :production do

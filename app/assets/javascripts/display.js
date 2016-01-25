@@ -51,9 +51,6 @@ $(document).ready(function() {
   verticalAlign();
   stretchDisplay();
   removeOverlay();
-  $('span').click(function() {
-    ga('send', 'event', { eventCategory: 'invites', eventAction: 'add to calendar'});
-  });
 });
 
 $(window).load(function() {

@@ -1,14 +1,14 @@
 class EventsController < ApplicationController
   skip_before_filter :authenticate_user!, only: :show
 
-  before_filter :_set_event, only: [
+  before_filter :set_event, only: [
     :update,
     :destroy,
     :publish,
     :unpublish
   ]
-  before_filter :_set_theme,      only: :new
-  before_filter :_set_categories, only: [:new, :edit]
+  before_filter :set_theme,      only: :new
+  before_filter :set_categories, only: [:new, :edit]
 
   def index
     @events = current_user.events.includes(
@@ -83,7 +83,7 @@ class EventsController < ApplicationController
 
     if params[:theme_id]
       # trying to change existing event's theme
-      _set_theme
+      set_theme
       event.update_from_theme @theme
     end
 
@@ -238,11 +238,11 @@ class EventsController < ApplicationController
     end
   end
 
-  def _set_event
+  def set_event
     @event = current_user.events.find params[:id]
   end
 
-  def _set_theme
+  def set_theme
     dynamic_clause = params[:theme_id].present? ? 'events.id = ?' : ''
     @theme = Event.themes.active.includes(
       :pictures,
@@ -252,7 +252,7 @@ class EventsController < ApplicationController
     .where(dynamic_clause, params[:theme_id]).first
   end
 
-  def _set_categories
+  def set_categories
     @categories = Category.includes(:events).where('events.is_theme = ?', true).references(:events)
   end
 end

@@ -1,21 +1,25 @@
-var Pictures = React.createClass({
-  propTypes: {
-    pictures: React.PropTypes.object.isRequired,
-    addPicture: React.PropTypes.func.isRequired,
-    removePicture: React.PropTypes.func.isRequired
-  },
+import React, { Component } from 'react';
+import Picture from './picture'
+import ProgressBar from './progress-bar'
 
-  getInitialState() {
-    return { progress: 0 }
-  },
+export default class Pictures extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.handleAddPicture    = this.handleAddPicture.bind(this);
+    this.handleRemovePicture = this.handleRemovePicture.bind(this);
+
+    this.state = { progress: 0 };
+  }
 
   componentWillMount() {
     this._pictureService = new PictureService;
-  },
+  }
 
   componentWillUnmount() {
     this._pictureService = null;
-  },
+  }
 
   handleAddPicture(args) {
     if (this.state.progress > 0) { return false };
@@ -33,7 +37,7 @@ var Pictures = React.createClass({
     },
     function(data) {
       // progress
-      var progress = Math.round((data.loaded * 100.0) / data.total);
+      let progress = Math.round((data.loaded * 100.0) / data.total);
 
       if (progress == 100) {
         setTimeout(function() {
@@ -43,18 +47,18 @@ var Pictures = React.createClass({
 
       this.setState({progress: progress});
     }.bind(this));
-  },
+  }
 
   handleRemovePicture(args) {
     this.props.removePicture({order: args.order});
     this._pictureService.delete({url: args.url, id: args.id});
-  },
+  }
 
   render() {
-    var picturesSize = Object.keys(this.props.pictures).length;
-    var pictures = [];
-    for(index in this.props.pictures) {
-      picture = this.props.pictures[index]
+    let picturesSize = Object.keys(this.props.pictures).length;
+    let pictures = [];
+    for(let index in this.props.pictures) {
+      let picture = this.props.pictures[index]
       pictures.push(
         <Picture
           key={index}
@@ -80,4 +84,10 @@ var Pictures = React.createClass({
       </div>
     )
   }
-});
+}
+
+Pictures.propTypes = {
+  pictures: React.PropTypes.object.isRequired,
+  addPicture: React.PropTypes.func.isRequired,
+  removePicture: React.PropTypes.func.isRequired
+}

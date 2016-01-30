@@ -1,8 +1,6 @@
 //= require jquery
 //= require jquery_ujs
-//= require react
-//= require react_ujs
-//= require q
 
-// = require ./play/util
-// = require ./play/main
+window.React    = require('react');
+window.ReactDOM = require('react-dom');
+window.Index    = require('./play/index.js');

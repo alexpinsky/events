@@ -1,0 +1,26 @@
+{
+  "name": "eventit",
+  "author": "alexpinsky",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexpinsky/events.git"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "babel-preset-es2015": "^6.1.2",
+    "babel-preset-react": "^6.1.2",
+    "babel-preset-stage-2": "^6.1.2",
+    "babelify": "^7.2.0",
+    "browserify": "^13.0.0",
+    "browserify-incremental": "^3.0.1",
+    "express": "4.13.4",
+    "react": "^0.14.2",
+    "react-dom": "^0.14.2",
+    "react-redux": "^4.0.0",
+    "redux": "^3.0.4",
+    "redux-thunk": "^1.0.0"
+  }
+}

@@ -27,7 +27,7 @@ class @TextLine
     @initChangeListeners input, color, size
 
   destroy: ->
-    React.unmountComponentAtNode @fontComponentWrapper[0]
+    ReactDOM.unmountComponentAtNode @fontComponentWrapper[0]
 
   updateText: (val) ->
     @inputWrapper.find('input').val val

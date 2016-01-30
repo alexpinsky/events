@@ -67,7 +67,7 @@ class @Form
     @form.submit()
 
   destroy: ->
-    React.unmountComponentAtNode @reactDOMElement
+    ReactDOM.unmountComponentAtNode @reactDOMElement
     @text.destroy()
 
   onSubmit: (e) =>

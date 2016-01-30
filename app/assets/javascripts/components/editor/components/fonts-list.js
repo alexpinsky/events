@@ -1,4 +1,13 @@
-var FontsList = React.createClass({
+import React, { Component } from 'react';
+import Font from './font';
+
+export default class FontsList extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
   componentWillMount() {
     $(document).bind("click", function(e) {
       var targe = $(e.target);
@@ -8,19 +17,19 @@ var FontsList = React.createClass({
 
       this.props.handleOutsideClick();
     }.bind(this));
-  },
+  }
 
   componentWillUnmount() {
     $(document).unbind("click");
-  },
+  }
 
   shouldComponentUpdate(nextProps, nextState) {
     return false;
-  },
+  }
 
   handleClick(selectedFont) {
     this.props.handleClick(selectedFont);
-  },
+  }
 
   render() {
     var fonts = this.props.fonts.map(function(font, index) {
@@ -37,4 +46,4 @@ var FontsList = React.createClass({
       </ul>
     )
   }
-});
+}

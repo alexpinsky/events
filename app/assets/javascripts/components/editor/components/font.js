@@ -1,8 +1,15 @@
-var Font = React.createClass({
+import React, { Component } from 'react';
+
+export default class Font extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleClick = this.handleClick.bind(this);
+  }
 
   handleClick() {
     this.props.handleClick(this.props.font);
-  },
+  }
 
   render() {
     return (
@@ -14,4 +21,4 @@ var Font = React.createClass({
       </div>
     )
   }
-});
+}

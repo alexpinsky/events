@@ -15,8 +15,6 @@
 
 //= require jquery
 //= require jquery_ujs
-//= require react
-//= require react_ujs
 //= require cloudinary
 //= require q
 
@@ -28,11 +26,11 @@
 //= require editor
 //= require pages
 //= require state_handler
+//= require_tree ./editor
 //= require_tree ./shared
 //= require_tree ./elements
 //= require_tree ./state_handler
 //= require_tree ./dashboard
-//= require_tree ./editor
 //= require_tree ./services
 
 // External Plugins

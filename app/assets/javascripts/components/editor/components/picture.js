@@ -1,20 +1,21 @@
-var Picture = React.createClass({
-  propTypes: {
-    order: React.PropTypes.number.isRequired,
-    isLast: React.PropTypes.bool.isRequired,
-    addPicture: React.PropTypes.func.isRequired,
-    removePicture: React.PropTypes.func.isRequired
-  },
+import React, { Component } from 'react';
 
-  getInitialState() {
-    return { url: this.props.initialUrl, destroy: false }
-  },
+export default class Picture extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.handleAddPicture    = this.handleAddPicture.bind(this);
+    this.handleRemovePicture = this.handleRemovePicture.bind(this);
+
+    this.state = { url: this.props.initialUrl, destroy: false };
+  }
 
   shouldComponentUpdate(nextProps, nextState) {
     return (
       this.state.url !== nextState.url || this.state.destroy !== nextState.destroy
     );
-  },
+  }
 
   handleAddPicture(e) {
     this.props.addPicture({order: this.props.order})
@@ -25,7 +26,7 @@ var Picture = React.createClass({
       console.log('add-picture-error:');
       console.log(data);
     });
-  },
+  }
 
   handleRemovePicture(e) {
     Q(this.props.removePicture({order: this.props.order, id: this.props.id, url: this.state.url}))
@@ -36,7 +37,7 @@ var Picture = React.createClass({
       console.log('remove-picture-error:');
       console.log(data);
     });
-  },
+  }
 
   imageTile() {
     var divStyle = { backgroundImage: 'url(' + this.state.url + ')' };
@@ -45,7 +46,7 @@ var Picture = React.createClass({
         <div className="remove" onClick={this.handleRemovePicture} />
       </div>
     )
-  },
+  }
 
   emptyTile() {
     return (
@@ -53,15 +54,15 @@ var Picture = React.createClass({
         <div className="add" onClick={this.handleAddPicture} />
       </div>
     )
-  },
+  }
 
   isUrlPresent() {
     return this.state.url != undefined && this.state.url != '';
-  },
+  }
 
   marginClass() {
     return this.props.isLast ? '' : ' needs-space';
-  },
+  }
 
   render() {
     var inputCount = this.props.order - 1;
@@ -95,4 +96,11 @@ var Picture = React.createClass({
       </div>
     )
   }
-});
+}
+
+Picture.propTypes = {
+  order: React.PropTypes.number.isRequired,
+  isLast: React.PropTypes.bool.isRequired,
+  addPicture: React.PropTypes.func.isRequired,
+  removePicture: React.PropTypes.func.isRequired
+}

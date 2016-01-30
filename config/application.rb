@@ -24,5 +24,6 @@ module Events
     end
 
     config.cache_store = :dalli_store
+    config.browserify_rails.commandline_options = '-t babelify'
   end
 end

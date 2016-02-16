@@ -3,7 +3,7 @@ class PagesController < ApplicationController
 
   def welcome
     respond_to do |format|
-      format.html   {  }
+      format.html
       format.mobile { render layout: false }
     end
   end
@@ -28,6 +28,17 @@ class PagesController < ApplicationController
 
   def play
     render layout: false
+  end
+
+  def get
+    render json: {
+      name: 'my event',
+      texts: {
+        1 => { text: 'first text' },
+        2 => { text: 'second text' },
+        3 => { text: 'third text' }
+      }
+    }
   end
 
   private

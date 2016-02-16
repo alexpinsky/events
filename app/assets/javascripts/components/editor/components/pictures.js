@@ -25,28 +25,28 @@ export default class Pictures extends Component {
     if (this.state.progress > 0) { return false };
 
     return this._pictureService.upload()
-    .then(function(url) {
-      // resolve
-      this.props.addPicture({order: args.order, url: url});
-      return url;
-    }.bind(this),
-    function(data) {
-      // reject
-      console.log('pictures-error:');
-      console.log(data);
-    },
-    function(data) {
-      // progress
-      let progress = Math.round((data.loaded * 100.0) / data.total);
+      .then(function(url) {
+        // resolve
+        this.props.addPicture({order: args.order, url: url});
+        return url;
+      }.bind(this),
+      function(data) {
+        // reject
+        console.log('pictures-error:');
+        console.log(data);
+      },
+      function(data) {
+        // progress
+        let progress = Math.round((data.loaded * 100.0) / data.total);
 
-      if (progress == 100) {
-        setTimeout(function() {
-          this.setState({progress: 0});
-        }.bind(this), 3000);
-      };
+        if (progress == 100) {
+          setTimeout(function() {
+            this.setState({progress: 0});
+          }.bind(this), 3000);
+        };
 
-      this.setState({progress: progress});
-    }.bind(this));
+        this.setState({progress: progress});
+      }.bind(this));
   }
 
   handleRemovePicture(args) {

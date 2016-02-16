@@ -13,6 +13,7 @@ Events::Application.routes.draw do
   get 'terms_of_service' => 'pages#terms_of_service'
   get 'ping'             => 'pages#ping'
   get 'play'             => 'pages#play'
+  get 'get'              => 'pages#get'
 
   resources :categories, path: 'templates'
   resources :events do

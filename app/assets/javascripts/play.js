@@ -3,4 +3,4 @@
 
 window.React    = require('react');
 window.ReactDOM = require('react-dom');
-window.Index    = require('./play/index.js');
+window.Index      = require('./play/index');

@@ -1,6 +1,6 @@
-class @App
+class @AppStarter
   @start: ->
-    app = new App
+    app = new AppStarter
     app.run()
 
   run: ->

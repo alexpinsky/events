@@ -43,9 +43,6 @@
 //= require jquery-editable-poshytip.min
 //= require slick.min
 
-// React-Redux es6
-window.EditorIndex = require('./editor/index');
-
 $(document).ready(function() {
-  App.start();
+  AppStarter.start();
 });

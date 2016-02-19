@@ -13,5 +13,5 @@ ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
     <Editor />
   </Provider>,
-  document.querySelector('.editor-container')
+  document.querySelector('.app-container')
 );

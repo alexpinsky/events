@@ -8,6 +8,10 @@ class PagesController < ApplicationController
     end
   end
 
+  def app
+    render layout: false
+  end
+
   def admin
   end
 
@@ -22,28 +26,7 @@ class PagesController < ApplicationController
     render layout: false
   end
 
-  def ping
-    render nothing: true, status: :ok
-  end
-
   def play
     render layout: false
-  end
-
-  def get
-    render json: {
-      name: 'my event',
-      texts: {
-        1 => { text: 'first text' },
-        2 => { text: 'second text' },
-        3 => { text: 'third text' }
-      }
-    }
-  end
-
-  private
-
-  def _set_page
-    @page = 'welcome'
   end
 end

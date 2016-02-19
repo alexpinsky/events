@@ -23,10 +23,8 @@
 //= require app
 //= require dashboard
 //= require templates
-//= require editor
 //= require pages
 //= require state_handler
-//= require_tree ./editor
 //= require_tree ./shared
 //= require_tree ./elements
 //= require_tree ./state_handler
@@ -44,6 +42,9 @@
 //= require ZeroClipboard.min
 //= require jquery-editable-poshytip.min
 //= require slick.min
+
+// React-Redux es6
+window.EditorIndex = require('./editor/index');
 
 $(document).ready(function() {
   App.start();

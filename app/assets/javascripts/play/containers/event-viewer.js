@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 export class EventViewer extends Component {
   shouldComponentUpdate(nextProps, nextState) {
-    console.log('nextProps (EventViewer)', nextProps);
+    // console.log('nextProps (EventViewer)', nextProps);
     return true;
   }
 

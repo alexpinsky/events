@@ -4,6 +4,8 @@ export const FETCH_EVENT = 'FETCH_EVENT';
 export const UPDATE_TEXT = 'UPDATE_TEXT';
 export const UPDATE_NAME = 'UPDATE_NAME';
 
+export const actions = [FETCH_EVENT, UPDATE_TEXT, UPDATE_NAME];
+
 export function fetchEvent() {
   const request = axios.get('/get')
 

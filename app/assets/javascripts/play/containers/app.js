@@ -9,7 +9,7 @@ import EventForm from '../components/event-form';
 
 export class App extends Component {
   shouldComponentUpdate(nextProps, nextState) {
-    console.log('nextProps (App)', nextProps);
+    // console.log('nextProps (App)', nextProps);
     return true;
   }
 

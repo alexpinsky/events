@@ -19,7 +19,7 @@ export class TextEdit extends Component {
   handleChange(e) {
     this.props.updateText({
       newText: e.target.value,
-      id: e.target.getAttribute('data-id')
+      textId: e.target.getAttribute('data-id')
     });
   }
 

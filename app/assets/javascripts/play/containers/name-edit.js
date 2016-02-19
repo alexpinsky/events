@@ -12,7 +12,7 @@ export class NameEdit extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    console.log('nextProps (NameEdit)', nextProps);
+    // console.log('nextProps (NameEdit)', nextProps);
     return true;
   }
 

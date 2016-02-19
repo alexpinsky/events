@@ -20,7 +20,7 @@
 
 // Application
 
-//= require app
+//= require app-starter
 //= require dashboard
 //= require templates
 //= require pages

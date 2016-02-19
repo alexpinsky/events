@@ -7,7 +7,7 @@ Events::Application.routes.draw do
   }
 
   get 'welcome',          to: 'pages#welcome'
-  get 'app',              to: 'pages#app'
+  get 'app/*page',        to: 'pages#app'
   get 'admin',            to: 'pages#admin'
   get 'about',            to: 'pages#about'
   get 'privacy_policy',   to: 'pages#privacy_policy'

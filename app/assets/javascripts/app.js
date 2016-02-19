@@ -12,4 +12,4 @@
 //= require slick.min
 
 // React-Redux es6
-window.EditorIndex = require('./editor/index');
+window.Index = require('./index');

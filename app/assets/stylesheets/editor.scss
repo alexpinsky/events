@@ -112,6 +112,11 @@ $border-color: rgb(127, 159, 255);
                   background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/templates_icon.svg');
                 }
               }
+              .panel-header:hover {
+                .header-icon {
+                  background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/templates_icon_hover.svg');
+                }
+              }
               .panel-content {
                 @import 'editor/gallery';
               }
@@ -120,6 +125,11 @@ $border-color: rgb(127, 159, 255);
               .panel-header {
                 .header-icon {
                   background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/text_icon.svg');
+                }
+              }
+              .panel-header:hover {
+                .header-icon {
+                  background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/text_icon_hover.svg');
                 }
               }
               .panel-content {
@@ -132,6 +142,11 @@ $border-color: rgb(127, 159, 255);
                   background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/pictures_icon.svg');
                 }
               }
+              .panel-header:hover {
+                .header-icon {
+                  background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/pictures_icon_hover.svg');
+                }
+              }
               .panel-content {
                 @import 'editor/background_and_pics';
                 padding-left: 10px;
@@ -141,6 +156,11 @@ $border-color: rgb(127, 159, 255);
               .panel-header {
                 .header-icon {
                   background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/calendar_icon.svg');
+                }
+              }
+              .panel-header:hover {
+                .header-icon {
+                  background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/calendar_icon_hover.svg');
                 }
               }
               .panel-content {

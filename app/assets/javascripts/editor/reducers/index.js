@@ -1,11 +1,10 @@
 import { combineReducers } from 'redux';
 
 import eventReducer from './event-reducer';
-import textsReducer from './texts-reducer';
-import pictuersReducer from './pictures-reducer';
-import informationReducer from './information-reducer';
+import categoriesReducer from './categories-reducer';
 
 const rootReducer = combineReducers({
+  categories: categoriesReducer,
   event: eventReducer
 });
 

@@ -32,3 +32,6 @@ export const SET_START_TIME = 'SET_START_TIME';
 export const SET_END_TIME = 'SET_END_TIME';
 export const SET_TIME_ZONE = 'SET_TIME_ZONE';
 export const SET_ORGANIZER = 'SET_ORGANIZER';
+
+// categories actions
+export const FETCH_CATEGORIES = 'FETCH_CATEGORIES';

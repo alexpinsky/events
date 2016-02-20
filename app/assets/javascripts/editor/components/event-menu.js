@@ -4,6 +4,9 @@ import PublishEvent from '../containers/publish-event';
 import UnpublishEvent from '../containers/unpublish-event';
 
 export default class EventMenu extends Component {
+  shouldComponentUpdate(nextProps, nextState) {
+    return false;
+  }
 
   render() {
 

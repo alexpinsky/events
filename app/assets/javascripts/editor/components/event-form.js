@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Accordion from './accordion';
-import ThemesGallery from './themes-gallery';
+import ThemesGallery from '../containers/themes-gallery';
 
 export default class EventForm extends Component {
+
   shouldComponentUpdate(nextProps, nextState) {
     return false;
   }

@@ -9,18 +9,21 @@ export class ThemesGallery extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = { currentCategory: this.props.categories[0].name }
 
     this.handleSlideChange = this.handleSlideChange.bind(this);
+    this.handleNextClick   = this.handleNextClick.bind(this);
+    this.handlePrevClick   = this.handlePrevClick.bind(this);
+    this.handleThemeClick  = this.handleThemeClick.bind(this);
   }
 
   componentWillMount() {
     // this.props.fetchThemes();
   }
 
-  componentDidMound() {
+  componentDidMount() {
     this.slider.on('init', () => {
-      $(this).css('visibility', 'visible');
+      $(this.slider).css('visibility', 'visible');
     });
 
     this.slider.slick({ arrows: false });
@@ -29,13 +32,21 @@ export class ThemesGallery extends Component {
     this.slider.on('beforeChange', this.handleSlideChange);
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log('nextProps', nextProps);
-  }
-
   componentWillReceiveProps(nextProps) {
     console.log('nextProps', nextProps);
     this.setState({ currentCategory: nextProps.categories[0].name });
+  }
+
+  handleThemeClick(themeName) {
+    console.log('theme click', themeName);
+  }
+
+  handleNextClick() {
+    this.slider.slick('slickPrev');
+  }
+
+  handlePrevClick() {
+    this.slider.slick('slickNext');
   }
 
   handleSlideChange(e, slick, currentIndex, nextIndex) {
@@ -47,7 +58,11 @@ export class ThemesGallery extends Component {
 
   renderThemeLists() {
     return this.props.categories.map((category) => {
-      return <ThemeList key={category.name} name={category.name} themes={category.themes} />
+      return <ThemeList
+              key={category.name}
+              name={category.name}
+              themes={category.themes}
+              onThemeClick={this.handleThemeClick} />
     });
   }
 

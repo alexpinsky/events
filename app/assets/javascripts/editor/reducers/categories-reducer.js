@@ -21,6 +21,9 @@ const INITIAL_STATE = [
         thumbnail_url: "https://s3-eu-west-1.amazonaws.com/events-assets-static/categories/wedding/themes/simple/thumbnail.jpg"
       }
     ]
+  },
+  {
+    name: "celebration"
   }
 ];
 

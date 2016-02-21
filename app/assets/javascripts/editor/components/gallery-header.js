@@ -20,9 +20,9 @@ export default class GalleryHeader extends Component {
 
     return (
       <div className='gallery-header'>
-        <a className="prev" onClick={this.handlePrevClick}>{'<'}</a>
-        <div className='category-name'>{this.props.categoryName}</div>
-        <a href="#" className="next" onClick={this.handleNextClick}>{'>'}</a>
+        <div className="prev" onClick={this.handlePrevClick}>{'<'}</div>
+        <div className='category-name'>{this.props.categoryName.toUpperCase()}</div>
+        <div className="next" onClick={this.handleNextClick}>{'>'}</div>
       </div>
     );
   }

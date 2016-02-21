@@ -13,6 +13,7 @@ $border-color: rgb(127, 159, 255);
       display: inline-block;
       text-decoration: none;
       position: absolute;
+      cursor: pointer;
     }
     .prev {
       left: 116px;
@@ -33,7 +34,7 @@ $border-color: rgb(127, 159, 255);
     width: 330px;
     height: 180px;
     .themes {
-      width: 166px;
+      width: 172px;
       margin: 8px auto;
       .gallery-theme {
         width: 78px;
@@ -41,6 +42,7 @@ $border-color: rgb(127, 159, 255);
         display: inline-block;
         border: 1px solid $border-color;
         cursor: pointer;
+        margin: 1px 3px;
       }
     }
     .coming-soon {

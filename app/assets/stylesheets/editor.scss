@@ -183,6 +183,7 @@ $border-color: rgb(127, 159, 255);
           border-top: 1px solid $border-color;
           border-right: 1px solid $border-color;
           box-shadow: -4px 0px 1px #E4E4E4;
+          position: relative;
         }
         .preview {
           width: 559px;

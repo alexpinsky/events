@@ -8,7 +8,7 @@ export default class Theme extends Component {
   }
 
   handleClick() {
-    this.props.handleClick(this.props.name);
+    this.props.onClick(this.props.name);
   }
 
   render() {

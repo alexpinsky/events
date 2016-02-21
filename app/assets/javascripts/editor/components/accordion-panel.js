@@ -16,11 +16,15 @@ export default class AccordionPanel extends Component {
   }
 
   open() {
-    this.content.slideToggle()
+    this.content.slideDown();
   }
 
   close() {
-    this.content.slideToggle()
+    this.content.slideUp();
+  }
+
+  toggle() {
+    this.content.slideToggle();
   }
 
   render() {

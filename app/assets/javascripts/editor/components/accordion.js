@@ -21,9 +21,15 @@ export default class Accordion extends Component {
   }
 
   handleClick(panelName) {
-    this.panels[this.openPanelName].close();
-    this.panels[panelName].open();
-    this.openPanelName = panelName;
+
+    if (this.openPanelName === panelName) {
+      this.panels[panelName].toggle();
+    }
+    else {
+      this.panels[this.openPanelName].close();
+      this.panels[panelName].open();
+      this.openPanelName = panelName;
+    }
   }
 
   renderPanels() {

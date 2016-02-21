@@ -35,3 +35,6 @@ export const SET_ORGANIZER = 'SET_ORGANIZER';
 
 // categories actions
 export const FETCH_CATEGORIES = 'FETCH_CATEGORIES';
+
+//
+export const API_ENDPOINT = '/api/v1';

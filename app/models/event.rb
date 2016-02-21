@@ -38,7 +38,7 @@ class Event < ActiveRecord::Base
     :date_format,
   to: :information, allow_nil: true
 
-  delegate :name,  to: :category, prefix: true
+  delegate :name, to: :category, prefix: true
 
   scope :themes, -> () { where('events.is_theme = ?', true) }
   scope :with_user, -> () { where('events.user_id IS NOT NULL') }
@@ -123,6 +123,10 @@ class Event < ActiveRecord::Base
 
   def pending?
     state == STATES[:pending]
+  end
+
+  def disabled?
+    state == STATES[:disabled]
   end
 
   def full_url

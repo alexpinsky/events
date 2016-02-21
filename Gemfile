@@ -14,6 +14,7 @@ gem "figaro"
 gem 'deep_cloneable', '~> 2.0.0'
 gem 'mobylette'
 gem 'sitemap_generator'
+gem 'draper'
 
 gem 'rack-cache'
 

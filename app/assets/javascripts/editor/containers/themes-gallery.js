@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import { fetchCategories } from '../actions/categories-actions';
 import GalleryHeader from '../components/gallery-header';
 import ThemeList from '../components/theme-list';
 
@@ -9,7 +10,7 @@ export class ThemesGallery extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { currentCategory: this.props.categories[0].name }
+    this.state = { currentCategory: '' };
 
     this.handleSlideChange = this.handleSlideChange.bind(this);
     this.handleNextClick   = this.handleNextClick.bind(this);
@@ -18,7 +19,7 @@ export class ThemesGallery extends Component {
   }
 
   componentWillMount() {
-    // this.props.fetchThemes();
+    this.props.fetchCategories();
   }
 
   componentDidMount() {
@@ -33,7 +34,6 @@ export class ThemesGallery extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('nextProps', nextProps);
     this.setState({ currentCategory: nextProps.categories[0].name });
   }
 
@@ -82,13 +82,12 @@ export class ThemesGallery extends Component {
   }
 }
 
-// function mapDispatchToProps(dispatch) {
-//   return bindActionCreators({ updateText }, dispatch);
-// }
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ fetchCategories }, dispatch);
+}
 
 function mapStateToProps(state) {
   return { categories: state.categories };
 }
 
-// export default connect(mapStateToProps, mapDispatchToProps)(TextEdit);
-export default connect(mapStateToProps)(ThemesGallery);
+export default connect(mapStateToProps, mapDispatchToProps)(ThemesGallery);

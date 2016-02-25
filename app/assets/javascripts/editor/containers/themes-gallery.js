@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { fetchCategories } from '../actions/categories-actions';
+import { setTheme } from '../actions/appearance-actions';
 import GalleryHeader from '../components/gallery-header';
 import ThemeList from '../components/theme-list';
 
@@ -38,7 +39,7 @@ export class ThemesGallery extends Component {
   }
 
   handleThemeClick(themeName) {
-    console.log('theme click', themeName);
+    this.props.setTheme(themeName);
   }
 
   handleNextClick() {

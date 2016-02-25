@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import  from '';
 
 export default class EventViewer extends Component {
 
@@ -18,3 +21,9 @@ export default class EventViewer extends Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return { event: state.event };
+}
+
+export default connect(mapStateToProps)(EventViewer);

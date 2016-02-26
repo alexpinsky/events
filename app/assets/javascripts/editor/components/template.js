@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class Theme extends Component {
+export default class Template extends Component {
   constructor(props) {
     super(props);
 
@@ -8,7 +8,9 @@ export default class Theme extends Component {
   }
 
   handleClick() {
-    this.props.onClick(this.props.name);
+    this.props.onClick({
+      name: this.props.name
+    });
   }
 
   render() {

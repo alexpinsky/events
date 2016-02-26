@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import  from '';
+// import  from '';
 
 export default class EventViewer extends Component {
 

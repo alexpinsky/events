@@ -3,7 +3,11 @@ module Api
     class CategoriesController < ApplicationController
 
       def index
-        render json: Category.decorate.with_themes
+        presenters = Category.includes(:templates).map do |category|
+          CategoryPresenter.new category
+        end
+
+        render json: presenters
       end
     end
   end

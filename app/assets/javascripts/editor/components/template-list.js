@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Theme from './theme';
+import Template from './template';
 
-export default class ThemeList extends Component {
+export default class TemplateList extends Component {
   constructor(props) {
     super(props);
 
@@ -12,16 +12,16 @@ export default class ThemeList extends Component {
     return false;
   }
 
-  handleClick(themeName) {
-    this.props.onThemeClick(themeName);
+  handleClick(template) {
+    this.props.onTemplateClick(template);
   }
 
   renderContent() {
-    if (this.props.themes === undefined) {
+    if (this.props.templates === undefined) {
       return this.renderPlaceHolder();
     }
     else {
-      return this.renderThemes();
+      return this.renderTemplates();
     }
   }
 
@@ -35,18 +35,18 @@ export default class ThemeList extends Component {
     );
   }
 
-  renderThemes() {
-    const themes = this.props.themes.map((theme) => {
-      return <Theme
-              key={theme.name}
-              name={theme.name}
-              thumbnail_url={theme.thumbnail_url}
+  renderTemplates() {
+    const templates = this.props.templates.map((template) => {
+      return <Template
+              key={template.name}
+              name={template.name}
+              thumbnail_url={template.thumbnail_url}
               onClick={this.handleClick} />
     });
 
     return (
       <div className="themes" data-category={this.props.name}>
-        {themes}
+        {templates}
       </div>
     );
   }

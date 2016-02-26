@@ -3,11 +3,10 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { fetchCategories } from '../actions/categories-actions';
-import { setTheme } from '../actions/appearance-actions';
 import GalleryHeader from '../components/gallery-header';
-import ThemeList from '../components/theme-list';
+import TemplateList from '../components/template-list';
 
-export class ThemesGallery extends Component {
+export class TemplatesGallery extends Component {
   constructor(props) {
     super(props);
 
@@ -16,7 +15,7 @@ export class ThemesGallery extends Component {
     this.handleSlideChange = this.handleSlideChange.bind(this);
     this.handleNextClick   = this.handleNextClick.bind(this);
     this.handlePrevClick   = this.handlePrevClick.bind(this);
-    this.handleThemeClick  = this.handleThemeClick.bind(this);
+    this.handleTemplateClick  = this.handleTemplateClick.bind(this);
   }
 
   componentWillMount() {
@@ -38,8 +37,8 @@ export class ThemesGallery extends Component {
     this.setState({ currentCategory: nextProps.categories[0].name });
   }
 
-  handleThemeClick(themeName) {
-    this.props.setTheme(themeName);
+  handleTemplateClick(template) {
+    console.log('template.name', template.name);
   }
 
   handleNextClick() {
@@ -57,13 +56,13 @@ export class ThemesGallery extends Component {
     this.setState({ currentCategory: nextCategory });
   }
 
-  renderThemeLists() {
+  renderTemplateLists() {
     return this.props.categories.map((category) => {
-      return <ThemeList
+      return <TemplateList
               key={category.name}
               name={category.name}
-              themes={category.themes}
-              onThemeClick={this.handleThemeClick} />
+              templates={category.templates}
+              onTemplateClick={this.handleTemplateClick} />
     });
   }
 
@@ -76,7 +75,7 @@ export class ThemesGallery extends Component {
           onPrevClick={this.handlePrevClick}
           onNextClick={this.handleNextClick} />
         <div className='slide' ref={(ref) => { this.slider = $(ref) }}>
-          {this.renderThemeLists()}
+          {this.renderTemplateLists()}
         </div>
       </div>
     );
@@ -91,4 +90,4 @@ function mapStateToProps(state) {
   return { categories: state.categories };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ThemesGallery);
+export default connect(mapStateToProps, mapDispatchToProps)(TemplatesGallery);

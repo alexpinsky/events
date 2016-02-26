@@ -9,12 +9,26 @@ export default class EventViewer extends Component {
     return mapEventToTemplate(this.props.event);
   }
 
+  backgroundStyle() {
+    const background_url = this.props.event.appearance.background_url;
+    let background = null;
+
+    if (background_url !== undefined && background_url != null) {
+      background = `url(${background_url})`;
+    }
+    else {
+      background = 'white';
+    }
+
+    return { background: background };
+  }
+
   render() {
 
     return (
       <div>
         <div className='frame-1'></div>
-          <div className='preview'>
+          <div className='preview' style={this.backgroundStyle()}>
             <div className="display">
               {this.renderTemplate()}
             </div>

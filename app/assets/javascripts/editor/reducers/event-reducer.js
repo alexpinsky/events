@@ -18,18 +18,19 @@ const INITIAL_STATE = {
   url: 'first_event',
   state: 0,
   template: { name: 'paris' },
-  texts: [
-    { text: 'first line', color: '#000', size: null, font: null },
-    { text: 'second line', color: '#000', size: null, font: null },
-    { text: 'third line', color: '#000', size: null, font: null }
-  ],
+  texts: {
+    1: { text: 'first line', color: '#e80ef0', size: 13, font: "'Six Caps', sans-serif" },
+    2: { text: 'second line', color: '#e80ef0', size: 8, font: "'Six Caps', sans-serif" },
+    3: { text: 'third line', color: '#e80ef0', size: 6, font: "'Six Caps', sans-serif" }
+  },
   pictures: {
     1: { id: 11, order: 1, url: null },
     2: { id: 12, order: 2, url: null },
     3: { id: 13, order: 3, url: null },
     4: { id: 14, order: 4, url: null }
   },
-  appearance: { background_image: null }
+  appearance: { background_url: '"https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p9.png"' },
+  information: { in_use: true }
 };
 
 export default function(state = INITIAL_STATE, action) {

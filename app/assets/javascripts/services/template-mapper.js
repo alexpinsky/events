@@ -1,9 +1,9 @@
 import React from 'react';
 
-import Paris from '../templates/paris';
-import Colaze from '../templates/colaze';
-import CTree from '../templates/c-tree';
-import Simple from '../templates/simple';
+import Paris from '../templates/wedding/paris';
+import Colaze from '../templates/wedding/colaze';
+import CTree from '../templates/wedding/c-tree';
+import Simple from '../templates/wedding/simple';
 
 const PARIS_TEMPLATE  = 'paris';
 const COLAZE_TEMPLATE = 'colaze';

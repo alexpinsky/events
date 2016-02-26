@@ -11,31 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160225170423) do
+ActiveRecord::Schema.define(version: 20160226093456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "appearances", force: :cascade do |t|
-    t.string   "background_image"
-    t.string   "font_family_1"
-    t.string   "font_color_1"
-    t.integer  "event_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "font_size_1"
-    t.string   "font_family_2"
-    t.string   "font_color_2"
-    t.string   "font_size_2"
-    t.string   "font_family_3"
-    t.string   "font_color_3"
-    t.string   "font_size_3"
-    t.string   "font_family_4"
-    t.string   "font_color_4"
-    t.string   "font_size_4"
-  end
-
-  add_index "appearances", ["event_id"], name: "index_appearances_on_event_id", using: :btree
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -53,22 +32,21 @@ ActiveRecord::Schema.define(version: 20160225170423) do
   create_table "events", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "name"
-    t.string   "text_1"
-    t.string   "text_2"
-    t.text     "text_3"
     t.string   "url"
-    t.string   "url_hash"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "text_4"
     t.integer  "state",       default: 0
     t.integer  "template_id"
     t.jsonb    "information", default: {}, null: false
+    t.jsonb    "texts",       default: [], null: false
+    t.jsonb    "appearance",  default: {}, null: false
   end
 
+  add_index "events", ["appearance"], name: "index_events_on_appearance", using: :gin
   add_index "events", ["information"], name: "index_events_on_information", using: :gin
   add_index "events", ["state"], name: "index_events_on_state", using: :btree
   add_index "events", ["template_id"], name: "index_events_on_template_id", using: :btree
+  add_index "events", ["texts"], name: "index_events_on_texts", using: :gin
   add_index "events", ["url"], name: "index_events_on_url", using: :btree
   add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
 

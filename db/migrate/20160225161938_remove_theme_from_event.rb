@@ -14,11 +14,13 @@ class RemoveThemeFromEvent < ActiveRecord::Migration
         theme.destroy!
       end
 
-    add_column :events, :template_id, :integer
-    add_index :events, :template_id
-
     Event.all.each do |event|
-      event.update_attribute :template_id, themes_to_templates_map[event.theme_id]
+      event.template_id = themes_to_templates_map[event.theme_id]
+      if event.template_id.blank?
+        event.destroy!
+      else
+        event.save!
+      end
     end
 
     remove_column :events, :is_theme
@@ -27,6 +29,10 @@ class RemoveThemeFromEvent < ActiveRecord::Migration
   end
 
   def down
-    raise ActiveRecord::IrreversibleMigration.new
+    add_column :events, :is_theme, :boolean
+    add_column :events, :theme_id, :integer
+    add_column :events, :category_id, :integer
+    add_index :events, :theme_id
+    add_index :events, :category_id
   end
 end

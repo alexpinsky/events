@@ -39,8 +39,7 @@ export default class TemplateList extends Component {
     const templates = this.props.templates.map((template) => {
       return <Template
               key={template.name}
-              name={template.name}
-              thumbnail_url={template.thumbnail_url}
+              template={template}
               onClick={this.handleClick} />
     });
 

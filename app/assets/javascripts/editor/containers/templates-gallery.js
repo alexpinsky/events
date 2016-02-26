@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { fetchCategories } from '../actions/categories-actions';
+import { setTemplate } from '../actions/template-actions';
 import GalleryHeader from '../components/gallery-header';
 import TemplateList from '../components/template-list';
 
@@ -38,7 +39,7 @@ export class TemplatesGallery extends Component {
   }
 
   handleTemplateClick(template) {
-    console.log('template.name', template.name);
+    this.props.setTemplate(template);
   }
 
   handleNextClick() {
@@ -83,7 +84,7 @@ export class TemplatesGallery extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchCategories }, dispatch);
+  return bindActionCreators({ fetchCategories, setTemplate }, dispatch);
 }
 
 function mapStateToProps(state) {

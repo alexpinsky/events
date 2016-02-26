@@ -8,14 +8,12 @@ export default class Template extends Component {
   }
 
   handleClick() {
-    this.props.onClick({
-      name: this.props.name
-    });
+    this.props.onClick(this.props.template);
   }
 
   render() {
     const style = {
-      background: `url('${this.props.thumbnail_url}') no-repeat`,
+      background: `url('${this.props.template.thumbnail_url}') no-repeat`,
       backgroundSize: 'cover'
     };
 

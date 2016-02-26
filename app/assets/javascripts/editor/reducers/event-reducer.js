@@ -1,14 +1,15 @@
 import { _ } from 'lodash';
 
 import {
-  FETCH_EVENT, SAVE_EVENT, SET_NAME, SET_URL, PUBLISH_EVENT,
-  UNPUBLISH_EVENT, TEXT, PICTURE, APPEARANCE, INFORMATION
+  FETCH_EVENT, SAVE_EVENT, SET_NAME, SET_URL, PUBLISH_EVENT, UNPUBLISH_EVENT,
+  TEXT_ACTION, PICTURE_ACTION, APPEARANCE_ACTION, INFORMATION_ACTION, TEMPLATE_ACTION
 } from '../actions/constants';
 
 import textsReducer from './texts-reducer';
 import picturesReducer from './pictures-reducer';
 import appearanceReducer from './appearance-reducer';
 import informationReducer from './information-reducer';
+import templateReducer from './template-reducer';
 
 // const INITIAL_STATE = {};
 const INITIAL_STATE = {
@@ -16,21 +17,19 @@ const INITIAL_STATE = {
   name: 'first event',
   url: 'first_event',
   state: 0,
-  texts: {
-    1: { text: 'first line', color: '#000', size: null },
-    2: { text: 'second line', color: '#000', size: null },
-    3: { text: 'third line', color: '#000', size: null }
-  },
+  template: { name: 'paris' },
+  texts: [
+    { text: 'first line', color: '#000', size: null, font: null },
+    { text: 'second line', color: '#000', size: null, font: null },
+    { text: 'third line', color: '#000', size: null, font: null }
+  ],
   pictures: {
     1: { id: 11, order: 1, url: null },
     2: { id: 12, order: 2, url: null },
     3: { id: 13, order: 3, url: null },
     4: { id: 14, order: 4, url: null }
   },
-  appearance: {
-    background_image: null,
-    theme: 'paris'
-  }
+  appearance: { background_image: null }
 };
 
 export default function(state = INITIAL_STATE, action) {
@@ -53,19 +52,23 @@ export default function(state = INITIAL_STATE, action) {
 
   // nested reducers actions
   switch (action.group) {
-    case TEXT:
+    case TEMPLATE_ACTION:
+      return _.merge({}, state, {
+        template: templateReducer(state.template, action)
+      })
+    case TEXT_ACTION:
       return _.merge({}, state, {
         texts: textsReducer(state.texts, action)
       })
-    case PICTURE:
+    case PICTURE_ACTION:
       return _.merge({}, state, {
         pictures: picturesReducer(state.pictures, action)
       })
-    case APPEARANCE:
+    case APPEARANCE_ACTION:
       return _.merge({}, state, {
         appearance: appearanceReducer(state.appearance, action)
       })
-    case INFORMATION:
+    case INFORMATION_ACTION:
       return _.merge({}, state, {
         information: informationReducer(state.information, action)
       })

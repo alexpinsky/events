@@ -35,7 +35,8 @@ export default class Paris extends Component {
         </div>
         <div className='text-wrapper-2' style={this.textStyle({ order: 2, text: texts[2] })}>
           <div id="text_2">{texts[2].text}</div>
-        </div><div className='text-wrapper-3' style={this.textStyle({ order: 3, text: texts[3] })}>
+        </div>
+        <div className='text-wrapper-3' style={this.textStyle({ order: 3, text: texts[3] })}>
           <div id="text_3">{texts[3].text}</div>
         </div>
         {this.renderCalendarButton(information)}

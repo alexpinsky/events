@@ -30,7 +30,14 @@ const INITIAL_STATE = {
     4: { id: 14, order: 4, url: null }
   },
   appearance: { background_url: '"https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p9.png"' },
-  information: { in_use: true }
+  information: {
+    in_use: true,
+    summary: 'My Event',
+    location: "בית על הים, רוסלאן 1, יפו",
+    time_zone: 'Asia/Jerusalem',
+    start_time: "1457101330000",
+    end_time: "1457119334000"
+  }
 };
 
 export default function(state = INITIAL_STATE, action) {

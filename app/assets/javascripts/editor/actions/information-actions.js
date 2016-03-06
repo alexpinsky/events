@@ -1,6 +1,6 @@
 import {
   INFORMATION_ACTION, ENABLE_CALENDAR, DISABLE_CALENDAR, SET_START_TIME, SET_END_TIME,
-  SET_TIME_ZONE, SET_LOCATION, SET_SUMMARY
+  SET_LOCATION, SET_SUMMARY
 } from '../actions/constants';
 
 export function enableCalendar() {
@@ -33,14 +33,6 @@ export function setEndTime(epoch) {
     type: SET_END_TIME,
     group: INFORMATION_ACTION,
     payload: { end_time: epoch }
-  };
-}
-
-export function setTimeZone(timezone) {
-  return {
-    type: SET_TIME_ZONE,
-    group: INFORMATION_ACTION,
-    payload: { time_zone: timezone }
   };
 }
 

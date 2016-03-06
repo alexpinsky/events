@@ -1,6 +1,6 @@
 import {
   ENABLE_CALENDAR, DISABLE_CALENDAR, SET_START_TIME, SET_END_TIME,
-  SET_TIME_ZONE, SET_LOCATION, SET_SUMMARY
+  SET_LOCATION, SET_SUMMARY
 } from '../actions/constants';
 
 const INITIAL_STATE = {};
@@ -16,8 +16,6 @@ export default function(state = INITIAL_STATE, action) {
       return Object.assign({}, state, { start_time: action.payload.start_time });
     case SET_END_TIME:
       return Object.assign({}, state, { end_time: action.payload.end_time });
-    case SET_TIME_ZONE:
-      return Object.assign({}, state, { time_zone: action.payload.time_zone });
     case SET_LOCATION:
       return Object.assign({}, state, { location: action.payload.location });
     case SET_SUMMARY:

@@ -3,22 +3,35 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import Checkbox from '../components/checkbox';
-import TimezonePicker from '../components/timezone-picker';
-
 import {
-  enableCalendar, disableCalendar, setStartTime, setEndTime, setTimeZone,
-  setLocation, setSummary
+  enableCalendar, disableCalendar, setStartTime, setEndTime, setLocation, setSummary
 } from '../actions/information-actions';
 
 export class CalendarForm extends Component {
   constructor(props) {
     super(props);
 
-    this.handleCheck   = this.handleCheck.bind(this);
-    this.handleUncheck = this.handleUncheck.bind(this);
-    this.handleSummaryChange  = this.handleSummaryChange.bind(this);
-    this.handleLocationChange = this.handleLocationChange.bind(this);
-    this.handleTimezoneChange = this.handleTimezoneChange.bind(this);
+    this.handleCheck           = this.handleCheck.bind(this);
+    this.handleUncheck         = this.handleUncheck.bind(this);
+    this.handleSummaryChange   = this.handleSummaryChange.bind(this);
+    this.handleLocationChange  = this.handleLocationChange.bind(this);
+    this.handleStartTimeChange = this.handleStartTimeChange.bind(this);
+    this.handleEndTimeChange   = this.handleEndTimeChange.bind(this);
+  }
+
+  componentDidMount() {
+    $(this.startTimeInput).datetimepicker({
+      onChangeDateTime: this.handleStartTimeChange
+    });
+
+    $(this.endTimeInput).datetimepicker({
+      onChangeDateTime: this.handleEndTimeChange
+    });
+  }
+
+  componentWillUmount() {
+    $(this.startTimeInput).datetimepicker('destroy');
+    $(this.endTimeInput).datetimepicker('destroy');
   }
 
   handleCheck() {
@@ -37,8 +50,14 @@ export class CalendarForm extends Component {
     this.props.setLocation($(e.target).val());
   }
 
-  handleTimezoneChange(e) {
+  handleStartTimeChange(dp, $input) {
+    if (dp instanceof Date)
+      this.props.setStartTime(dp.getTime() + dp.getTimezoneOffset() * 60000);
+  }
 
+  handleEndTimeChange(dp, $input) {
+    if (dp instanceof Date)
+      this.props.setEndTime(dp.getTime() + dp.getTimezoneOffset() * 60000);
   }
 
   renderFields() {
@@ -51,25 +70,30 @@ export class CalendarForm extends Component {
       <div className='information-fields'>
 
         <div className='name-section'>
-          <input placeholder='event name'
-                 value={information.summary}
-                 onChange={this.handleSummaryChange} />
-          <input placeholder='event location'
-                 value={information.location}
-                 onChange={this.handleLocationChange} />
+          <div className='text'>event name</div>
+          <input value={information.summary} onChange={this.handleSummaryChange} />
+          <div className='text'>location</div>
+          <input value={information.location} onChange={this.handleLocationChange} />
         </div>
 
         <div className='time-section'>
-          <div className='text'>date & time</div>
-
           <div className='inputs'>
-            <TimezonePicker timezone={information.time_zone}
-                            onChange={this.handleTimezoneChange} />
-            <input type="text" className="date start"/>
-            <input type="text" className="time start"/>
-            <div className='text'>to</div>
-            <input type="text" className="date end"/>
-            <input type="text" className="time end"/>
+
+            <div className='start-wrapper'>
+              <div className='text'>starts at</div>
+              <input type="text"
+                     className="datetimepicker start"
+                     ref={ (ref) => this.startTimeInput = ref }
+                     onChange={this.handleStartTimeChange} />
+            </div>
+
+            <div className='end-wrapper'>
+              <div className='text'>ends at</div>
+              <input type="text"
+                     className="datetimepicker end"
+                     ref={ (ref) => this.endTimeInput = ref }
+                     onChange={this.handleEndTimeChange} />
+            </div>
           </div>
         </div>
       </div>
@@ -98,13 +122,7 @@ export class CalendarForm extends Component {
 
 function mapDispatchToProps(dispatch) {
   const actions = {
-    enableCalendar,
-    disableCalendar,
-    setStartTime,
-    setEndTime,
-    setTimeZone,
-    setLocation,
-    setSummary
+    enableCalendar, disableCalendar, setStartTime, setEndTime, setLocation, setSummary
   };
 
   return bindActionCreators(actions, dispatch);
@@ -114,7 +132,4 @@ function mapStateToProps(state) {
   return { information: state.event.information };
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CalendarForm);
+export default connect(mapStateToProps, mapDispatchToProps)(CalendarForm);

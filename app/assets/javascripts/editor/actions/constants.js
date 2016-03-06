@@ -29,7 +29,6 @@ export const ENABLE_CALENDAR = 'ENABLE_CALENDAR';
 export const DISABLE_CALENDAR = 'DISABLE_CALENDAR';
 export const SET_START_TIME = 'SET_START_TIME';
 export const SET_END_TIME = 'SET_END_TIME';
-export const SET_TIME_ZONE = 'SET_TIME_ZONE';
 export const SET_SUMMARY = 'SET_SUMMARY';
 export const SET_LOCATION = 'SET_LOCATION';
 

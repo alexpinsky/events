@@ -34,7 +34,6 @@ const INITIAL_STATE = {
     in_use: true,
     summary: 'My Event',
     location: "בית על הים, רוסלאן 1, יפו",
-    time_zone: 'Asia/Jerusalem',
     start_time: "1457101330000",
     end_time: "1457119334000"
   }

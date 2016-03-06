@@ -14,7 +14,6 @@ export default class AddToAppleCalendar extends Component {
 
   handleClick() {
     const information  = this.props.information;
-    const timeZoneStr  = `TZID=${information.time_zone}`;
 
     const start = toCalendarDateFormat(information.start_time);
     const end   = toCalendarDateFormat(information.end_time);
@@ -24,8 +23,8 @@ export default class AddToAppleCalendar extends Component {
       'VERSION:2.0',
       'BEGIN:VEVENT',
       'CLASS:PUBLIC',
-      `DTSTART;${timeZoneStr}:${start}`,
-      `DTEND;${timeZoneStr}:${end}`,
+      `DTSTART:${start}`,
+      `DTEND:${end}`,
       `LOCATION:${information.location}`,
       `SUMMARY;LANGUAGE=en-us:${information.summary}`,
       'TRANSP:TRANSPARENT',

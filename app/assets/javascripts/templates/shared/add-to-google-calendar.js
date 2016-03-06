@@ -22,7 +22,6 @@ export default class AddToGoogleCalendar extends Component {
       `${ROOT_URL}?action=TEMPLATE`,
       `text=${information.summary}`,
       `dates=${start}/${end}`,
-      `ctz=${information.time_zone}`,
       `location=${information.location}`,
       'sf=true',
       'output=xml'

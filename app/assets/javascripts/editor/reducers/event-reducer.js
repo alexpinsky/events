@@ -29,7 +29,7 @@ const INITIAL_STATE = {
     3: { id: 13, order: 3, url: 'http://res.cloudinary.com/eventit-me/image/upload/v1451652630/bmfly9clrqxtmjt6irx7.jpg' },
     4: { id: 14, order: 4, url: 'http://res.cloudinary.com/eventit-me/image/upload/v1451652630/bmfly9clrqxtmjt6irx7.jpg' }
   },
-  appearance: { background_url: '"https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p9.png"' },
+  appearance: { background_url: "http://res.cloudinary.com/eventit-me/image/upload/v1451683817/P_Birds_w_aznlar.png" },
   information: {
     in_use: true,
     summary: 'My Event',

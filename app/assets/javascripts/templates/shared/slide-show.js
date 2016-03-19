@@ -25,7 +25,7 @@ export default class SlideShow extends Component {
 
   stopSlide() {
     if(this.shouldRunSlideShow())
-      $(this.picturesContanier).unslick();
+      $(this.picturesContanier).slick('unslick');
   }
 
   shouldRunSlideShow() {

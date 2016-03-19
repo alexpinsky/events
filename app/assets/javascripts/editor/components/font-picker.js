@@ -7,7 +7,7 @@ export default class FontPicker extends Component {
     super(props);
 
     var result = $.grep(this.props.fonts, function(font, index) {
-      return font.value === this.props.initialFontVal;
+      return font.value === this.props.font;
     }.bind(this));
 
     this.handleOpenCloseClick = this.handleOpenCloseClick.bind(this);
@@ -21,7 +21,7 @@ export default class FontPicker extends Component {
   }
 
   handleChange(newFont) {
-    this.props.handleChange(newFont);
+    this.props.onChange(newFont.value);
     this.setState({font: newFont});
   }
 
@@ -47,17 +47,11 @@ export default class FontPicker extends Component {
     };
 
     return (
-      <div className="font-family">
-        <div className="prefix" data-context={this.props.count}>FONT</div>
+      <div className='font-wrapper'>
         <div className="selected-font" onClick={this.handleOpenCloseClick}>
           {this.truncate(this.state.font.name)}
         </div>
         {fontsList}
-        <input
-          id={`event_appearance_attributes_font_family_${this.props.count}`}
-          name={`event[appearance_attributes][font_family_${this.props.count}]`}
-          value={this.state.font.value}
-          type='hidden' />
       </div>
     )
   }

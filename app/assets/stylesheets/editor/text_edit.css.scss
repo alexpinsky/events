@@ -29,7 +29,7 @@ $border-color: rgb(127, 159, 255);
       background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/3_icon.svg');
     }
     input {
-      width: 296px;
+      width: 294px;
       height: 28px;
       display: inline-block;
       border: 1px solid $border-color;
@@ -57,6 +57,9 @@ $border-color: rgb(127, 159, 255);
     .text-font {
       display: inline-block;
       vertical-align: top;
+      .font-wrapper {
+        display: inline-block;
+      }
       .selected-font {
         display: inline-block;
         font-family: 'Quattrocento Sans', sans-serif;
@@ -124,7 +127,7 @@ $border-color: rgb(127, 159, 255);
       margin-left: -5px;
       input {
         width: 39px;
-        padding-left: 5px;
+        padding-left: 11px;
       }
     }
   }

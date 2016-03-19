@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Accordion from './accordion';
 import CalendarForm from '../containers/calendar-form';
 import TemplatesGallery from '../containers/templates-gallery';
+import TextForm from '../containers/text-form';
 
 export default class EventForm extends Component {
 
@@ -22,7 +23,7 @@ export default class EventForm extends Component {
         name: 'text',
         header: 'text',
         isOpen: false,
-        content: <div>some text</div>
+        content: <TextForm />
       },
       {
         name: 'pictures',

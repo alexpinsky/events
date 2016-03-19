@@ -20,6 +20,25 @@ export class CalendarForm extends Component {
   }
 
   componentDidMount() {
+    this.initPicker();
+  }
+
+  componentWillUnmount() {
+    this.destroyPicker();
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    this.destroyPicker();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    this.initPicker();
+  }
+
+  initPicker() {
+    if(!this.startTimeInput && !this.endTimeInput)
+      return;
+
     $(this.startTimeInput).datetimepicker({
       onChangeDateTime: this.handleStartTimeChange
     });
@@ -29,7 +48,10 @@ export class CalendarForm extends Component {
     });
   }
 
-  componentWillUmount() {
+  destroyPicker() {
+    if(!this.startTimeInput && !this.endTimeInput)
+      return;
+
     $(this.startTimeInput).datetimepicker('destroy');
     $(this.endTimeInput).datetimepicker('destroy');
   }

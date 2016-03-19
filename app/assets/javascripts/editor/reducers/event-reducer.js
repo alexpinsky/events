@@ -19,15 +19,15 @@ const INITIAL_STATE = {
   state: 0,
   template: { name: 'paris' },
   texts: {
-    1: { text: 'first line', color: '#e80ef0', size: 13, font: "'Six Caps', sans-serif" },
-    2: { text: 'second line', color: '#e80ef0', size: 8, font: "'Six Caps', sans-serif" },
-    3: { text: 'third line', color: '#e80ef0', size: 6, font: "'Six Caps', sans-serif" }
+    1: { text: 'first line', color: '#e80ef0', size: 6, font: "'Six Caps', sans-serif" },
+    2: { text: 'second line', color: '#e80ef0', size: 6, font: "'Six Caps', sans-serif" },
+    3: { text: 'third line', color: '#e80ef0', size: 2.5, font: "'Six Caps', sans-serif" }
   },
   pictures: {
-    1: { id: 11, order: 1, url: null },
-    2: { id: 12, order: 2, url: null },
-    3: { id: 13, order: 3, url: null },
-    4: { id: 14, order: 4, url: null }
+    1: { id: 11, order: 1, url: 'http://res.cloudinary.com/eventit-me/image/upload/v1451652630/bmfly9clrqxtmjt6irx7.jpg' },
+    2: { id: 12, order: 2, url: 'http://res.cloudinary.com/eventit-me/image/upload/v1451652630/bmfly9clrqxtmjt6irx7.jpg' },
+    3: { id: 13, order: 3, url: 'http://res.cloudinary.com/eventit-me/image/upload/v1451652630/bmfly9clrqxtmjt6irx7.jpg' },
+    4: { id: 14, order: 4, url: 'http://res.cloudinary.com/eventit-me/image/upload/v1451652630/bmfly9clrqxtmjt6irx7.jpg' }
   },
   appearance: { background_url: '"https://s3-eu-west-1.amazonaws.com/events-assets-static/backgrounds/p9.png"' },
   information: {

@@ -4,7 +4,7 @@ import CalendarForm from '../containers/calendar-form';
 import TemplatesGallery from '../containers/templates-gallery';
 import TextForm from '../containers/text-form';
 import Pictures from '../containers/pictures';
-// import BackgroundTiles from './background-tiles';
+import BackgroundTiles from '../containers/background-tiles';
 
 export default class EventForm extends Component {
 
@@ -16,6 +16,7 @@ export default class EventForm extends Component {
     return (
       <div className='background-and-pics'>
         <div className='background-section'>
+          <BackgroundTiles />
         </div>
         <div className='pics-section'>
           <Pictures />

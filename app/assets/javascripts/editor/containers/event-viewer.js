@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { mapEventToTemplate } from '../../services/template-mapper';
+import { BackgroundTypes } from '../../shared/enums';
 
 export default class EventViewer extends Component {
 
@@ -10,17 +11,18 @@ export default class EventViewer extends Component {
   }
 
   backgroundStyle() {
-    const background_url = this.props.event.appearance.background_url;
-    let background = null;
+    const background = this.props.event.appearance.background;
 
-    if (background_url !== undefined && background_url != null) {
-      background = `url(${background_url})`;
+    let bgVal = null;
+
+    if (background.type == BackgroundTypes.image) {
+      bgVal = `url(${background.url})`;
     }
     else {
-      background = 'white';
+      bgVal = background.color;
     }
 
-    return { background: background };
+    return { background: bgVal };
   }
 
   render() {

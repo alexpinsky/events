@@ -29,7 +29,13 @@ const INITIAL_STATE = {
     3: { url: 'http://res.cloudinary.com/eventit-me/image/upload/v1451652630/bmfly9clrqxtmjt6irx7.jpg' },
     4: { url: null }
   },
-  appearance: { background_url: "http://res.cloudinary.com/eventit-me/image/upload/v1451683817/P_Birds_w_aznlar.png" },
+  appearance: {
+    background: {
+      type: 'image',
+      url: "http://res.cloudinary.com/eventit-me/image/upload/v1451683817/P_Birds_w_aznlar.png",
+      color: 'white'
+    }
+  },
   information: {
     in_use: true,
     summary: 'My Event',

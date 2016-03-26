@@ -6,7 +6,7 @@ export default class PublishEvent extends Component {
 
     return (
       <div className='publish-wrapper'>
-        <a className="publish" href="#"></a>
+        <a className="publish menu-action" href="#"></a>
         <div className='text'>PUBLISH</div>
       </div>
     );

@@ -3,11 +3,12 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 // import { fetchEvent } from '../actions/event-actions';
-import EventMenu from '../components/event-menu';
+import EventMenu from '../containers/event-menu';
 import EventForm from '../components/event-form';
 import EventViewer from '../containers/event-viewer';
 
 export default class Editor extends Component {
+
   shouldComponentUpdate(nextProps, nextState) {
     return true;
   }

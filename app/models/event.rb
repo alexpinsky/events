@@ -16,7 +16,7 @@ class Event < ActiveRecord::Base
   scope :by_id, -> (id) { where('events.id = ?', id) }
   scope :published, -> { where('events.state = ?', STATES[:published]) }
 
-  STATES = { unpublished: 0, published: 1, disabled: 2, pending: 3 }
+  STATES = { unsaved: 0, saved: 1, pending: 2, published: 3 }
 
   def viewable_for?(user)
     return true  if theme? # if theme visible for everyone
@@ -31,10 +31,6 @@ class Event < ActiveRecord::Base
 
   def pending?
     state == STATES[:pending]
-  end
-
-  def disabled?
-    state == STATES[:disabled]
   end
 
   def full_url

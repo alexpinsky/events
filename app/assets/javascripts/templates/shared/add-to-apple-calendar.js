@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { toCalendarDateFormat, saveToFile } from '../../helper';
+
+import File from '../../services/file';
+import { toCalendarDateFormat } from '../../helper';
 
 const SEPARATOR = (navigator.appVersion.indexOf('Win') !== -1) ? '\r\n' : '\n';
 const FILENAME  = 'eventit.ics'
@@ -32,7 +34,7 @@ export default class AddToAppleCalendar extends Component {
       'END:VCALENDAR'
     ].join(SEPARATOR);
 
-    saveToFile(calendarEvent, FILENAME);
+    File.saveAs(calendarEvent, FILENAME);
   }
 
   render() {

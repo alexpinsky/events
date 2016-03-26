@@ -3,11 +3,25 @@ import Accordion from './accordion';
 import CalendarForm from '../containers/calendar-form';
 import TemplatesGallery from '../containers/templates-gallery';
 import TextForm from '../containers/text-form';
+import Pictures from '../containers/pictures';
+// import BackgroundTiles from './background-tiles';
 
 export default class EventForm extends Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     return false;
+  }
+
+  renderBgAndPics() {
+    return (
+      <div className='background-and-pics'>
+        <div className='background-section'>
+        </div>
+        <div className='pics-section'>
+          <Pictures />
+        </div>
+      </div>
+    );
   }
 
   render() {
@@ -29,7 +43,7 @@ export default class EventForm extends Component {
         name: 'pictures',
         header: 'background & pics',
         isOpen: false,
-        content: <div>some text</div>
+        content: this.renderBgAndPics()
       },
       {
         name: 'calendar',

@@ -24,10 +24,10 @@ const INITIAL_STATE = {
     3: { text: 'third line', color: '#e80ef0', size: 2.5, font: "'Six Caps', sans-serif" }
   },
   pictures: {
-    1: { id: 11, order: 1, url: 'http://res.cloudinary.com/eventit-me/image/upload/v1451652630/bmfly9clrqxtmjt6irx7.jpg' },
-    2: { id: 12, order: 2, url: 'http://res.cloudinary.com/eventit-me/image/upload/v1451652630/bmfly9clrqxtmjt6irx7.jpg' },
-    3: { id: 13, order: 3, url: 'http://res.cloudinary.com/eventit-me/image/upload/v1451652630/bmfly9clrqxtmjt6irx7.jpg' },
-    4: { id: 14, order: 4, url: 'http://res.cloudinary.com/eventit-me/image/upload/v1451652630/bmfly9clrqxtmjt6irx7.jpg' }
+    1: { url: 'http://res.cloudinary.com/eventit-me/image/upload/v1451652630/bmfly9clrqxtmjt6irx7.jpg' },
+    2: { url: 'http://res.cloudinary.com/eventit-me/image/upload/v1451652630/bmfly9clrqxtmjt6irx7.jpg' },
+    3: { url: 'http://res.cloudinary.com/eventit-me/image/upload/v1451652630/bmfly9clrqxtmjt6irx7.jpg' },
+    4: { url: null }
   },
   appearance: { background_url: "http://res.cloudinary.com/eventit-me/image/upload/v1451683817/P_Birds_w_aznlar.png" },
   information: {

@@ -7,6 +7,14 @@ export default class SlideShow extends Component {
     this.startSlide();
   }
 
+  componentWillUpdate(nextProps, nextState) {
+    this.stopSlide();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    this.startSlide();
+  }
+
   componentWillUnmount() {
     this.stopSlide();
   }
@@ -33,12 +41,17 @@ export default class SlideShow extends Component {
   }
 
   renderPictures() {
-    return _.map(this.props.pictures, (pic, index) =>
-      <img key={index} src={pic.url} />
+    return _.map(
+      _.filter(
+        this.props.pictures,
+        (o) => o.url != null
+      ),
+      (pic, index) => <img key={index} src={pic.url} />
     );
   }
 
   render() {
+
     return (
       <div className='images' ref={(ref) => this.picturesContanier = ref}>
         {this.renderPictures()}

@@ -1,5 +1,3 @@
-import FileSaver from 'filesaver.js';
-
 // returns this format: 20160115T030000
 export function toCalendarDateFormat(epoch) {
 
@@ -13,22 +11,4 @@ export function toCalendarDateFormat(epoch) {
   const seconds = `00${date.getSeconds()}`.slice(-2);
 
   return `${year}${month}${day}T${hours}${minutes}${seconds}Z`;
-}
-
-export function saveToFile(data, filename) {
-
-  let blob;
-
-  if (navigator.userAgent.indexOf('MSIE 10') === -1) {
-    // chrome or firefox
-    blob = new Blob([data]);
-  }
-  else {
-    // ie
-    let bb = new BlobBuilder();
-    bb.append(data);
-    blob = bb.getBlob(`text/x-vCalendar;charset=${document.characterSet}`);
-  }
-
-  FileSaver.saveAs(blob, filename);
 }

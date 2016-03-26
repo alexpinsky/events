@@ -21,13 +21,13 @@ Events::Application.routes.draw do
       put 'unpublish'
     end
   end
-  resources :pictures, only: :destroy
   resources :contact_requests, only: [:new, :create]
 
   namespace :api, defaults: { format: 'json' } do
     namespace :v1 do
       resources :events
       resources :categories
+      resources :files, only: :destroy
     end
   end
 

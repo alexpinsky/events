@@ -6,6 +6,8 @@ export const SET_URL = 'SET_URL';
 export const SAVE_EVENT = 'SAVE_EVENT';
 export const PUBLISH_EVENT = 'PUBLISH_EVENT';
 export const UNPUBLISH_EVENT = 'UNPUBLISH_EVENT';
+export const OPEN_SAVE_MODAL = 'OPEN_SAVE_MODAL';
+export const CLOSE_SAVE_MODAL = 'CLOSE_SAVE_MODAL';
 
 // text actions
 export const TEXT_ACTION = 'TEXT_ACTION';

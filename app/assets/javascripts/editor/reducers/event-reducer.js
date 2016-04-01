@@ -1,7 +1,7 @@
 import { _ } from 'lodash';
 
 import {
-  FETCH_EVENT, SAVE_EVENT, SET_NAME, SET_URL, PUBLISH_EVENT, UNPUBLISH_EVENT,
+  FETCH_EVENT, SAVE_EVENT, SET_NAME, SET_URL, PUBLISH_EVENT, UNPUBLISH_EVENT, OPEN_SAVE_MODAL,
   TEXT_ACTION, PICTURE_ACTION, APPEARANCE_ACTION, INFORMATION_ACTION, TEMPLATE_ACTION
 } from '../actions/constants';
 
@@ -13,10 +13,10 @@ import templateReducer from './template-reducer';
 
 // const INITIAL_STATE = {};
 const INITIAL_STATE = {
-  id: 1,
-  name: 'first event',
-  url: 'first_event',
-  state: 0,
+  id: null,
+  name: null,
+  url: null,
+  state: null,
   template: { name: 'paris' },
   texts: {
     1: { text: 'first line', color: '#e80ef0', size: 6, font: "'Six Caps', sans-serif" },

@@ -1,20 +1,42 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { EventStates } from '../../shared/enums';
-
-import SaveEvent from '../components/save-event';
-import PublishEvent from '../components/publish-event';
-import UnpublishEvent from '../components/unpublish-event';
+import { saveEvent } from '../actions/event-actions';
+import EventWrapper from '../../wrappers/event-wrapper';
 
 export default class EventMenu extends Component {
 
+  constructor(props) {
+    super(props);
+
+    this.handleSaveClick = this.handleSaveClick.bind(this);
+  }
+
+  handleSaveClick(e) {
+    this.props.saveEvent(this.props.event);
+  }
+
   renderPublishUnpublish() {
-    if (this.props.event.state == EventStates.published) {
-      return <UnpublishEvent event={this.props.event} />;
+    const eventWrapper = new EventWrapper(this.props.event);
+
+    if (eventWrapper.isPublished()) {
+
+      return (
+        <div className='unpublish-wrapper'>
+          <a className="unpublish menu-action" href="#"></a>
+          <div className='text'>UNPUBLISH</div>
+        </div>
+      );
     }
     else {
-      return <PublishEvent event={this.props.event} />;
+
+      return (
+        <div className='publish-wrapper'>
+          <a className="publish menu-action" href="#"></a>
+          <div className='text'>PUBLISH</div>
+        </div>
+      );
     }
   }
 
@@ -22,15 +44,22 @@ export default class EventMenu extends Component {
 
     return (
       <div className='actions'>
-        <SaveEvent event={this.props.event} />
+        <div className='save-wrapper'>
+          <a className="save menu-action" href='#' onClick={this.handleSaveClick} />
+          <div className='text'>SAVE</div>
+        </div>
         {this.renderPublishUnpublish()}
       </div>
     );
   }
 }
 
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ saveEvent }, dispatch);
+}
+
 function mapStateToProps(state) {
   return { event: state.event };
 }
 
-export default connect(mapStateToProps)(EventMenu);
+export default connect(mapStateToProps, mapDispatchToProps)(EventMenu);

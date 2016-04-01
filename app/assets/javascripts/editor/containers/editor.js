@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import EventMenu from '../containers/event-menu';
 import EventForm from '../components/event-form';
 import EventViewer from '../containers/event-viewer';
+import SaveModal from '../containers/save-modal';
 
 export default class Editor extends Component {
 
@@ -35,6 +36,9 @@ export default class Editor extends Component {
             <div className='preview-wrapper'>
               <EventViewer />
             </div>
+          </div>
+          <div className='modals'>
+            <SaveModal />
           </div>
         </div>
       </div>

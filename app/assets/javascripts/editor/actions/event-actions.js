@@ -7,16 +7,17 @@ import {
 } from './constants';
 
 export function openSaveModal() {
-  console.log('openSaveModal');
+
   return { type: OPEN_SAVE_MODAL };
 }
 
 export function closeSaveModal() {
+
   return { type: CLOSE_SAVE_MODAL };
 }
 
 export function setName(newName) {
-  console.log('setName', newName);
+
   return {
     type: SET_NAME,
     payload: { name: newName }
@@ -25,45 +26,47 @@ export function setName(newName) {
 
 export function saveEvent(event, name = null) {
 
-  return function(dispatch) {
-
-    if (name)
-      dispatch(setName(name));
-
-    if (event.name) {
-      asyncSave(event);
-    }
-    else {
-      openSaveModal();
-    }
+  if (!name && !event.name) {
+    return openSaveModal();
+  }
+  else {
+    return asyncSave(event, { name: name });
   }
 }
 
-export function asyncSave(event) {
-  console.log('asyncSave', event);
-  if (eventWrapper.isUnsaved()) {
-    const requestEndpoint = `${API_ENDPOINT}/events`;
-    const requestMethod   = 'post';
+export function asyncSave(event, params = {}) {
+
+  return (dispatch) => {
+    const eventWrapper = new EventWrapper(event);
+
+    let requestEndpoint, requestMethod;
+    if (eventWrapper.isUnsaved()) {
+      // create event
+      requestEndpoint = `${API_ENDPOINT}/events`;
+      requestMethod   = 'post';
+    }
+    else {
+      // update event
+      requestEndpoint = `${API_ENDPOINT}/events/${event.id}`;
+      requestMethod   = 'put';
+    }
+
+    axios(requestEndpoint, {
+      method: requestMethod,
+      headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') },
+      data: Object.assign({}, event, params)
+    })
+    .then((response) => {
+      console.log('response', response);
+      dispatch((() => {
+        return {
+          type: SAVE_EVENT,
+          payload: response
+        }
+      })())
+    })
+    .catch((response) => {
+      console.error('Error (asyncSave)', response);
+    });
   }
-  else {
-    const requestEndpoint = `${API_ENDPOINT}/events/${event.id}`;
-    const requestMethod   = 'put';
-  }
-
-  axios(requestEndpoint, {
-    method: requestMethod,
-    data: event
-  })
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (response) {
-    console.log(response);
-  });
-
-
-  // return {
-  //   type: SAVE_EVENT,
-  //   payload: request
-    // };
 }

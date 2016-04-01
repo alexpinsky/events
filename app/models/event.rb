@@ -2,13 +2,10 @@ class Event < ActiveRecord::Base
   belongs_to :user
   belongs_to :template
 
-  has_many :pictures, dependent: :destroy
-  has_many :views,    dependent: :destroy
+  has_many :views, dependent: :destroy
 
   validates :template_id, presence: true
   validates :url, uniqueness: true, allow_blank: true
-
-  accepts_nested_attributes_for :pictures, allow_destroy: true
 
   scope :with_user, -> () { where('events.user_id IS NOT NULL') }
   scope :with_url, -> () { where('events.url IS NOT NULL') }

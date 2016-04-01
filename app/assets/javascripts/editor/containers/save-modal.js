@@ -23,7 +23,7 @@ export default class SaveModal extends Component {
 
   handleOpenClose() {
     if (this.props.save_modal.open) {
-      $(this.modal).modal({ clickClose: false });
+      $(this.modal).modal({ clickClose: false, escapeClose: false });
     }
     else {
       $.modal.close();

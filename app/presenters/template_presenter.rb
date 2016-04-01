@@ -6,6 +6,7 @@ class TemplatePresenter
 
   def as_json(args)
     {
+      id: template.id,
       name: template.name,
       thumbnail_url: template.thumbnail_url
     }

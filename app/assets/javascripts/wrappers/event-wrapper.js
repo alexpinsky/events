@@ -11,6 +11,6 @@ export default class EventWrapper {
   }
 
   isUnsaved() {
-    return this.event.id === null;
+    return this.event.id == null;
   }
 }

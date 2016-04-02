@@ -11,7 +11,6 @@ import appearanceReducer from './appearance-reducer';
 import informationReducer from './information-reducer';
 import templateReducer from './template-reducer';
 
-// const INITIAL_STATE = {};
 const INITIAL_STATE = {
   id: null,
   name: null,
@@ -19,29 +18,28 @@ const INITIAL_STATE = {
   state: null,
   template: { name: 'paris' },
   texts: {
-    1: { text: 'first line', color: '#e80ef0', size: 6, font: "'Six Caps', sans-serif" },
-    2: { text: 'second line', color: '#e80ef0', size: 6, font: "'Six Caps', sans-serif" },
-    3: { text: 'third line', color: '#e80ef0', size: 2.5, font: "'Six Caps', sans-serif" }
+    1: {},
+    2: {},
+    3: {}
   },
   pictures: {
-    1: { url: 'http://res.cloudinary.com/eventit-me/image/upload/v1451652630/bmfly9clrqxtmjt6irx7.jpg' },
-    2: { url: 'http://res.cloudinary.com/eventit-me/image/upload/v1451652630/bmfly9clrqxtmjt6irx7.jpg' },
-    3: { url: 'http://res.cloudinary.com/eventit-me/image/upload/v1451652630/bmfly9clrqxtmjt6irx7.jpg' },
-    4: { url: null }
+    1: {},
+    2: {},
+    3: {},
+    4: {}
   },
   appearance: {
     background: {
-      type: 'image',
-      url: "http://res.cloudinary.com/eventit-me/image/upload/v1451683817/P_Birds_w_aznlar.png",
+      type: 'color',
       color: 'white'
     }
   },
   information: {
-    in_use: true,
-    summary: 'My Event',
-    location: "בית על הים, רוסלאן 1, יפו",
-    start_time: "1457101330000",
-    end_time: "1457119334000"
+    in_use: false,
+    summary: null,
+    location: null,
+    start_time: null,
+    end_time: null
   }
 };
 

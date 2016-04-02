@@ -1,13 +1,29 @@
 import React, { Component } from 'react';
+
+import { _ } from 'lodash';
 import CalendarButton from './shared/calendar-button';
 
 export default class Base extends Component {
 
-  textStyle(args) {
-    return { fontFamily: args.text.font, color: args.text.color, fontSize: `${args.text.size}em`};
+  mergedText() {
+    return _.merge({}, this.props.texts, this.props.event.texts);
   }
 
-  renderCalendarButton(information) {
+  mergedPictures() {
+    return _.merge({}, this.props.pictures, this.props.event.pictures);
+  }
+
+  textStyle(args) {
+
+    return {
+      fontFamily: args.text.font,
+      color: args.text.color,
+      fontSize: `${args.text.size}em`
+    };
+  }
+
+  renderCalendarButton() {
+    const information = this.props.event.information;
 
     if (!information.in_use)
       return null;

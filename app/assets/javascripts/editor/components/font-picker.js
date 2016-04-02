@@ -13,7 +13,8 @@ export default class FontPicker extends Component {
     this.handleOpenCloseClick = this.handleOpenCloseClick.bind(this);
     this.handleChange         = this.handleChange.bind(this);
 
-    this.state = { isOpen: false, font: result[0] };
+    const font = result[0] || this.props.fonts[0];
+    this.state = { isOpen: false, font: font };
   }
 
   handleOpenCloseClick() {

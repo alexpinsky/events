@@ -14,7 +14,7 @@ class EventPresenter
       texts: event.texts,
       pictures: event.pictures,
       appearance: event.appearance,
-      information: even.information
+      information: event.information
     }
   end
 

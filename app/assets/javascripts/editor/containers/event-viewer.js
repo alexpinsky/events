@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { mapEventToTemplate } from '../../services/template-mapper';
+import EventWrapper from '../../wrappers/event-wrapper';
 import { BackgroundTypes } from '../../shared/enums';
 
 export default class EventViewer extends Component {
 
   renderTemplate() {
-    return mapEventToTemplate(this.props.event);
+    return new EventWrapper(this.props.event).template();
   }
 
   backgroundStyle() {

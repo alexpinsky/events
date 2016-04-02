@@ -1,4 +1,5 @@
 import { _ } from 'lodash';
+import EventWrapper from '../../wrappers/event-wrapper';
 
 import {
   FETCH_EVENT, SAVE_EVENT, SET_NAME, SET_URL, PUBLISH_EVENT, UNPUBLISH_EVENT, OPEN_SAVE_MODAL,
@@ -43,8 +44,8 @@ const INITIAL_STATE = {
   }
 };
 
-export default function(state = INITIAL_STATE, action) {
-
+export default function(state = defaultState(), action) {
+  console.log('action', action);
   // this reducer actions
   switch (action.type) {
     case FETCH_EVENT:
@@ -86,4 +87,9 @@ export default function(state = INITIAL_STATE, action) {
   }
 
   return state;
+}
+
+function defaultState() {
+  // return new EventWrapper(INITIAL_STATE).updateWithTemplate();
+  return INITIAL_STATE;
 }

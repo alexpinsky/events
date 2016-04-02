@@ -13,7 +13,7 @@ export default class FontPicker extends Component {
     this.handleOpenCloseClick = this.handleOpenCloseClick.bind(this);
     this.handleChange         = this.handleChange.bind(this);
 
-    const font = result[0] || this.props.fonts[0];
+    const font = result[0] || this.props.defaultFont;
     this.state = { isOpen: false, font: font };
   }
 
@@ -59,6 +59,7 @@ export default class FontPicker extends Component {
 }
 
 FontPicker.defaultProps = {
+  defaultFont: { name: 'Julius Sans', value: "'Julius Sans One', sans-serif" },
   fonts: [
     { name: 'נרקיס בלוק', value: "'narkis_block'" },
     { name: 'אלף', value: "'Alef', sans-serif" },

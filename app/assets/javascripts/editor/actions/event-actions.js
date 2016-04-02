@@ -34,6 +34,13 @@ export function saveEvent(event, name = null) {
   }
 }
 
+export function fetchEvent(eventId) {
+
+  return (dispatch) => {
+    ax
+  }
+}
+
 export function asyncSave(event, params = {}) {
 
   return (dispatch) => {

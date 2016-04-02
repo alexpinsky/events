@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-// import { fetchEvent } from '../actions/event-actions';
+import { fetchEvent } from '../actions/event-actions';
 import EventMenu from '../containers/event-menu';
 import EventForm from '../components/event-form';
 import EventViewer from '../containers/event-viewer';
@@ -15,8 +15,7 @@ export default class Editor extends Component {
   }
 
   componentWillMount() {
-    // console.log('props', this.props);
-    // this.props.fetchEvent();
+    this.props.fetchEvent(this.props.params.eventId);
   }
 
   render() {
@@ -46,8 +45,8 @@ export default class Editor extends Component {
   }
 }
 
-// function mapDispatchToProps(dispatch) {
-//   return bindActionCreators({ fetchEvent }, dispatch);
-// }
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ fetchEvent }, dispatch);
+}
 
-// export default connect(null, mapDispatchToProps)(Editor);
+export default connect(null, mapDispatchToProps)(Editor);

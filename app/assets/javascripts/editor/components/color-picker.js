@@ -9,7 +9,7 @@ export default class ColorPicker extends Component {
 
   componentDidMount() {
     $(this.input).minicolors({
-      defaultValue: '#ffffff',
+      defaultValue: '#000000',
       change: this.handleColorChange
     });
   }

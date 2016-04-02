@@ -7,10 +7,18 @@ class AddInformationToEvents < ActiveRecord::Migration
 
     Information.all.each do |info|
       event = Event.where(id: info.event_id).first
-      event.update_attribute(
-        :information,
-        info.attributes.except('id', 'event_id', 'created_at', 'updated_at')
-      ) if event
+      next unless event
+
+      information = {
+        in_use: info.in_use,
+        summary: info.summary,
+        location: info.location,
+        start_time: info.start_time.to_i * 1000,
+        end_time: info.end_time.to_i * 1000
+      }
+
+      event.information = information
+      event.save
     end
   end
 

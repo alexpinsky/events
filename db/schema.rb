@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160226093456) do
+ActiveRecord::Schema.define(version: 20160402090645) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,12 +38,14 @@ ActiveRecord::Schema.define(version: 20160226093456) do
     t.integer  "state",                   default: 0
     t.integer  "template_id"
     t.jsonb    "information",             default: {}, null: false
-    t.jsonb    "texts",                   default: [], null: false
+    t.jsonb    "texts",                   default: {}, null: false
     t.jsonb    "appearance",              default: {}, null: false
+    t.jsonb    "pictures",                default: {}, null: false
   end
 
   add_index "events", ["appearance"], name: "index_events_on_appearance", using: :gin
   add_index "events", ["information"], name: "index_events_on_information", using: :gin
+  add_index "events", ["pictures"], name: "index_events_on_pictures", using: :gin
   add_index "events", ["state"], name: "index_events_on_state", using: :btree
   add_index "events", ["template_id"], name: "index_events_on_template_id", using: :btree
   add_index "events", ["texts"], name: "index_events_on_texts", using: :gin

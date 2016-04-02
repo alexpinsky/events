@@ -3,7 +3,7 @@ class RemoveThemeFromEvent < ActiveRecord::Migration
     themes_to_templates_map = {}
     Event
       .where('events.is_theme = ?', true)
-      .where('events.state != ?', Event::STATES[:disabled]).each do |theme|
+      .where('events.state != ?', 2).each do |theme|
         category = Category.find theme.category_id
         template = Template.create!(
           category_id: category.id,

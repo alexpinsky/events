@@ -28,15 +28,10 @@ export default class EventViewer extends Component {
   render() {
 
     return (
-      <div>
-        <div className='frame-1'></div>
-          <div className='preview' style={this.backgroundStyle()}>
-            <div className="display">
-              {this.renderTemplate()}
-            </div>
-          </div>
-        <div className='frame-2'></div>
-        <div className='frame-3'></div>
+      <div className='preview' style={this.backgroundStyle()}>
+        <div className="display">
+          {this.renderTemplate()}
+        </div>
       </div>
     );
   }

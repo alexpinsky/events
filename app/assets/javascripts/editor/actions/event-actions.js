@@ -37,7 +37,18 @@ export function saveEvent(event, name = null) {
 export function fetchEvent(eventId) {
 
   return (dispatch) => {
-    ax
+    axios.get(`${API_ENDPOINT}/events/${eventId}/edit`)
+      .then((response) => {
+        dispatch((() => {
+          return {
+            type: FETCH_EVENT,
+            payload: response
+          }
+        })())
+      })
+      .catch((response) => {
+        console.error('Error (fetchEvent)', response);
+      });
   }
 }
 
@@ -47,7 +58,7 @@ export function asyncSave(event, params = {}) {
     const eventWrapper = new EventWrapper(event);
 
     let requestEndpoint, requestMethod;
-    if (eventWrapper.isUnsaved()) {
+    if (eventWrapper.isNew()) {
       // create event
       requestEndpoint = `${API_ENDPOINT}/events`;
       requestMethod   = 'post';

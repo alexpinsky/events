@@ -15,6 +15,11 @@ class Event < ActiveRecord::Base
 
   STATES = { saved: 1, pending: 2, published: 3 }
 
+  TEXT_ATTRS       = [:text, :font, :size, :color]
+  PICTURE_ATTRS    = [:url]
+  APPEARANCE_ATTRS = [background: [:type, :color, :url]]
+  INFO_ATTRS       = [:in_use, :summary, :location, :start_time, :end_time]
+
   def viewable_for?(user)
     return true  if theme? # if theme visible for everyone
     return true  if published? # if published visible for everyone

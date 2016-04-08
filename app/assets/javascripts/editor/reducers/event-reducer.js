@@ -12,40 +12,8 @@ import appearanceReducer from './appearance-reducer';
 import informationReducer from './information-reducer';
 import templateReducer from './template-reducer';
 
-const INITIAL_STATE = {
-  id: null,
-  name: null,
-  url: null,
-  state: null,
-  template: { name: 'paris' },
-  texts: {
-    1: {},
-    2: {},
-    3: {}
-  },
-  pictures: {
-    1: {},
-    2: {},
-    3: {},
-    4: {}
-  },
-  appearance: {
-    background: {
-      type: 'color',
-      color: 'white'
-    }
-  },
-  information: {
-    in_use: false,
-    summary: null,
-    location: null,
-    start_time: null,
-    end_time: null
-  }
-};
-
-export default function(state = defaultState(), action) {
-  console.log('action', action);
+export default function(state = EventWrapper.newEvent(), action) {
+  console.log('state', state);
   // this reducer actions
   switch (action.type) {
     case FETCH_EVENT:
@@ -87,9 +55,4 @@ export default function(state = defaultState(), action) {
   }
 
   return state;
-}
-
-function defaultState() {
-  // return new EventWrapper(INITIAL_STATE).updateWithTemplate();
-  return INITIAL_STATE;
 }

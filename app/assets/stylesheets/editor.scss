@@ -186,6 +186,16 @@ $border-color: rgb(127, 159, 255);
           box-shadow: -4px 0px 1px #E4E4E4;
           position: relative;
         }
+        .spinner-container {
+          width: 559px;
+          display: inline-block;
+          text-align: center;
+          vertical-align: top;
+          margin-top: 170px;
+          img {
+            width: 120px;
+          }
+        }
         .preview {
           width: 559px;
           height: 468px;

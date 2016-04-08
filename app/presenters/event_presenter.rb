@@ -14,7 +14,8 @@ class EventPresenter
       texts: event.texts,
       pictures: event.pictures,
       appearance: event.appearance,
-      information: event.information
+      information: event.information,
+      errors: ["Template can't be blank", "Url has already been taken"]
     }
   end
 

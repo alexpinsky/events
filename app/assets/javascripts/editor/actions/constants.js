@@ -3,11 +3,13 @@ export const EVENT_ACTION = 'EVENT_ACTION';
 export const FETCH_EVENT = 'FETCH_EVENT';
 export const SET_NAME = 'SET_NAME';
 export const SET_URL = 'SET_URL';
-export const SAVE_EVENT = 'SAVE_EVENT';
+export const CREATE_EVENT = 'CREATE_EVENT';
+export const UPDATE_EVENT = 'UPDATE_EVENT';
 export const PUBLISH_EVENT = 'PUBLISH_EVENT';
 export const UNPUBLISH_EVENT = 'UNPUBLISH_EVENT';
 export const OPEN_SAVE_MODAL = 'OPEN_SAVE_MODAL';
 export const CLOSE_SAVE_MODAL = 'CLOSE_SAVE_MODAL';
+export const CLOSE_SAVED_MODAL = 'CLOSE_SAVED_MODAL';
 
 // text actions
 export const TEXT_ACTION = 'TEXT_ACTION';

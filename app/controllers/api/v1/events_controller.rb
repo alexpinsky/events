@@ -14,37 +14,36 @@ module Api
       end
 
       def create
-        event = current_user.events.new event_params
+        respond_with_save do
+          current_user.events.new event_params
+        end
+      end
 
+      def update
+        respond_with_save do
+          current_user.events.by_id(params[:id]).first
+        end
+      end
+
+      private
+
+      def respond_with_save
+        event = yield
         event.template    = Template.where(name: params[:template][:name]).first
         event.texts       = params[:texts]
         event.pictures    = params[:pictures]
         event.appearance  = params[:appearance]
         event.information = params[:information]
 
-        if event.save
-          status = :ok
+        # if event.save
+        if false
+          status  = :ok
         else
-          status = :bad_request
+          status  = :bad_request
         end
 
         render json: EventPresenter.new(event), status: status
       end
-
-      def update
-        # if @event.update_attributes _event_params
-        #   render json: {
-        #     event:   { id: @event.id, name: @event.name },
-        #     message: 'Your event was saved!'
-        #   }, status: :ok
-        # else
-        #   render json: {
-        #     message: @event.errors.full_messages.join(', ')
-        #   }, status: :bad_request
-        # end
-      end
-
-      private
 
       def event_params
         params.permit(:name, :url)

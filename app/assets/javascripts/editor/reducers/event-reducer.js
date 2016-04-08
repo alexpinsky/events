@@ -2,8 +2,9 @@ import { _ } from 'lodash';
 import EventWrapper from '../../wrappers/event-wrapper';
 
 import {
-  FETCH_EVENT, SAVE_EVENT, SET_NAME, SET_URL, PUBLISH_EVENT, UNPUBLISH_EVENT, OPEN_SAVE_MODAL,
-  TEXT_ACTION, PICTURE_ACTION, APPEARANCE_ACTION, INFORMATION_ACTION, TEMPLATE_ACTION
+  FETCH_EVENT, CREATE_EVENT, UPDATE_EVENT, SET_NAME, SET_URL, PUBLISH_EVENT, UNPUBLISH_EVENT,
+  OPEN_SAVE_MODAL, TEXT_ACTION, PICTURE_ACTION, APPEARANCE_ACTION, INFORMATION_ACTION,
+  TEMPLATE_ACTION
 } from '../actions/constants';
 
 import textsReducer from './texts-reducer';
@@ -13,12 +14,14 @@ import informationReducer from './information-reducer';
 import templateReducer from './template-reducer';
 
 export default function(state = EventWrapper.newEvent(), action) {
-  console.log('state', state);
+
   // this reducer actions
   switch (action.type) {
     case FETCH_EVENT:
       return action.payload.data;
-    case SAVE_EVENT:
+    case CREATE_EVENT:
+      return action.payload.data;
+    case UPDATE_EVENT:
       return action.payload.data;
     case SET_NAME:
       return Object.assign({}, state, { name: action.payload.name });

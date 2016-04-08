@@ -7,13 +7,15 @@ export default class Checkbox extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { isChecked: this.props.isChecked }
-
     this.handleClick = this.handleClick.bind(this);
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.props.isChecked != nextProps.isChecked;
+  }
+
   handleClick() {
-    let isChecked = !this.state.isChecked
+    let isChecked = !this.props.isChecked
 
     if (isChecked) {
       this.props.onCheck();
@@ -26,7 +28,7 @@ export default class Checkbox extends Component {
   }
 
   className() {
-    return this.state.isChecked ? CHECKED_CLASS : UNCHECKED_CLASS;
+    return this.props.isChecked ? CHECKED_CLASS : UNCHECKED_CLASS;
   }
 
   render() {

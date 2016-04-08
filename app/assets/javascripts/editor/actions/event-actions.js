@@ -1,9 +1,10 @@
 import axios from 'axios';
+import { _ } from 'lodash';
 
 import EventWrapper from '../../wrappers/event-wrapper';
 import {
-  FETCH_EVENT, SAVE_EVENT, SET_NAME, SET_URL, PUBLISH_EVENT, UNPUBLISH_EVENT,
-  OPEN_SAVE_MODAL, CLOSE_SAVE_MODAL, API_ENDPOINT
+  FETCH_EVENT, CREATE_EVENT, UPDATE_EVENT, SET_NAME, SET_URL, PUBLISH_EVENT, UNPUBLISH_EVENT,
+  OPEN_SAVE_MODAL, CLOSE_SAVE_MODAL, CLOSE_SAVED_MODAL, API_ENDPOINT
 } from './constants';
 
 export function openSaveModal() {
@@ -16,6 +17,11 @@ export function closeSaveModal() {
   return { type: CLOSE_SAVE_MODAL };
 }
 
+export function closeSavedModal() {
+
+  return { type: CLOSE_SAVED_MODAL };
+}
+
 export function setName(newName) {
 
   return {
@@ -24,14 +30,11 @@ export function setName(newName) {
   };
 }
 
-export function saveEvent(event, name = null) {
+export function publishEvent(newName) {
 
-  if (!name && !event.name) {
-    return openSaveModal();
-  }
-  else {
-    return asyncSave(event, { name: name });
-  }
+  return {
+    type: PUBLISH_EVENT
+  };
 }
 
 export function fetchEvent(eventId) {
@@ -52,39 +55,56 @@ export function fetchEvent(eventId) {
   }
 }
 
-export function asyncSave(event, params = {}) {
+export function saveEvent(event, params = {}) {
 
+  if (_.isEmpty(params.name) && _.isEmpty(event.name))
+    return openSaveModal();
+
+  const eventWrapper = new EventWrapper(event);
+
+  if (eventWrapper.isNew()) {
+    return createEvent(event, params);
+  }
+  else {
+    return updateEvent(event, params);
+  }
+}
+
+export function createEvent(event, params) {
   return (dispatch) => {
-    const eventWrapper = new EventWrapper(event);
 
-    let requestEndpoint, requestMethod;
-    if (eventWrapper.isNew()) {
-      // create event
-      requestEndpoint = `${API_ENDPOINT}/events`;
-      requestMethod   = 'post';
-    }
-    else {
-      // update event
-      requestEndpoint = `${API_ENDPOINT}/events/${event.id}`;
-      requestMethod   = 'put';
-    }
-
-    axios(requestEndpoint, {
-      method: requestMethod,
+    axios.post(`${API_ENDPOINT}/events`, Object.assign({}, event, params), {
       headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') },
-      data: Object.assign({}, event, params)
     })
     .then((response) => {
-      console.log('response', response);
       dispatch((() => {
         return {
-          type: SAVE_EVENT,
+          type: CREATE_EVENT,
           payload: response
         }
       })())
     })
     .catch((response) => {
-      console.error('Error (asyncSave)', response);
+      console.error('Error (firstSave)', response);
+    });
+  }
+}
+
+export function updateEvent(event, params) {
+  return (dispatch) => {
+    axios.put(`${API_ENDPOINT}/events/${event.id}`, Object.assign({}, event, params), {
+      headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') }
+    })
+    .then((response) => {
+      dispatch((() => {
+        return {
+          type: UPDATE_EVENT,
+          payload: response
+        }
+      })())
+    })
+    .catch((response) => {
+      console.error('Error (updateEvent)', response);
     });
   }
 }

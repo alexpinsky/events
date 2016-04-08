@@ -7,6 +7,7 @@ import EventMenu from '../containers/event-menu';
 import EventForm from '../components/event-form';
 import EventViewer from '../containers/event-viewer';
 import SaveModal from '../containers/save-modal';
+import SavedModal from '../containers/saved-modal';
 import Spinner from '../../shared/components/spinner';
 
 import EventWrapper from '../../wrappers/event-wrapper';
@@ -63,6 +64,7 @@ export default class Editor extends Component {
           </div>
           <div className='modals'>
             <SaveModal />
+            <SavedModal />
           </div>
         </div>
       </div>

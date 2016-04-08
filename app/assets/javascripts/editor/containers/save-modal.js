@@ -35,7 +35,7 @@ export default class SaveModal extends Component {
   }
 
   handleSaveClick(e) {
-    this.props.saveEvent(this.props.event, $(this.nameInput).val());
+    this.props.saveEvent(this.props.event, { name: $(this.nameInput).val() });
   }
 
   render() {

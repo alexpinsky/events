@@ -36,7 +36,7 @@ module Api
         event.information = params[:information]
 
         # if event.save
-        if false
+        if true
           status  = :ok
         else
           status  = :bad_request

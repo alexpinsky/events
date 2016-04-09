@@ -45,3 +45,4 @@ export const FETCH_CATEGORIES = 'FETCH_CATEGORIES';
 
 // other
 export const API_ENDPOINT = '/api/v1';
+export const ERROR = 'ERROR';

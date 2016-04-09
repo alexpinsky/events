@@ -8,7 +8,7 @@ import EventForm from '../components/event-form';
 import EventViewer from '../containers/event-viewer';
 import SaveModal from '../containers/save-modal';
 import SavedModal from '../containers/saved-modal';
-import Spinner from '../../shared/components/spinner';
+import Spinner from '../../components/spinner';
 
 import EventWrapper from '../../wrappers/event-wrapper';
 

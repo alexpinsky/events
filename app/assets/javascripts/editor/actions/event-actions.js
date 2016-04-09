@@ -4,7 +4,7 @@ import { _ } from 'lodash';
 import EventWrapper from '../../wrappers/event-wrapper';
 import {
   FETCH_EVENT, CREATE_EVENT, UPDATE_EVENT, SET_NAME, SET_URL, PUBLISH_EVENT, UNPUBLISH_EVENT,
-  OPEN_SAVE_MODAL, CLOSE_SAVE_MODAL, CLOSE_SAVED_MODAL, API_ENDPOINT
+  OPEN_SAVE_MODAL, CLOSE_SAVE_MODAL, CLOSE_SAVED_MODAL, API_ENDPOINT, ERROR
 } from './constants';
 
 export function openSaveModal() {
@@ -51,6 +51,12 @@ export function fetchEvent(eventId) {
       })
       .catch((response) => {
         console.error('Error (fetchEvent)', response);
+        dispatch((() => {
+          return {
+            type: ERROR,
+            payload: { messages: response.data.errors }
+          }
+        })())
       });
   }
 }
@@ -86,6 +92,12 @@ export function createEvent(event, params) {
     })
     .catch((response) => {
       console.error('Error (firstSave)', response);
+      dispatch((() => {
+        return {
+          type: ERROR,
+          payload: { messages: response.data.errors }
+        }
+      })())
     });
   }
 }
@@ -105,6 +117,12 @@ export function updateEvent(event, params) {
     })
     .catch((response) => {
       console.error('Error (updateEvent)', response);
+      dispatch((() => {
+        return {
+          type: ERROR,
+          payload: { messages: response.data.errors }
+        }
+      })())
     });
   }
 }

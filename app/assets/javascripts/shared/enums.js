@@ -9,3 +9,8 @@ export const EventStates = {
   pending: 2,
   published: 3
 };
+
+export const NotificationTypes = {
+  notice: 'notice',
+  alert: 'alert'
+}

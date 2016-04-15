@@ -30,11 +30,28 @@ export function setName(newName) {
   };
 }
 
-export function publishEvent(newName) {
+export function publishEvent(event) {
 
-  return {
-    type: PUBLISH_EVENT
-  };
+  if (new EventWrapper(event).isNew())
+    return openSaveModal();
+
+  return (dispatch) => {
+
+    new Promise(saveEvent(event))
+      .then((result) => {
+        console.log('result', result);
+        if(result.type == ERROR)
+          return dispatch((() => {
+            return result
+          })())
+
+        return dispatch((() => {
+          return {
+            type: 'OPEN_PUBLISH_MODAL'
+          }
+        })())
+      })
+  }
 }
 
 export function fetchEvent(eventId) {
@@ -77,6 +94,7 @@ export function saveEvent(event, params = {}) {
 }
 
 export function createEvent(event, params) {
+
   return (dispatch) => {
 
     axios.post(`${API_ENDPOINT}/events`, Object.assign({}, event, params), {
@@ -103,6 +121,7 @@ export function createEvent(event, params) {
 }
 
 export function updateEvent(event, params) {
+
   return (dispatch) => {
     axios.put(`${API_ENDPOINT}/events/${event.id}`, Object.assign({}, event, params), {
       headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') }

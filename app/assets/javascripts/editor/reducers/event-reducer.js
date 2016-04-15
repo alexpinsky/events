@@ -14,7 +14,7 @@ import informationReducer from './information-reducer';
 import templateReducer from './template-reducer';
 
 export default function(state = EventWrapper.newEvent(), action) {
-
+  console.log('action.type', action.type);
   // this reducer actions
   switch (action.type) {
     case FETCH_EVENT:

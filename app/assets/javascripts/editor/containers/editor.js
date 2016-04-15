@@ -11,6 +11,8 @@ import SavedModal from '../containers/saved-modal';
 import Spinner from '../../components/spinner';
 
 import EventWrapper from '../../wrappers/event-wrapper';
+import config from '../../config';
+
 
 export default class Editor extends Component {
 

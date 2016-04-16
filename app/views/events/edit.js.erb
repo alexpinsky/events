@@ -1,7 +1,0 @@
-var eventDiv = $(".event");
-eventDiv.data('json', '<%= event_json.html_safe %>');
-eventDiv.html(
-  '<%= j render partial: "events/editor", locals: { event: event, theme: event, categories: categories } %>'
-);
-
-Editor.start();

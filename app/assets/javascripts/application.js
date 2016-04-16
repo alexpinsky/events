@@ -22,12 +22,8 @@
 //= require dashboard
 //= require templates
 //= require pages
-//= require state_handler
-//= require_tree ./shared
-//= require_tree ./elements
-//= require_tree ./state_handler
 //= require_tree ./dashboard
-//= require_tree ./services
+//= require_tree ./old
 
 // External Plugins
 

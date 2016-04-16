@@ -2,8 +2,6 @@
 //= require jquery_ujs
 //= require cloudinary
 //= require jquery.minicolors.min
-//= require ZeroClipboard.min
-//= require jquery-editable-poshytip.min
 //= require slick.min
 //= require jquery.datetimepicker.full
 

@@ -4,4 +4,6 @@ class Template < ActiveRecord::Base
   has_many :events
 
   validates :name, uniqueness: true, presence: true
+
+  delegate :name, to: :category, prefix: true
 end

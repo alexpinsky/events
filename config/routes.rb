@@ -7,7 +7,7 @@ Events::Application.routes.draw do
   }
 
   get 'welcome',          to: 'pages#welcome'
-  get 'app/*page',        to: 'pages#app'
+  get 'app/*page',        to: 'pages#app', as: :app
   get 'admin',            to: 'pages#admin'
   get 'about',            to: 'pages#about'
   get 'privacy_policy',   to: 'pages#privacy_policy'
@@ -15,12 +15,6 @@ Events::Application.routes.draw do
   get 'play',             to: 'pages#play'
 
   resources :categories, path: 'templates'
-  resources :events do
-    member do
-      put 'publish'
-      put 'unpublish'
-    end
-  end
   resources :contact_requests, only: [:new, :create]
 
   namespace :api, defaults: { format: 'json' } do

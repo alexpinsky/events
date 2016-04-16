@@ -19,7 +19,7 @@
           themes_sum_hash = {}
           @events.each_with_index do |event, i|
             url = event.full_url
-            theme_name = event.theme_name
+            theme_name = event.template_name
             themes_sum_hash.merge!({
               theme_name.to_sym => {
                 color: friendly_color,

@@ -10,8 +10,8 @@
         <li><a class='underline' href="http://www.eventit.me/natasha_and_jhonatahn" target="_blank">demo invitation</a></li>
       <% end %>
       <% if current_user %>
-        <li><a class='underline' href="<%= events_path %>">dashboard</a></li>
-        <li><a class='underline' href="<%= new_event_path %>">editor</a></li>
+        <li><a class='underline' href="<#">dashboard</a></li>
+        <li><a class='underline' href="<%= app_path(page: :editor) %>">editor</a></li>
         <% if current_user.admin? %>
           <li><a class='underline' href="<%= admin_path %>">admin</a></li>
         <% end %>

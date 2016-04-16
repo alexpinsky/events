@@ -10,10 +10,12 @@ class ApplicationController < ActionController::Base
 
   def stored_location_for(resource)
     if resource.events.count > 0
-      events_path
+      page = :dashboard
     else
-      new_event_path
+      page = :editor
     end
+
+    app_path(page: page)
   end
 
   private

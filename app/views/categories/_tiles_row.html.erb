@@ -26,7 +26,8 @@
         <!-- event_path(template) -->
           <a class="preview" title="preview" target="_blank" href="#"></a>
           <% if current_user %>
-            <a class="edit" title="edit" href="<%= new_event_path(theme_id: template.id, category_id: template.category_id) %>"></a>
+            <!-- new_event_path(theme_id: template.id, category_id: template.category_id) -->
+            <a class="edit" title="edit" href="#"></a>
           <% else %>
             <a title="edit" href="#signInModal" rel="modal:open" class="edit"></a>
           <% end %>

@@ -8,11 +8,11 @@ import EventForm from '../components/event-form';
 import EventViewer from '../containers/event-viewer';
 import SaveModal from '../containers/save-modal';
 import SavedModal from '../containers/saved-modal';
+import PublishModal from '../containers/publish-modal';
+import PublishedModal from '../containers/published-modal';
 import Spinner from '../../components/spinner';
 
 import EventWrapper from '../../wrappers/event-wrapper';
-import config from '../../config';
-
 
 export default class Editor extends Component {
 
@@ -67,6 +67,8 @@ export default class Editor extends Component {
           <div className='modals'>
             <SaveModal />
             <SavedModal />
+            <PublishModal />
+            <PublishedModal />
           </div>
         </div>
       </div>

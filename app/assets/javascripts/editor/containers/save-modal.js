@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import EModal from '../../components/emodal';
 import { saveEvent, closeSaveModal } from '../actions/event-actions';
 
-export default class SaveModal extends Component {
+export default class SaveModal extends EModal {
 
   constructor(props) {
     super(props);
@@ -13,21 +14,8 @@ export default class SaveModal extends Component {
     this.handleCancelClick = this.handleCancelClick.bind(this);
   }
 
-  componentDidMount() {
-    this.handleOpenClose();
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    this.handleOpenClose();
-  }
-
-  handleOpenClose() {
-    if (this.props.save_modal.open) {
-      $(this.modal).modal({ clickClose: false, escapeClose: false });
-    }
-    else {
-      $.modal.close();
-    }
+  handleCloseClick(e) {
+    this.props.closeSaveModal();
   }
 
   handleCancelClick(e) {
@@ -38,12 +26,10 @@ export default class SaveModal extends Component {
     this.props.saveEvent(this.props.event, { name: $(this.nameInput).val() });
   }
 
-  render() {
+  renderSpecific() {
 
     return (
-      <div id="save-event" className="modal" ref={(ref) => this.modal = ref } >
-        <div className='modal-logo'></div>
-        <a href="#close-modal" rel="modal:close" className="close-modal" />
+      <div id="save-event">
         <div className="modal-header">ALRIGHT, LET'S NAME YOUR EVENT!</div>
         <input className="input-style"
                type="text"
@@ -70,7 +56,7 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
   return {
     event: state.event,
-    save_modal: state.modals.save_modal
+    open: state.modals.save_modal.open
   };
 }
 

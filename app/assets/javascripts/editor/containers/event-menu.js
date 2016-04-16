@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { saveEvent, publishEvent } from '../actions/event-actions';
+import { saveEvent, openPublishModal } from '../actions/event-actions';
 import EventWrapper from '../../wrappers/event-wrapper';
 
 export default class EventMenu extends Component {
@@ -19,7 +19,7 @@ export default class EventMenu extends Component {
   }
 
   handlePublishClick(e) {
-    this.props.publishEvent(this.props.event)
+    this.props.openPublishModal(this.props.event)
   }
 
   renderPublishUnpublish() {
@@ -60,7 +60,7 @@ export default class EventMenu extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ saveEvent, publishEvent }, dispatch);
+  return bindActionCreators({ saveEvent, openPublishModal }, dispatch);
 }
 
 function mapStateToProps(state) {

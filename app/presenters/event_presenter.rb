@@ -9,7 +9,7 @@ class EventPresenter
       id: event.id,
       name: event.name,
       url: event.url,
-      state: Event::STATES.invert[event.state],
+      state: event.state,
       template: TemplatePresenter.new(event.template).as_json(args),
       texts: event.texts,
       pictures: event.pictures,

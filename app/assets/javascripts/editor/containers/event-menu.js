@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { saveEvent, openPublishModal } from '../actions/event-actions';
+import { saveEvent, openPublishModal, unpublishEvent } from '../actions/event-actions';
 import EventWrapper from '../../wrappers/event-wrapper';
 
 export default class EventMenu extends Component {
@@ -10,8 +10,9 @@ export default class EventMenu extends Component {
   constructor(props) {
     super(props);
 
-    this.handleSaveClick    = this.handleSaveClick.bind(this);
-    this.handlePublishClick = this.handlePublishClick.bind(this);
+    this.handleSaveClick      = this.handleSaveClick.bind(this);
+    this.handlePublishClick   = this.handlePublishClick.bind(this);
+    this.handleUnpublishClick = this.handleUnpublishClick.bind(this);
   }
 
   handleSaveClick(e) {
@@ -22,14 +23,18 @@ export default class EventMenu extends Component {
     this.props.openPublishModal(this.props.event)
   }
 
+  handleUnpublishClick(e) {
+    this.props.unpublishEvent(this.props.event);
+  }
+
   renderPublishUnpublish() {
     const eventWrapper = new EventWrapper(this.props.event);
 
-    if (eventWrapper.isPublished()) {
+    if (eventWrapper.isPublished() || eventWrapper.isPending()) {
 
       return (
         <div className='unpublish-wrapper'>
-          <a className="unpublish menu-action" href="#"></a>
+          <a className="unpublish menu-action" href="#" onClick={this.handleUnpublishClick} />
           <div className='text'>UNPUBLISH</div>
         </div>
       );
@@ -60,7 +65,7 @@ export default class EventMenu extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ saveEvent, openPublishModal }, dispatch);
+  return bindActionCreators({ saveEvent, openPublishModal, unpublishEvent }, dispatch);
 }
 
 function mapStateToProps(state) {

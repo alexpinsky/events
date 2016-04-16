@@ -53,8 +53,7 @@ module Api
         event.appearance  = params[:appearance]
         event.information = params[:information]
 
-        # if event.save
-        if true
+        if event.save
           status  = :ok
         else
           status  = :bad_request

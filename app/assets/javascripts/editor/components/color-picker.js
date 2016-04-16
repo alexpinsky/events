@@ -26,9 +26,8 @@ export default class ColorPicker extends Component {
 
     return (
       <input className='minicolors'
-             value={this.props.color}
-             ref={(ref) => this.input = ref}
-             onChange={(e) => {}} />
+             defaultValue={this.props.color}
+             ref={(ref) => this.input = ref} />
     );
   }
 }

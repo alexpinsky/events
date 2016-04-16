@@ -64,100 +64,73 @@ export function saveEvent(event, params = {}) {
 
 export function fetchEvent(eventId) {
 
-  return (dispatch) => {
-    axios.get(`${constants.API_ENDPOINT}/events/${eventId}/edit`)
-      .then((response) => {
-        dispatch((() => {
-          return {
-            type: constants.FETCH_EVENT,
-            payload: response
-          }
-        })())
-      })
-      .catch((response) => {
-        console.error('Error (fetchEvent)', response);
-        dispatch((() => {
-          return {
-            type: constants.ERROR,
-            payload: { messages: response.data.errors }
-          }
-        })())
-      });
-  }
+  return apiCall({
+    method: 'get',
+    url: `${constants.API_ENDPOINT}/events/${eventId}/edit`,
+    data: null,
+    type: constants.FETCH_EVENT
+  });
 }
 
 export function createEvent(event, params = {}) {
 
-  return (dispatch) => {
-
-    axios.post(`${constants.API_ENDPOINT}/events`, Object.assign({}, event, params), {
-      headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') },
-    })
-    .then((response) => {
-      dispatch((() => {
-        return {
-          type: constants.CREATE_EVENT,
-          payload: response
-        }
-      })())
-    })
-    .catch((response) => {
-      console.error('Error (firstSave)', response);
-      dispatch((() => {
-        return {
-          type: constants.ERROR,
-          payload: { messages: response.data.errors }
-        }
-      })())
-    });
-  }
+  return apiCall({
+    method: 'post',
+    url: `${constants.API_ENDPOINT}/events`,
+    data: Object.assign({}, event, params),
+    type: constants.CREATE_EVENT
+  });
 }
 
 export function updateEvent(event, params = {}) {
 
+  return apiCall({
+    method: 'put',
+    url: `${constants.API_ENDPOINT}/events/${event.id}`,
+    data: Object.assign({}, event, params),
+    type: constants.UPDATE_EVENT
+  });
+}
+
+export function publishEvent(event, params = {}) {
+
+  return apiCall({
+    method: 'put',
+    url: `${constants.API_ENDPOINT}/events/${event.id}/publish`,
+    data: Object.assign({}, event, params),
+    type: constants.PUBLISH_EVENT
+  });
+}
+
+export function unpublishEvent(event, params = {}) {
+
+  return apiCall({
+    method: 'put',
+    url: `${constants.API_ENDPOINT}/events/${event.id}/unpublish`,
+    data: Object.assign({}, event, params),
+    type: constants.UNPUBLISH_EVENT
+  });
+}
+
+function apiCall(args) {
+
   return (dispatch) => {
-    axios.put(`${constants.API_ENDPOINT}/events/${event.id}`, Object.assign({}, event, params), {
+    axios({
+      method: args.method,
+      url: args.url,
+      data: args.data,
       headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') }
     })
     .then((response) => {
       dispatch((() => {
         return {
-          type: constants.UPDATE_EVENT,
+          type: args.type,
           payload: response
         }
       })())
     })
     .catch((response) => {
-      console.error('Error (updateEvent)', response);
-      dispatch((() => {
-        return {
-          type: constants.ERROR,
-          payload: { messages: response.data.errors }
-        }
-      })())
-    });
-  }
-}
-
-export function publishEvent(event, params = {}) {
-
-  return (dispatch) => {
-    axios.put(
-      `${constants.API_ENDPOINT}/events/${event.id}/publish`,
-      Object.assign({}, event, params), {
-        headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') }
-      }
-    )
-    .then((response) => {
-      dispatch((() => {
-        return {
-          type: constants.PUBLISH_EVENT,
-          payload: response
-        }
-      })())
-    })
-    .catch((response) => {
-      console.error('Error (publishEvent)', response);
+      console.error('API Error', response);
       dispatch((() => {
         return {
           type: constants.ERROR,

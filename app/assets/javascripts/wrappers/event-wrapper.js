@@ -57,6 +57,10 @@ export default class EventWrapper {
     return this.event.state == EventStates.published;
   }
 
+  isPending() {
+    return this.event.state == EventStates.pending;
+  }
+
   isNew() {
     return this.event.id == null;
   }

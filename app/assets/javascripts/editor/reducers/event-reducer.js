@@ -10,7 +10,7 @@ import informationReducer from './information-reducer';
 import templateReducer from './template-reducer';
 
 export default function(state = EventWrapper.newEvent(), action) {
-  console.log('eventReducer', action.type);
+
   // this reducer actions
   switch (action.type) {
     case constants.FETCH_EVENT:

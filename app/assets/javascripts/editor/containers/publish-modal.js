@@ -42,6 +42,7 @@ export default class PublishModal extends EModal {
           <input className="input-style"
                  type="text"
                  name="event-url"
+                 defaultValue={this.props.event.url}
                  ref={(ref) => this.urlInput = ref } />
         </div>
         <div className='modal-actions'>

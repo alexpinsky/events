@@ -1,8 +1,7 @@
 <div class='segment-wrapper'>
   <div class='segment-icon'>
     <% if current_user %>
-    <!-- new_event_path -->
-      <a href="#" class="<%= category %>"></a>
+      <a href="<%= app_path(page: :editor) %>" class="<%= category %>"></a>
     <% else %>
       <a href="#signInModal" rel="modal:open" class="<%= category %>"></a>
     <% end %>
@@ -27,7 +26,7 @@
           <a class="preview" title="preview" target="_blank" href="#"></a>
           <% if current_user %>
             <!-- new_event_path(theme_id: template.id, category_id: template.category_id) -->
-            <a class="edit" title="edit" href="#"></a>
+            <a class="edit" title="edit" href="/app/editor?template=<%= template.name %>"></a>
           <% else %>
             <a title="edit" href="#signInModal" rel="modal:open" class="edit"></a>
           <% end %>

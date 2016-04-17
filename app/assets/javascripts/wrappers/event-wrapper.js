@@ -50,6 +50,8 @@ export default class EventWrapper {
   }
 
   static newEvent() {
+    // TODO: The text keeps it style when flipping through templates -
+    // Need to update the text's style upon template change !
     return Object.assign({}, INITIAL_STATE, { texts: Paris.defaultProps.texts });
   }
 

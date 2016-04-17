@@ -21,6 +21,9 @@ export class TemplatesGallery extends Component {
 
   componentWillMount() {
     this.props.fetchCategories();
+
+    if (this.props.templateParam)
+      this.props.setTemplate({ name: this.props.templateParam });
   }
 
   componentDidMount() {
@@ -88,7 +91,10 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-  return { categories: state.categories };
+  return {
+    categories: state.categories,
+    templateParam: state.routing.locationBeforeTransitions.query.template
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TemplatesGallery);

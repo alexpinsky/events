@@ -1,47 +1,11 @@
 import React from 'react';
+import { _ } from 'lodash';
 
 import Paris from '../templates/wedding/paris';
 import Colaze from '../templates/wedding/colaze';
 import CTree from '../templates/wedding/c-tree';
 import Simple from '../templates/wedding/simple';
 import { EventStates } from '../shared/enums';
-
-const PARIS_TEMPLATE  = 'paris';
-const COLAZE_TEMPLATE = 'colaze';
-const C_TREE_TEMPLATE = 'c_tree';
-const SIMPLE_TEMPLATE = 'simple';
-
-const INITIAL_STATE = {
-  id: null,
-  name: null,
-  url: null,
-  state: null,
-  template: { name: 'paris' },
-  texts: {
-    1: {},
-    2: {},
-    3: {}
-  },
-  pictures: {
-    1: {},
-    2: {},
-    3: {},
-    4: {}
-  },
-  appearance: {
-    background: {
-      type: 'color',
-      color: 'white'
-    }
-  },
-  information: {
-    in_use: false,
-    summary: null,
-    location: null,
-    start_time: null,
-    end_time: null
-  }
-};
 
 export default class EventWrapper {
 
@@ -50,9 +14,42 @@ export default class EventWrapper {
   }
 
   static newEvent() {
-    // TODO: The text keeps it style when flipping through templates -
-    // Need to update the text's style upon template change !
-    return Object.assign({}, INITIAL_STATE, { texts: Paris.defaultProps.texts });
+    return Object.assign({}, INITIAL_STATE);
+  }
+
+  static templateTextStyle(templateName = PARIS_TEMPLATE) {
+    const templateTexts = EventWrapper.mapTemplateNameToClass(templateName).defaultProps.texts;
+
+    return {
+      1: {
+        font: templateTexts[1].font,
+        size: templateTexts[1].size,
+        color: templateTexts[1].color
+      },
+      2: {
+        font: templateTexts[2].font,
+        size: templateTexts[2].size,
+        color: templateTexts[2].color
+      },
+      3: {
+        font: templateTexts[3].font,
+        size: templateTexts[3].size,
+        color: templateTexts[3].color
+      }
+    }
+  }
+
+  static mapTemplateNameToClass(templateName) {
+    switch (templateName) {
+      case PARIS_TEMPLATE:
+        return Paris;
+      case COLAZE_TEMPLATE:
+        return Colaze;
+      case C_TREE_TEMPLATE:
+        return CTree;
+      case SIMPLE_TEMPLATE:
+        return Simple;
+    }
   }
 
   isPublished() {
@@ -80,3 +77,36 @@ export default class EventWrapper {
     }
   }
 }
+
+const PARIS_TEMPLATE  = 'paris';
+const COLAZE_TEMPLATE = 'colaze';
+const C_TREE_TEMPLATE = 'c_tree';
+const SIMPLE_TEMPLATE = 'simple';
+
+const INITIAL_STATE = {
+  id: null,
+  name: null,
+  url: null,
+  state: null,
+  template: { name: 'paris' },
+  texts: EventWrapper.templateTextStyle(),
+  pictures: {
+    1: {},
+    2: {},
+    3: {},
+    4: {}
+  },
+  appearance: {
+    background: {
+      type: 'color',
+      color: 'white'
+    }
+  },
+  information: {
+    in_use: false,
+    summary: null,
+    location: null,
+    start_time: null,
+    end_time: null
+  }
+};

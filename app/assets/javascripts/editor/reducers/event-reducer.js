@@ -7,7 +7,6 @@ import textsReducer from './texts-reducer';
 import picturesReducer from './pictures-reducer';
 import appearanceReducer from './appearance-reducer';
 import informationReducer from './information-reducer';
-import templateReducer from './template-reducer';
 
 export default function(state = EventWrapper.newEvent(), action) {
 
@@ -27,14 +26,15 @@ export default function(state = EventWrapper.newEvent(), action) {
       return Object.assign({}, state, { name: action.payload.name });
     case constants.SET_URL:
       return Object.assign({}, state, { url: action.payload.url });
+    case constants.SET_TEMPLATE:
+      return _.merge({}, state, {
+        template: action.payload.template,
+        texts: textsReducer(state.texts, action)
+      });
   }
 
   // nested reducers actions
   switch (action.group) {
-    case constants.TEMPLATE_ACTION:
-      return _.merge({}, state, {
-        template: templateReducer(state.template, action)
-      })
     case constants.TEXT_ACTION:
       return _.merge({}, state, {
         texts: textsReducer(state.texts, action)

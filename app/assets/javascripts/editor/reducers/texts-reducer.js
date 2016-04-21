@@ -1,26 +1,28 @@
-import {
-  SET_TEXT, SET_COLOR, SET_FONT_FAMLIY, SET_FONT_SIZE
-} from '../actions/constants';
-
-const INITIAL_STATE = {};
+import * as constants from '../actions/constants';
+import EventWrapper from '../../wrappers/event-wrapper';
 
 export default function(state = INITIAL_STATE, action) {
 
   let partialState = {};
 
   switch (action.type) {
-    case SET_TEXT:
+    case constants.SET_TEXT:
       partialState[action.payload.index] = { text: action.payload.text };
       return Object.assign({}, state, partialState);
-    case SET_COLOR:
+    case constants.SET_COLOR:
       partialState[action.payload.index] = { color: action.payload.color };
       return Object.assign({}, state, partialState);
-    case SET_FONT_FAMLIY:
+    case constants.SET_FONT_FAMLIY:
       partialState[action.payload.index] = { font: action.payload.font };
       return Object.assign({}, state, partialState);
-    case SET_FONT_SIZE:
+    case constants.SET_FONT_SIZE:
       partialState[action.payload.index] = { size: action.payload.size };
       return Object.assign({}, state, partialState);
+    case constants.SET_TEMPLATE:
+      return Object.assign({}, state, EventWrapper.templateTextStyle(action.payload.template.name));
   }
+
   return state;
 }
+
+const INITIAL_STATE = {};

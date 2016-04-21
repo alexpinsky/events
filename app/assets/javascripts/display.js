@@ -1,6 +1,6 @@
 //= require jquery
 //= require jquery_ujs
-//= require initializers
+//= require ./old/initializers
 //= require slick.min
 
 var stretchDisplay = function() {

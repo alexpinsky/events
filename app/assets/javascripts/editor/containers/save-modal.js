@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import EModal from '../../components/emodal';
-import { saveEvent, closeSaveModal } from '../actions/event-actions';
+import EModal from '../../shared/components/emodal';
+import { saveEvent, closeSaveModal } from '../../shared/actions/event-actions';
 
 export default class SaveModal extends EModal {
 
@@ -23,7 +23,7 @@ export default class SaveModal extends EModal {
   }
 
   handleSaveClick(e) {
-    this.props.saveEvent(this.props.event, { name: $(this.nameInput).val() });
+    this.props.saveEvent(this.props.modal.event, { name: $(this.nameInput).val() });
   }
 
   renderSpecific() {
@@ -55,8 +55,7 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    event: state.event,
-    open: state.modals.save_modal.open
+    modal: state.modals.save_modal
   };
 }
 

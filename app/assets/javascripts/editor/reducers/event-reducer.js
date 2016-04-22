@@ -1,6 +1,6 @@
 import { _ } from 'lodash';
 
-import * as constants from '../actions/constants';
+import * as constants from from '../../shared/constants';
 import EventWrapper from '../../wrappers/event-wrapper';
 
 import textsReducer from './texts-reducer';
@@ -22,10 +22,6 @@ export default function(state = EventWrapper.newEvent(), action) {
       return action.payload.data;
     case constants.UNPUBLISH_EVENT:
       return action.payload.data;
-    case constants.SET_NAME:
-      return Object.assign({}, state, { name: action.payload.name });
-    case constants.SET_URL:
-      return Object.assign({}, state, { url: action.payload.url });
     case constants.SET_TEMPLATE:
       return _.merge({}, state, {
         template: action.payload.template,

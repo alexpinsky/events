@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import EModal from '../../components/emodal';
 import config from '../../config';
+import EModal from '../components/emodal';
 import { closePublishModal, publishEvent } from '../actions/event-actions';
 
 export default class PublishModal extends EModal {
@@ -24,7 +24,7 @@ export default class PublishModal extends EModal {
   }
 
   handlePublishEvent(e) {
-    this.props.publishEvent(this.props.event, { url: $(this.urlInput).val() });
+    this.props.publishEvent(this.props.modal.event, { url: $(this.urlInput).val() });
   }
 
   renderSpecific() {
@@ -42,7 +42,7 @@ export default class PublishModal extends EModal {
           <input className="input-style"
                  type="text"
                  name="event-url"
-                 defaultValue={this.props.event.url}
+                 defaultValue={this.props.modal.event.url}
                  ref={(ref) => this.urlInput = ref } />
         </div>
         <div className='modal-actions'>
@@ -60,8 +60,7 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    event: state.event,
-    open: state.modals.publish_modal.open
+    modal: state.modals.publish_modal
   };
 }
 

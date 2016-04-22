@@ -7,12 +7,6 @@ export const CREATE_EVENT = 'CREATE_EVENT';
 export const UPDATE_EVENT = 'UPDATE_EVENT';
 export const PUBLISH_EVENT = 'PUBLISH_EVENT';
 export const UNPUBLISH_EVENT = 'UNPUBLISH_EVENT';
-export const OPEN_SAVE_MODAL = 'OPEN_SAVE_MODAL';
-export const CLOSE_SAVE_MODAL = 'CLOSE_SAVE_MODAL';
-export const CLOSE_SAVED_MODAL = 'CLOSE_SAVED_MODAL';
-export const OPEN_PUBLISH_MODAL = 'OPEN_PUBLISH_MODAL';
-export const CLOSE_PUBLISH_MODAL = 'CLOSE_PUBLISH_MODAL';
-export const CLOSE_PUBLISHED_MODAL = 'CLOSE_PUBLISHED_MODAL';
 
 // text actions
 export const TEXT_ACTION = 'TEXT_ACTION';
@@ -40,11 +34,21 @@ export const SET_SUMMARY = 'SET_SUMMARY';
 export const SET_LOCATION = 'SET_LOCATION';
 
 // template actions
-export const TEMPLATE_ACTION = 'TEMPLATE_ACTION';
 export const SET_TEMPLATE = 'SET_TEMPLATE';
 
 // categories actions
 export const FETCH_CATEGORIES = 'FETCH_CATEGORIES';
+
+// notifications actions
+export const CLOSE_NOTIFICATION = 'CLOSE_NOTIFICATION';
+
+// modals actions
+export const OPEN_SAVE_MODAL = 'OPEN_SAVE_MODAL';
+export const CLOSE_SAVE_MODAL = 'CLOSE_SAVE_MODAL';
+export const CLOSE_SAVED_MODAL = 'CLOSE_SAVED_MODAL';
+export const OPEN_PUBLISH_MODAL = 'OPEN_PUBLISH_MODAL';
+export const CLOSE_PUBLISH_MODAL = 'CLOSE_PUBLISH_MODAL';
+export const CLOSE_PUBLISHED_MODAL = 'CLOSE_PUBLISHED_MODAL';
 
 // other
 export const API_ENDPOINT = '/api/v1';

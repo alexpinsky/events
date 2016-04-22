@@ -1,12 +1,5 @@
 import * as constants from '../actions/constants';
 
-const INITIAL_STATE = {
-  save_modal: { open: false },
-  saved_modal: { open: false },
-  publish_modal: { open: false },
-  published_modal: { open: false }
-}
-
 export default function(state = INITIAL_STATE, action) {
 
   switch (action.type) {
@@ -20,7 +13,7 @@ export default function(state = INITIAL_STATE, action) {
       return Object.assign({}, state, INITIAL_STATE);
     case constants.OPEN_SAVE_MODAL:
       return Object.assign({}, state, {
-        save_modal: { open: true },
+        save_modal: { open: true, event: action.payload.event },
         saved_modal: { open: false },
         publish_modal: { open: false },
         published_modal: { open: false }
@@ -29,7 +22,7 @@ export default function(state = INITIAL_STATE, action) {
       return Object.assign({}, state, {
         save_modal: { open: false },
         saved_modal: { open: false },
-        publish_modal: { open: true },
+        publish_modal: { open: true, event: action.payload.event },
         published_modal: { open: false }
       });
     case constants.CREATE_EVENT:
@@ -49,4 +42,11 @@ export default function(state = INITIAL_STATE, action) {
   }
 
   return state;
+}
+
+const INITIAL_STATE = {
+  save_modal: { open: false },
+  saved_modal: { open: false },
+  publish_modal: { open: false },
+  published_modal: { open: false }
 }

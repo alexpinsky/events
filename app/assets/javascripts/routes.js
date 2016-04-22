@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
-import App from './components/app';
+import App from './app-component';
 import Editor from './editor/containers/editor';
 import Dashboard from './dashboard/containers/dashboard';
 

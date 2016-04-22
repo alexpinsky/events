@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { saveEvent, openPublishModal, unpublishEvent } from '../actions/event-actions';
-import EventWrapper from '../../wrappers/event-wrapper';
+import {
+  saveEvent, openPublishModal, unpublishEvent
+} from '../../shared/actions/event-actions';
+
+import PublishButton from '../../shared/components/publish-button';
 
 export default class EventMenu extends Component {
 
@@ -27,38 +30,17 @@ export default class EventMenu extends Component {
     this.props.unpublishEvent(this.props.event);
   }
 
-  renderPublishUnpublish() {
-    const eventWrapper = new EventWrapper(this.props.event);
-
-    if (eventWrapper.isPublished() || eventWrapper.isPending()) {
-
-      return (
-        <div className='unpublish-wrapper'>
-          <a className="unpublish menu-action" href="#" onClick={this.handleUnpublishClick} />
-          <div className='text'>UNPUBLISH</div>
-        </div>
-      );
-    }
-    else {
-
-      return (
-        <div className='publish-wrapper'>
-          <a className="publish menu-action" href="#" onClick={this.handlePublishClick} />
-          <div className='text'>PUBLISH</div>
-        </div>
-      );
-    }
-  }
-
   render() {
 
     return (
       <div className='actions'>
         <div className='save-wrapper'>
-          <a className="save menu-action" href='#' onClick={this.handleSaveClick} />
+          <a className="save" href='#' onClick={this.handleSaveClick} />
           <div className='text'>SAVE</div>
         </div>
-        {this.renderPublishUnpublish()}
+        <PublishButton event={this.props.event}
+                       onPublishClick={this.handlePublishClick}
+                       onUnpublishClick={this.handleUnpublishClick} />
       </div>
     );
   }

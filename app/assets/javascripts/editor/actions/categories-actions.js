@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_CATEGORIES, API_ENDPOINT } from '../actions/constants';
+import { FETCH_CATEGORIES, API_ENDPOINT } from '../../shared/constants';
 
 export function fetchCategories() {
 

@@ -12,7 +12,7 @@ export default class EModal extends Component {
 
   render() {
 
-    if (this.props.open) {
+    if (this.props.modal.open) {
       return (
         <div className='eblocker'>
           <div className='emodal'>

@@ -1,4 +1,4 @@
-import { TEMPLATE_ACTION, SET_TEMPLATE } from '../actions/constants';
+import { TEMPLATE_ACTION, SET_TEMPLATE } from '../../shared/constants';
 
 export function setTemplate(template) {
 

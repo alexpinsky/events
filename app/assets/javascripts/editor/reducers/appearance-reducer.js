@@ -1,4 +1,4 @@
-import { SET_BACKGROUND } from '../actions/constants';
+import { SET_BACKGROUND } from '../../shared/constants';
 
 const INITIAL_STATE = {};
 

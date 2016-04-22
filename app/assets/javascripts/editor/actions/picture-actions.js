@@ -1,4 +1,4 @@
-import { PICTURE_ACTION, ADD_PICTURE, REMOVE_PICTURE } from '../actions/constants';
+import { PICTURE_ACTION, ADD_PICTURE, REMOVE_PICTURE } from '../../shared/constants';
 
 export function addPicture(index, url) {
 

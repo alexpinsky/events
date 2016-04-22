@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import File from '../../services/file';
-import { toCalendarDateFormat } from '../../helper';
+import { toCalendarDateFormat } from '../../shared/helper';
 
 const SEPARATOR = (navigator.appVersion.indexOf('Win') !== -1) ? '\r\n' : '\n';
 const FILENAME  = 'eventit.ics'

@@ -1,4 +1,4 @@
-import { APPEARANCE_ACTION, SET_BACKGROUND } from '../actions/constants';
+import { APPEARANCE_ACTION, SET_BACKGROUND } from '../../shared/constants';
 
 export function setBackground(newBackground) {
 

@@ -1,4 +1,4 @@
-import { FETCH_CATEGORIES } from '../actions/constants';
+import { FETCH_CATEGORIES } from '../../shared/constants';
 
 const INITIAL_STATE = [];
 

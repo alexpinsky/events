@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import EModal from '../../components/emodal';
-import { closeSavedModal, openPublishModal } from '../actions/event-actions';
+import EModal from '../../shared/components/emodal';
+import { closeSavedModal, openPublishModal } from '../../shared/actions/event-actions';
 
 export default class SavedModal extends EModal {
 
   constructor(props) {
     super(props);
 
-    this.handleDoneClick = this.handleDoneClick.bind(this);
+    this.handleDoneClick    = this.handleDoneClick.bind(this);
     this.handlePublishClick = this.handlePublishClick.bind(this);
   }
 
@@ -23,7 +23,7 @@ export default class SavedModal extends EModal {
   }
 
   handlePublishClick(e) {
-    this.props.openPublishModal(this.props.event);
+    this.props.openPublishModal(this.props.modal.event);
   }
 
   renderSpecific() {
@@ -52,8 +52,7 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    event: state.event,
-    open: state.modals.saved_modal.open
+    modal: state.modals.saved_modal
   };
 }
 

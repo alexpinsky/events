@@ -1,11 +1,12 @@
+import { _ } from 'lodash';
+
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { _ } from 'lodash';
 import Notification from '../components/notification';
 import { closeNotification } from '../actions/notification-actions';
-import { NotificationTypes } from '../shared/enums';
+import { NotificationTypes } from '../enums';
 
 export default class NotificationList extends Component {
 

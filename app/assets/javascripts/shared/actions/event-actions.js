@@ -4,9 +4,12 @@ import { _ } from 'lodash';
 import * as constants from './constants';
 import EventWrapper from '../../wrappers/event-wrapper';
 
-export function openSaveModal() {
+export function openSaveModal(event) {
 
-  return { type: constants.OPEN_SAVE_MODAL };
+  return {
+    type: constants.OPEN_SAVE_MODAL,
+    event: event
+  };
 }
 
 export function closeSaveModal() {
@@ -22,10 +25,13 @@ export function closeSavedModal() {
 export function openPublishModal(event) {
 
   if (new EventWrapper(event).isNew()) {
-    return openSaveModal();
+    return openSaveModal(event);
   }
   else {
-    return { type: constants.OPEN_PUBLISH_MODAL };
+    return {
+      type: constants.OPEN_PUBLISH_MODAL,
+      event: event
+    };
   }
 }
 
@@ -39,18 +45,10 @@ export function closePublishedModal() {
   return { type: constants.CLOSE_PUBLISHED_MODAL }
 }
 
-export function setName(newName) {
-
-  return {
-    type: constants.SET_NAME,
-    payload: { name: newName }
-  };
-}
-
 export function saveEvent(event, params = {}) {
 
   if (_.isEmpty(params.name) && _.isEmpty(event.name))
-    return openSaveModal();
+    return openSaveModal(event);
 
   const eventWrapper = new EventWrapper(event);
 

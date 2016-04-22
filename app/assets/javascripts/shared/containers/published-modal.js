@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import EModal from '../../components/emodal';
+import EModal from '../components/emodal';
 import { closePublishedModal } from '../actions/event-actions';
 
 export default class PublishedModal extends EModal {
@@ -41,7 +41,7 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    open: state.modals.published_modal.open
+    modal: state.modals.published_modal
   };
 }
 

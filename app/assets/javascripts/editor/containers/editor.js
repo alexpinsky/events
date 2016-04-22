@@ -2,15 +2,16 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { fetchEvent } from '../actions/event-actions';
+import { fetchEvent } from '../../shared/actions/event-actions';
 import EventMenu from '../containers/event-menu';
 import EventForm from '../components/event-form';
 import EventViewer from '../containers/event-viewer';
 import SaveModal from '../containers/save-modal';
 import SavedModal from '../containers/saved-modal';
-import PublishModal from '../containers/publish-modal';
-import PublishedModal from '../containers/published-modal';
-import Spinner from '../../components/spinner';
+
+import PublishModal from '../../shared/containers/publish-modal';
+import PublishedModal from '../../shared/containers/published-modal';
+import Spinner from '../../shared/components/spinner';
 
 import EventWrapper from '../../wrappers/event-wrapper';
 

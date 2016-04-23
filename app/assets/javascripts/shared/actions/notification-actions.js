@@ -1,4 +1,4 @@
-import { CLOSE_NOTIFICATION } from './constants';
+import { CLOSE_NOTIFICATION } from '../constants';
 
 export function closeNotification(id, type) {
 

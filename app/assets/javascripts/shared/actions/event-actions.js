@@ -1,14 +1,14 @@
 import axios from 'axios';
 import { _ } from 'lodash';
 
-import * as constants from './constants';
+import * as constants from '../constants';
 import EventWrapper from '../../wrappers/event-wrapper';
 
 export function openSaveModal(event) {
 
   return {
     type: constants.OPEN_SAVE_MODAL,
-    event: event
+    payload: { event }
   };
 }
 
@@ -30,7 +30,7 @@ export function openPublishModal(event) {
   else {
     return {
       type: constants.OPEN_PUBLISH_MODAL,
-      event: event
+      payload: { event }
     };
   }
 }

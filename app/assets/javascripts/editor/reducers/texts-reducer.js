@@ -1,4 +1,4 @@
-import * as constants from from '../../shared/constants';
+import * as constants from '../../shared/constants';
 import EventWrapper from '../../wrappers/event-wrapper';
 
 export default function(state = INITIAL_STATE, action) {

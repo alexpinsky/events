@@ -8,7 +8,7 @@ export default class NameEdit extends Component {
       <div className='name-wrapper name-editor'>
         <div className='name vertical-align'>
           <div className='edit-icon'></div>
-          <a href="#" className="event-name" data-type="text" data-url="<%= event_path(event) %>" data-pk="<%= event.id %>"><%= event.name %></a>
+          <a href="#" className="event-name" />
         </div>
       </div>
     );

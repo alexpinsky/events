@@ -1,4 +1,4 @@
-import * as constants from '../actions/constants';
+import * as constants from '../constants';
 
 export default function(state = INITIAL_STATE, action) {
 

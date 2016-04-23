@@ -1,6 +1,6 @@
 import { _ } from 'lodash';
 
-import * as constants from from '../../shared/constants';
+import * as constants from '../../shared/constants';
 import EventWrapper from '../../wrappers/event-wrapper';
 
 import textsReducer from './texts-reducer';

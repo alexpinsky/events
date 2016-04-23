@@ -1,2 +1,4 @@
-export { default as modalsReducer } from './modals-reducer';
-export { default as notificationsReducer } from './notifications-reducer';
+import modalsReducer from './modals-reducer';
+import notificationsReducer from './notifications-reducer';
+
+export { modalsReducer, notificationsReducer };

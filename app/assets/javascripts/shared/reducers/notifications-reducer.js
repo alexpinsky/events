@@ -1,8 +1,7 @@
 import { _ } from 'lodash';
 
-import { ERROR, UPDATE_EVENT } from '../editor/actions/constants';
-import { CLOSE_NOTIFICATION } from '../actions/constants'
-import { NotificationTypes } from '../shared/enums';
+import { ERROR, UPDATE_EVENT, CLOSE_NOTIFICATION } from '../constants';
+import { NotificationTypes } from '../enums';
 
 export default function(state = INITIAL_STATE, action) {
 

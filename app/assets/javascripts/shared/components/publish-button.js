@@ -11,7 +11,7 @@ export default class PublishButton extends Component {
 
       return (
         <div className='unpublish-wrapper'>
-          <a className="unpublish" href="#" onClick={this.props.onUnpublishClick} />
+          <a className="unpublish" onClick={this.props.onUnpublishClick} />
           <div className='text'>UNPUBLISH</div>
         </div>
       );
@@ -20,7 +20,7 @@ export default class PublishButton extends Component {
 
       return (
         <div className='publish-wrapper'>
-          <a className="publish" href="#" onClick={this.props.onPublishClick} />
+          <a className="publish" onClick={this.props.onPublishClick} />
           <div className='text'>PUBLISH</div>
         </div>
       );

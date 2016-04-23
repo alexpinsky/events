@@ -60,6 +60,16 @@ export function saveEvent(event, params = {}) {
   }
 }
 
+export function fetchEvents() {
+
+  return apiCall({
+    method: 'get',
+    url: `${constants.API_ENDPOINT}/events`,
+    data: null,
+    type: constants.FETCH_EVENTS
+  });
+}
+
 export function fetchEvent(eventId) {
 
   return apiCall({

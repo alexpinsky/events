@@ -6,6 +6,7 @@ import * as editorReducers from './editor/reducers';
 import * as dashboardReducers from './dashboard/reducers';
 
 const rootReducer = combineReducers({
+  events: dashboardReducers.eventsReducer,
   categories: editorReducers.categoriesReducer,
   event: editorReducers.eventReducer,
   modals: sharedReducers.modalsReducer,

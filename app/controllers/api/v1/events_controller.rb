@@ -3,6 +3,11 @@ module Api
     class EventsController < ApplicationController
       skip_before_filter :authenticate_user!, only: :show
 
+      def index
+        events = current_user.events.includes(template: [:category]).order('created_at desc')
+        render json: Hash[events.map { |e| [e.id, EventPresenter.new(e)] }]
+      end
+
       def show
         # event = Events.find params[:id]
         # render json: EventPresenter.new(event)

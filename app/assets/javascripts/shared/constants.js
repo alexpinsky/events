@@ -1,6 +1,7 @@
 // event actions
 export const EVENT_ACTION = 'EVENT_ACTION';
 export const FETCH_EVENT = 'FETCH_EVENT';
+export const FETCH_EVENTS = 'FETCH_EVENTS';
 export const SET_NAME = 'SET_NAME';
 export const SET_URL = 'SET_URL';
 export const CREATE_EVENT = 'CREATE_EVENT';

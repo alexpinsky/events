@@ -1,17 +1,34 @@
+import { _ } from 'lodash';
 import React, { Component } from 'react';
 
 import NameEdit from './name-edit';
+import PublishButton from '../../shared/components/publish-button';
 
 export default class EventTile extends Component {
 
-  previewStyle() {
-    let imageUrl = '';
+  constructor(props) {
+    super(props);
 
-    if (this.props.event.pictures.size > 0)
-      imageUrl = this.props.event.pictures[0].url;
+    this.handlePublishClick   = this.handlePublishClick.bind(this);
+    this.handleUnpublishClick = this.handleUnpublishClick.bind(this);
+  }
+
+  handlePublishClick() {
+    this.props.onPublishClick(this.props.event);
+  }
+
+  handleUnpublishClick() {
+    this.props.onUnpublishClick(this.props.event);
+  }
+
+  previewStyle() {
+    const firstPicture = this.props.event.pictures[1];
+
+    if (_.isEmpty(firstPicture))
+      return;
 
     return {
-      background: `url(${imageUrl}) no-repeat`,
+      background: `url(${firstPicture.url}) no-repeat`,
       backgroundSize: 'cover'
     };
   }
@@ -27,7 +44,7 @@ export default class EventTile extends Component {
           <div className='btn-wrapper'>
             <div className='copy-icon' />
           </div>
-          <input type="text" value={this.props.event.url} />
+          <input type="text" value={this.props.event.url} readOnly />
         </div>
         <div className='image-wrapper'>
           <div className='image' style={this.previewStyle()} >
@@ -38,7 +55,7 @@ export default class EventTile extends Component {
               </div>
               <div className='info'>
                 <div className='theme-name'>
-                  template: {`"${this.props.template.name}"`}
+                  template: {`"${this.props.event.template.name}"`}
                 </div>
                 <div className='date'>
                   created at: {this.props.event.created_at}
@@ -47,31 +64,25 @@ export default class EventTile extends Component {
             </div>
           </div>
         </div>
-        <div className='analytics'>
-          <div className='views'>
-            <img src="https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/view_icon.svg" />
-            <div className='text'>{this.props.event.views_count}</div>
-          </div>
-        </div>
         <div className='tile-footer'>
           <div className="info">
             <div className='time'>
-              <img src="https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/ time_icon.svg" />
+              <img src="https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/time_icon.svg" />
               <div className='text'>{this.props.event.information.start_time}</div>
             </div>
             <div className='place'>
-              <img src="https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/ place_icon.svg" />
+              <img src="https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/place_icon.svg" />
               <div className='text'>{this.props.event.information.location}</div>
             </div>
           </div>
           <div className="actions">
-              <PublishButton event={this.props.event}
-                             onPublishClick={this.handlePublishClick}
-                             onUnpublishClick={this.handleUnpublishClick} />
-              <div className='delete-wrapper'>
-                <a className="delete" href="<%= event_path event %>" data-method="delete" data-confirm="Are you sure?"></a>
-                <div className='text'>DELETE</div>
-              </div>
+            <PublishButton event={this.props.event}
+                           onPublishClick={this.handlePublishClick}
+                           onUnpublishClick={this.handleUnpublishClick} />
+            <div className='delete-wrapper'>
+              <a className="delete" href="#" />
+              <div className='text'>DELETE</div>
+            </div>
           </div>
         </div>
       </div>

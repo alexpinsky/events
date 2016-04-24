@@ -9,7 +9,7 @@ import AddEventTile from '../components/add-event-tile.js';
 import PublishModal from '../../shared/containers/publish-modal';
 import PublishedModal from '../../shared/containers/published-modal';
 import {
-  fetchEvents, saveEvent, openPublishModal, unpublishEvent
+  fetchEvents, saveEvent, openPublishModal, unpublishEvent, deleteEventAndRefresh
 } from '../../shared/actions/event-actions';
 
 export default class Dashboard extends Component {
@@ -20,6 +20,7 @@ export default class Dashboard extends Component {
     this.handleNameSave       = this.handleNameSave.bind(this);
     this.handlePublishClick   = this.handlePublishClick.bind(this);
     this.handleUnpublishClick = this.handleUnpublishClick.bind(this);
+    this.handleDeleteEvent    = this.handleDeleteEvent.bind(this);
   }
 
   componentWillMount() {
@@ -35,7 +36,11 @@ export default class Dashboard extends Component {
   }
 
   handleUnpublishClick(event) {
-    this.props.unpublishEvent(event);
+    this.props.unpublishEvent(event)
+  }
+
+  handleDeleteEvent(event) {
+    this.props.deleteEventAndRefresh(event);
   }
 
   renderTiles() {
@@ -48,7 +53,8 @@ export default class Dashboard extends Component {
                         event={event}
                         onNameSave={this.handleNameSave}
                         onPublishClick={this.handlePublishClick}
-                        onUnpublishClick={this.handleUnpublishClick} />
+                        onUnpublishClick={this.handleUnpublishClick}
+                        onDeleteClick={this.handleDeleteEvent} />
     });
   }
 
@@ -70,7 +76,15 @@ export default class Dashboard extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchEvents, saveEvent, openPublishModal, unpublishEvent }, dispatch);
+  const actions = {
+    fetchEvents,
+    saveEvent,
+    openPublishModal,
+    unpublishEvent,
+    deleteEventAndRefresh
+  };
+
+  return bindActionCreators(actions, dispatch);
 }
 
 function mapStateToProps(state) {

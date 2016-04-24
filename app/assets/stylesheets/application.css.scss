@@ -27,6 +27,8 @@
  *= require_tree ./shared
 */
 body { margin: 0 }
+a { cursor: pointer }
+
 .vertical-align {
   position: relative;
   top: 50%;

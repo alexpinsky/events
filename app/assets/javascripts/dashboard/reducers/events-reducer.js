@@ -2,7 +2,6 @@ import * as constants from '../../shared/constants';
 
 export default function(state = {}, action) {
 
-  console.log('eventsReducer', action);
   switch (action.type) {
     case constants.FETCH_EVENTS:
       return action.payload.data;
@@ -19,5 +18,6 @@ export default function(state = {}, action) {
 
 function changedEvent(action) {
   let changedEvent = {};
-  return changedEvent[action.payload.data.id] = action.payload.data;
+  changedEvent[action.payload.data.id] = action.payload.data;
+  return changedEvent;
 }

@@ -120,8 +120,30 @@ export function unpublishEvent(event, params = {}) {
   });
 }
 
-function apiCall(args) {
+export function deleteEvent(event) {
 
+  return apiCall({
+    method: 'delete',
+    url: `${constants.API_ENDPOINT}/events/${event.id}`,
+    data: null,
+    type: constants.DELETE_EVENT
+  });
+}
+
+export function deleteEventAndRefresh(event) {
+
+  return (dispatch) => {
+
+    return new Promise((resolve, reject) => {
+      dispatch(deleteEvent(event));
+      resolve();
+    })
+    .then(() => dispatch(fetchEvents()));
+  };
+}
+
+function apiCall(args) {
+  console.log('apiCall', args);
   return (dispatch) => {
     axios({
       method: args.method,

@@ -11,6 +11,7 @@ export default class EventTile extends Component {
 
     this.handlePublishClick   = this.handlePublishClick.bind(this);
     this.handleUnpublishClick = this.handleUnpublishClick.bind(this);
+    this.handleDeleteEvent    = this.handleDeleteEvent.bind(this);
   }
 
   handlePublishClick() {
@@ -19,6 +20,10 @@ export default class EventTile extends Component {
 
   handleUnpublishClick() {
     this.props.onUnpublishClick(this.props.event);
+  }
+
+  handleDeleteEvent() {
+    this.props.onDeleteClick(this.props.event);
   }
 
   previewStyle() {
@@ -80,7 +85,7 @@ export default class EventTile extends Component {
                            onPublishClick={this.handlePublishClick}
                            onUnpublishClick={this.handleUnpublishClick} />
             <div className='delete-wrapper'>
-              <a className="delete" href="#" />
+              <a className="delete" onClick={this.handleDeleteEvent} />
               <div className='text'>DELETE</div>
             </div>
           </div>

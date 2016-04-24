@@ -26,13 +26,24 @@ module Api
 
       def update
         respond_with_save do
-          current_user.events.by_id(params[:id]).first
+          current_user.events.find params[:id]
+        end
+      end
+
+      def destroy
+        event = current_user.events.find params[:id]
+
+        # if event.destroy
+        if false
+          render nothing: true, status: :ok
+        else
+          render json: EventPresenter.new(event), status: :bad_request
         end
       end
 
       def publish
         respond_with_save do
-          event = current_user.events.by_id(params[:id]).first
+          event = current_user.events.find params[:id]
           event.state = Event::STATES[:pending]
           event
         end
@@ -40,7 +51,7 @@ module Api
 
       def unpublish
         respond_with_save do
-          event = current_user.events.by_id(params[:id]).first
+          event = current_user.events.find params[:id]
           event.state = Event::STATES[:saved]
           event
         end

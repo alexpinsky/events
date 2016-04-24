@@ -8,6 +8,7 @@ export const CREATE_EVENT = 'CREATE_EVENT';
 export const UPDATE_EVENT = 'UPDATE_EVENT';
 export const PUBLISH_EVENT = 'PUBLISH_EVENT';
 export const UNPUBLISH_EVENT = 'UNPUBLISH_EVENT';
+export const DELETE_EVENT = 'DELETE_EVENT';
 
 // text actions
 export const TEXT_ACTION = 'TEXT_ACTION';

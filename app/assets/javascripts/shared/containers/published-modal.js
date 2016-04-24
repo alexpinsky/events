@@ -28,7 +28,7 @@ export default class PublishedModal extends EModal {
           We'll email you as soon as your event is approved with instructions on how to send it to the people who are important to you and regarding the payment method.
         </div>
         <div className='modal-actions'>
-          <a href="#" className="done" onClick={this.handleDoneClick} />
+          <a className="done" onClick={this.handleDoneClick} />
         </div>
       </div>
     );

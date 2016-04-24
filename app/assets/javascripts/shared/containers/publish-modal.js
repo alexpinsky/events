@@ -46,8 +46,8 @@ export default class PublishModal extends EModal {
                  ref={(ref) => this.urlInput = ref } />
         </div>
         <div className='modal-actions'>
-          <a href="#" className="publish" onClick={this.handlePublishEvent} />
-          <a href="#" className="cancel" onClick={this.handleCancelClick} />
+          <a className="publish" onClick={this.handlePublishEvent} />
+          <a className="cancel" onClick={this.handleCancelClick} />
         </div>
       </div>
     );

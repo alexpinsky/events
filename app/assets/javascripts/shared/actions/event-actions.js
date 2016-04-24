@@ -2,48 +2,8 @@ import axios from 'axios';
 import { _ } from 'lodash';
 
 import * as constants from '../constants';
+import { openSaveModal } from './modal-actions';
 import EventWrapper from '../../wrappers/event-wrapper';
-
-export function openSaveModal(event) {
-
-  return {
-    type: constants.OPEN_SAVE_MODAL,
-    payload: { event }
-  };
-}
-
-export function closeSaveModal() {
-
-  return { type: constants.CLOSE_SAVE_MODAL };
-}
-
-export function closeSavedModal() {
-
-  return { type: constants.CLOSE_SAVED_MODAL };
-}
-
-export function openPublishModal(event) {
-
-  if (new EventWrapper(event).isNew()) {
-    return openSaveModal(event);
-  }
-  else {
-    return {
-      type: constants.OPEN_PUBLISH_MODAL,
-      payload: { event }
-    };
-  }
-}
-
-export function closePublishModal() {
-
-  return { type: constants.CLOSE_PUBLISH_MODAL }
-}
-
-export function closePublishedModal() {
-
-  return { type: constants.CLOSE_PUBLISHED_MODAL }
-}
 
 export function saveEvent(event, params = {}) {
 
@@ -65,7 +25,6 @@ export function fetchEvents() {
   return apiCall({
     method: 'get',
     url: `${constants.API_ENDPOINT}/events`,
-    data: null,
     type: constants.FETCH_EVENTS
   });
 }
@@ -75,7 +34,6 @@ export function fetchEvent(eventId) {
   return apiCall({
     method: 'get',
     url: `${constants.API_ENDPOINT}/events/${eventId}/edit`,
-    data: null,
     type: constants.FETCH_EVENT
   });
 }
@@ -120,30 +78,31 @@ export function unpublishEvent(event, params = {}) {
   });
 }
 
-export function deleteEvent(event) {
-
-  return apiCall({
-    method: 'delete',
-    url: `${constants.API_ENDPOINT}/events/${event.id}`,
-    data: null,
-    type: constants.DELETE_EVENT
-  });
-}
-
 export function deleteEventAndRefresh(event) {
 
   return (dispatch) => {
-
-    return new Promise((resolve, reject) => {
-      dispatch(deleteEvent(event));
-      resolve();
+    axios({
+      method: 'delete',
+      url: `${constants.API_ENDPOINT}/events/${event.id}`,
+      headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') }
     })
-    .then(() => dispatch(fetchEvents()));
+    .then((response) => {
+      dispatch(fetchEvents())
+    })
+    .catch((response) => {
+      console.error('API Error', response);
+      dispatch((() => {
+        return {
+          type: constants.ERROR,
+          payload: { messages: response.data.errors }
+        }
+      })())
+    });
   };
 }
 
 function apiCall(args) {
-  console.log('apiCall', args);
+
   return (dispatch) => {
     axios({
       method: args.method,
@@ -168,5 +127,5 @@ function apiCall(args) {
         }
       })())
     });
-  }
+  };
 }

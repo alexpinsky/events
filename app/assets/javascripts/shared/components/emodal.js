@@ -17,8 +17,7 @@ export default class EModal extends Component {
         <div className='eblocker'>
           <div className='emodal'>
             <div className='modal-logo' />
-            <a href="#"
-               className="close-modal"
+            <a className="close-modal"
                ref={(ref) => this.modal = ref }
                onClick={this.handleCloseClick} />
             {this.renderSpecific()}

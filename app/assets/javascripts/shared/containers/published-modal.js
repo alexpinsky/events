@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import EModal from '../components/emodal';
-import { closePublishedModal } from '../actions/event-actions';
+import { closePublishedModal } from '../actions/modal-actions';
 
 export default class PublishedModal extends EModal {
 
@@ -14,6 +14,10 @@ export default class PublishedModal extends EModal {
   }
 
   handleDoneClick(e) {
+    this.props.closePublishedModal();
+  }
+
+  handleCloseClick(e) {
     this.props.closePublishedModal();
   }
 

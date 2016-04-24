@@ -3,7 +3,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import EModal from '../../shared/components/emodal';
-import { saveEvent, closeSaveModal } from '../../shared/actions/event-actions';
+import { saveEvent } from '../../shared/actions/event-actions';
+import { closeSaveModal } from '../../shared/actions/modal-actions';
 
 export default class SaveModal extends EModal {
 
@@ -37,8 +38,8 @@ export default class SaveModal extends EModal {
                placeholder="type the event name here"
                ref={(ref) => this.nameInput = ref } />
         <div className='modal-actions'>
-          <a href="#" className="save" onClick={this.handleSaveClick} />
-          <a href="#" className="cancel" onClick={this.handleCancelClick} />
+          <a className="save" onClick={this.handleSaveClick} />
+          <a className="cancel" onClick={this.handleCancelClick} />
         </div>
         <div className='modal-text'>
           Don't worry! Saving your event does not mean the event will be public.

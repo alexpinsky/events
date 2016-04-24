@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 
 import config from '../../config';
 import EModal from '../components/emodal';
-import { closePublishModal, publishEvent } from '../actions/event-actions';
+import { publishEvent } from '../actions/event-actions';
+import { closePublishModal } from '../actions/modal-actions';
 
 export default class PublishModal extends EModal {
 

@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import EModal from '../../shared/components/emodal';
-import { closeSavedModal, openPublishModal } from '../../shared/actions/event-actions';
+import { closeSavedModal, openPublishModal } from '../../shared/actions/modal-actions';
 
 export default class SavedModal extends EModal {
 
@@ -32,14 +32,14 @@ export default class SavedModal extends EModal {
       <div id="event-saved">
         <div className="modal-header">GREAT! YOUR EVENT HAS BEEN SAVED</div>
         <div className='modal-text'>
-          Ready to share your event with the people who are important to you? <a href="#"
+          Ready to share your event with the people who are important to you? <a
              className="publish"
              onClick={this.handlePublishClick} >
             press here
           </a>
         </div>
         <div className='modal-actions'>
-          <a href="#" className="done" onClick={this.handleDoneClick} />
+          <a className="done" onClick={this.handleDoneClick} />
         </div>
       </div>
     );

@@ -33,8 +33,7 @@ module Api
       def destroy
         event = current_user.events.find params[:id]
 
-        # if event.destroy
-        if false
+        if event.destroy
           render nothing: true, status: :ok
         else
           render json: EventPresenter.new(event), status: :bad_request

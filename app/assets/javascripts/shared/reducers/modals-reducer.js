@@ -28,7 +28,7 @@ export default function(state = INITIAL_STATE, action) {
     case constants.CREATE_EVENT:
       return Object.assign({}, state, {
         save_modal: { open: false },
-        saved_modal: { open: true },
+        saved_modal: { open: true, event: action.payload.data },
         publish_modal: { open: false },
         published_modal: { open: false }
       });

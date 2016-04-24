@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import {
-  saveEvent, openPublishModal, unpublishEvent
-} from '../../shared/actions/event-actions';
-
 import PublishButton from '../../shared/components/publish-button';
+import { saveEvent, unpublishEvent } from '../../shared/actions/event-actions';
+import { openPublishModal } from '../../shared/actions/modal-actions';
+
 
 export default class EventMenu extends Component {
 

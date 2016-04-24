@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
 
   before_filter :authenticate_user!
-  before_filter :_set_page
 
   def stored_location_for(resource)
     if resource.events.count > 0
@@ -16,11 +15,5 @@ class ApplicationController < ActionController::Base
     end
 
     app_path(page: page)
-  end
-
-  private
-
-  def _set_page
-    @page = nil
   end
 end

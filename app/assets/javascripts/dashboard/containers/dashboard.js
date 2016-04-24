@@ -8,8 +8,9 @@ import EventTile from '../components/event-tile';
 import AddEventTile from '../components/add-event-tile.js';
 import PublishModal from '../../shared/containers/publish-modal';
 import PublishedModal from '../../shared/containers/published-modal';
+import { openPublishModal } from '../../shared/actions/modal-actions';
 import {
-  fetchEvents, saveEvent, openPublishModal, unpublishEvent, deleteEventAndRefresh
+  fetchEvents, saveEvent, unpublishEvent, deleteEventAndRefresh
 } from '../../shared/actions/event-actions';
 
 export default class Dashboard extends Component {
@@ -63,8 +64,8 @@ export default class Dashboard extends Component {
     return (
       <div className='page-wrapper dashboard'>
         <div className='previews'>
-          {this.renderTiles()}
           <AddEventTile />
+          {this.renderTiles()}
         </div>
         <div className='modals'>
           <PublishModal />

@@ -1,8 +1,10 @@
-import { _ } from 'lodash';
 import React, { Component } from 'react';
+import { Link } from 'react-router'
 
-import NameEdit from './name-edit';
+import EditName from './edit-name';
+import CopyUrl from './copy-url';
 import PublishButton from '../../shared/components/publish-button';
+import EventWrapper from '../../wrappers/event-wrapper';
 
 export default class EventTile extends Component {
 
@@ -12,6 +14,7 @@ export default class EventTile extends Component {
     this.handlePublishClick   = this.handlePublishClick.bind(this);
     this.handleUnpublishClick = this.handleUnpublishClick.bind(this);
     this.handleDeleteEvent    = this.handleDeleteEvent.bind(this);
+    this.handleNameSave       = this.handleNameSave.bind(this);
   }
 
   handlePublishClick() {
@@ -24,6 +27,10 @@ export default class EventTile extends Component {
 
   handleDeleteEvent() {
     this.props.onDeleteClick(this.props.event);
+  }
+
+  handleNameSave(newName) {
+    this.props.onNameSave(this.props.event, newName);
   }
 
   previewStyle() {
@@ -39,24 +46,20 @@ export default class EventTile extends Component {
   }
 
   render() {
+    const eventWrapper = new EventWrapper(this.props.event);
 
     return (
       <div className='tile'>
         <div className='tile-header'>
-          <NameEdit />
+          <EditName name={this.props.event.name} onSaveClick={this.handleNameSave} />
         </div>
-        <div className='url-wrapper'>
-          <div className='btn-wrapper'>
-            <div className='copy-icon' />
-          </div>
-          <input type="text" value={this.props.event.url} readOnly />
-        </div>
+        <CopyUrl url={eventWrapper.fullUrl()} />
         <div className='image-wrapper'>
           <div className='image' style={this.previewStyle()} >
             <div className='menu-wrapper'>
               <div className='buttons'>
-                <a className="preview" title="preview" target="_blank" href="#" />
-                <a className="edit" title="edit" href="#" />
+                <a className="preview" title="preview" target="_blank" />
+                <Link className="edit" title="edit" to={`/app/editor/${this.props.event.id}`}/>
               </div>
               <div className='info'>
                 <div className='theme-name'>

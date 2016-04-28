@@ -45,7 +45,8 @@
       .tile-header {
         background-color: white;
         padding: 38px 0 18px;
-        .name-wrapper {
+        .name-wrapper, .name-edit {
+          cursor: pointer;
           width: 217px;
           height: 49px;
           margin: 0 auto;
@@ -53,46 +54,43 @@
           border: 1px solid rgb(231, 231, 231);
           box-shadow: 3px 3px 10px rgba(240, 237, 237, 0.55);
           .edit-icon {
-            background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/edit_icon.svg');
+            background: url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/edit_icon.svg");
             width: 20px;
             height: 20px;
-            display: block;
+            display: inline-block;
             background-repeat: no-repeat;
-            position: absolute;
-            z-index: -9999;
-            left: 5px;
+            vertical-align: bottom;
           }
-          a {
+          .event-name {
             color: rgb(176, 176, 176);
-            text-decoration: none;
-            border-bottom: none;
+            display: inline;
+            margin-right: 5px;
           }
         }
         .name-wrapper:hover {
           background-color: rgb(245, 247, 255);
           border: 1px solid rgb(127, 159, 255);
-          a {
+          .event-name {
             color: rgb(127, 159, 255);
           }
         }
         .editable-container {
           input {
             border: none;
-            width: 215px;
+            width: 180px;
             height: 46px;
             text-align: center;
             font-family: 'Julius Sans One', sans-serif;
-            color: rgb(176, 176, 176);
+            color: #b0b0b0;
             font-size: 16px;
+            margin-right: 5px;
           }
           input:focus {
             outline: none;
           }
           .editable-buttons {
-            position: absolute;
-            bottom: 10px;
-            right: 5px;
             margin: 0;
+            display: inline-block;
             button {
               width: 10px;
               height: 10px;
@@ -103,16 +101,17 @@
               overflow: hidden;
               margin: 0;
               padding: 0;
+              cursor: pointer;
             }
             button:focus {
               outline: none;
             }
-            button.editable-submit {
+            button.submit {
               background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/ok_btn.svg');
               margin-right: 2px;
               display: inline-block;
             }
-            button.editable-cancel {
+            button.cancel {
               background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/cancel_btn.svg');
               display: inline-block;
             }

@@ -1,5 +1,6 @@
-import React from 'react';
 import { _ } from 'lodash';
+import config from '../config';
+import React from 'react';
 
 import Paris from '../templates/wedding/paris';
 import Colaze from '../templates/wedding/colaze';
@@ -62,6 +63,10 @@ export default class EventWrapper {
 
   isNew() {
     return this.event.id == null;
+  }
+
+  fullUrl() {
+    return `${config.rootUrl}${this.event.url}`;
   }
 
   template() {

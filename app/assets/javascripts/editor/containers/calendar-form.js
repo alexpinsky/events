@@ -3,9 +3,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import Checkbox from '../components/checkbox';
-import {
-  enableCalendar, disableCalendar, setStartTime, setEndTime, setLocation, setSummary
-} from '../actions/information-actions';
+import * as actions from '../actions/information-actions';
+import { toHumanDateFormat } from '../../shared/helper';
 
 export class CalendarForm extends Component {
   constructor(props) {
@@ -40,11 +39,13 @@ export class CalendarForm extends Component {
       return;
 
     $(this.startTimeInput).datetimepicker({
-      onChangeDateTime: this.handleStartTimeChange
+      onChangeDateTime: this.handleStartTimeChange,
+      mask: true
     });
 
     $(this.endTimeInput).datetimepicker({
-      onChangeDateTime: this.handleEndTimeChange
+      onChangeDateTime: this.handleEndTimeChange,
+      mask: true
     });
   }
 
@@ -105,6 +106,7 @@ export class CalendarForm extends Component {
               <div className='text'>starts at</div>
               <input type="text"
                      className="datetimepicker start"
+                     defaultValue={toHumanDateFormat(information.start_time)}
                      ref={ (ref) => this.startTimeInput = ref }
                      onChange={this.handleStartTimeChange} />
             </div>
@@ -113,6 +115,7 @@ export class CalendarForm extends Component {
               <div className='text'>ends at</div>
               <input type="text"
                      className="datetimepicker end"
+                     defaultValue={toHumanDateFormat(information.end_time)}
                      ref={ (ref) => this.endTimeInput = ref }
                      onChange={this.handleEndTimeChange} />
             </div>
@@ -143,11 +146,15 @@ export class CalendarForm extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  const actions = {
-    enableCalendar, disableCalendar, setStartTime, setEndTime, setLocation, setSummary
-  };
 
-  return bindActionCreators(actions, dispatch);
+  return bindActionCreators({
+    enableCalendar: actions.enableCalendar,
+    disableCalendar: actions.disableCalendar,
+    setStartTime: actions.setStartTime,
+    setEndTime: actions.setEndTime,
+    setLocation: actions.setLocation,
+    setSummary: actions.setSummary
+  }, dispatch);
 }
 
 function mapStateToProps(state) {

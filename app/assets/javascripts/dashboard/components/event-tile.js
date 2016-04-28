@@ -5,6 +5,7 @@ import EditName from './edit-name';
 import CopyUrl from './copy-url';
 import PublishButton from '../../shared/components/publish-button';
 import EventWrapper from '../../wrappers/event-wrapper';
+import { toHumanDateFormat } from '../../shared/helper';
 
 export default class EventTile extends Component {
 
@@ -66,17 +67,25 @@ export default class EventTile extends Component {
                   template: {`"${this.props.event.template.name}"`}
                 </div>
                 <div className='date'>
-                  created at: {this.props.event.created_at}
+                  created at: {toHumanDateFormat(this.props.event.created_at)}
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+        <div className='analytics'>
+          <div className='views'>
+            <img src="https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/view_icon.svg" />
+            <div className='text'>{this.props.event.views_count}</div>
           </div>
         </div>
         <div className='tile-footer'>
           <div className="info">
             <div className='time'>
               <img src="https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/time_icon.svg" />
-              <div className='text'>{this.props.event.information.start_time}</div>
+              <div className='text'>
+                {toHumanDateFormat(this.props.event.information.start_time)}
+              </div>
             </div>
             <div className='place'>
               <img src="https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/place_icon.svg" />

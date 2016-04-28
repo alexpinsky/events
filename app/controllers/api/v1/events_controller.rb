@@ -4,8 +4,12 @@ module Api
       skip_before_filter :authenticate_user!, only: :show
 
       def index
-        events = current_user.events.includes(template: [:category]).order('created_at desc')
-        render json: Hash[events.map { |e| [e.id, EventPresenter.new(e)] }]
+        events = current_user.events
+          .includes(template: [:category])
+          .order('events.created_at desc')
+        render json: Hash[events.map { |e|
+          [e.id, EventPresenter.new(e, views_count: e.views.count)]
+        }]
       end
 
       def show

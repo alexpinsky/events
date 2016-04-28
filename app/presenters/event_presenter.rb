@@ -1,7 +1,8 @@
 class EventPresenter
 
-  def initialize(event)
+  def initialize(event, dynamic_attrs = {})
     @event = event
+    @dynamic_attrs = dynamic_attrs
   end
 
   def as_json(args)
@@ -15,11 +16,12 @@ class EventPresenter
       pictures: event.pictures,
       appearance: event.appearance,
       information: event.information,
+      created_at: event.created_at.to_i * 1000,
       errors: ["Template can't be blank", "Url has already been taken"]
-    }
+    }.merge(dynamic_attrs)
   end
 
   private
 
-  attr_reader :event
+  attr_reader :event, :dynamic_attrs
 end

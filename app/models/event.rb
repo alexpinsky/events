@@ -2,6 +2,11 @@ class Event < ActiveRecord::Base
   belongs_to :user
   belongs_to :template
 
+  serialize :information, Serializers::HashieMash
+  serialize :texts,       Serializers::HashieMash
+  serialize :pictures,    Serializers::HashieMash
+  serialize :appearance,  Serializers::HashieMash
+
   has_many :views, dependent: :destroy
 
   validates :template_id, presence: true
@@ -16,9 +21,9 @@ class Event < ActiveRecord::Base
   STATES = { saved: 1, pending: 2, published: 3 }
 
   delegate :name, to: :template, prefix: true
+  delegate :start_time, :end_time, :location, to: :information
 
   def viewable_for?(user)
-    return true  if theme? # if theme visible for everyone
     return true  if published? # if published visible for everyone
     return false if user.nil?  # not published and no user
     return user_id == user.id || user.admin?

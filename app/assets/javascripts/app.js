@@ -5,5 +5,4 @@
 //= require slick.min
 //= require jquery.datetimepicker.full
 
-// React-Redux es6
-window.Index = require('./index');
+window.Index = require('./app/index');

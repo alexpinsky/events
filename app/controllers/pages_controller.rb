@@ -25,8 +25,4 @@ class PagesController < ApplicationController
   def terms_of_service
     render layout: false
   end
-
-  def play
-    render layout: false
-  end
 end

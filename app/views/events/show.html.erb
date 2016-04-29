@@ -3,33 +3,29 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta property="og:title" content="eventit" />
-    <meta property="og:image" content="" />
+    <%= render partial: "layouts/og_tags", locals: { event: @event } %>
 
     <title>
-      <%= content_for?(:title) ? yield(:title) : "eventit" %>
+      <%= @event.name %>
     </title>
 
     <%= favicon_link_tag shared_assets_url 'favicon.ico' %>
-    <%= stylesheet_link_tag  "old_app" %>
+    <%= stylesheet_link_tag  "view" %>
     <%= render partial: 'layouts/shared/external_stylesheets' %>
-
     <%= csrf_meta_tags %>
-
-    <%= yield(:header) %>
   </head>
   <body>
-    <%= render partial: "shared/header" %>
-    <%= render partial: "shared/notifications" %>
-
-    <%= yield %>
-
-    <%= render partial: "shared/footer" %>
+    <div class="view-container"></div>
+    <div class="view-footer">
+      <div class='footer-container'>
+        <img src="<%= shared_assets_url('logo_footer.svg') %>">
+        <a href="<%= root_path %>" target="_blank">click to eventit yourself >></a>
+      </div>
+    </div>
     <!-- Javascripts
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <%= javascript_include_tag "old_app", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "view", "data-turbolinks-track" => true %>
     <%= render partial: 'layouts/shared/external_javascripts' %>
-    <%= yield(:javascript) %>
   </body>
 </html>

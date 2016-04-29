@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { toCalendarDateFormat } from '../../shared/helper';
+import { toCalendarDateFormat } from '../../helper';
 
 const ROOT_URL        = "http://www.google.com/calendar/render";
 const PARAMS_SPERATOR = '&';

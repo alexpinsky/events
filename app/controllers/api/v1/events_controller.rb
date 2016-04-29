@@ -12,11 +12,6 @@ module Api
         }]
       end
 
-      def show
-        # event = Events.find params[:id]
-        # render json: EventPresenter.new(event)
-      end
-
       def edit
         event = current_user.events.includes(template: [:category]).find params[:id]
         render json: EventPresenter.new(event)

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { BackgroundTypes } from '../../shared/enums';
+import { BackgroundTypes } from '../../../enums';
 import ImageTile from '../components/image-tile';
 import ColorTile from '../components/color-tile';
 

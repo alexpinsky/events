@@ -5,4 +5,5 @@
 //= require slick.min
 //= require jquery.datetimepicker.full
 
+window.Enums = require('./enums');
 window.Index = require('./app/index');

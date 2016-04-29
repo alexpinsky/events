@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import Checkbox from '../components/checkbox';
 import * as actions from '../actions/information-actions';
-import { toHumanDateFormat } from '../../shared/helper';
+import { toHumanDateFormat } from '../../../helper';
 
 export class CalendarForm extends Component {
   constructor(props) {

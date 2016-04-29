@@ -15,7 +15,7 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <div class="view-container"></div>
+    <div class="view-container" data-event="<%= EventPresenter.new(@event).to_json %>"></div>
     <div class="view-footer">
       <div class='footer-container'>
         <img src="<%= shared_assets_url('logo_footer.svg') %>">

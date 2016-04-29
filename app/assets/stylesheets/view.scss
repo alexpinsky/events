@@ -18,7 +18,17 @@ html, body {
   transform: translateY(-50%);
 }
 
+.preview {
+  min-height: 100vh;
+}
+
 .view-footer {
+  position: absolute;
+  bottom: 0;
+  @media (orientation: landscape) and (max-device-width: 667px) {
+    position: relative;
+    margin-top: 10px;
+  }
   overflow: hidden;
   height: 27px;
   width: 100%;

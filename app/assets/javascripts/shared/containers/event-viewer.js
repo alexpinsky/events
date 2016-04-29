@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import EventWrapper from '../../../wrappers/event-wrapper';
-import { BackgroundTypes } from '../../shared/enums';
+import EventWrapper from '../../wrappers/event-wrapper';
+import { BackgroundTypes } from '../../enums';
 
 export default class EventViewer extends Component {
 

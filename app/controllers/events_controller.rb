@@ -2,9 +2,9 @@ class EventsController < ApplicationController
 
   def show
     @event = if params[:url]
-      Event.by_url(params[:url]).first
+      Event.includes(:template).by_url(params[:url]).first
     else
-      Event.by_id(params[:id]).first
+      Event.includes(:template).by_id(params[:id]).first
     end
 
     if @event

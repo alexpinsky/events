@@ -5,7 +5,7 @@ import EditName from './edit-name';
 import CopyUrl from './copy-url';
 import PublishButton from '../../shared/components/publish-button';
 import EventWrapper from '../../../wrappers/event-wrapper';
-import { toHumanDateFormat } from '../../shared/helper';
+import { toHumanDateFormat } from '../../../helper';
 
 export default class EventTile extends Component {
 

@@ -6,7 +6,7 @@ import Paris from '../templates/wedding/paris';
 import Colaze from '../templates/wedding/colaze';
 import CTree from '../templates/wedding/c-tree';
 import Simple from '../templates/wedding/simple';
-import { EventStates } from '../shared/enums';
+import { EventStates } from '../enums';
 
 export default class EventWrapper {
 

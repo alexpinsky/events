@@ -41,7 +41,10 @@
       padding-top: 5em;
     }
     .panel-right {
-      padding-top: 2em;
+      @media (orientation: landscape) {
+        padding-top: 10em;
+      }
+      padding-top: 5em;
       float: right;
     }
     .images-container {

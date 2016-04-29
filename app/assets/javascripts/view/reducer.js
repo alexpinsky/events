@@ -1,7 +1,16 @@
 import { combineReducers } from 'redux';
-import { routerReducer } from 'react-router-redux'
+import EventWrapper from '../wrappers/event-wrapper';
+import * as constants from './constants';
 
-import eventReducer from './reducers/event-reducer';
+const eventReducer = function(state = {}, action) {
+
+  switch(action.type) {
+    case constants.SET_EVENT:
+      return Object.assign({}, state, action.payload.event);
+  }
+
+  return state;
+}
 
 const rootReducer = combineReducers({
   event: eventReducer

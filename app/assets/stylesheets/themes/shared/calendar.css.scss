@@ -1,5 +1,5 @@
 .calendar-wrapper {
-  margin-bottom: 10px;
+  margin: 1em 0 1em 0;
   text-align: center;
   // .addthisevent-drop {
   .addtocalendar {
@@ -81,7 +81,6 @@
       }
     }
   }
-  // .addthisevent-drop:hover {
   .addtocalendar:hover {
     background: rgb(0, 3, 255);
   }

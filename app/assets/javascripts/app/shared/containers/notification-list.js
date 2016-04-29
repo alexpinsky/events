@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 import Notification from '../components/notification';
 import { closeNotification } from '../actions/notification-actions';
-import { NotificationTypes } from '../enums';
+import { NotificationTypes } from '../../../enums';
 
 export default class NotificationList extends Component {
 

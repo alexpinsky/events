@@ -9,6 +9,8 @@ import { setEvent } from './actions';
 export default class App extends Component {
 
   componentDidMount() {
+    $('.overlay').remove();
+
     const event = $('.view-container').data('event');
     this.props.setEvent(event);
   }

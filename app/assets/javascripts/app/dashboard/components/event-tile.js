@@ -59,7 +59,10 @@ export default class EventTile extends Component {
           <div className='image' style={this.previewStyle()} >
             <div className='menu-wrapper'>
               <div className='buttons'>
-                <a className="preview" title="preview" target="_blank" />
+                <a className="preview"
+                   title="preview"
+                   target="_blank"
+                   href={`/events/${this.props.event.id}`} />
                 <Link className="edit" title="edit" to={`/app/editor/${this.props.event.id}`}/>
               </div>
               <div className='info'>

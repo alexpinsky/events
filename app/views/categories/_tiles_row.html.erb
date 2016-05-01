@@ -22,10 +22,11 @@
     <div class='tile' style="background: url('<%= template.thumbnail_url %>') no-repeat; background-size: cover;">
       <div class='menu-wrapper'>
         <div class='buttons'>
-        <!-- event_path(template) -->
-          <a class="preview" title="preview" target="_blank" href="#"></a>
+          <a class="preview"
+             title="preview"
+             target="_blank"
+             href="<%= event_path(id: template.name) %>"></a>
           <% if current_user %>
-            <!-- new_event_path(theme_id: template.id, category_id: template.category_id) -->
             <a class="edit" title="edit" href="/app/editor?template=<%= template.name %>"></a>
           <% else %>
             <a title="edit" href="#signInModal" rel="modal:open" class="edit"></a>

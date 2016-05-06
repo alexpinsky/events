@@ -28,7 +28,7 @@ export default class EventViewer extends Component {
   render() {
 
     return (
-      <div className='preview' style={this.backgroundStyle()}>
+      <div className='view' style={this.backgroundStyle()}>
         <div className="display">
           {this.renderTemplate()}
         </div>

@@ -194,7 +194,7 @@ $border-color: rgb(127, 159, 255);
             width: 120px;
           }
         }
-        .preview {
+        .view {
           width: 559px;
           height: 468px;
           display: inline-block;
@@ -211,19 +211,29 @@ $border-color: rgb(127, 159, 255);
             right: 0;
             // cannot fix with font-size
             .wedding.simple {
+              .panel {
+                height: inherit;
+              }
               .panel-left {
                 padding-top: 10em;
                 .images-container {
-                  .images {
-                    height: 25em;
-                    width: 25em;
-                  }
+                  height: 25em;
+                  width: 25em;
+                  position: relative;
+                  left: inherit;
+                  margin: 0 auto;
                 }
               }
               .panel-right {
                 padding-top: 15em;
-                .content-container {
-                  font-size: 70%;
+                .container {
+                  position: inherit;
+                  top: inherit;
+                  left: inherit;
+                  transform: inherit;
+                  .content-container {
+                    font-size: 70%;
+                  }
                 }
               }
             }

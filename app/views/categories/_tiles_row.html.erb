@@ -25,11 +25,19 @@
           <a class="preview"
              title="preview"
              target="_blank"
-             href="<%= event_path(id: template.name) %>"></a>
+             href="<%= event_path(id: template.name, url: template.name) %>">
+          </a>
           <% if current_user %>
-            <a class="edit" title="edit" href="/app/editor?template=<%= template.name %>"></a>
+            <a class="edit"
+               title="edit"
+               href="<%= app_path(page: :editor, template: template.name) %>">
+            </a>
           <% else %>
-            <a title="edit" href="#signInModal" rel="modal:open" class="edit"></a>
+            <a title="edit"
+               href="#signInModal"
+               rel="modal:open"
+               class="edit">
+            </a>
           <% end %>
         </div>
       </div>

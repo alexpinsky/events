@@ -16,9 +16,11 @@ class Event < ActiveRecord::Base
   scope :with_url, -> () { where('events.url IS NOT NULL') }
   scope :by_url, -> (url) { where('events.url = ?', url) }
   scope :by_id, -> (id) { where('events.id = ?', id) }
-  scope :published, -> { where('events.state = ?', STATES[:published]) }
+  scope :by_state, -> (state) { where('events.state = ?', state) }
+  scope :published, -> { by_state STATES.published }
+  scope :templates, -> { by_state STATES.template }
 
-  STATES = { saved: 1, pending: 2, published: 3 }
+  STATES = Hashie::Mash.new(saved: 1, pending: 2, published: 3, template: 4)
 
   delegate :name, to: :template, prefix: true
   delegate :start_time, :end_time, :location, to: :information
@@ -30,11 +32,11 @@ class Event < ActiveRecord::Base
   end
 
   def published?
-    state == STATES[:published]
+    state == STATES.published
   end
 
   def pending?
-    state == STATES[:pending]
+    state == STATES.pending
   end
 
   def full_url

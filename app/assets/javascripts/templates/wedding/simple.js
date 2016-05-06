@@ -18,7 +18,7 @@ export default class Simple extends Base {
 
         <div className='panel panel-right'>
 
-          <div className='container vertical-js'>
+          <div className='container'>
             <div className='content-container'>
 
               <div className='text-wrapper-1' style={this.textStyle({ order: 1, text: mergedText[1] })}>

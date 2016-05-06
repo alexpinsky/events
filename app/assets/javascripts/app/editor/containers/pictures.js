@@ -93,7 +93,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-  return { pictures: state.event.pictures };
+  return { pictures: state.event.present.pictures };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Pictures);

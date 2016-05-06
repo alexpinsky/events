@@ -82,7 +82,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-  return { event: state.event }
+  return { event: state.event.present }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Editor);

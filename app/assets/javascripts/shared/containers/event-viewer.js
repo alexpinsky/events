@@ -6,6 +6,11 @@ import { BackgroundTypes } from '../../enums';
 
 export default class EventViewer extends Component {
 
+  componentDidMount() {
+    if (this.props.onMount)
+      this.props.onMount()
+  }
+
   renderTemplate() {
     return new EventWrapper(this.props.event).template();
   }
@@ -38,7 +43,12 @@ export default class EventViewer extends Component {
 }
 
 function mapStateToProps(state) {
-  return { event: state.event };
+  if (state.event.present) {
+    return { event: state.event.present };
+  }
+  else {
+    return { event: state.event };
+  }
 }
 
 export default connect(mapStateToProps)(EventViewer);

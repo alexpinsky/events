@@ -158,7 +158,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-  return { information: state.event.information };
+  return { information: state.event.present.information };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CalendarForm);

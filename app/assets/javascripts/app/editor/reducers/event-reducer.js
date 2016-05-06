@@ -1,11 +1,13 @@
 import { _ } from 'lodash';
+import undoable, { includeAction, excludeAction } from 'redux-undo';
 
 import * as constants from '../../shared/constants';
 import * as reducers from '../reducers';
 import EventWrapper from '../../../wrappers/event-wrapper';
 
 
-export default function(state = EventWrapper.newEvent(), action) {
+const eventReducer = function(state = EventWrapper.newEvent(), action) {
+  console.log('action', action.type);
 
   // this reducer actions
   switch (action.type) {
@@ -48,3 +50,8 @@ export default function(state = EventWrapper.newEvent(), action) {
 
   return state;
 }
+
+export default undoable(eventReducer, {
+  limit: 10,
+  debug: true
+});

@@ -22,6 +22,7 @@ Events::Application.routes.draw do
           put 'publish'
           put 'unpublish'
         end
+        resources :views, only: :create
       end
       resources :categories
       resources :files, only: :destroy

@@ -73,7 +73,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-  return { texts: state.event.texts };
+  return { texts: state.event.present.texts };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TextForm);

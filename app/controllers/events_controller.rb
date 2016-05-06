@@ -7,7 +7,7 @@ class EventsController < ApplicationController
       Event.includes(:template).by_id(params[:id]).first
     end
 
-    if @event
+    if @event && @event.viewable_for?(current_user)
       render layout: false
     else
       redirect_to root_path

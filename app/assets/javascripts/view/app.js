@@ -4,9 +4,15 @@ import { connect } from 'react-redux';
 
 import EventViewer from '../shared/containers/event-viewer';
 import Spinner from '../shared/components/spinner';
-import { setEvent } from './actions';
+import { setEvent, eventViewed } from './actions';
 
 export default class App extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.handleViewerMount = this.handleViewerMount.bind(this);
+  }
 
   componentDidMount() {
     $('.overlay').remove();
@@ -15,10 +21,13 @@ export default class App extends Component {
     this.props.setEvent(event);
   }
 
+  handleViewerMount() {
+    this.props.eventViewed(this.props.event.id);
+  }
 
   render() {
     if (this.props.event.id) {
-      return <EventViewer />
+      return <EventViewer onMount={this.handleViewerMount} />
     }
     else {
       return <Spinner />
@@ -27,7 +36,7 @@ export default class App extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ setEvent }, dispatch);
+  return bindActionCreators({ setEvent, eventViewed }, dispatch);
 }
 
 function mapStateToProps(state) {

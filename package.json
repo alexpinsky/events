@@ -29,6 +29,7 @@
     "react-router-redux": "^4.0.2",
     "redux": "^3.0.4",
     "redux-thunk": "^1.0.3",
+    "redux-undo": "^1.0.0-beta8",
     "zeroclipboard": "^2.2.0"
   }
 }

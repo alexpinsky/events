@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { _ } from 'lodash';
 
 import Picture from '../components/picture'
 import ProgressBar from '../components/progress-bar'
@@ -55,22 +56,23 @@ export default class Pictures extends Component {
   }
 
   render() {
-    let picturesSize = Object.keys(this.props.pictures).length;
     let pictures = [];
 
-    for(let index in this.props.pictures) {
+    _.times(NUM_OF_PICS, (index) => {
+      index++;
       let picture = this.props.pictures[index]
+      let url     = picture == undefined ? null : picture.url;
 
       pictures.push(
         <Picture
           key={index}
           index={index}
-          url={picture.url}
-          isLast={index == picturesSize}
+          url={url}
+          isLast={index == NUM_OF_PICS}
           addPicture={this.handleAddPicture}
           removePicture={this.handleRemovePicture} />
       );
-    }
+    });
 
     return (
       <div>
@@ -86,6 +88,8 @@ export default class Pictures extends Component {
     )
   }
 }
+
+const NUM_OF_PICS = 4;
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ addPicture, removePicture }, dispatch);

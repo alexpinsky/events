@@ -3,6 +3,7 @@ $border-color: rgb(127, 159, 255);
 
 .page-wrapper.editor {
   background-color: $bg-color;
+  min-height: 810px;
   .page-container {
     width: 980px;
     height: 100%;
@@ -53,10 +54,10 @@ $border-color: rgb(127, 159, 255);
             display: inline-block;
             margin-left: 38px;
             a.redo {
-              background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/undo_btn.svg');
+              background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/redo_btn.svg');
             }
             a.redo:hover {
-              background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/undo_btn_hover.svg');
+              background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/redo_btn_hover.svg');
             }
           }
         }
@@ -310,5 +311,7 @@ $border-color: rgb(127, 159, 255);
     url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/copy_hover.png")
     url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/link_copied.png")
     url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/undo_btn.svg')
-    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/undo_btn_hover.svg');
+    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/undo_btn_hover.svg')
+    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/redo_btn.svg')
+    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/redo_btn_hover.svg');
 }

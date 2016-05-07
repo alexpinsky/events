@@ -16,7 +16,7 @@ export default class NewEventTile extends Component {
         </div>
         <div className='tile-body'>
           <div className='new-event-wrapper'>
-            <Link to='/app/editor/' className="new-event" />
+            <a href='/app/editor/' className="new-event" />
             <div className='text'>NEW EVENT</div>
           </div>
         </div>

@@ -34,38 +34,66 @@ $border-color: rgb(127, 159, 255);
           text-align: center;
           padding-top: 8px;
         }
-        .save-wrapper {
-          margin-right: 38px;
-          display: inline-block;
-          color: rgb(181, 23, 231);
-          a.save {
-            background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/save_btn.svg');
+        .left-container {
+          float: left;
+          .text {
+            color: #7FA0FF;
           }
-          a.save:hover {
-            background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/save_btn_hover.svg');
+          .undo-wrapper {
+            display: inline-block;
+            margin-left: 18px;
+            a.undo {
+              background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/undo_btn.svg');
+            }
+            a.undo:hover {
+              background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/undo_btn_hover.svg');
+            }
+          }
+          .redo-wrapper {
+            display: inline-block;
+            margin-left: 38px;
+            a.redo {
+              background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/undo_btn.svg');
+            }
+            a.redo:hover {
+              background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/undo_btn_hover.svg');
+            }
           }
         }
-        .publish-wrapper {
-          display: inline-block;
-          margin-right: 18px;
-          color: rgb(8, 212, 204);
-          a.publish {
-            background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/publish_btn.svg');
+        .right-container {
+          .save-wrapper {
+            margin-right: 38px;
+            display: inline-block;
+            color: rgb(181, 23, 231);
+            a.save {
+              background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/save_btn.svg');
+            }
+            a.save:hover {
+              background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/save_btn_hover.svg');
+            }
           }
-          a.publish:hover {
-            background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/publish_btn_hover.svg');
+          .publish-wrapper {
+            display: inline-block;
+            margin-right: 18px;
+            color: rgb(8, 212, 204);
+            a.publish {
+              background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/publish_btn.svg');
+            }
+            a.publish:hover {
+              background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/publish_btn_hover.svg');
+            }
           }
-        }
-        .unpublish-wrapper {
-          display: inline-block;
-          margin-right: 12px;
-          color: rgb(255, 140, 0);
-          a.unpublish {
-            margin-left: 5px;
-            background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/unpublish_btn.svg');
-          }
-          a.unpublish:hover {
-            background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/unpublish_btn_hover.svg');
+          .unpublish-wrapper {
+            display: inline-block;
+            margin-right: 12px;
+            color: rgb(255, 140, 0);
+            a.unpublish {
+              margin-left: 5px;
+              background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/unpublish_btn.svg');
+            }
+            a.unpublish:hover {
+              background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/unpublish_btn_hover.svg');
+            }
           }
         }
       }
@@ -280,5 +308,7 @@ $border-color: rgb(127, 159, 255);
     url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/publish_hover.png")
     url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/copy.png")
     url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/copy_hover.png")
-    url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/link_copied.png");
+    url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/link_copied.png")
+    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/undo_btn.svg')
+    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/undo_btn_hover.svg');
 }

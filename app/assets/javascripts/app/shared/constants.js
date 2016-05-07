@@ -9,6 +9,9 @@ export const UPDATE_EVENT = 'UPDATE_EVENT';
 export const PUBLISH_EVENT = 'PUBLISH_EVENT';
 export const UNPUBLISH_EVENT = 'UNPUBLISH_EVENT';
 export const DELETE_EVENT = 'DELETE_EVENT';
+export const UNDO_EVENT = 'UNDO_EVENT';
+export const REDO_EVENT = 'REDO_EVENT';
+export const CLEAR_EVENT_HISTORY = 'CLEAR_EVENT_HISTORY';
 
 // text actions
 export const TEXT_ACTION = 'TEXT_ACTION';

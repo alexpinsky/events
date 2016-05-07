@@ -16,7 +16,9 @@ export function fetchCategories() {
         })())
       })
       .catch((response) => {
-        console.error('Error (fetchCategories)', response);
+        dispatch((() => {
+          return { type: null }
+        })())
       });
   }
 }

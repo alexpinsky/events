@@ -1,7 +1,7 @@
 module Serializers
   class HashieMash < Hashie::Mash
     def self.dump(obj)
-      ActiveSupport::JSON.encode(obj.to_h)
+      ActiveSupport::JSON.encode(obj)
     end
 
 

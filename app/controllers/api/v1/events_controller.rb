@@ -6,7 +6,8 @@ module Api
       def index
         events = current_user.events
           .includes(template: [:category])
-          .order('events.created_at desc')
+          .order('events.created_at ASC')
+
         render json: Hash[events.map { |e|
           [e.id, EventPresenter.new(e, views_count: e.views.count)]
         }]
@@ -19,7 +20,9 @@ module Api
 
       def create
         respond_with_save do
-          current_user.events.new
+          event = current_user.events.new
+          event.state = Event::STATES[:saved]
+          event
         end
       end
 

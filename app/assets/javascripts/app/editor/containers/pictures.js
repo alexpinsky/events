@@ -52,7 +52,6 @@ export default class Pictures extends Component {
 
   handleRemovePicture(args) {
     this.props.removePicture(args.index);
-    File.delete(args.url);
   }
 
   render() {

@@ -7,7 +7,6 @@ import EventWrapper from '../../../wrappers/event-wrapper';
 
 
 const eventReducer = function(state = EventWrapper.newEvent(), action) {
-  console.log('action', action.type);
 
   // this reducer actions
   switch (action.type) {
@@ -52,6 +51,8 @@ const eventReducer = function(state = EventWrapper.newEvent(), action) {
 }
 
 export default undoable(eventReducer, {
-  limit: 10,
-  debug: true
+  limit: 20,
+  undoType: constants.UNDO_EVENT,
+  redoType: constants.REDO_EVENT,
+  clearHistoryType: constants.CLEAR_EVENT_HISTORY
 });

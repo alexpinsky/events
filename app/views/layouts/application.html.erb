@@ -11,7 +11,7 @@
     </title>
 
     <%= favicon_link_tag shared_assets_url 'favicon.ico' %>
-    <%= stylesheet_link_tag  "application" %>
+    <%= stylesheet_link_tag  "old_app" %>
     <%= render partial: 'layouts/shared/external_stylesheets' %>
 
     <%= csrf_meta_tags %>
@@ -23,15 +23,12 @@
     <%= render partial: "shared/notifications" %>
 
     <%= yield %>
-    <%= cl_image_upload_tag 'image', crop: :fill,
-                                     width: 600,
-                                     height: 600,
-                                     html: { hidden: 'hidden' } %>
+
     <%= render partial: "shared/footer" %>
     <!-- Javascripts
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "old_app", "data-turbolinks-track" => true %>
     <%= render partial: 'layouts/shared/external_javascripts' %>
     <%= yield(:javascript) %>
   </body>

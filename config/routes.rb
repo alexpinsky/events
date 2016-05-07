@@ -6,23 +6,28 @@ Events::Application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
-  get 'welcome'          => 'pages#welcome'
-  get 'admin'            => 'pages#admin'
-  get 'about'            => 'pages#about'
-  get 'privacy_policy'   => 'pages#privacy_policy'
-  get 'terms_of_service' => 'pages#terms_of_service'
-  get 'ping'             => 'pages#ping'
-  get 'play'             => 'pages#play'
+  # STATIC PAGES
+  get 'app/*page',        to: 'pages#app', as: :app
+  get 'welcome',          to: 'pages#welcome'
+  get 'admin',            to: 'pages#admin'
+  get 'about',            to: 'pages#about'
+  get 'privacy_policy',   to: 'pages#privacy_policy'
+  get 'terms_of_service', to: 'pages#terms_of_service'
 
-  resources :categories, path: 'templates'
-  resources :events do
-    member do
-      put 'publish'
-      put 'unpublish'
+  # API
+  namespace :api, defaults: { format: 'json' } do
+    namespace :v1 do
+      resources :events do
+        member do
+          put 'publish'
+          put 'unpublish'
+        end
+        resources :views, only: :create
+      end
+      resources :categories
+      resources :files, only: :destroy
     end
   end
-  resources :pictures, only: :destroy
-  resources :contact_requests, only: [:new, :create]
 
   # ADMIN
   namespace :admin do
@@ -38,5 +43,9 @@ Events::Application.routes.draw do
     end
   end
 
-  get '/:url', to: 'events#show'
+  resources :categories, path: 'templates'
+  resources :contact_requests, only: [:new, :create]
+  resources :events, only: :show
+
+  get '/*url', to: 'events#show'
 end

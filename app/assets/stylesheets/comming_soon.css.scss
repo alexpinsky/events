@@ -1,9 +1,0 @@
-// Small screens
-@media screen and (max-width: 640px) { 
-  @import 'comming_soon/small';
-}
-
-// Tablet/Desktop screens
-@media screen and (min-width: 641px) { 
-  @import 'comming_soon/large';
-}

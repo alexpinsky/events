@@ -3,9 +3,13 @@ class PagesController < ApplicationController
 
   def welcome
     respond_to do |format|
-      format.html   {  }
+      format.html
       format.mobile { render layout: false }
     end
+  end
+
+  def app
+    render layout: false
   end
 
   def admin
@@ -20,19 +24,5 @@ class PagesController < ApplicationController
 
   def terms_of_service
     render layout: false
-  end
-
-  def ping
-    render nothing: true, status: :ok
-  end
-
-  def play
-    render layout: false
-  end
-
-  private
-
-  def _set_page
-    @page = 'welcome'
   end
 end

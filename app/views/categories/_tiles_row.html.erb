@@ -1,7 +1,7 @@
 <div class='segment-wrapper'>
   <div class='segment-icon'>
     <% if current_user %>
-      <a href="<%= new_event_path %>" class="<%= category %>"></a>
+      <a href="<%= app_path(page: :editor) %>" class="<%= category %>"></a>
     <% else %>
       <a href="#signInModal" rel="modal:open" class="<%= category %>"></a>
     <% end %>
@@ -10,7 +10,7 @@
 </div>
 <% last_index = templates.size - 1 %>
 <% templates.each_with_index do |template, index| %>
-  <% 
+  <%
     klass = if index == 0 %>
     <% 'first' %>
   <% elsif index == last_index %>
@@ -22,11 +22,22 @@
     <div class='tile' style="background: url('<%= template.thumbnail_url %>') no-repeat; background-size: cover;">
       <div class='menu-wrapper'>
         <div class='buttons'>
-          <a class="preview" title="preview" target="_blank" href="<%= event_path(template) %>"></a>
+          <a class="preview"
+             title="preview"
+             target="_blank"
+             href="<%= event_path(id: template.name, url: template.name) %>">
+          </a>
           <% if current_user %>
-            <a class="edit" title="edit" href="<%= new_event_path(theme_id: template.id, category_id: template.category_id) %>"></a>
+            <a class="edit"
+               title="edit"
+               href="<%= app_path(page: :editor, template: template.name) %>">
+            </a>
           <% else %>
-            <a title="edit" href="#signInModal" rel="modal:open" class="edit"></a>
+            <a title="edit"
+               href="#signInModal"
+               rel="modal:open"
+               class="edit">
+            </a>
           <% end %>
         </div>
       </div>

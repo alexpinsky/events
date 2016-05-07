@@ -1,0 +1,65 @@
+/*
+ *= require_self
+ *= require fonts
+ *= require slick
+ *= require_tree ./themes
+*/
+html, body {
+  height: 100%;
+  min-height: 100%;
+  margin: 0
+}
+
+.vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.overlay {
+  background-color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  .spinner-container {
+    height: 100%;
+    img {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto;
+      display: block;
+    }
+  }
+}
+
+.view {
+  min-height: 100vh;
+}
+
+.view-footer {
+  position: absolute;
+  bottom: 0;
+  @media (orientation: landscape) and (max-device-width: 667px) {
+    position: relative;
+    margin-top: 10px;
+  }
+  overflow: hidden;
+  height: 27px;
+  width: 100%;
+  background-color: rgb(87, 87, 87);
+  .footer-container {
+    text-align: center;
+    a {
+      vertical-align: text-top;
+      text-decoration: none;
+      color: white;
+      font-family: 'Julius Sans One', sans-serif;
+      font-size: 12px;
+      text-shadow: 1px 1px rgba(0, 0, 0, 0.33);
+    }
+  }
+}

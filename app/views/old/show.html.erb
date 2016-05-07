@@ -1,0 +1,15 @@
+<% theme_path = "themes/#{@event.category_name}/#{@event.theme_name}" %>
+
+<% content_for :title do %>
+  <%= @event.name %>
+<% end %>
+
+<div class="display" style="<%= background_style_for(@event) %>">
+  <%= render partial: theme_path, locals: { event: @event } %>
+</div>
+<div class="display-footer">
+  <div class='footer-container'>
+    <img src="<%= shared_assets_url('logo_footer.svg') %>">
+    <a href="<%= root_path %>" target="_blank">click to eventit yourself >></a>
+  </div>
+</div>

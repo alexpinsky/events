@@ -3,22 +3,17 @@ class ApplicationController < ActionController::Base
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
+  protect_from_forgery with: :null_session
 
   before_filter :authenticate_user!
-  before_filter :_set_page
 
   def stored_location_for(resource)
     if resource.events.count > 0
-      events_path
+      page = :dashboard
     else
-      new_event_path
+      page = :editor
     end
-  end
 
-  private
-
-  def _set_page
-    @page = nil
+    app_path(page: page)
   end
 end

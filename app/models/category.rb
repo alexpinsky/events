@@ -1,7 +1,9 @@
 class Category < ActiveRecord::Base
-  has_many :events
+  has_many :templates
+
   validates :name, uniqueness: true
 
-  scope :by_name, -> (name) { where('categories.name = ?', name) } 
-  scope :include_themes, -> () { includes(:events).where('events.is_theme = ?', true).references(:events) }
+  NAMES = { wedding: 'wedding' }
+
+  scope :by_name, -> (name) { where('categories.name = ?', name) }
 end

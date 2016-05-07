@@ -3,7 +3,7 @@ development:
   encoding: unicode
   database: events_dev
   pool: 100
-  username: 
+  username:
   password:
 
 test:
@@ -12,5 +12,5 @@ test:
   database: events_test
   pool: 10
   timeout: 5000
-  username: 
+  username:
   password:

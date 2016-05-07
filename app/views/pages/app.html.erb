@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:title" content="eventit" />
+    <meta property="og:image" content="" />
+
+    <title>
+      <%= content_for?(:title) ? yield(:title) : "eventit" %>
+    </title>
+
+    <%= favicon_link_tag shared_assets_url 'favicon.ico' %>
+    <%= stylesheet_link_tag  "old_app" %>
+    <%= render partial: 'layouts/shared/external_stylesheets' %>
+
+    <%= csrf_meta_tags %>
+
+    <%= yield(:header) %>
+  </head>
+  <body>
+    <%= render partial: "shared/header" %>
+
+    <div class="app-container"></div>
+
+    <%= cl_image_upload_tag 'image', crop: :fill,
+                                     width: 600,
+                                     height: 600,
+                                     html: { hidden: 'hidden' } %>
+
+    <%= render partial: "shared/footer" %>
+    <!-- Javascripts
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <%= javascript_include_tag "app", "data-turbolinks-track" => true %>
+    <%= render partial: 'layouts/shared/external_javascripts' %>
+    <%= yield(:javascript) %>
+  </body>
+</html>

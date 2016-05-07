@@ -30,45 +30,75 @@
   .event-wrapper.simple {
     .panel {
       width: 50%;
+      height: 100vh;
       @media screen and (max-width: 479px) {
         width: 100%;
+        height: 100%;
+        margin-top: 6em;
       }
       text-align: center;
       display: inline-block;
       position: relative;
     }
     .panel-left {
-      padding-top: 5em;
     }
     .panel-right {
-      padding-top: 2em;
       float: right;
+      .container {
+        width: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        @media screen and (max-width: 479px) {
+          position: inherit;
+          top: inherit;
+          left: inherit;
+          transform: inherit;
+        }
+      }
     }
     .images-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      height: 38em;
+      width: 38em;
+      margin: -19em 0 0 -19em;
+      @media screen and (max-width: 810px) {
+        height: 36em;
+        width: 36em;
+        margin-top: -18em;
+        margin: -18em 0 0 -18em;
+      }
+      @media screen and (max-width: 695px) {
+        height: 30em;
+        width: 30em;
+        margin: -15em 0 0 -15em;
+      }
+      @media screen and (max-width: 568px) {
+        height: 26em;
+        width: 26em;
+        margin: -13em 0 0 -13em;
+      }
+      @media screen and (max-width: 479px) {
+        position: relative;
+        left: inherit;
+        margin: 0 auto;
+        height: 34em;
+        width: 34em;
+      }
+      @media screen and (max-width: 320px) {
+        position: relative;
+        left: inherit;
+        margin: 0 auto;
+        height: 30em;
+        width: 30em;
+      }
       .images {
+        width: inherit;
+        height: inherit;
         border-radius: 1000px;
-        height: 38em;
-        width: 38em;
-        @media screen and (max-width: 810px) {
-          height: 36em;
-          width: 36em;
-        }
-        @media screen and (max-width: 695px) {
-          height: 30em;
-          width: 30em;
-        }
-        @media screen and (max-width: 568px) {
-          height: 25em;
-          width: 25em;
-        }
-        @media screen and (max-width: 479px) {
-          height: 33em;
-          width: 33em;
-        }
-        @media screen and (max-width: 320px) {
-          height: 30em;
-          width: 30em;
-        }
         display: inline-block;
         .slick-list {
           border-radius: inherit;

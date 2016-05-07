@@ -1,15 +1,36 @@
-<% theme_path = "themes/#{@event.category_name}/#{@event.theme_name}" %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%= render partial: "layouts/og_tags", locals: { event: @event } %>
 
-<% content_for :title do %>
-  <%= @event.name %>
-<% end %>
+    <title>
+      <%= @event.name %>
+    </title>
 
-<div class="display" style="<%= background_style_for(@event) %>">
-  <%= render partial: theme_path, locals: { event: @event } %>
-</div>
-<div class="display-footer">
-  <div class='footer-container'>
-    <img src="<%= shared_assets_url('logo_footer.svg') %>">
-    <a href="<%= root_path %>" target="_blank">click to eventit yourself >></a>
-  </div>
-</div>
+    <%= favicon_link_tag shared_assets_url 'favicon.ico' %>
+    <%= stylesheet_link_tag  "view" %>
+    <%= render partial: 'layouts/shared/external_stylesheets' %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="view-container" data-event="<%= EventPresenter.new(@event).to_json %>"></div>
+    <div class="overlay">
+      <div class='spinner-container'>
+        <img class="vertical-align" src="https://s3-eu-west-1.amazonaws.com/events-assets-static/shared/loading.gif">
+      </div>
+    </div>
+    <div class="view-footer">
+      <div class='footer-container'>
+        <img src="<%= shared_assets_url('logo_footer.svg') %>">
+        <a href="<%= root_path %>" target="_blank">click to eventit yourself >></a>
+      </div>
+    </div>
+    <!-- Javascripts
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <%= javascript_include_tag "view", "data-turbolinks-track" => true %>
+    <%= render partial: 'layouts/shared/external_javascripts' %>
+  </body>
+</html>

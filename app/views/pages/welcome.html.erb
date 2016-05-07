@@ -28,7 +28,7 @@
         <% if current_user.nil? %>
           <a href="#signUpModal" rel="modal:open" class="start"></a>
         <% else %>
-          <a href="<%= events_path %>" class="start"></a>
+          <a href="<%= app_path(page: :dashboard) %>" class="start"></a>
         <% end %>
       </div>
     </div>

@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(window).load(function() {
   var options = {
     autoplay: true,
     arrows: false,
@@ -12,5 +12,5 @@ $(document).ready(function() {
     fade: true
   }));
 
-  $('.welcome .images').css('display', 'block');
+  $('.welcome .images').css('visibility', 'visible');
 });

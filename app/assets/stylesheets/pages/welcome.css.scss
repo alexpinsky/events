@@ -27,7 +27,7 @@
     position: relative;
     min-height: 350px;
     .images {
-      display: none; // hide images till slide show starts
+      visibility: hidden;
       .slick-list {
         .slick-track {
           @media (max-width:  1439px) {
@@ -195,5 +195,8 @@
     url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/weddings_icon_hover.svg')
     url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/celebration_icon_hover.svg')
     url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/meetups_icon_hover.svg')
-    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/whatever_icon_hover.svg');
+    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/whatever_icon_hover.svg')
+    url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/beach_slide.jpg")
+    url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/business_slide.jpg")
+    url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/welcome/record_slide.jpg");
 }

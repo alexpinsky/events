@@ -6,10 +6,12 @@ module Api
       def index
         events = current_user.events
           .includes(template: [:category])
-          .order('events.created_at ASC')
+          .joins(:views)
+          .group('events.id')
+          .select("events.*, COUNT(views.id) AS views_count")
 
         render json: Hash[events.map { |e|
-          [e.id, EventPresenter.new(e, views_count: e.views.count)]
+          [e.id, EventPresenter.new(e, views_count: e.views_count)]
         }]
       end
 

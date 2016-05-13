@@ -38,14 +38,20 @@ export class CalendarForm extends Component {
     if(!this.startTimeInput && !this.endTimeInput)
       return;
 
+    const timeNow = new Date();
+
     $(this.startTimeInput).datetimepicker({
       onChangeDateTime: this.handleStartTimeChange,
-      mask: true
+      startDate: timeNow,
+      minDate: timeNow,
+      defaultDate: timeNow
     });
 
     $(this.endTimeInput).datetimepicker({
       onChangeDateTime: this.handleEndTimeChange,
-      mask: true
+      startDate: timeNow,
+      minDate: timeNow,
+      defaultDate: timeNow
     });
   }
 

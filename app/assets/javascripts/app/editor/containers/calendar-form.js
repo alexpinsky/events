@@ -136,7 +136,9 @@ export class CalendarForm extends Component {
                       onCheck={this.handleCheck}
                       onUncheck={this.handleUncheck} />
           </div>
-          <div className='text'>synchronize your guests calendars</div>
+          <div className='text'>
+            want your guests to be able to add your<br/>event to their calendar?
+          </div>
         </div>
 
         {this.renderFields()}

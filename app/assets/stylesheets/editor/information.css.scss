@@ -26,21 +26,16 @@
     }
     .text {
       margin-left: 5px;
-      border-bottom: 1px solid;
+      padding: 0;
     }
     .checkbox {
-      vertical-align: bottom;
+      vertical-align: top;
     }
   }
   .name-section {
     padding-top: 15px;
   }
   .time-section {
-    .text {
-      display: inline;
-      margin-left: 20px;
-      border-bottom: 1px solid;
-    }
     .inputs {
       padding-top: 15px;
       .text {

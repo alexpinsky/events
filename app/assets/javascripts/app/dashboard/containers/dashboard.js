@@ -49,7 +49,7 @@ export default class Dashboard extends Component {
     if (!this.props.events)
       return null;
 
-    return _.map(this.props.events, (event, id) => {
+    const tiles = _.map(this.props.events, (event, id) => {
       return <EventTile key={id}
                         event={event}
                         onNameSave={this.handleNameSave}
@@ -57,6 +57,8 @@ export default class Dashboard extends Component {
                         onUnpublishClick={this.handleUnpublishClick}
                         onDeleteClick={this.handleDeleteEvent} />
     });
+
+    return _.reverse(tiles);
   }
 
   render() {

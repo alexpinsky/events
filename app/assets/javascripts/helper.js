@@ -1,5 +1,7 @@
 // returns this format: 20160115T030000
 export function toCalendarDateFormat(epoch) {
+  if (!epoch)
+    return null;
 
   const date = new Date(parseInt(epoch));
 
@@ -15,6 +17,8 @@ export function toCalendarDateFormat(epoch) {
 
 // returns this format: 2016/01/14 19:00
 export function toHumanDateFormat(epoch) {
+  if (!epoch)
+    return null;
 
   const date = new Date(parseInt(epoch));
 

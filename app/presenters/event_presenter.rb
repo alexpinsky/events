@@ -18,7 +18,8 @@ class EventPresenter
       information: event.information,
       created_at: event.created_at.to_i * 1000,
       errors: ["Template can't be blank", "Url has already been taken"]
-    }.merge(dynamic_attrs)
+    }
+    .merge(dynamic_attrs)
   end
 
   private

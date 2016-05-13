@@ -6,7 +6,7 @@ module Api
       def index
         events = current_user.events
           .includes(template: [:category])
-          .joins(:views)
+          .joins('LEFT OUTER JOIN views ON views.event_id = events.id')
           .group('events.id')
           .select("events.*, COUNT(views.id) AS views_count")
 

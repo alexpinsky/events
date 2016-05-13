@@ -93,7 +93,7 @@ BackgroundTiles.defaultProps = {
     },
     {
       type: BackgroundTypes.image,
-      url: "http://res.cloudinary.com/eventit-me/image/upload/v1451683818/P_Stars_oepmkd.png"
+      url: "http://res.cloudinary.com/eventit-me/image/upload/v1463138738/P_Stars_wcsxmt.png"
     },
     {
       type: BackgroundTypes.image,
@@ -121,7 +121,7 @@ BackgroundTiles.defaultProps = {
     },
     {
       type: BackgroundTypes.image,
-      url: "http://res.cloudinary.com/eventit-me/image/upload/v1451683817/P_modernism_jzc9mm.png"
+      url: "http://res.cloudinary.com/eventit-me/image/upload/v1463138865/P_modernism_v3cftp.png"
     },
     {
       type: BackgroundTypes.image,

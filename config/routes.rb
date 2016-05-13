@@ -13,6 +13,7 @@ Events::Application.routes.draw do
   get 'about',            to: 'pages#about'
   get 'privacy_policy',   to: 'pages#privacy_policy'
   get 'terms_of_service', to: 'pages#terms_of_service'
+  get 'pay', to: 'pages#pay'
 
   # API
   namespace :api, defaults: { format: 'json' } do

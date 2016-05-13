@@ -25,4 +25,9 @@ class PagesController < ApplicationController
   def terms_of_service
     render layout: false
   end
+
+  def pay
+    # l9wRBvhFA3G6wRO2CgumRouUvAMpJKukS6VaZwtMHYbLQFpC_0LbNKxnhiu
+    render layout: false
+  end
 end

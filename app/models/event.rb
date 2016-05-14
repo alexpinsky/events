@@ -39,6 +39,10 @@ class Event < ActiveRecord::Base
     state == STATES.pending
   end
 
+  def template?
+    state == STATES.template
+  end
+
   def full_url
     url = self.url.blank? ? "events/#{id}" : self.url
     "#{ENV['ROOT_URL']}#{url}"

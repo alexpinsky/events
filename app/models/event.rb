@@ -21,6 +21,7 @@ class Event < ActiveRecord::Base
   scope :templates, -> { by_state STATES.template }
 
   STATES = Hashie::Mash.new(saved: 1, pending: 2, published: 3, template: 4)
+  BACKGROUND_TYPES = Hashie::Mash.new(image: 'image', color: 'color')
 
   delegate :name, to: :template, prefix: true
   delegate :start_time, :end_time, :location, to: :information

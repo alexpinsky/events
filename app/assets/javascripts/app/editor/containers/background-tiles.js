@@ -65,27 +65,15 @@ BackgroundTiles.defaultProps = {
     },
     {
       type: BackgroundTypes.image,
-      url: "http://res.cloudinary.com/eventit-me/image/upload/v1451683819/P_W_flowers_enccu0.png"
+      url: "http://res.cloudinary.com/eventit-me/image/upload/v1451684700/diagonal_striped_brick_fruxru.png",
     },
     {
       type: BackgroundTypes.image,
-      url: "http://res.cloudinary.com/eventit-me/image/upload/v1451683819/P_triangular_ts1dpa.png"
+      url: "http://res.cloudinary.com/eventit-me/image/upload/v1451684809/swirl_pattern_dj7qd6.png"
     },
     {
       type: BackgroundTypes.image,
-      url: "http://res.cloudinary.com/eventit-me/image/upload/v1451683819/P_triangular_b_c8fkq1.png"
-    },
-    {
-      type: BackgroundTypes.image,
-      url: "http://res.cloudinary.com/eventit-me/image/upload/v1451683819/P_tiger_b_ymvflz.png"
-    },
-    {
-      type: BackgroundTypes.image,
-      url: "http://res.cloudinary.com/eventit-me/image/upload/v1451683819/P_tiger_a_ucn8bw.png"
-    },
-    {
-      type: BackgroundTypes.image,
-      url: "http://res.cloudinary.com/eventit-me/image/upload/v1451683819/P_Stripes_p_vde1oz.png"
+      url: "http://res.cloudinary.com/eventit-me/image/upload/v1463225524/p25_rgtlt6.png"
     },
     {
       type: BackgroundTypes.image,
@@ -93,83 +81,95 @@ BackgroundTiles.defaultProps = {
     },
     {
       type: BackgroundTypes.image,
-      url: "http://res.cloudinary.com/eventit-me/image/upload/v1463138738/P_Stars_wcsxmt.png"
+      url: "http://res.cloudinary.com/eventit-me/image/upload/v1463225524/p24_stnvvf.png"
     },
     {
       type: BackgroundTypes.image,
-      url: "http://res.cloudinary.com/eventit-me/image/upload/v1451683818/P_spots_y_htxdro.png"
+      url: "http://res.cloudinary.com/eventit-me/image/upload/v1463225524/p22_dpadmb.png"
     },
     {
       type: BackgroundTypes.image,
-      url: "http://res.cloudinary.com/eventit-me/image/upload/v1451683818/p_spots_b_oofv0d.png"
+      url: "http://res.cloudinary.com/eventit-me/image/upload/v1463225524/p23_sfbdts.png"
     },
     {
       type: BackgroundTypes.image,
-      url: "http://res.cloudinary.com/eventit-me/image/upload/v1451683818/P_Planet_w_nqhfd4.png"
+      url: "http://res.cloudinary.com/eventit-me/image/upload/v1463225523/p21_pjttby.png"
     },
     {
       type: BackgroundTypes.image,
-      url: "http://res.cloudinary.com/eventit-me/image/upload/v1451683818/P_Planet_b_l3pvaj.png"
+      url: "http://res.cloudinary.com/eventit-me/image/upload/v1463225523/p20_fp8mr2.png"
     },
     {
       type: BackgroundTypes.image,
-      url: "http://res.cloudinary.com/eventit-me/image/upload/v1451683818/P_picnic_sfcvph.png"
+      url: "http://res.cloudinary.com/eventit-me/image/upload/v1451683819/P_Stripes_p_vde1oz.png"
     },
     {
       type: BackgroundTypes.image,
-      url: "http://res.cloudinary.com/eventit-me/image/upload/v1451683817/P_party_horrqu.png"
+      url: "http://res.cloudinary.com/eventit-me/image/upload/v1463225523/p16_yarkim.png"
     },
     {
       type: BackgroundTypes.image,
-      url: "http://res.cloudinary.com/eventit-me/image/upload/v1463138865/P_modernism_v3cftp.png"
+      url: "http://res.cloudinary.com/eventit-me/image/upload/v1463225523/p17_zmnzao.png"
     },
     {
       type: BackgroundTypes.image,
-      url: "http://res.cloudinary.com/eventit-me/image/upload/v1451683817/P_Lines_b_x21klh.png"
+      url: "http://res.cloudinary.com/eventit-me/image/upload/v1463225523/p15_eguuoa.png"
     },
     {
       type: BackgroundTypes.image,
-      url: "http://res.cloudinary.com/eventit-me/image/upload/v1451683817/P_Lines_a_rw1f2w.png"
+      url: "http://res.cloudinary.com/eventit-me/image/upload/v1463225523/p14_v3gcsw.png"
     },
     {
       type: BackgroundTypes.image,
-      url: "http://res.cloudinary.com/eventit-me/image/upload/v1451683817/P_flowery_p_olomdn.png"
+      url: "http://res.cloudinary.com/eventit-me/image/upload/v1463225523/p10_bxsyio.png"
     },
     {
       type: BackgroundTypes.image,
-      url: "http://res.cloudinary.com/eventit-me/image/upload/v1451683817/P_flowery_b_jh2fhp.png"
+      url: "http://res.cloudinary.com/eventit-me/image/upload/v1463225523/p9_boxqe6.png"
     },
     {
       type: BackgroundTypes.image,
-      url: "http://res.cloudinary.com/eventit-me/image/upload/v1451683817/P_Birds_y_pu4gsq.png"
+      url: "http://res.cloudinary.com/eventit-me/image/upload/v1463225522/p13_hwbxqg.png"
     },
     {
       type: BackgroundTypes.image,
-      url: "http://res.cloudinary.com/eventit-me/image/upload/v1451683817/P_Birds_w_aznlar.png"
+      url: "http://res.cloudinary.com/eventit-me/image/upload/v1463225522/p12_fjuole.png"
     },
     {
       type: BackgroundTypes.image,
-      url: "http://res.cloudinary.com/eventit-me/image/upload/v1451683816/P_abstract_d_aztrwu.png"
+      url: "http://res.cloudinary.com/eventit-me/image/upload/v1463225522/p11_s8d7o9.png"
     },
     {
       type: BackgroundTypes.image,
-      url: "http://res.cloudinary.com/eventit-me/image/upload/v1451683816/P_abstract_c_kahrto.png"
+      url: "http://res.cloudinary.com/eventit-me/image/upload/v1463225522/p8_o3deem.png"
     },
     {
       type: BackgroundTypes.image,
-      url: "http://res.cloudinary.com/eventit-me/image/upload/v1451683816/P_abstract_b_ulk7it.png"
+      url: "http://res.cloudinary.com/eventit-me/image/upload/v1463225522/p7_qty5th.png"
     },
     {
       type: BackgroundTypes.image,
-      url: "http://res.cloudinary.com/eventit-me/image/upload/v1451683816/P_abstract_a_cdqdp9.png"
+      url: "http://res.cloudinary.com/eventit-me/image/upload/v1463225522/p3_ge2q0i.png"
     },
     {
       type: BackgroundTypes.image,
-      url: "http://res.cloudinary.com/eventit-me/image/upload/v1451684700diagonal_striped_brick_fruxru.png",
+      url: "http://res.cloudinary.com/eventit-me/image/upload/v1463225522/p4_m3axsy.png"
     },
     {
       type: BackgroundTypes.image,
-      url: "http://res.cloudinary.com/eventit-me/image/upload/v1451684809/swirl_pattern_dj7qd6.png"
+      url: "http://res.cloudinary.com/eventit-me/image/upload/v1463225522/p5_snf5mu.png"
+    },
+    {
+      type: BackgroundTypes.image,
+      url: "http://res.cloudinary.com/eventit-me/image/upload/v1463225522/p6_fcu9qx.png"
+    },
+    {
+      type: BackgroundTypes.image,
+      url: "http://res.cloudinary.com/eventit-me/image/upload/v1463225522/p2_x6k0na.png"
+    },
+    {
+      type: BackgroundTypes.image,
+      url: "http://res.cloudinary.com/eventit-me/image/upload/v1463225521/p1_wfxkf9.png"
     }
   ]
 }

@@ -44,20 +44,20 @@ $border-color: rgb(127, 159, 255);
             display: inline-block;
             margin-left: 18px;
             a.undo {
-              background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/undo_btn.svg');
+              background: url('http://res.cloudinary.com/eventit-me/image/upload/v1463234652/undo_btn_ixf6sv.svg');
             }
             a.undo:hover {
-              background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/undo_btn_hover.svg');
+              background: url('http://res.cloudinary.com/eventit-me/image/upload/v1463234652/undo_h_btn_xtl5ek.svg');
             }
           }
           .redo-wrapper {
             display: inline-block;
             margin-left: 38px;
             a.redo {
-              background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/redo_btn.svg');
+              background: url('http://res.cloudinary.com/eventit-me/image/upload/v1463234649/redo_btn_i8jtzf.svg');
             }
             a.redo:hover {
-              background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/redo_btn_hover.svg');
+              background: url('http://res.cloudinary.com/eventit-me/image/upload/v1463234649/redo_h_btn_qqk5oy.svg');
             }
           }
         }
@@ -67,10 +67,10 @@ $border-color: rgb(127, 159, 255);
             display: inline-block;
             color: rgb(181, 23, 231);
             a.save {
-              background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/save_btn.svg');
+              background: url('http://res.cloudinary.com/eventit-me/image/upload/v1463234649/download_btn_laraaj.svg');
             }
             a.save:hover {
-              background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/save_btn_hover.svg');
+              background: url('http://res.cloudinary.com/eventit-me/image/upload/v1463234649/download_h_btn_ujvpsr.svg');
             }
           }
           .publish-wrapper {
@@ -78,10 +78,10 @@ $border-color: rgb(127, 159, 255);
             margin-right: 18px;
             color: rgb(8, 212, 204);
             a.publish {
-              background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/publish_btn.svg');
+              background: url('http://res.cloudinary.com/eventit-me/image/upload/v1463234649/publish_btn_df6sgj.svg');
             }
             a.publish:hover {
-              background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/publish_btn_hover.svg');
+              background: url('http://res.cloudinary.com/eventit-me/image/upload/v1463234649/publish_h_btn_lm4wsp.svg');
             }
           }
           .unpublish-wrapper {
@@ -90,10 +90,10 @@ $border-color: rgb(127, 159, 255);
             color: rgb(255, 140, 0);
             a.unpublish {
               margin-left: 5px;
-              background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/unpublish_btn.svg');
+              background: url('http://res.cloudinary.com/eventit-me/image/upload/v1463236752/unpublish_btn_ykykzt.svg');
             }
             a.unpublish:hover {
-              background: url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/unpublish_btn_hover.svg');
+              background: url('http://res.cloudinary.com/eventit-me/image/upload/v1463236752/unpublish_h_btn_th7muy.svg');
             }
           }
         }
@@ -223,7 +223,7 @@ $border-color: rgb(127, 159, 255);
             width: 120px;
           }
         }
-        .view {
+        .view-container {
           width: 559px;
           height: 468px;
           display: inline-block;
@@ -292,9 +292,9 @@ $border-color: rgb(127, 159, 255);
 .page-wrapper.editor:before {
   display: none;
   content:
-    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/save_btn_hover.svg')
-    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/publish_btn_hover.svg')
-    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/dashboard/unpublish_btn_hover.svg')
+    url('http://res.cloudinary.com/eventit-me/image/upload/v1463234649/download_h_btn_ujvpsr.svg')
+    url('http://res.cloudinary.com/eventit-me/image/upload/v1463234649/publish_h_btn_lm4wsp.svg')
+    url('http://res.cloudinary.com/eventit-me/image/upload/v1463236752/unpublish_h_btn_th7muy.svg')
     url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/templates_icon_hover.svg')
     url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/text_icon_hover.svg')
     url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/pictures_icon_hover.svg')
@@ -310,8 +310,8 @@ $border-color: rgb(127, 159, 255);
     url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/copy.png")
     url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/copy_hover.png")
     url("https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/modals/link_copied.png")
-    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/undo_btn.svg')
-    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/undo_btn_hover.svg')
-    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/redo_btn.svg')
-    url('https://s3-eu-west-1.amazonaws.com/events-assets-static/pages/editor/redo_btn_hover.svg');
+    url('http://res.cloudinary.com/eventit-me/image/upload/v1463234652/undo_btn_ixf6sv.svg')
+    url('http://res.cloudinary.com/eventit-me/image/upload/v1463234652/undo_h_btn_xtl5ek.svg')
+    url('http://res.cloudinary.com/eventit-me/image/upload/v1463234649/redo_btn_i8jtzf.svg')
+    url('http://res.cloudinary.com/eventit-me/image/upload/v1463234649/redo_h_btn_qqk5oy.svg');
 }

@@ -1,5 +1,13 @@
 module ApplicationHelper
 
+  def price_str
+    @price_str ||= Payments::Pricer.price_str currency
+  end
+
+  def currency
+    @currency ||= Payments::CurrencyDetector.currency request.accept_language
+  end
+
   def shared_assets_url(asset_name)
     "https://s3-eu-west-1.amazonaws.com/events-assets-static/shared/#{asset_name}"
   end

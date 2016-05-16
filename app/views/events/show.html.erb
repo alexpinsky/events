@@ -15,12 +15,17 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <div class="view-container" data-event="<%= EventPresenter.new(@event).to_json %>"></div>
+    <div class="view-container"
+         data-event="<%= EventPresenter.new(@event).to_json %>"
+         style="<%= inline_style(@event) %>">
+    </div>
+
     <div class="overlay">
       <div class='spinner-container'>
         <img class="vertical-align" src="https://s3-eu-west-1.amazonaws.com/events-assets-static/shared/loading.gif">
       </div>
     </div>
+
     <div class="view-footer">
       <div class='footer-container'>
         <img src="<%= shared_assets_url('logo_footer.svg') %>">

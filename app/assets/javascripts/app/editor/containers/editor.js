@@ -14,12 +14,9 @@ import EventViewer from '../../../shared/containers/event-viewer';
 
 import { fetchEvent } from '../../shared/actions/event-actions';
 import EventWrapper from '../../../wrappers/event-wrapper';
+import { BackgroundTypes } from '../../../enums';
 
 export default class Editor extends Component {
-
-  shouldComponentUpdate(nextProps, nextState) {
-    return this.props.event.id != nextProps.event.id;
-  }
 
   componentWillMount() {
     if (this.isEdit())
@@ -35,12 +32,31 @@ export default class Editor extends Component {
     return eventWrapper.isNew() && this.isEdit();
   }
 
+  inlineStyle() {
+    const background = this.props.event.appearance.background;
+
+    let bgVal = null;
+
+    if (background.type == BackgroundTypes.image) {
+      bgVal = `url(${background.url})`;
+    }
+    else {
+      bgVal = background.color;
+    }
+
+    return { background: bgVal };
+  }
+
   renderViewer() {
     if (this.isFetching()) {
       return <Spinner />
     }
     else {
-      return <EventViewer />
+      return (
+        <div className='view-container' style={this.inlineStyle()}>
+          <EventViewer />
+        </div>
+      );
     }
   }
 

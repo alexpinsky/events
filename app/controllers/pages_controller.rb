@@ -26,6 +26,7 @@ class PagesController < ApplicationController
     render layout: false
   end
 
+  # callback params: {"tx"=>"2M279133CP4466324", "st"=>"Completed", "amt"=>"35.00", "cc"=>"ILS", "cm"=>"", "item_number"=>"1"}
   def pay
     # l9wRBvhFA3G6wRO2CgumRouUvAMpJKukS6VaZwtMHYbLQFpC_0LbNKxnhiu
     render layout: false

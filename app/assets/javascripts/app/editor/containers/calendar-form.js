@@ -44,14 +44,16 @@ export class CalendarForm extends Component {
       onChangeDateTime: this.handleStartTimeChange,
       startDate: timeNow,
       minDate: timeNow,
-      defaultDate: timeNow
+      defaultDate: timeNow,
+      mask: true
     });
 
     $(this.endTimeInput).datetimepicker({
       onChangeDateTime: this.handleEndTimeChange,
       startDate: timeNow,
       minDate: timeNow,
-      defaultDate: timeNow
+      defaultDate: timeNow,
+      mask: true
     });
   }
 

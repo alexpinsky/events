@@ -3,6 +3,6 @@
   <meta property="og:image" content="<%= event.pictures[1].url %>" />
   <meta property="og:site_name" content="<%= ENV['ROOT_URL'] %>" />
   <meta property="og:url" content="<%= event.full_url %>" />
-  <meta property="og:description" content="<%= "#{event.name} #{time_format(event.start_time)} #{event.location}" %>" />
+  <meta property="og:description" content="<%= "#{time_format(event.start_time)} #{event.location}" %>" />
   <meta property="og:updated_time" content="<%= event.updated_at %>" />
 <% end %>

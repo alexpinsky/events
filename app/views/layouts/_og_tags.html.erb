@@ -1,9 +1,7 @@
 <% if event %>
   <meta property="og:title" content="<%= event.name %>" />
-  <% event.pictures.each_pair do |id, pic| %>
-    <meta property="og:image" content="<%= pic.url %>" />
-  <% end %>
+  <meta property="og:image" content="<%= event.pictures.first.url %>" />
   <meta property="og:site_name" content="<%= ENV['ROOT_URL'] %>" />
   <meta property="og:url" content="<%= event.full_url %>" />
-  <meta property="og:description" content="<%= "#{event.name} #{event.start_time} #{event.location}" %>" />
+  <meta property="og:description" content="<%= "#{event.name} #{time_format(event.start_time)} #{event.location}" %>" />
 <% end %>

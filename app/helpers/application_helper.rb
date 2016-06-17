@@ -8,6 +8,11 @@ module ApplicationHelper
     @currency ||= Payments::CurrencyDetector.currency request.accept_language
   end
 
+  def time_format(epoch)
+    zone_offset = Time.zone_offset("IDT")
+    Time.at(epoch / 1000 + zone_offset).strftime("%m/%d/%Y %I:%M")
+  end
+
   def shared_assets_url(asset_name)
     "https://s3-eu-west-1.amazonaws.com/events-assets-static/shared/#{asset_name}"
   end

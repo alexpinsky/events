@@ -11,7 +11,7 @@ module ApplicationHelper
   def time_format(epoch)
     # zone_offset = Time.zone_offset("IDT").to_i
     zone_offset = 21600 # => 6hrs
-    Time.at(epoch / 1000 + zone_offset).strftime("%m/%d/%Y %I:%M")
+    Time.at(epoch / 1000 + zone_offset).strftime("%d/%m/%Y")
   end
 
   def shared_assets_url(asset_name)

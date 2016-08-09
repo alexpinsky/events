@@ -9,6 +9,7 @@ module ApplicationHelper
   end
 
   def time_format(epoch)
+    return nil if epoch.blank?
     # zone_offset = Time.zone_offset("IDT").to_i
     zone_offset = 21600 # => 6hrs
     Time.at(epoch / 1000 + zone_offset).strftime("%d/%m/%Y")
